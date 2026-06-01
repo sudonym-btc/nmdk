@@ -6,11 +6,12 @@
   "scripts": {
     "bootstrap": "./scripts/bootstrap.sh",
     "test": "./scripts/test.sh",
+    "build:nostr-tools": "cd dependencies/nostr-tools && rm -rf lib && bun run build.js && ./node_modules/.bin/tsc",
     "test:nostr-tools": "cd dependencies/nostr-tools && bun test marketplace.test.ts",
     "test:cashu": "cd dependencies/marketplace-cashu-ts && npm test",
-    "test:evm": "cd dependencies/marketplace-evm-ts && npm test",
-    "test:contracts": "cd dependencies/marketplace-evm-contracts && npm test",
-    "check:app": "cd dependencies/marketplace-app-ts && npm run check",
+    "test:evm": "cd dependencies/marketplace-evm-ts && npm run build && npm test",
+    "test:contracts": "cd dependencies/marketplace-evm-contracts && npm run build && npm test",
+    "check:app": "npm run build:nostr-tools && cd dependencies/marketplace-app-ts && npm run check",
     "up:cashu": "./scripts/up-cashu.sh",
     "up:evm": "./scripts/up-evm.sh"
   },

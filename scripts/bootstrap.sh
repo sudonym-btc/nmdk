@@ -16,8 +16,8 @@ packages=(
 
 for package_dir in "${packages[@]}"; do
   if [[ -f "$package_dir/package-lock.json" ]]; then
-    npm --prefix "$package_dir" ci
+    npm --prefix "$package_dir" ci --ignore-scripts
   elif [[ -f "$package_dir/package.json" ]]; then
-    npm --prefix "$package_dir" install
+    npm --prefix "$package_dir" install --ignore-scripts
   fi
 done
