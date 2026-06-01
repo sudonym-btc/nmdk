@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="NMDK is a forked Nostr marketplace development kit for TypeScript and Dart clients, with payment-method agnostic marketplace primitives and optional Cashu and EVM drivers."
+    />
+    <title>NMDK - Nostr Markets Development Kit</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="NMDK home">
+        <span class="brand-mark">N</span>
+        <span>NMDK</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#typescript">TypeScript</a>
+        <a href="#dart">Dart</a>
+        <a href="#payments">Payments</a>
+        <a href="https://github.com/sudonym-btc/nmdk">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-backdrop" aria-hidden="true">
+          <div class="rail rail-one"></div>
+          <div class="rail rail-two"></div>
+          <div class="rail rail-three"></div>
+          <div class="packet packet-a">order</div>
+          <div class="packet packet-b">escrow</div>
+          <div class="packet packet-c">settle</div>
+        </div>
+        <div class="section-inner hero-inner">
+          <p class="eyebrow">Nostr marketplace primitives, packaged together</p>
+          <h1 id="hero-title">NMDK</h1>
+          <p class="hero-copy">
+            The Nostr Markets Development Kit is a curated fork of Nostr client
+            packages, protocol drafts, demo clients, and payment drivers that
+            add marketplace functionality without locking applications to one
+            payment method.
+          </p>
+          <div class="hero-actions" aria-label="Quick links">
+            <a class="button primary" href="#typescript">Install TypeScript</a>
+            <a class="button secondary" href="#dart">Install Dart NDK</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary" aria-labelledby="summary-title">
+        <div class="section-inner">
+          <div class="summary-layout">
+            <div>
+              <p class="eyebrow">What this is</p>
+              <h2 id="summary-title">Marketplace Nostr, not a payment silo.</h2>
+              <p>
+                NMDK keeps the marketplace layer focused on listings, order
+                lifecycle events, escrow policy discovery, payment proofs,
+                recovery, and settlement state. Cashu, EVM, and future payment
+                rails plug in as drivers.
+              </p>
+            </div>
+            <div class="stack-visual" aria-label="NMDK package stack">
+              <div class="stack-row core">nostr-tools marketplace runtime</div>
+              <div class="stack-grid">
+                <div>Cashu driver</div>
+                <div>EVM driver</div>
+                <div>Dart NDK fork</div>
+                <div>Demo clients</div>
+              </div>
+              <div class="stack-row rail">Lightning in / Lightning out</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="typescript" class="install-section" aria-labelledby="typescript-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">TypeScript</p>
+            <h2 id="typescript-title">Install the marketplace fork of nostr-tools.</h2>
+            <p>
+              Use the fork when you want marketplace event helpers, order state
+              grouping, escrow policy routing, and payment-policy integration in
+              browser or Node clients.
+            </p>
+          </div>
+
+          <div class="command-grid">
+            <article class="command-card">
+              <h3>Core marketplace runtime</h3>
+              <pre><code>npm install nostr-tools@git+https://github.com/sudonym-btc/nostr-tools.git#marketplace</code></pre>
+              <p>
+                Import marketplace helpers from <code>nostr-tools/marketplace</code>.
+              </p>
+            </article>
+
+            <article class="command-card">
+              <h3>Add Cashu escrow driver</h3>
+              <pre><code>npm install @sudonym-btc/marketplace-cashu@git+https://github.com/sudonym-btc/marketplace-cashu-ts.git#main</code></pre>
+              <p>
+                Cashu support mints P2PK-locked escrow proofs after a buyer pays
+                a mint quote.
+              </p>
+            </article>
+
+            <article class="command-card">
+              <h3>Add EVM escrow driver</h3>
+              <pre><code>npm install @sudonym-btc/marketplace-evm@git+https://github.com/sudonym-btc/marketplace-evm-ts.git#main \
+  @sudonym-btc/marketplace-evm-contracts@git+https://github.com/sudonym-btc/marketplace-evm-contracts.git#main</code></pre>
+              <p>
+                EVM support handles contract calls, validation, account
+                abstraction, and swap-aware settlement flows.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="dart" class="install-section muted" aria-labelledby="dart-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Dart</p>
+            <h2 id="dart-title">Install the NDK fork for Flutter or Dart clients.</h2>
+            <p>
+              The Dart NDK fork is included in NMDK, but marketplace-specific
+              functionality has not landed there yet. The package is pinned so
+              Dart clients can track the same Nostr base as the TypeScript
+              marketplace work.
+            </p>
+          </div>
+
+          <div class="command-grid two">
+            <article class="command-card">
+              <h3>Dart NDK fork</h3>
+              <pre><code>dart pub add \
+  "ndk:{git:{url: https://github.com/sudonym-btc/ndk.git, ref: marketplace, path: packages/ndk}}"</code></pre>
+              <p>
+                Flutter projects can use the same command through
+                <code>flutter pub add</code> with the same dependency descriptor.
+              </p>
+            </article>
+
+            <article class="command-card planned">
+              <h3>Driver add command shape</h3>
+              <pre><code># Planned once Dart marketplace drivers exist:
+dart pub add \
+  "nmdk_cashu_driver:{git:{url: &lt;cashu-driver-repo&gt;}}"
+dart pub add \
+  "nmdk_evm_driver:{git:{url: &lt;evm-driver-repo&gt;}}"</code></pre>
+              <p>
+                Dart drivers should mirror the TypeScript model: optional
+                packages that implement marketplace payment policies without
+                owning Nostr relay IO.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="payments" class="payments" aria-labelledby="payments-title">
+        <div class="section-inner payments-layout">
+          <div>
+            <p class="eyebrow">Payment model</p>
+            <h2 id="payments-title">Payment-method agnostic, Lightning-connected.</h2>
+            <p>
+              Marketplace events describe intent and verifiable state. Drivers
+              decide how funds are locked, verified, recovered, released, or
+              refunded. That keeps the protocol open to Cashu, EVM, and future
+              payment methods.
+            </p>
+            <p>
+              Lightning remains the practical edge of the system: buyers can
+              enter through invoices, mints, or swap providers, and sellers can
+              exit back through Lightning when they want spendable settlement.
+            </p>
+          </div>
+
+          <div class="flow" aria-label="Marketplace payment flow">
+            <div class="flow-node">Buyer</div>
+            <div class="flow-line">Lightning invoice</div>
+            <div class="flow-node">Driver</div>
+            <div class="flow-line">Payment proof</div>
+            <div class="flow-node">Nostr order state</div>
+            <div class="flow-line">Release or refund</div>
+            <div class="flow-node">Seller</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="section-inner footer-inner">
+        <span>NMDK is maintained by sudonym-btc.</span>
+        <a href="https://github.com/sudonym-btc/nmdk">View the repository</a>
+      </div>
+    </footer>
+  </body>
+</html>
