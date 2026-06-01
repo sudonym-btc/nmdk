@@ -1,0 +1,24 @@
+{
+  "name": "@sudonym-btc/nmdk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nostr Markets Development Kit aggregate repository.",
+  "scripts": {
+    "bootstrap": "./scripts/bootstrap.sh",
+    "test": "./scripts/test.sh",
+    "test:nostr-tools": "cd dependencies/nostr-tools && bun test marketplace.test.ts",
+    "test:cashu": "cd dependencies/marketplace-cashu-ts && npm test",
+    "test:evm": "cd dependencies/marketplace-evm-ts && npm test",
+    "test:contracts": "cd dependencies/marketplace-evm-contracts && npm test",
+    "check:app": "cd dependencies/marketplace-app-ts && npm run check",
+    "up:cashu": "./scripts/up-cashu.sh",
+    "up:evm": "./scripts/up-evm.sh"
+  },
+  "workspaces": [
+    "dependencies/nostr-tools",
+    "dependencies/marketplace-app-ts",
+    "dependencies/marketplace-cashu-ts",
+    "dependencies/marketplace-evm-ts",
+    "dependencies/marketplace-evm-contracts"
+  ]
+}

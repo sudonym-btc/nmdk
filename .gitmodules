@@ -1,0 +1,48 @@
+[submodule "dependencies/nostr-tools"]
+	path = dependencies/nostr-tools
+	url = git@github.com:sudonym-btc/nostr-tools.git
+	branch = marketplace
+[submodule "dependencies/ndk"]
+	path = dependencies/ndk
+	url = git@github.com:sudonym-btc/ndk.git
+	branch = marketplace
+[submodule "dependencies/marketplace-app-ts"]
+	path = dependencies/marketplace-app-ts
+	url = git@github.com:sudonym-btc/marketplace-app-ts.git
+	branch = main
+[submodule "dependencies/marketplace-cashu-ts"]
+	path = dependencies/marketplace-cashu-ts
+	url = git@github.com:sudonym-btc/marketplace-cashu-ts.git
+	branch = main
+[submodule "dependencies/marketplace-cashu-stack"]
+	path = dependencies/marketplace-cashu-stack
+	url = git@github.com:sudonym-btc/marketplace-cashu-stack.git
+	branch = main
+[submodule "dependencies/marketplace-evm-contracts"]
+	path = dependencies/marketplace-evm-contracts
+	url = git@github.com:sudonym-btc/marketplace-evm-contracts.git
+	branch = main
+[submodule "dependencies/marketplace-evm-stack"]
+	path = dependencies/marketplace-evm-stack
+	url = git@github.com:sudonym-btc/marketplace-evm-stack.git
+	branch = main
+[submodule "dependencies/marketplace-evm-ts"]
+	path = dependencies/marketplace-evm-ts
+	url = git@github.com:sudonym-btc/marketplace-evm-ts.git
+	branch = main
+[submodule "dependencies/nips/accommodation-nip"]
+	path = dependencies/nips/accommodation-nip
+	url = git@github.com:sudonym-btc/accommodation-nip.git
+	branch = codex/accommodation-listing-terms
+[submodule "dependencies/nips/order-nip"]
+	path = dependencies/nips/order-nip
+	url = git@github.com:sudonym-btc/order-nip.git
+	branch = codex/order-payment-lifecycle
+[submodule "dependencies/nips/arbiter-nip"]
+	path = dependencies/nips/arbiter-nip
+	url = git@github.com:sudonym-btc/arbiter-nip.git
+	branch = codex/arbiter-nip-rename
+[submodule "dependencies/nips/marketplace-listing-nip"]
+	path = dependencies/nips/marketplace-listing-nip
+	url = git@github.com:sudonym-btc/marketplace-listing-nip.git
+	branch = codex/marketplace-listing-terms
