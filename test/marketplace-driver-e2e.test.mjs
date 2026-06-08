@@ -24,6 +24,7 @@ import { MemoryOperationStore } from '../dependencies/marketplace-evm-ts/dist/ut
 import {
   createClients,
   fundAccount,
+  randomTradeId,
 } from '../dependencies/marketplace-evm-ts/test/integration/support/evm.mjs'
 import {
   arbitrumAaConfig,
@@ -375,6 +376,7 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
     bidPolicies: [policy],
   })
   await runMarketplaceBid(api, listing, {
+    bidId: randomTradeId(),
     amount: { value: value.toString(), denomination: asset.denomination, decimals: asset.decimals },
     createdAt,
   }, {

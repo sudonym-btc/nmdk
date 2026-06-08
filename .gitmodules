@@ -30,6 +30,10 @@
 	path = dependencies/marketplace-evm-ts
 	url = git@github.com:sudonym-btc/marketplace-evm-ts.git
 	branch = main
+[submodule "dependencies/marketplace-driver-interface-ts"]
+	path = dependencies/marketplace-driver-interface-ts
+	url = git@github.com:sudonym-btc/marketplace-driver-interface-ts.git
+	branch = main
 [submodule "dependencies/nips/accommodation-nip"]
 	path = dependencies/nips/accommodation-nip
 	url = git@github.com:sudonym-btc/accommodation-nip.git

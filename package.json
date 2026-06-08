@@ -32,6 +32,7 @@
   "workspaces": [
     "apps/docs",
     "dependencies/nostr-tools",
+    "dependencies/marketplace-driver-interface-ts",
     "dependencies/marketplace-app-ts",
     "dependencies/marketplace-cashu-ts",
     "dependencies/marketplace-evm-ts",
