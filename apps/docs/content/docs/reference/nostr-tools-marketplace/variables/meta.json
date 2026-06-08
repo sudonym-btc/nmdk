@@ -1,0 +1,15 @@
+{
+  "title": "Variables",
+  "pages": [
+    "accommodationListings",
+    "auctions",
+    "escrowServices",
+    "escrowServiceSelections",
+    "listings",
+    "orders",
+    "paymentMethod",
+    "reviews",
+    "seed",
+    "structuredMessages"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "API Reference",
+  "pages": [
+    "index",
+    "nostr-tools-marketplace",
+    "marketplace-evm",
+    "marketplace-cashu"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "nostr": {
+    "relays": ["ws://host.docker.internal:18080"]
+  },
+  "authPort": 3000,
+  "authHost": "0.0.0.0",
+  "baseUrl": "http://127.0.0.1:13047",
+  "allowedOrigins": [
+    "http://127.0.0.1:13047",
+    "http://localhost:13047",
+    "http://127.0.0.1:5178",
+    "http://localhost:5178"
+  ],
+  "requireAuth": false,
+  "verbose": false
+}

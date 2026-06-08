@@ -46,3 +46,7 @@
 	path = dependencies/nips/marketplace-listing-nip
 	url = git@github.com:sudonym-btc/marketplace-listing-nip.git
 	branch = codex/marketplace-listing-terms
+[submodule "nips/auction-nip"]
+	path = nips/auction-nip
+	url = git@github.com:sudonym-btc/nips.git
+	branch = codex/marketplace-auction-nip

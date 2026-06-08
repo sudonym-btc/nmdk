@@ -1,0 +1,23 @@
+{
+  "title": "Interfaces",
+  "pages": [
+    "MarketplaceAuctionBidGroupsApi",
+    "MarketplaceAuctionCompletesApi",
+    "MarketplaceAuctionsApi",
+    "MarketplaceClient",
+    "MarketplaceEscrowApi",
+    "MarketplaceEscrowServicesApi",
+    "MarketplaceEscrowServiceSelectionsApi",
+    "MarketplaceListingsApi",
+    "MarketplaceOrderGroupsApi",
+    "MarketplaceOrdersApi",
+    "MarketplacePaymentMethodApi",
+    "MarketplacePaymentRoutesApi",
+    "MarketplacePaymentsApi",
+    "MarketplaceReviewsApi",
+    "MarketplaceSession",
+    "MarketplaceSessionPaymentMethodApi",
+    "MarketplaceSessionSeedApi",
+    "MarketplaceStructuredMessagesApi"
+  ]
+}

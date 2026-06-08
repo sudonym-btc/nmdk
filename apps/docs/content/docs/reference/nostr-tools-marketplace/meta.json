@@ -1,0 +1,10 @@
+{
+  "title": "nostr-tools/marketplace",
+  "pages": [
+    "index",
+    "interfaces",
+    "type-aliases",
+    "functions",
+    "variables"
+  ]
+}

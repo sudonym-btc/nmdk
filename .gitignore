@@ -2,6 +2,8 @@
 node_modules/
 *.log
 _site/
+.nmdk.local.env
+data/
 
 # Stack runtime data
 dependencies/marketplace-cashu-stack/data/

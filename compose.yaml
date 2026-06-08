@@ -1,0 +1,66 @@
+services:
+  signet:
+    image: hostr-signet:latest
+    build:
+      context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
+      dockerfile: apps/signet/Dockerfile
+    environment:
+      DATABASE_URL: file:/app/config/signet.db
+      EXTERNAL_URL: http://127.0.0.1:13047
+      SIGNET_DISABLE_RATE_LIMIT: "1"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    entrypoint:
+      - sh
+      - -lc
+    command:
+      - >
+        set -eu;
+        mkdir -p /app/config;
+        if [ ! -f /app/config/signet.json ]; then
+          cp /seed/signet.local.json /app/config/signet.json;
+        fi;
+        if [ "$${SIGNET_DISABLE_RATE_LIMIT:-}" = "1" ]; then
+          node /seed/disable-rate-limit.mjs;
+        fi;
+        exec ./entrypoint.sh start --config /app/config/signet.json
+    volumes:
+      - ./data/signet:/app/config
+      - ./docker/signet/signet.local.json:/seed/signet.local.json:ro
+      - ./docker/signet/disable-rate-limit.mjs:/seed/disable-rate-limit.mjs:ro
+    ports:
+      - "127.0.0.1:13046:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/health >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 60
+      start_period: 180s
+    restart: unless-stopped
+
+  signet-ui:
+    image: hostr-signet-ui:latest
+    build:
+      context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
+      dockerfile: apps/signet-ui/Dockerfile
+    depends_on:
+      signet:
+        condition: service_healthy
+    environment:
+      UI_HOST: 0.0.0.0
+      DAEMON_URL: http://signet:3000
+    ports:
+      - "127.0.0.1:13047:4174"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://127.0.0.1:4174', (res) => process.exit(res.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+    restart: unless-stopped
