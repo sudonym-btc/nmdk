@@ -8,7 +8,7 @@ full: true
 
 > **PaymentProofEvidence** = `object`
 
-Defined in: [helper.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L81)
+Defined in: [helper.ts:92](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L92)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [helper.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **method**: [`PaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethod)
 
-Defined in: [helper.ts:82](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L82)
+Defined in: [helper.ts:93](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L93)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [helper.ts:82](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **params**: `Record`\<`string`, `unknown`\>
 
-Defined in: [helper.ts:83](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L83)
+Defined in: [helper.ts:94](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L94)

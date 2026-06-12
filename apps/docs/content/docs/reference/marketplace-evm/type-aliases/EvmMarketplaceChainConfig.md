@@ -8,7 +8,7 @@ full: true
 
 > **EvmMarketplaceChainConfig** = [`EvmChainConfig`](/docs/reference/marketplace-evm/type-aliases/EvmChainConfig) & `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:42](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L42)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:63](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L63)
 
 ## Type Declaration
 

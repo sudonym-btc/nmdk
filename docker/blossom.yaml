@@ -1,0 +1,34 @@
+port: 3000
+host: 0.0.0.0
+publicDomain: "${BLOSSOM_PUBLIC_DOMAIN}"
+
+database:
+  path: data/sqlite.db
+
+storage:
+  backend: local
+  local:
+    dir: ./data/blobs
+  removeWhenNoOwners: false
+  rules:
+    - type: "image/*"
+      expiration: 1 month
+
+upload:
+  enabled: true
+  requireAuth: false
+  maxSize: 52428800
+  workers: 0
+  maxJobsPerWorker: 4
+
+mirror:
+  enabled: false
+
+delete:
+  requireAuth: true
+
+list:
+  enabled: false
+
+media:
+  enabled: false

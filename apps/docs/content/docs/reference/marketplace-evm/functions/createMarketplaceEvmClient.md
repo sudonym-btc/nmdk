@@ -8,7 +8,7 @@ full: true
 
 > **createMarketplaceEvmClient**(`options`): `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/client.ts:15](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/client.ts#L15)
+Defined in: [dependencies/marketplace-evm-ts/src/client.ts:15](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/client.ts#L15)
 
 ## Parameters
 

@@ -8,7 +8,7 @@ full: true
 
 > **CashuPaymentAmountLimits** = `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:124](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L124)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:83](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L83)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:124](https://github.
 
 > **amount**: `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:129](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L129)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:88](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L88)
 
 #### decimals
 
@@ -36,7 +36,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:129](https://github.
 
 > **max**: \{ `decimals`: `number`; `denomination`: `string`; `value`: `string`; \} \| `null`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:139](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L139)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:98](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L98)
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:139](https://github.
 
 > **method**: `"bolt11"`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:126](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L126)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:85](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L85)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:126](https://github.
 
 > **min**: \{ `decimals`: `number`; `denomination`: `string`; `value`: `string`; \} \| `null`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:134](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L134)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:93](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L93)
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:134](https://github.
 
 > **mintUrl**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:127](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L127)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:86](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L86)
 
 ***
 
@@ -68,7 +68,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:127](https://github.
 
 > **source**: `"cashu-mint"`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:125](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L125)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:84](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L84)
 
 ***
 
@@ -76,4 +76,4 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:125](https://github.
 
 > **unit**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:128](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L128)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:87](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L87)

@@ -8,7 +8,7 @@ full: true
 
 > **createEvmAuctionCallBuilder**(): [`EvmAuctionCallBuilder`](/docs/reference/marketplace-evm/type-aliases/EvmAuctionCallBuilder)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/callBuilder.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/auction/callBuilder.ts#L13)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/callBuilder.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/callBuilder.ts#L13)
 
 ## Returns
 

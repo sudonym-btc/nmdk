@@ -8,7 +8,7 @@ full: true
 
 > **EvmEscrowPaymentValidationResult** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:48](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L48)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:48](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L48)
 
 ## Properties
 
@@ -16,7 +16,15 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:48](https:/
 
 > `optional` **amountMatched?**: `boolean`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:54](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L54)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:54](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L54)
+
+***
+
+### arbiterMatched?
+
+> `optional` **arbiterMatched?**: `boolean`
+
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:57](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L57)
 
 ***
 
@@ -24,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:54](https:/
 
 > `optional` **assetMatched?**: `boolean`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:55](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L55)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:55](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L55)
 
 ***
 
@@ -32,7 +40,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:55](https:/
 
 > **chainId**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:52](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L52)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:52](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L52)
 
 ***
 
@@ -40,7 +48,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:52](https:/
 
 > `optional` **confirmations?**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:53](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L53)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:53](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L53)
 
 ***
 
@@ -48,15 +56,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:53](https:/
 
 > `optional` **error?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:59](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L59)
-
-***
-
-### escrowMatched?
-
-> `optional` **escrowMatched?**: `boolean`
-
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:57](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L57)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:59](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L59)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:57](https:/
 
 > `optional` **funding?**: [`EvmEscrowFundingLog`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowFundingLog)
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:58](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L58)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:58](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L58)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:58](https:/
 
 > **method**: `"evm"`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:49](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L49)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:49](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L49)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:49](https:/
 
 > `optional` **recipientMatched?**: `boolean`
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:56](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L56)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:56](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L56)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:56](https:/
 
 > **status**: [`EvmEscrowPaymentValidationStatus`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentValidationStatus)
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:50](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L50)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:50](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L50)
 
 ***
 
@@ -96,4 +96,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:50](https:/
 
 > **txHash**: [`EvmHash`](/docs/reference/marketplace-evm/type-aliases/EvmHash)
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:51](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/validation/types.ts#L51)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/types.ts:51](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/types.ts#L51)

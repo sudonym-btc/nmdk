@@ -8,7 +8,7 @@ full: true
 
 > **EvmDiscoverHighWatermarkOptions** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:56](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L56)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:56](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L56)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:56](https://
 
 > `optional` **chainIds?**: `number`[]
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:61](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L61)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:61](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L61)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:61](https://
 
 > `optional` **fromTradeIndex?**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:60](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L60)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:60](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L60)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:60](https://
 
 > `optional` **highWaterMark?**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:58](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L58)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:58](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L58)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:58](https://
 
 > `optional` **protocolActivityProbe?**: [`EvmProtocolActivityProbe`](/docs/reference/marketplace-evm/type-aliases/EvmProtocolActivityProbe)
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:62](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L62)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:62](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L62)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:62](https://
 
 > `optional` **seed?**: `string` \| [`EvmSeedConfig`](/docs/reference/marketplace-evm/type-aliases/EvmSeedConfig)
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:57](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L57)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:57](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L57)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:57](https://
 
 > `optional` **smartAccountAddressResolver?**: [`EvmSmartAccountAddressResolver`](/docs/reference/marketplace-evm/type-aliases/EvmSmartAccountAddressResolver)
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:63](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L63)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:63](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L63)
 
 ***
 
@@ -64,4 +64,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:63](https://
 
 > `optional` **unusedWindow?**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:59](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L59)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:59](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L59)

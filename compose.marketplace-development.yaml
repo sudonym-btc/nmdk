@@ -1,0 +1,74 @@
+services:
+  marketplace-development-tls-init:
+    image: alpine:3.20
+    container_name: marketplace-development-tls-init
+    restart: "no"
+    environment:
+      DOMAIN: marketplace.test
+    command: ["/scripts/generate-marketplace-certs.sh"]
+    volumes:
+      - ./docker/tls/generate-marketplace-certs.sh:/scripts/generate-marketplace-certs.sh:ro
+      - ./docker/certs:/certs
+      - ./docker/tls/ca:/ca
+    networks:
+      - nmdk
+
+  marketplace-development-proxy:
+    image: nginx:alpine
+    container_name: marketplace-development-proxy
+    restart: unless-stopped
+    depends_on:
+      marketplace-development-tls-init:
+        condition: service_completed_successfully
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - "100.95.205.9:80:80"
+      - "100.95.205.9:443:443"
+    volumes:
+      - ./docker/marketplace-development/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/certs:/etc/nginx/certs:ro
+    networks:
+      nmdk:
+        aliases:
+          - marketplace.test
+          - ts.client.marketplace.test
+          - signet.marketplace.test
+          - signet.api.marketplace.test
+          - blossom.marketplace.test
+      evm:
+        aliases:
+          - rootstock.evm.marketplace.test
+          - arbitrum.evm.marketplace.test
+          - explorer.arbitrum.evm.marketplace.test
+          - bundler.evm.marketplace.test
+          - paymaster.evm.marketplace.test
+          - boltz.evm.marketplace.test
+          - boltz.backend.evm.marketplace.test
+          - bitcoin.evm.marketplace.test
+          - elements.evm.marketplace.test
+          - lnd1.evm.marketplace.test
+          - lnd.evm.marketplace.test
+          - marketplace-lnd.evm.marketplace.test
+          - lnbits.marketplace.test
+          - alby.marketplace.test
+          - relay.marketplace.test
+      cashu:
+        aliases:
+          - relay.marketplace.test
+          - mint.cashu.marketplace.test
+          - mint-usd.cashu.marketplace.test
+          - bitcoin.cashu.marketplace.test
+          - lnd-mint.cashu.marketplace.test
+          - lnd-buyer.cashu.marketplace.test
+
+networks:
+  nmdk:
+    external: true
+    name: nmdk_default
+  evm:
+    external: true
+    name: ${MARKETPLACE_SHARED_BITCOIN_NETWORK:-nmdk-marketplace_default}
+  cashu:
+    external: true
+    name: marketplace-cashu-stack_default

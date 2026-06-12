@@ -8,7 +8,7 @@ full: true
 
 > **EvmEscrowActionPlan** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:100](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L100)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:100](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L100)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:100](https://gi
 
 > **calls**: [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)[]
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:101](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L101)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:101](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L101)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:101](https://gi
 
 > **value**: `bigint`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:102](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L102)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:102](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L102)

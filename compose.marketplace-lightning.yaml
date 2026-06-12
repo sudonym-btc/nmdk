@@ -1,0 +1,262 @@
+name: ${MARKETPLACE_STACK_PROJECT:-nmdk-marketplace}
+
+x-marketplace-bitcoind-command: &marketplace-bitcoind-command
+  - -regtest
+  - -datadir=/app/bitcoin
+  - -fallbackfee=0.00000253
+  - -mintxfee=0.000001
+  - -zmqpubrawtx=tcp://0.0.0.0:29000
+  - -zmqpubrawblock=tcp://0.0.0.0:29001
+  - -txindex
+  - -rpcallowip=0.0.0.0/0
+  - -rpcbind=0.0.0.0
+  - -deprecatedrpc=warnings
+
+x-marketplace-lnd-command: &marketplace-lnd-command
+  - --listen=0.0.0.0:9735
+  - --rpclisten=0.0.0.0:10009
+  - --restlisten=0.0.0.0:8081
+  - --tlsextradomain=marketplace-lnd
+  - --tlsextradomain=lnd.marketplace.test
+  - --tlsextradomain=lnd.evm.marketplace.test
+  - --tlsextradomain=marketplace-lnd.evm.marketplace.test
+  - --bitcoin.timelockdelta=18
+  - --bitcoin.active
+  - --bitcoin.regtest
+  - --bitcoin.node=bitcoind
+  - --bitcoind.rpchost=bitcoind
+  - --bitcoind.zmqpubrawtx=bitcoind:29000
+  - --bitcoind.zmqpubrawblock=bitcoind:29001
+  - --bitcoind.rpccookie=/app/bitcoin/regtest/.cookie
+  - --noseedbackup
+  - --protocol.wumbo-channels
+  - --allow-circular-route
+  - --lnddir=/app/lnd
+  - --maxpendingchannels=10
+
+services:
+  bitcoind:
+    image: ${MARKETPLACE_BITCOIN_IMAGE:-boltz/bitcoin-core:latest}
+    restart: unless-stopped
+    hostname: bitcoind
+    user: '${UID:-1000}:${GID:-1000}'
+    command: *marketplace-bitcoind-command
+    expose:
+      - 18443
+      - 18444
+      - 29000
+      - 29001
+    ports:
+      - "${MARKETPLACE_SHARED_BITCOIN_RPC_PORT:-19443}:18443"
+      - "${MARKETPLACE_SHARED_BITCOIN_P2P_PORT:-19444}:18444"
+      - "${MARKETPLACE_SHARED_BITCOIN_ZMQ_TX_PORT:-30000}:29000"
+      - "${MARKETPLACE_SHARED_BITCOIN_ZMQ_BLOCK_PORT:-30001}:29001"
+    volumes:
+      - marketplace-bitcoin-data:/app/bitcoin
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "bitcoin-cli",
+          "--rpccookiefile=/app/bitcoin/regtest/.cookie",
+          "-regtest",
+          "getblockchaininfo",
+        ]
+      interval: 1s
+      timeout: 2s
+      retries: 120
+      start_period: 5s
+
+  bitcoin-init:
+    image: ${MARKETPLACE_LIGHTNING_SCRIPTS_IMAGE:-boltz/scripts:latest}
+    restart: "no"
+    depends_on:
+      bitcoind:
+        condition: service_started
+    environment:
+      BITCOIN_RPC_HOST: bitcoind
+      BITCOIN_COOKIE: /bitcoin/regtest/.cookie
+    volumes:
+      - marketplace-bitcoin-data:/bitcoin
+      - ./docker/marketplace-lightning:/scripts:ro
+    entrypoint: ["bash", "/scripts/bitcoin-init.sh"]
+
+  marketplace-lnd:
+    image: ${LND_IMAGE:-boltz/lnd:latest}
+    restart: unless-stopped
+    hostname: marketplace-lnd
+    user: '${UID:-1000}:${GID:-1000}'
+    depends_on:
+      bitcoin-init:
+        condition: service_completed_successfully
+    command: *marketplace-lnd-command
+    expose:
+      - 8081
+      - 9735
+      - 10009
+    ports:
+      - "${MARKETPLACE_LIGHTNING_LND_REST_PORT:-28083}:8081"
+      - "${MARKETPLACE_LIGHTNING_LND_RPC_PORT:-32009}:10009"
+      - "${MARKETPLACE_LIGHTNING_LND_P2P_PORT:-49737}:9735"
+    volumes:
+      - marketplace-bitcoin-data:/app/bitcoin:ro
+      - marketplace-lnd-data:/app/lnd/
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "lncli --network=regtest --lnddir=/app/lnd --rpcserver=127.0.0.1:10009 getinfo",
+        ]
+      interval: 1s
+      timeout: 2s
+      retries: 120
+      start_period: 10s
+
+  lnbits:
+    image: ${LNBITS_IMAGE:-lnbits/lnbits:v1.5.4}
+    restart: unless-stopped
+    depends_on:
+      marketplace-lnd:
+        condition: service_healthy
+    entrypoint: ["/ca-trust-entrypoint.sh"]
+    command:
+      [
+        "sh",
+        "-c",
+        "/app/.venv/bin/lnbits --port 5000 --host 0.0.0.0 --forwarded-allow-ips='*'",
+      ]
+    environment:
+      - LNBITS_ADMIN_UI=true
+      - LNBITS_ALLOW_NEW_ACCOUNTS=true
+      - LNBITS_SITE_TITLE=NMDK Marketplace LNbits
+      - LNBITS_BACKEND_WALLET_CLASS=LndRestWallet
+      - LND_REST_ENDPOINT=https://marketplace-lnd:8081
+      - LND_REST_CERT=/app/lnd/tls.cert
+      - LND_REST_MACAROON=/app/lnd/data/chain/bitcoin/regtest/admin.macaroon
+      - LND_REST_ALLOW_SELF_PAYMENT=true
+    expose:
+      - 5000
+    ports:
+      - "${MARKETPLACE_LNBITS_PORT:-15055}:5000"
+    volumes:
+      - marketplace-lnd-data:/app/lnd:ro
+      - lnbits-data:/app/data
+      - ./docker/tls/ca/ca.crt:/tls/ca.crt:ro
+      - ./docker/marketplace-lightning/ca-trust-entrypoint.sh:/ca-trust-entrypoint.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 2 bash -lc '</dev/tcp/127.0.0.1/5000'"]
+      interval: 3s
+      timeout: 3s
+      retries: 100
+      start_period: 300s
+
+  albyhub:
+    image: ${ALBYHUB_IMAGE:-ghcr.io/getalby/hub:master-25c027b}
+    platform: linux/amd64
+    restart: unless-stopped
+    depends_on:
+      marketplace-lnd:
+        condition: service_healthy
+    environment:
+      - RELAY=wss://relay.marketplace.test
+      - SSL_CERT_FILE=/tls/ca-bundle.crt
+      - AUTO_UNLOCK_PASSWORD=${ALBYHUB_PASSWORD:-Testing123!}
+      - LOG_EVENTS=true
+      - LN_BACKEND_TYPE=LND
+      - LND_MACAROON_FILE=/lnd/data/chain/bitcoin/regtest/admin.macaroon
+      - LND_ADDRESS=marketplace-lnd:10009
+      - WORK_DIR=data/1
+    expose:
+      - 8080
+    ports:
+      - "${MARKETPLACE_ALBY_PORT:-15056}:8080"
+    volumes:
+      - marketplace-lnd-data:/lnd:ro
+      - albyhub-data:/data
+      - ./docker/tls/ca/ca-bundle.crt:/tls/ca-bundle.crt:ro
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 2 bash -lc '</dev/tcp/127.0.0.1/8080'"]
+      interval: 3s
+      timeout: 3s
+      retries: 100
+      start_period: 300s
+
+  lnbits-init:
+    image: python:3.12-alpine
+    profiles: ["tools"]
+    restart: "no"
+    depends_on:
+      lnbits:
+        condition: service_healthy
+    volumes:
+      - ./docker/marketplace-lightning/lnbits-init.py:/scripts/lnbits-init.py:ro
+    environment:
+      - DOMAIN=marketplace.test
+      - LNBITS_URL=http://lnbits:5000
+      - LNBITS_ADMIN_EMAIL=${MARKETPLACE_LNBITS_ADMIN_EMAIL:-admin@example.com}
+      - LNBITS_ADMIN_PASSWORD=${MARKETPLACE_LNBITS_ADMIN_PASSWORD:-adminpassword}
+      - LNBITS_NOSTR_PRIVATE_KEY=${MARKETPLACE_LNBITS_NOSTR_PRIVATE_KEY:-0000000000000000000000000000000000000000000000000000000000000570}
+    command: ["python3", "/scripts/lnbits-init.py"]
+
+  alby-init:
+    image: python:3.14-alpine
+    profiles: ["tools"]
+    restart: "no"
+    depends_on:
+      albyhub:
+        condition: service_healthy
+    volumes:
+      - ./docker/marketplace-lightning/alby-init.py:/scripts/alby-init.py:ro
+    environment:
+      - ALBYHUB_URL=http://albyhub:8080
+      - ALBYHUB_PASSWORD=${ALBYHUB_PASSWORD:-Testing123!}
+    command: ["python3", "/scripts/alby-init.py"]
+
+  marketplace-liquidity-init:
+    image: ${MARKETPLACE_LIGHTNING_SCRIPTS_IMAGE:-boltz/scripts:latest}
+    restart: "no"
+    depends_on:
+      bitcoin-init:
+        condition: service_completed_successfully
+      marketplace-lnd:
+        condition: service_healthy
+    environment:
+      BITCOIN_RPC_HOST: ${MARKETPLACE_SHARED_BITCOIN_HOST:-bitcoind}
+      MARKETPLACE_EDGE_CHANNEL_SIZE_SAT: ${MARKETPLACE_EDGE_CHANNEL_SIZE_SAT:-8000000}
+      MARKETPLACE_EDGE_CHANNEL_PUSH_SAT: ${MARKETPLACE_EDGE_CHANNEL_PUSH_SAT:-4000000}
+      MARKETPLACE_EDGE_FUND_AMOUNT_BTC: ${MARKETPLACE_EDGE_FUND_AMOUNT_BTC:-1}
+      MARKETPLACE_EDGE_MIN_WALLET_BALANCE_SAT: ${MARKETPLACE_EDGE_MIN_WALLET_BALANCE_SAT:-10000000}
+    volumes:
+      - marketplace-bitcoin-data:/bitcoin
+      - marketplace-lnd-data:/marketplace-lnd
+      - ${MARKETPLACE_EVM_STACK_DATA_DIR:-./dependencies/marketplace-evm-stack/data}/lnd1:/lnd-1
+      - ${MARKETPLACE_CASHU_STACK_DATA_DIR:-./dependencies/marketplace-cashu-stack/data}/lnd-mint:/lnd-mint
+      - ${MARKETPLACE_CASHU_STACK_DATA_DIR:-./dependencies/marketplace-cashu-stack/data}/lnd-buyer:/lnd-buyer
+      - ./docker/marketplace-lightning:/scripts:ro
+    entrypoint: ["bash", "/scripts/marketplace-liquidity-init.sh"]
+
+volumes:
+  marketplace-bitcoin-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${MARKETPLACE_STACK_DATA_DIR:-./data/marketplace}/bitcoind
+  marketplace-lnd-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${MARKETPLACE_STACK_DATA_DIR:-./data/marketplace}/marketplace-lnd
+  lnbits-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${MARKETPLACE_STACK_DATA_DIR:-./data/marketplace}/lnbits
+  albyhub-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${MARKETPLACE_STACK_DATA_DIR:-./data/marketplace}/albyhub

@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceOrdersApi
 
-Defined in: runtime-types.ts:826
+Defined in: [runtime-types.ts:789](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L789)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: runtime-types.ts:826
 
 > **commitHash**: (`content`) => `string`
 
-Defined in: runtime-types.ts:835
+Defined in: [runtime-types.ts:798](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L798)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:835
 
 > **filters**: (`query`) => `Filter`[]
 
-Defined in: runtime-types.ts:836
+Defined in: [runtime-types.ts:799](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L799)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: runtime-types.ts:836
 
 > **groups**: [`MarketplaceOrderGroupsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceOrderGroupsApi)
 
-Defined in: runtime-types.ts:852
+Defined in: [runtime-types.ts:815](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L815)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: runtime-types.ts:852
 
 > **parse**: (`event`) => [`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder)
 
-Defined in: runtime-types.ts:832
+Defined in: [runtime-types.ts:795](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L795)
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Defined in: runtime-types.ts:832
 
 > **template**: (`order`) => `EventTemplate`
 
-Defined in: runtime-types.ts:834
+Defined in: [runtime-types.ts:797](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L797)
 
 #### Parameters
 
@@ -94,7 +94,7 @@ Defined in: runtime-types.ts:834
 
 > **validate**: (`event`) => `boolean`
 
-Defined in: runtime-types.ts:833
+Defined in: [runtime-types.ts:796](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L796)
 
 #### Parameters
 
@@ -112,7 +112,7 @@ Defined in: runtime-types.ts:833
 
 > **create**(`listing`, `order`, `options?`): `AsyncIterable`\<[`MarketplacePaymentState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentState)\>
 
-Defined in: runtime-types.ts:827
+Defined in: [runtime-types.ts:790](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L790)
 
 #### Parameters
 
@@ -138,7 +138,7 @@ Defined in: runtime-types.ts:827
 
 > **mine**(`query?`, `options?`): `Promise`\<[`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder)[]\>
 
-Defined in: runtime-types.ts:843
+Defined in: [runtime-types.ts:806](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L806)
 
 #### Parameters
 
@@ -160,7 +160,7 @@ Defined in: runtime-types.ts:843
 
 > **search**(`query?`, `options?`): `Promise`\<[`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder)[]\>
 
-Defined in: runtime-types.ts:837
+Defined in: [runtime-types.ts:800](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L800)
 
 #### Parameters
 
@@ -182,7 +182,7 @@ Defined in: runtime-types.ts:837
 
 > **subscribe**(`query`, `handlers`, `options?`): `SubCloser`
 
-Defined in: runtime-types.ts:838
+Defined in: [runtime-types.ts:801](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L801)
 
 #### Parameters
 
@@ -208,7 +208,7 @@ Defined in: runtime-types.ts:838
 
 > **subscribeMine**(`query`, `handlers`, `options?`): `SubCloser`
 
-Defined in: runtime-types.ts:847
+Defined in: [runtime-types.ts:810](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L810)
 
 #### Parameters
 

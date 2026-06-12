@@ -6,46 +6,6 @@ full: true
 
 # Type Alias: MarketplacePaymentContract
 
-> **MarketplacePaymentContract** = `object`
+> **MarketplacePaymentContract** = `MarketplaceDriverContract`
 
-Defined in: runtime-types.ts:307
-
-## Properties
-
-### address?
-
-> `optional` **address?**: `string`
-
-Defined in: runtime-types.ts:310
-
-***
-
-### bytecodeHash?
-
-> `optional` **bytecodeHash?**: `string`
-
-Defined in: runtime-types.ts:311
-
-***
-
-### chainId?
-
-> `optional` **chainId?**: `number`
-
-Defined in: runtime-types.ts:309
-
-***
-
-### params
-
-> **params**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:312
-
-***
-
-### type
-
-> **type**: `string`
-
-Defined in: runtime-types.ts:308
+Defined in: [runtime-types.ts:302](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L302)

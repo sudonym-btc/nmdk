@@ -131,10 +131,13 @@ async function requireCashuStack(t) {
 function evmChainConfig(config) {
   const arbitrum = config.chains.arbitrumRegtest
   const { publicClient } = createClients(config)
+  const tbtcAsset = Object.values(arbitrum.assets).find(asset => asset.boltzCurrency?.toUpperCase() === 'TBTC')
   return {
     id: 'arbitrum-regtest',
     chainId: arbitrum.chainId,
+    boltzCurrency: arbitrum.boltzCurrency,
     rpcUrl: arbitrum.rpcUrl,
+    ...(arbitrum.blockExplorerUrl ? { blockExplorerUrl: arbitrum.blockExplorerUrl } : {}),
     publicClient,
     nativeAsset: {
       chainId: arbitrum.chainId,
@@ -148,6 +151,16 @@ function evmChainConfig(config) {
       denomination: asset.denomination,
       decimals: asset.decimals,
       ...(asset.boltzCurrency ? { boltzCurrency: asset.boltzCurrency } : {}),
+      ...(asset.boltzCurrency?.toUpperCase() === 'USDT' && tbtcAsset && arbitrum.boltzCurrency
+        ? {
+            boltzRouteVia: {
+              boltzCurrency: tbtcAsset.boltzCurrency,
+              assetAddress: tbtcAsset.address,
+              decimals: tbtcAsset.decimals,
+              quoteCurrency: arbitrum.boltzCurrency,
+            },
+          }
+        : {}),
     })),
     accountAbstraction: arbitrumAaConfig(config),
     multiEscrowAddress: arbitrum.multiEscrow.address,
@@ -158,11 +171,11 @@ function evmChainConfig(config) {
   }
 }
 
-function routeEvents({ listing, policy, asset, serviceType, serviceParams, sellerSecretKey, escrowSecretKey, sellerEvmAddress, sellerCashuPubkey }) {
+function routeEvents({ listing, policy, asset, serviceType, serviceParams, sellerSecretKey, arbiterSecretKey, sellerEvmAddress, sellerCashuPubkey }) {
   const descriptor = policy.policies()[0]
   const method = sign(
     marketplace.paymentMethod.template({
-      trustedEscrowPubkeys: [getPublicKey(escrowSecretKey)],
+      trustedArbiterPubkeys: [getPublicKey(arbiterSecretKey)],
       supportedContractBytecodeHashes: descriptor.hash ? [descriptor.hash] : [],
       acceptedPaymentForms: [{
         denomination: asset.denomination,
@@ -176,16 +189,16 @@ function routeEvents({ listing, policy, asset, serviceType, serviceParams, selle
     sellerSecretKey,
   )
   const service = sign(
-    marketplace.escrowServices.template({
+    marketplace.arbitrationServices.template({
       d: `${serviceType.toLowerCase()}-${asset.denomination.toLowerCase()}-${descriptor.type}`,
-      pubkey: getPublicKey(escrowSecretKey),
+      pubkey: getPublicKey(arbiterSecretKey),
       type: serviceType,
       maxDuration: 1209600,
       fee: { ppm: 0, base: '0', min: '0', max: '0' },
       params: serviceParams,
       createdAt,
     }),
-    escrowSecretKey,
+    arbiterSecretKey,
   )
   return { method, service, pool: poolFor(method, service), listing }
 }
@@ -274,7 +287,7 @@ test('marketplace.pay creates and validates EVM USDT and tBTC escrow payments th
   const { publicClient } = createClients(config)
   const sellerSecretKey = generateSecretKey()
   const buyerSecretKey = generateSecretKey()
-  const escrowSecretKey = generateSecretKey()
+  const arbiterSecretKey = generateSecretKey()
   const listing = listingEvent(sellerSecretKey)
   const seed = '1'.repeat(64)
 
@@ -304,7 +317,7 @@ test('marketplace.pay creates and validates EVM USDT and tBTC escrow payments th
         chainId: chain.chainId,
       },
       sellerSecretKey,
-      escrowSecretKey,
+      arbiterSecretKey,
       sellerEvmAddress: '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
     })
     const api = marketplace.bind(pool, relays, {
@@ -330,7 +343,7 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
   const { publicClient } = createClients(config)
   const sellerSecretKey = generateSecretKey()
   const buyerSecretKey = generateSecretKey()
-  const escrowSecretKey = generateSecretKey()
+  const arbiterSecretKey = generateSecretKey()
   const listing = listingEvent(sellerSecretKey)
   const seed = '2'.repeat(64)
   const accountIndex = 41
@@ -355,7 +368,7 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
       chainId: chain.chainId,
     },
     sellerSecretKey,
-    escrowSecretKey,
+    arbiterSecretKey,
     sellerEvmAddress: '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
   })
   const listingAnchor = `${listing.kind}:${listing.pubkey}:${listing.tags.find(tag => tag[0] === 'd')?.[1]}`
@@ -363,7 +376,7 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
     marketplace.auctions.template({
       d: 'evm-usdt-auction-e2e',
       listingAnchor,
-      arbiterPubkey: getPublicKey(escrowSecretKey),
+      arbiterPubkey: getPublicKey(arbiterSecretKey),
       currency: asset.denomination,
       decimals: asset.decimals,
       createdAt,
@@ -376,7 +389,6 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
     bidPolicies: [policy],
   })
   await runMarketplaceBid(api, listing, {
-    bidId: randomTradeId(),
     amount: { value: value.toString(), denomination: asset.denomination, decimals: asset.decimals },
     createdAt,
   }, {
@@ -397,7 +409,7 @@ test('marketplace pay and bid create Cashu USD proofs through the real usd mint'
   }
   const sellerSecretKey = generateSecretKey()
   const buyerSecretKey = generateSecretKey()
-  const escrowSecretKey = generateSecretKey()
+  const arbiterSecretKey = generateSecretKey()
   const listing = listingEvent(sellerSecretKey)
   const seed = '3'.repeat(64)
   const sellerCashu = deriveCashuEscrowKey('4'.repeat(64), {
@@ -406,7 +418,7 @@ test('marketplace pay and bid create Cashu USD proofs through the real usd mint'
     unit: mint.unit,
     role: 'settlement',
   })
-  const escrowCashu = deriveCashuEscrowKey('5'.repeat(64), {
+  const arbiterCashu = deriveCashuEscrowKey('5'.repeat(64), {
     accountIndex: 0,
     mintUrl: mint.mintUrl,
     unit: mint.unit,
@@ -428,10 +440,10 @@ test('marketplace pay and bid create Cashu USD proofs through the real usd mint'
         policyHash: policy.policies()[0].hash,
         mintUrl: mint.mintUrl,
         unit: mint.unit,
-        cashuPubkey: escrowCashu.publicKey,
+        cashuPubkey: arbiterCashu.publicKey,
       },
       sellerSecretKey,
-      escrowSecretKey,
+      arbiterSecretKey,
       sellerCashuPubkey: sellerCashu.publicKey,
     })
     const api = marketplace.bind(pool, relays, {
@@ -445,7 +457,7 @@ test('marketplace pay and bid create Cashu USD proofs through the real usd mint'
           marketplace.auctions.template({
             d: tradeId,
             listingAnchor,
-            arbiterPubkey: getPublicKey(escrowSecretKey),
+            arbiterPubkey: getPublicKey(arbiterSecretKey),
             currency: asset.denomination,
             decimals: asset.decimals,
             createdAt,

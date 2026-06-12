@@ -6,17 +6,15 @@ full: true
 
 # Type Alias: MarketplacePaymentValidationPolicy
 
-> **MarketplacePaymentValidationPolicy** = `object`
+> **MarketplacePaymentValidationPolicy** = `MarketplaceDriverValidationPolicy`\<[`MarketplacePaymentValidationRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationRequest), [`MarketplacePaymentValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationResult)\> & `object`
 
-Defined in: [payment-validation.ts:51](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L51)
+Defined in: [payment-validation.ts:58](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-validation.ts#L58)
 
-## Properties
+## Type Declaration
 
 ### canValidate?
 
 > `optional` **canValidate?**: (`request`) => `boolean` \| `Promise`\<`boolean`\>
-
-Defined in: [payment-validation.ts:53](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L53)
 
 #### Parameters
 
@@ -28,21 +26,13 @@ Defined in: [payment-validation.ts:53](https://github.com/sudonym-btc/nostr-tool
 
 `boolean` \| `Promise`\<`boolean`\>
 
-***
-
 ### method
 
 > **method**: [`PaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethod) \| `"*"`
 
-Defined in: [payment-validation.ts:52](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L52)
-
-***
-
 ### validatePayment
 
 > **validatePayment**: (`request`) => `Promise`\<[`MarketplacePaymentValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationResult)\>
-
-Defined in: [payment-validation.ts:54](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L54)
 
 #### Parameters
 

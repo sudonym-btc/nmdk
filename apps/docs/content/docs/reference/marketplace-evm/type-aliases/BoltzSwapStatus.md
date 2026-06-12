@@ -8,4 +8,4 @@ full: true
 
 > **BoltzSwapStatus** = `"swap.created"` \| `"invoice.set"` \| `"invoice.pending"` \| `"invoice.paid"` \| `"transaction.mempool"` \| `"transaction.confirmed"` \| `"transaction.claimed"` \| `"transaction.refunded"` \| `"swap.expired"` \| `"swap.failed"`
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L12)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L12)

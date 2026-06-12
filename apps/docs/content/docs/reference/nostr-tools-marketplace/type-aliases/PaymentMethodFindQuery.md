@@ -8,7 +8,7 @@ full: true
 
 > **PaymentMethodFindQuery** = `object`
 
-Defined in: paymentmethod.ts:34
+Defined in: [paymentmethod.ts:34](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L34)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: paymentmethod.ts:34
 
 > `optional` **assetId?**: `string`
 
-Defined in: paymentmethod.ts:39
+Defined in: [paymentmethod.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L39)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: paymentmethod.ts:39
 
 > `optional` **author?**: `string`
 
-Defined in: paymentmethod.ts:35
+Defined in: [paymentmethod.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L35)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: paymentmethod.ts:35
 
 > `optional` **contractBytecodeHash?**: `string`
 
-Defined in: paymentmethod.ts:37
+Defined in: [paymentmethod.ts:37](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L37)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: paymentmethod.ts:37
 
 > `optional` **denomination?**: `string`
 
-Defined in: paymentmethod.ts:38
+Defined in: [paymentmethod.ts:38](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L38)
 
 ***
 
@@ -48,12 +48,12 @@ Defined in: paymentmethod.ts:38
 
 > `optional` **limit?**: `number`
 
-Defined in: paymentmethod.ts:40
+Defined in: [paymentmethod.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L40)
 
 ***
 
-### trustedEscrowPubkey?
+### trustedArbiterPubkey?
 
-> `optional` **trustedEscrowPubkey?**: `string`
+> `optional` **trustedArbiterPubkey?**: `string`
 
-Defined in: paymentmethod.ts:36
+Defined in: [paymentmethod.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L36)

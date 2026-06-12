@@ -8,7 +8,7 @@ full: true
 
 > **EvmMarketplacePolicyState** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:49](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L49)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:70](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L70)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:49](https:
 
 > **enabled**: `boolean`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:50](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L50)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:71](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L71)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:50](https:
 
 > `optional` **error?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:55](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L55)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:76](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L76)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:55](https:
 
 > **maxUsedIndex**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:52](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L52)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:73](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L73)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:52](https:
 
 > **nextTradeIndex**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:53](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L53)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:74](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L74)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:53](https:
 
 > **started**: `boolean`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:51](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L51)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:72](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L72)
 
 ***
 
@@ -56,4 +56,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:51](https:
 
 > **startSummary**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:54](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L54)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:75](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L75)

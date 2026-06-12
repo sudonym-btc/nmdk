@@ -8,7 +8,7 @@ full: true
 
 > **ReduceOrderGroupOptions** = `object`
 
-Defined in: [order-group-types.ts:33](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L33)
+Defined in: [order-group-types.ts:33](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L33)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-group-types.ts:33](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **isBuyerPaymentProofValid?**: (`order`, `context`) => `boolean`
 
-Defined in: [order-group-types.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L35)
+Defined in: [order-group-types.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L35)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: [order-group-types.ts:35](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **isPaymentValid?**: (`payment`, `context`) => `boolean`
 
-Defined in: [order-group-types.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L36)
+Defined in: [order-group-types.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L36)
 
 #### Parameters
 
@@ -60,4 +60,4 @@ Defined in: [order-group-types.ts:36](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **resolveRole?**: [`OrderGroupRoleResolver`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupRoleResolver)
 
-Defined in: [order-group-types.ts:34](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L34)
+Defined in: [order-group-types.ts:34](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L34)

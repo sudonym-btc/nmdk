@@ -6,38 +6,6 @@ full: true
 
 # Type Alias: MarketplacePolicyWatermarkRecoveryAction
 
-> **MarketplacePolicyWatermarkRecoveryAction** = `object`
+> **MarketplacePolicyWatermarkRecoveryAction** = `MarketplaceDriverWatermarkRecoveryAction`
 
-Defined in: runtime-types.ts:163
-
-## Properties
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:167
-
-***
-
-### index?
-
-> `optional` **index?**: `number`
-
-Defined in: runtime-types.ts:166
-
-***
-
-### policy
-
-> **policy**: `string`
-
-Defined in: runtime-types.ts:164
-
-***
-
-### type
-
-> **type**: `string`
-
-Defined in: runtime-types.ts:165
+Defined in: [runtime-types.ts:206](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L206)

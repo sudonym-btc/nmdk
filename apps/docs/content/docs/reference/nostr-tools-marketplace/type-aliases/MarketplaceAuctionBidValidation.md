@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionBidValidation** = `object`
 
-Defined in: runtime-types.ts:417
+Defined in: [runtime-types.ts:396](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L396)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:417
 
 > **bid**: [`ParsedMarketplaceAuctionBid`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionBid)
 
-Defined in: runtime-types.ts:418
+Defined in: [runtime-types.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L397)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:418
 
 > `optional` **payment?**: [`ParsedOrderPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPayment)
 
-Defined in: runtime-types.ts:419
+Defined in: [runtime-types.ts:398](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L398)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: runtime-types.ts:419
 
 > **validation**: [`MarketplacePaymentValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationResult)
 
-Defined in: runtime-types.ts:420
+Defined in: [runtime-types.ts:399](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L399)

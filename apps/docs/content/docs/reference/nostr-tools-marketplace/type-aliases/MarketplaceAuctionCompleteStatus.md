@@ -8,4 +8,4 @@ full: true
 
 > **MarketplaceAuctionCompleteStatus** = `"closed"` \| `"reserve_not_met"` \| `"cancelled"` \| `string`
 
-Defined in: auction.ts:93
+Defined in: [auction.ts:98](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L98)

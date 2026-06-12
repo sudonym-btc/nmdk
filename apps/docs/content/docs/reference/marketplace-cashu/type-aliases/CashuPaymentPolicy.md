@@ -8,4 +8,4 @@ full: true
 
 > **CashuPaymentPolicy** = [`CashuEscrowPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowPaymentPolicy) \| [`CashuAuctionPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuAuctionPaymentPolicy)
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:41](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L41)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:62](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L62)

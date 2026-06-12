@@ -6,38 +6,16 @@ full: true
 
 # Type Alias: MarketplaceAuctionPaymentSettlementResult
 
-> **MarketplaceAuctionPaymentSettlementResult** = `object`
+> **MarketplaceAuctionPaymentSettlementResult** = `Omit`\<`MarketplaceDriverAuctionSettlementResult`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)\>, `"outputs"`\> & `object`
 
-Defined in: runtime-types.ts:440
+Defined in: [runtime-types.ts:420](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L420)
 
-## Properties
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:444
-
-***
-
-### inputs?
-
-> `optional` **inputs?**: `Record`\<`string`, `unknown`\>[]
-
-Defined in: runtime-types.ts:442
-
-***
+## Type Declaration
 
 ### outputs?
 
 > `optional` **outputs?**: [`OrderPaymentSettlementOutput`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderPaymentSettlementOutput)[]
 
-Defined in: runtime-types.ts:443
-
-***
-
 ### proof
 
 > **proof**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)
-
-Defined in: runtime-types.ts:441

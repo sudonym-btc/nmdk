@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceSeedSigner** = `object`
 
-Defined in: [seed.ts:70](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L70)
+Defined in: [seed.ts:70](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L70)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [seed.ts:70](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **getPublicKey?**: () => `string` \| `Promise`\<`string`\>
 
-Defined in: [seed.ts:71](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L71)
+Defined in: [seed.ts:71](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L71)
 
 #### Returns
 
@@ -28,7 +28,7 @@ Defined in: [seed.ts:71](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **nip44Decrypt**: (`pubkey`, `ciphertext`) => `string` \| `Promise`\<`string`\>
 
-Defined in: [seed.ts:73](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L73)
+Defined in: [seed.ts:73](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L73)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [seed.ts:73](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **nip44Encrypt**: (`pubkey`, `plaintext`) => `string` \| `Promise`\<`string`\>
 
-Defined in: [seed.ts:72](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L72)
+Defined in: [seed.ts:72](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L72)
 
 #### Parameters
 
@@ -72,7 +72,7 @@ Defined in: [seed.ts:72](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **signEvent**: (`event`) => `Event` \| `VerifiedEvent` \| `Promise`\<`Event` \| `VerifiedEvent`\>
 
-Defined in: [seed.ts:74](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L74)
+Defined in: [seed.ts:74](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L74)
 
 #### Parameters
 

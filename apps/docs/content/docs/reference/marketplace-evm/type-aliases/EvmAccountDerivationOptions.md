@@ -8,7 +8,7 @@ full: true
 
 > **EvmAccountDerivationOptions** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/accounts.ts#L12)
+Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/accounts.ts#L12)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:12](https://github.
 
 > **chains**: [`ResolvedEvmChainConfig`](/docs/reference/marketplace-evm/type-aliases/ResolvedEvmChainConfig)[]
 
-Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/accounts.ts#L13)
+Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/accounts.ts#L13)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:13](https://github.
 
 > **seed**: `string` \| [`EvmSeedConfig`](/docs/reference/marketplace-evm/type-aliases/EvmSeedConfig)
 
-Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/accounts.ts#L14)
+Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/accounts.ts#L14)

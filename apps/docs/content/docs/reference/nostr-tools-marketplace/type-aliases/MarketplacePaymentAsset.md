@@ -6,70 +6,12 @@ full: true
 
 # Type Alias: MarketplacePaymentAsset
 
-> **MarketplacePaymentAsset** = `object`
+> **MarketplacePaymentAsset** = `MarketplaceDriverAsset` & `object`
 
-Defined in: runtime-types.ts:290
+Defined in: [runtime-types.ts:296](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L296)
 
-## Properties
-
-### appId?
-
-> `optional` **appId?**: `string`
-
-Defined in: runtime-types.ts:295
-
-***
-
-### assetAddress?
-
-> `optional` **assetAddress?**: `string`
-
-Defined in: runtime-types.ts:297
-
-***
-
-### assetId
-
-> **assetId**: `string`
-
-Defined in: runtime-types.ts:292
-
-***
-
-### chainId?
-
-> `optional` **chainId?**: `number`
-
-Defined in: runtime-types.ts:296
-
-***
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:298
-
-***
-
-### decimals
-
-> **decimals**: `number`
-
-Defined in: runtime-types.ts:294
-
-***
-
-### denomination
-
-> **denomination**: `string`
-
-Defined in: runtime-types.ts:293
-
-***
+## Type Declaration
 
 ### method
 
 > **method**: [`PaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethod)
-
-Defined in: runtime-types.ts:291

@@ -8,7 +8,7 @@ full: true
 
 > **CashuEscrowPaymentPolicy** = `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:17](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L17)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:38](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L38)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:17](https://github.c
 
 > **data**: `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:22](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L22)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:43](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L43)
 
 #### Index Signature
 
@@ -36,7 +36,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:22](https://github.c
 
 > **hash**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:21](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L21)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:42](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L42)
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:21](https://github.c
 
 > **id**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:19](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L19)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:40](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L40)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:19](https://github.c
 
 > **method**: `"cashu"`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:18](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L18)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:39](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L39)
 
 ***
 
@@ -60,4 +60,4 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:18](https://github.c
 
 > **type**: `"cashu:p2pk-escrow-v1"`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:20](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L20)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:41](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L41)

@@ -8,7 +8,7 @@ full: true
 
 > **bind**(`pool`, `relays`, `options?`): [`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient)
 
-Defined in: runtime-client.ts:282
+Defined in: [runtime-client.ts:300](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-client.ts#L300)
 
 ## Parameters
 

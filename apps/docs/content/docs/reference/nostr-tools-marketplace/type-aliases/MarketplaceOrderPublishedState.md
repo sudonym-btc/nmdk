@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceOrderPublishedState** = `object`
 
-Defined in: runtime-types.ts:520
+Defined in: [runtime-types.ts:489](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L489)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:520
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: runtime-types.ts:523
+Defined in: [runtime-types.ts:492](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L492)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:523
 
 > **event**: `Event`
 
-Defined in: runtime-types.ts:522
+Defined in: [runtime-types.ts:491](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L491)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: runtime-types.ts:522
 
 > **type**: `"order_published"`
 
-Defined in: runtime-types.ts:521
+Defined in: [runtime-types.ts:490](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L490)

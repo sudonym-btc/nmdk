@@ -8,7 +8,7 @@ full: true
 
 > **AuctionBidGroupQuery** = `object`
 
-Defined in: auction-bid-group.ts:75
+Defined in: [auction-bid-group.ts:75](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L75)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: auction-bid-group.ts:75
 
 > **auctionAnchor**: `string`
 
-Defined in: auction-bid-group.ts:76
+Defined in: [auction-bid-group.ts:76](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L76)
 
 ***
 
@@ -24,15 +24,7 @@ Defined in: auction-bid-group.ts:76
 
 > `optional` **authors?**: `string`[]
 
-Defined in: auction-bid-group.ts:79
-
-***
-
-### bidIds?
-
-> `optional` **bidIds?**: `string`[]
-
-Defined in: auction-bid-group.ts:77
+Defined in: [auction-bid-group.ts:78](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L78)
 
 ***
 
@@ -40,7 +32,7 @@ Defined in: auction-bid-group.ts:77
 
 > `optional` **limit?**: `number`
 
-Defined in: auction-bid-group.ts:83
+Defined in: [auction-bid-group.ts:82](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L82)
 
 ***
 
@@ -48,7 +40,7 @@ Defined in: auction-bid-group.ts:83
 
 > `optional` **participantPubkeys?**: `string`[]
 
-Defined in: auction-bid-group.ts:80
+Defined in: [auction-bid-group.ts:79](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L79)
 
 ***
 
@@ -56,7 +48,7 @@ Defined in: auction-bid-group.ts:80
 
 > `optional` **since?**: `number`
 
-Defined in: auction-bid-group.ts:81
+Defined in: [auction-bid-group.ts:80](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L80)
 
 ***
 
@@ -64,7 +56,7 @@ Defined in: auction-bid-group.ts:81
 
 > `optional` **tradeIds?**: `string`[]
 
-Defined in: auction-bid-group.ts:78
+Defined in: [auction-bid-group.ts:77](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L77)
 
 ***
 
@@ -72,4 +64,4 @@ Defined in: auction-bid-group.ts:78
 
 > `optional` **until?**: `number`
 
-Defined in: auction-bid-group.ts:82
+Defined in: [auction-bid-group.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L81)

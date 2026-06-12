@@ -6,6 +6,6 @@ full: true
 
 # Type Alias: GenericPolicyPaymentState
 
-> **GenericPolicyPaymentState** = \{ `data?`: `Record`\<`string`, `unknown`\>; `proof?`: [`GenericPaymentProof`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentProof) \| `null`; `request`: [`GenericBolt11PaymentRequest`](/docs/reference/marketplace-cashu/type-aliases/GenericBolt11PaymentRequest); `type`: `"payment_required"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `proof?`: [`GenericPaymentProof`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentProof) \| `null`; `status`: `string`; `type`: `"payment_progress"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `proof`: [`GenericPaymentProof`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentProof); `type`: `"paid"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `proof?`: [`GenericPaymentProof`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentProof) \| `null`; `type`: `"completed"`; \}
+> **GenericPolicyPaymentState** = `MarketplaceDriverPaymentState`\<[`GenericPaymentProof`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentProof)\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:146](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L146)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:105](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L105)

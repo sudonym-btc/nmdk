@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceListingsApi
 
-Defined in: runtime-types.ts:761
+Defined in: [runtime-types.ts:720](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L720)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: runtime-types.ts:761
 
 > **create**: (`listing`) => `EventTemplate`
 
-Defined in: runtime-types.ts:764
+Defined in: [runtime-types.ts:723](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L723)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:764
 
 > **filters**: `object`
 
-Defined in: runtime-types.ts:766
+Defined in: [runtime-types.ts:725](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L725)
 
 #### search
 
@@ -54,7 +54,7 @@ Defined in: runtime-types.ts:766
 
 > **parse**: (`event`) => [`MarketplaceListing`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceListing)
 
-Defined in: runtime-types.ts:762
+Defined in: [runtime-types.ts:721](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L721)
 
 #### Parameters
 
@@ -72,7 +72,7 @@ Defined in: runtime-types.ts:762
 
 > **template**: (`listing`) => `EventTemplate`
 
-Defined in: runtime-types.ts:765
+Defined in: [runtime-types.ts:724](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L724)
 
 #### Parameters
 
@@ -90,7 +90,7 @@ Defined in: runtime-types.ts:765
 
 > **validate**: (`event`) => `boolean`
 
-Defined in: runtime-types.ts:763
+Defined in: [runtime-types.ts:722](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L722)
 
 #### Parameters
 
@@ -108,7 +108,7 @@ Defined in: runtime-types.ts:763
 
 > **search**(`query?`): `Promise`\<[`MarketplaceListing`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceListing)[]\>
 
-Defined in: runtime-types.ts:767
+Defined in: [runtime-types.ts:726](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L726)
 
 #### Parameters
 

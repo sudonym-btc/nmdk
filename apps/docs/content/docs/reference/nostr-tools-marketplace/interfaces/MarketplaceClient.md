@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceClient
 
-Defined in: runtime-types.ts:944
+Defined in: [runtime-types.ts:915](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L915)
 
 ## Extended by
 
@@ -14,35 +14,35 @@ Defined in: runtime-types.ts:944
 
 ## Properties
 
+### arbitration
+
+> **arbitration**: [`MarketplaceArbitrationApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceArbitrationApi)
+
+Defined in: [runtime-types.ts:926](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L926)
+
+***
+
+### arbitrationServices
+
+> **arbitrationServices**: [`MarketplaceArbitrationServicesApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceArbitrationServicesApi)
+
+Defined in: [runtime-types.ts:918](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L918)
+
+***
+
+### arbitrationServiceSelections
+
+> **arbitrationServiceSelections**: [`MarketplaceArbitrationServiceSelectionsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceArbitrationServiceSelectionsApi)
+
+Defined in: [runtime-types.ts:919](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L919)
+
+***
+
 ### auctions
 
 > **auctions**: [`MarketplaceAuctionsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceAuctionsApi)
 
-Defined in: runtime-types.ts:953
-
-***
-
-### escrow
-
-> **escrow**: [`MarketplaceEscrowApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceEscrowApi)
-
-Defined in: runtime-types.ts:955
-
-***
-
-### escrowServices
-
-> **escrowServices**: [`MarketplaceEscrowServicesApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceEscrowServicesApi)
-
-Defined in: runtime-types.ts:947
-
-***
-
-### escrowServiceSelections
-
-> **escrowServiceSelections**: [`MarketplaceEscrowServiceSelectionsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceEscrowServiceSelectionsApi)
-
-Defined in: runtime-types.ts:948
+Defined in: [runtime-types.ts:924](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L924)
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: runtime-types.ts:948
 
 > **listings**: [`MarketplaceListingsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceListingsApi)
 
-Defined in: runtime-types.ts:945
+Defined in: [runtime-types.ts:916](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L916)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: runtime-types.ts:945
 
 > **orders**: [`MarketplaceOrdersApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceOrdersApi)
 
-Defined in: runtime-types.ts:949
+Defined in: [runtime-types.ts:920](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L920)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: runtime-types.ts:949
 
 > **paymentMethod**: [`MarketplacePaymentMethodApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplacePaymentMethodApi)
 
-Defined in: runtime-types.ts:946
+Defined in: [runtime-types.ts:917](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L917)
 
 ***
 
@@ -74,7 +74,7 @@ Defined in: runtime-types.ts:946
 
 > **paymentRoutes**: [`MarketplacePaymentRoutesApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplacePaymentRoutesApi)
 
-Defined in: runtime-types.ts:952
+Defined in: [runtime-types.ts:923](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L923)
 
 ***
 
@@ -82,7 +82,7 @@ Defined in: runtime-types.ts:952
 
 > **payments**: [`MarketplacePaymentsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplacePaymentsApi)
 
-Defined in: runtime-types.ts:954
+Defined in: [runtime-types.ts:925](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L925)
 
 ***
 
@@ -90,7 +90,7 @@ Defined in: runtime-types.ts:954
 
 > **reviews**: [`MarketplaceReviewsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceReviewsApi)
 
-Defined in: runtime-types.ts:950
+Defined in: [runtime-types.ts:921](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L921)
 
 ***
 
@@ -98,7 +98,7 @@ Defined in: runtime-types.ts:950
 
 > **structuredMessages**: [`MarketplaceStructuredMessagesApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceStructuredMessagesApi)
 
-Defined in: runtime-types.ts:951
+Defined in: [runtime-types.ts:922](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L922)
 
 ## Methods
 
@@ -106,7 +106,7 @@ Defined in: runtime-types.ts:951
 
 > **discoverHighWatermark**(`options?`): `Promise`\<[`MarketplaceHighWatermarkDiscovery`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceHighWatermarkDiscovery)\>
 
-Defined in: runtime-types.ts:956
+Defined in: [runtime-types.ts:927](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L927)
 
 #### Parameters
 
@@ -124,7 +124,7 @@ Defined in: runtime-types.ts:956
 
 > **getNextAccountIndex**(`options?`): `Promise`\<`number`\>
 
-Defined in: runtime-types.ts:957
+Defined in: [runtime-types.ts:928](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L928)
 
 #### Parameters
 
@@ -142,7 +142,7 @@ Defined in: runtime-types.ts:957
 
 > **pay**(`listing`, `order`, `options?`): `AsyncIterable`\<[`MarketplacePaymentState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentState)\>
 
-Defined in: runtime-types.ts:959
+Defined in: [runtime-types.ts:930](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L930)
 
 #### Parameters
 
@@ -168,7 +168,7 @@ Defined in: runtime-types.ts:959
 
 > **start**(`options?`): `Promise`\<[`MarketplaceStartResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceStartResult)\>
 
-Defined in: runtime-types.ts:958
+Defined in: [runtime-types.ts:929](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L929)
 
 #### Parameters
 

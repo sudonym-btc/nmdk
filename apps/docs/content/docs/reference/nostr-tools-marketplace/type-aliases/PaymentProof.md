@@ -8,19 +8,19 @@ full: true
 
 > **PaymentProof** = `object`
 
-Defined in: [helper.ts:86](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L86)
+Defined in: [helper.ts:97](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L97)
 
 ## Properties
 
-### escrow?
+### arbitration?
 
-> `optional` **escrow?**: `object`
+> `optional` **arbitration?**: `object`
 
-Defined in: [helper.ts:89](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L89)
+Defined in: [helper.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L100)
 
-#### escrowService
+#### arbitrationService
 
-> **escrowService**: `string` \| `Event`
+> **arbitrationService**: `string` \| `Event`
 
 #### paymentMethod
 
@@ -32,7 +32,7 @@ Defined in: [helper.ts:89](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **listing**: `Event`
 
-Defined in: [helper.ts:87](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L87)
+Defined in: [helper.ts:98](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L98)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [helper.ts:87](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **paymentProof**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence) \| `null`
 
-Defined in: [helper.ts:88](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L88)
+Defined in: [helper.ts:99](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L99)

@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentProgressState** = `object`
 
-Defined in: runtime-types.ts:514
+Defined in: [runtime-types.ts:483](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L483)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:514
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: runtime-types.ts:517
+Defined in: [runtime-types.ts:486](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L486)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:517
 
 > **status**: `string`
 
-Defined in: runtime-types.ts:516
+Defined in: [runtime-types.ts:485](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L485)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: runtime-types.ts:516
 
 > **type**: `"payment_progress"`
 
-Defined in: runtime-types.ts:515
+Defined in: [runtime-types.ts:484](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L484)

@@ -6,38 +6,12 @@ full: true
 
 # Type Alias: MarketplacePolicyPaymentRequiredState
 
-> **MarketplacePolicyPaymentRequiredState** = `object`
+> **MarketplacePolicyPaymentRequiredState** = `Extract`\<`MarketplaceDriverPaymentState`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)\>, \{ `type`: `"payment_required"`; \}\> & `object`
 
-Defined in: runtime-types.ts:476
+Defined in: [runtime-types.ts:452](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L452)
 
-## Properties
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:480
-
-***
-
-### proof?
-
-> `optional` **proof?**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence) \| `null`
-
-Defined in: runtime-types.ts:479
-
-***
+## Type Declaration
 
 ### request
 
 > **request**: [`MarketplacePaymentRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRequest)
-
-Defined in: runtime-types.ts:478
-
-***
-
-### type
-
-> **type**: `"payment_required"`
-
-Defined in: runtime-types.ts:477

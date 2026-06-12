@@ -2,12 +2,15 @@
   "title": "Variables",
   "pages": [
     "accommodationListings",
+    "arbitrationServices",
+    "arbitrationServiceSelections",
     "auctions",
-    "escrowServices",
-    "escrowServiceSelections",
     "listings",
     "orders",
+    "participantProofs",
+    "participants",
     "paymentMethod",
+    "paymentProofs",
     "reviews",
     "seed",
     "structuredMessages"

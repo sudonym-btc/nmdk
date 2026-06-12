@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceSessionSeedEnsureResult** = `object`
 
-Defined in: runtime-types.ts:970
+Defined in: [runtime-types.ts:941](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L941)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:970
 
 > **created**: `boolean`
 
-Defined in: runtime-types.ts:971
+Defined in: [runtime-types.ts:942](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L942)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: runtime-types.ts:971
 
 > **event**: `Event`
 
-Defined in: runtime-types.ts:972
+Defined in: [runtime-types.ts:943](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L943)

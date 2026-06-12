@@ -6,7 +6,7 @@ full: true
 
 # Class: CashuPaymentAmountLimitError
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:114](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L114)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:147](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L147)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:1
 
 > **new CashuPaymentAmountLimitError**(`reason`, `limits`): `CashuPaymentAmountLimitError`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:118](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L118)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:151](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L151)
 
 #### Parameters
 
@@ -56,7 +56,7 @@ Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 > `readonly` **code**: `"PAYMENT_AMOUNT_LIMIT"` = `'PAYMENT_AMOUNT_LIMIT'`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:116](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L116)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:149](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L149)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:1
 
 > `readonly` **limits**: [`CashuPaymentAmountLimits`](/docs/reference/marketplace-cashu/type-aliases/CashuPaymentAmountLimits)
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:120](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L120)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:153](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L153)
 
 ***
 
@@ -84,7 +84,7 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1075
 
 > `readonly` **name**: `"CashuPaymentAmountLimitError"` = `'CashuPaymentAmountLimitError'`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:115](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L115)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:148](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L148)
 
 #### Overrides
 
@@ -96,7 +96,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:1
 
 > `readonly` **reason**: `LimitReason`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:119](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L119)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:152](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L152)
 
 ***
 

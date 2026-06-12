@@ -17,9 +17,9 @@ const keyNames = Object.freeze({
   sellerEvm: 'nmdk-seller-evm',
   sellerCashu: 'nmdk-seller-cashu',
   sellerBoth: 'nmdk-seller-both',
-  escrowEvm: 'nmdk-escrow-evm',
-  escrowCashu: 'nmdk-escrow-cashu',
-  escrowBoth: 'nmdk-escrow-both',
+  arbiterEvm: 'nmdk-arbiter-evm',
+  arbiterCashu: 'nmdk-arbiter-cashu',
+  arbiterBoth: 'nmdk-arbiter-both',
 })
 
 function usage() {

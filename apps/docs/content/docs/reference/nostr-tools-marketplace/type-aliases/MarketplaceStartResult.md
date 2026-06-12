@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceStartResult** = `object`
 
-Defined in: runtime-types.ts:232
+Defined in: [runtime-types.ts:244](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L244)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:232
 
 > **assets**: [`MarketplacePaymentAsset`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentAsset)[]
 
-Defined in: runtime-types.ts:236
+Defined in: [runtime-types.ts:248](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L248)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:236
 
 > **discovery**: [`MarketplaceHighWatermarkDiscovery`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceHighWatermarkDiscovery)
 
-Defined in: runtime-types.ts:233
+Defined in: [runtime-types.ts:245](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L245)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:233
 
 > **policies**: [`MarketplacePaymentPolicy`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentPolicy)[]
 
-Defined in: runtime-types.ts:235
+Defined in: [runtime-types.ts:247](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L247)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: runtime-types.ts:235
 
 > **policyResults**: [`MarketplacePolicyStartResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyStartResult)[]
 
-Defined in: runtime-types.ts:234
+Defined in: [runtime-types.ts:246](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L246)

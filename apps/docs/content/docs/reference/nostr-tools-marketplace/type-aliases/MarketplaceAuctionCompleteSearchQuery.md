@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionCompleteSearchQuery** = `object`
 
-Defined in: auction-query.ts:38
+Defined in: [auction-query.ts:38](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L38)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: auction-query.ts:38
 
 > `optional` **auctionAnchor?**: `string`
 
-Defined in: auction-query.ts:39
+Defined in: [auction-query.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L39)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: auction-query.ts:39
 
 > `optional` **auctionAnchors?**: `string`[]
 
-Defined in: auction-query.ts:40
+Defined in: [auction-query.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L40)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: auction-query.ts:40
 
 > `optional` **authors?**: `string`[]
 
-Defined in: auction-query.ts:42
+Defined in: [auction-query.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L42)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: auction-query.ts:42
 
 > `optional` **limit?**: `number`
 
-Defined in: auction-query.ts:46
+Defined in: [auction-query.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L46)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: auction-query.ts:46
 
 > `optional` **listingAnchor?**: `string`
 
-Defined in: auction-query.ts:41
+Defined in: [auction-query.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L41)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: auction-query.ts:41
 
 > `optional` **since?**: `number`
 
-Defined in: auction-query.ts:44
+Defined in: [auction-query.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L44)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: auction-query.ts:44
 
 > `optional` **statuses?**: `string`[]
 
-Defined in: auction-query.ts:43
+Defined in: [auction-query.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L43)
 
 ***
 
@@ -72,4 +72,4 @@ Defined in: auction-query.ts:43
 
 > `optional` **until?**: `number`
 
-Defined in: auction-query.ts:45
+Defined in: [auction-query.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L45)

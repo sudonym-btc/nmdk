@@ -8,7 +8,7 @@ full: true
 
 > **ParsedStructuredMessage** = `object`
 
-Defined in: [order.ts:112](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L112)
+Defined in: [order.ts:119](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L119)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order.ts:112](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **alt**: `string`[]
 
-Defined in: [order.ts:117](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L117)
+Defined in: [order.ts:124](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L124)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order.ts:117](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **childEvent**: `Event`
 
-Defined in: [order.ts:114](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L114)
+Defined in: [order.ts:121](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L121)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [order.ts:114](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > `optional` **conversation?**: `string`
 
-Defined in: [order.ts:115](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L115)
+Defined in: [order.ts:122](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L122)
 
 ***
 
@@ -40,12 +40,12 @@ Defined in: [order.ts:115](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **event**: `Event`
 
-Defined in: [order.ts:113](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L113)
+Defined in: [order.ts:120](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L120)
 
 ***
 
 ### recipients
 
-> **recipients**: [`PTag`](/docs/reference/nostr-tools-marketplace/type-aliases/PTag)[]
+> **recipients**: [`MarketplaceParticipantTag`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantTag)[]
 
-Defined in: [order.ts:116](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L116)
+Defined in: [order.ts:123](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L123)

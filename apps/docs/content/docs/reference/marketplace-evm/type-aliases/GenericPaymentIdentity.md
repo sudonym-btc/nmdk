@@ -6,30 +6,6 @@ full: true
 
 # Type Alias: GenericPaymentIdentity
 
-> **GenericPaymentIdentity** = `object`
+> **GenericPaymentIdentity** = `MarketplaceDriverIdentity`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:70](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L70)
-
-## Properties
-
-### address?
-
-> `optional` **address?**: `string`
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:72](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L72)
-
-***
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:73](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L73)
-
-***
-
-### pubkey?
-
-> `optional` **pubkey?**: `string`
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:71](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L71)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:87](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L87)

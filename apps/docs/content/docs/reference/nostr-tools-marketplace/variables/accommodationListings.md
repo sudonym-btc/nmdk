@@ -8,7 +8,7 @@ full: true
 
 > `const` **accommodationListings**: `object`
 
-Defined in: [listing/accommodation.ts:157](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/listing/accommodation.ts#L157)
+Defined in: [listing/accommodation.ts:157](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L157)
 
 ## Type Declaration
 

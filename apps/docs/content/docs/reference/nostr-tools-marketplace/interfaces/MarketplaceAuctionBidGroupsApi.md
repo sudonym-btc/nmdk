@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceAuctionBidGroupsApi
 
-Defined in: runtime-types.ts:915
+Defined in: [runtime-types.ts:886](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L886)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: runtime-types.ts:915
 
 > **filter**: (`query`) => `Filter`
 
-Defined in: runtime-types.ts:916
+Defined in: [runtime-types.ts:887](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L887)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:916
 
 > **group**: (`events`) => [`ParsedAuctionBidGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedAuctionBidGroup)[]
 
-Defined in: runtime-types.ts:918
+Defined in: [runtime-types.ts:889](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L889)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: runtime-types.ts:918
 
 > **reduce**: (`events`) => [`ParsedAuctionBidGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedAuctionBidGroup)
 
-Defined in: runtime-types.ts:917
+Defined in: [runtime-types.ts:888](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L888)
 
 #### Parameters
 
@@ -68,7 +68,7 @@ Defined in: runtime-types.ts:917
 
 > **fetch**(`query`, `options?`): `Promise`\<[`ParsedAuctionBidGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedAuctionBidGroup)[]\>
 
-Defined in: runtime-types.ts:919
+Defined in: [runtime-types.ts:890](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L890)
 
 #### Parameters
 
@@ -90,7 +90,7 @@ Defined in: runtime-types.ts:919
 
 > **subscribe**(`query`, `handlers`, `options?`): `SubCloser`
 
-Defined in: runtime-types.ts:920
+Defined in: [runtime-types.ts:891](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L891)
 
 #### Parameters
 

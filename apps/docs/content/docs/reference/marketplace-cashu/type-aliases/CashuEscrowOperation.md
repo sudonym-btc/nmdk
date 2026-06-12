@@ -8,7 +8,7 @@ full: true
 
 > **CashuEscrowOperation** = `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:9](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L9)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:9](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L9)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:9](https://github.
 
 > **accountIndex**: `number`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:15](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L15)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:15](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L15)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:15](https://github
 
 > **createdAt**: `number`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:23](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L23)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:23](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L23)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:23](https://github
 
 > **data**: `Record`\<`string`, `unknown`\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:22](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L22)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:22](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L22)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:22](https://github
 
 > `optional` **error?**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:21](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L21)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:21](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L21)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:21](https://github
 
 > **id**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:10](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L10)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:10](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L10)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:10](https://github
 
 > **kind**: `"cashu_escrow_mint"` \| `"cashu_auction_mint"`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:11](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L11)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:11](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L11)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:11](https://github
 
 > **mintUrl**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:16](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L16)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:16](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L16)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:16](https://github
 
 > `optional` **proofs?**: `string`[]
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:20](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L20)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:20](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L20)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:20](https://github
 
 > `optional` **quoteId?**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:18](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L18)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:18](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L18)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:18](https://github
 
 > `optional` **request?**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:19](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L19)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:19](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L19)
 
 ***
 
@@ -96,7 +96,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:19](https://github
 
 > **settlementId**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:14](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L14)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:14](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L14)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:14](https://github
 
 > **status**: [`CashuEscrowOperationStatus`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowOperationStatus)
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:12](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L12)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:12](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L12)
 
 ***
 
@@ -112,7 +112,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:12](https://github
 
 > **tradeId**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:13](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L13)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:13](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L13)
 
 ***
 
@@ -120,7 +120,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:13](https://github
 
 > **unit**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:17](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L17)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:17](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L17)
 
 ***
 
@@ -128,4 +128,4 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:17](https://github
 
 > **updatedAt**: `number`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:24](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L24)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:24](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L24)

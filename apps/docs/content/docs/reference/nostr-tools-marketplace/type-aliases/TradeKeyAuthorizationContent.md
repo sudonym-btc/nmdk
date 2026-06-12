@@ -8,7 +8,7 @@ full: true
 
 > **TradeKeyAuthorizationContent** = `object`
 
-Defined in: [order.ts:99](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L99)
+Defined in: participant-proof.ts:32
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order.ts:99](https://github.com/sudonym-btc/nostr-tools/blob/236524
 
 > **participantPubkey**: `string`
 
-Defined in: [order.ts:102](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L102)
+Defined in: participant-proof.ts:35
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order.ts:102](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **role**: `string`
 
-Defined in: [order.ts:101](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L101)
+Defined in: participant-proof.ts:34
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [order.ts:101](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **version**: `number`
 
-Defined in: [order.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L100)
+Defined in: participant-proof.ts:33

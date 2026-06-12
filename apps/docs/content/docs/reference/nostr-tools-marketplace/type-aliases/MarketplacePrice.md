@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePrice** = `object`
 
-Defined in: [helper.ts:63](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L63)
+Defined in: [helper.ts:78](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L78)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [helper.ts:63](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **amount**: `string`
 
-Defined in: [helper.ts:64](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L64)
+Defined in: [helper.ts:79](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L79)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [helper.ts:64](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **currency**: `string`
 
-Defined in: [helper.ts:65](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L65)
+Defined in: [helper.ts:80](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L80)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [helper.ts:65](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > `optional` **frequency?**: `string`
 
-Defined in: [helper.ts:66](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/helper.ts#L66)
+Defined in: [helper.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L81)

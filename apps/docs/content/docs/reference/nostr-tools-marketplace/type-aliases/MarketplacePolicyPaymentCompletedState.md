@@ -6,30 +6,6 @@ full: true
 
 # Type Alias: MarketplacePolicyPaymentCompletedState
 
-> **MarketplacePolicyPaymentCompletedState** = `object`
+> **MarketplacePolicyPaymentCompletedState** = `Extract`\<`MarketplaceDriverPaymentState`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)\>, \{ `type`: `"completed"`; \}\>
 
-Defined in: runtime-types.ts:496
-
-## Properties
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:499
-
-***
-
-### proof?
-
-> `optional` **proof?**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence) \| `null`
-
-Defined in: runtime-types.ts:498
-
-***
-
-### type
-
-> **type**: `"completed"`
-
-Defined in: runtime-types.ts:497
+Defined in: [runtime-types.ts:466](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L466)

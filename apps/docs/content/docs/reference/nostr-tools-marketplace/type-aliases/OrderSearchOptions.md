@@ -8,7 +8,7 @@ full: true
 
 > **OrderSearchOptions** = `object`
 
-Defined in: [order-query.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-query.ts#L35)
+Defined in: [order-query.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L35)
 
 ## Properties
 
@@ -16,4 +16,4 @@ Defined in: [order-query.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/
 
 > `optional` **maxWait?**: `number`
 
-Defined in: [order-query.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-query.ts#L36)
+Defined in: [order-query.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L36)

@@ -8,7 +8,7 @@ full: true
 
 > **OrderGroupBuckets** = `object`
 
-Defined in: [order-group-types.ts:128](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L128)
+Defined in: [order-group-types.ts:127](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L127)
 
 ## Properties
 
@@ -16,7 +16,15 @@ Defined in: [order-group-types.ts:128](https://github.com/sudonym-btc/nostr-tool
 
 > **all**: [`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]
 
-Defined in: [order-group-types.ts:132](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L132)
+Defined in: [order-group-types.ts:131](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L131)
+
+***
+
+### arbiter
+
+> **arbiter**: [`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]
+
+Defined in: [order-group-types.ts:130](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L130)
 
 ***
 
@@ -24,15 +32,7 @@ Defined in: [order-group-types.ts:132](https://github.com/sudonym-btc/nostr-tool
 
 > **buyer**: [`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]
 
-Defined in: [order-group-types.ts:129](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L129)
-
-***
-
-### escrow
-
-> **escrow**: [`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]
-
-Defined in: [order-group-types.ts:131](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L131)
+Defined in: [order-group-types.ts:128](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L128)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [order-group-types.ts:131](https://github.com/sudonym-btc/nostr-tool
 
 > **seller**: [`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]
 
-Defined in: [order-group-types.ts:130](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L130)
+Defined in: [order-group-types.ts:129](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L129)

@@ -8,7 +8,7 @@ full: true
 
 > **EvmEscrowValidator** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:90](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L90)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:90](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L90)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:90](https://git
 
 > **validate**(`request`): `Promise`\<[`EvmEscrowPaymentValidationResult`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentValidationResult)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:91](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L91)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:91](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L91)
 
 #### Parameters
 

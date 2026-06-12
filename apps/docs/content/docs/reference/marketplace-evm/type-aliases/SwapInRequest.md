@@ -8,7 +8,7 @@ full: true
 
 > **SwapInRequest** = [`SwapAttemptRequest`](/docs/reference/marketplace-evm/type-aliases/SwapAttemptRequest) & `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L13)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L14)
 
 ## Type Declaration
 

@@ -6,6 +6,6 @@ full: true
 
 # Type Alias: MarketplacePaymentValidationStatus
 
-> **MarketplacePaymentValidationStatus** = `"valid"` \| `"invalid"` \| `"pending"` \| `"expired"` \| `"unverifiable"`
+> **MarketplacePaymentValidationStatus** = `MarketplaceDriverValidationStatus`
 
-Defined in: [payment-validation.ts:3](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L3)
+Defined in: [payment-validation.ts:10](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-validation.ts#L10)

@@ -8,7 +8,7 @@ full: true
 
 > **CashuEscrowStorage** = `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:35](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L35)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:35](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L35)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:35](https://github
 
 > **delete**(`id`): `Promise`\<`void`\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:39](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L39)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:39](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L39)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:39](https://github
 
 > **get**(`id`): `Promise`\<[`CashuEscrowOperation`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowOperation) \| `null`\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:36](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L36)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:36](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L36)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:36](https://github
 
 > **list**(`query?`): `Promise`\<[`CashuEscrowOperation`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowOperation)[]\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:38](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L38)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:38](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L38)
 
 #### Parameters
 
@@ -70,7 +70,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:38](https://github
 
 > **put**(`record`): `Promise`\<`void`\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:37](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/storage.ts#L37)
+Defined in: [dependencies/marketplace-cashu-ts/src/storage.ts:37](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/storage.ts#L37)
 
 #### Parameters
 

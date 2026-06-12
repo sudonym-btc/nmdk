@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplacePaymentRoutesApi
 
-Defined in: runtime-types.ts:867
+Defined in: [runtime-types.ts:833](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L833)
 
 ## Methods
 
@@ -14,7 +14,7 @@ Defined in: runtime-types.ts:867
 
 > **forListing**(`listing`, `order?`): `Promise`\<[`MarketplacePaymentRoute`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRoute)[]\>
 
-Defined in: runtime-types.ts:868
+Defined in: [runtime-types.ts:834](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L834)
 
 #### Parameters
 

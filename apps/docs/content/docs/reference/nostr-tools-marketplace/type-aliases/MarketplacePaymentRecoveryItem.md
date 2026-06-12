@@ -6,46 +6,24 @@ full: true
 
 # Type Alias: MarketplacePaymentRecoveryItem
 
-> **MarketplacePaymentRecoveryItem** = `object`
+> **MarketplacePaymentRecoveryItem** = `MarketplaceDriverRecoveryItem`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence), [`MarketplacePaymentValidationRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationRequest)\[`"expected"`\]\> & `object`
 
-Defined in: runtime-types.ts:336
+Defined in: [runtime-types.ts:318](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L318)
 
-## Properties
+## Type Declaration
 
 ### expected
 
 > **expected**: [`MarketplacePaymentValidationRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationRequest)\[`"expected"`\]
 
-Defined in: runtime-types.ts:341
-
-***
-
 ### group
 
 > **group**: [`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)
-
-Defined in: runtime-types.ts:338
-
-***
 
 ### payment
 
 > **payment**: [`ParsedOrderPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPayment)
 
-Defined in: runtime-types.ts:339
-
-***
-
 ### proof
 
 > **proof**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)
-
-Defined in: runtime-types.ts:340
-
-***
-
-### subject
-
-> **subject**: `"order"` \| `"bid"`
-
-Defined in: runtime-types.ts:337

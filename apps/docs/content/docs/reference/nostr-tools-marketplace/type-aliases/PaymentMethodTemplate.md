@@ -8,7 +8,7 @@ full: true
 
 > **PaymentMethodTemplate** = `object`
 
-Defined in: paymentmethod.ts:23
+Defined in: [paymentmethod.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L23)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: paymentmethod.ts:23
 
 > `optional` **acceptedPaymentForms?**: [`AcceptedPaymentForm`](/docs/reference/nostr-tools-marketplace/type-aliases/AcceptedPaymentForm)[]
 
-Defined in: paymentmethod.ts:26
+Defined in: [paymentmethod.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L26)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: paymentmethod.ts:26
 
 > `optional` **cashuPubkey?**: `string`
 
-Defined in: paymentmethod.ts:29
+Defined in: [paymentmethod.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L29)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: paymentmethod.ts:29
 
 > `optional` **createdAt?**: `number`
 
-Defined in: paymentmethod.ts:31
+Defined in: [paymentmethod.ts:31](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L31)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: paymentmethod.ts:31
 
 > `optional` **evmAddress?**: `string`
 
-Defined in: paymentmethod.ts:27
+Defined in: [paymentmethod.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L27)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: paymentmethod.ts:27
 
 > `optional` **evmAddressProof?**: `string`
 
-Defined in: paymentmethod.ts:28
+Defined in: [paymentmethod.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L28)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: paymentmethod.ts:28
 
 > `optional` **extraTags?**: `string`[][]
 
-Defined in: paymentmethod.ts:30
+Defined in: [paymentmethod.ts:30](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L30)
 
 ***
 
@@ -64,12 +64,12 @@ Defined in: paymentmethod.ts:30
 
 > `optional` **supportedContractBytecodeHashes?**: `string`[]
 
-Defined in: paymentmethod.ts:25
+Defined in: [paymentmethod.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L25)
 
 ***
 
-### trustedEscrowPubkeys?
+### trustedArbiterPubkeys?
 
-> `optional` **trustedEscrowPubkeys?**: `string`[]
+> `optional` **trustedArbiterPubkeys?**: `string`[]
 
-Defined in: paymentmethod.ts:24
+Defined in: [paymentmethod.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L24)

@@ -6,38 +6,6 @@ full: true
 
 # Type Alias: MarketplacePolicyPaymentProgressState
 
-> **MarketplacePolicyPaymentProgressState** = `object`
+> **MarketplacePolicyPaymentProgressState** = `Extract`\<`MarketplaceDriverPaymentState`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)\>, \{ `type`: `"payment_progress"`; \}\>
 
-Defined in: runtime-types.ts:483
-
-## Properties
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:487
-
-***
-
-### proof?
-
-> `optional` **proof?**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence) \| `null`
-
-Defined in: runtime-types.ts:486
-
-***
-
-### status
-
-> **status**: `string`
-
-Defined in: runtime-types.ts:485
-
-***
-
-### type
-
-> **type**: `"payment_progress"`
-
-Defined in: runtime-types.ts:484
+Defined in: [runtime-types.ts:459](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L459)

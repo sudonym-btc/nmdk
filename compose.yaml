@@ -64,3 +64,23 @@ services:
       retries: 12
       start_period: 15s
     restart: unless-stopped
+
+  blossom:
+    image: ghcr.io/hzrd149/blossom-server:6.1.5
+    platform: linux/amd64
+    restart: unless-stopped
+    environment:
+      - BLOSSOM_PUBLIC_DOMAIN=blossom.marketplace.test
+      - BLOSSOM_DASHBOARD_PASSWORD=${BLOSSOM_DASHBOARD_PASSWORD:-nmdk}
+      - TMPDIR=/app/data
+    ports:
+      - "127.0.0.1:${MARKETPLACE_BLOSSOM_PORT:-13096}:3000"
+    volumes:
+      - ./docker/blossom.yaml:/app/config.yml:ro
+      - ./data/blossom:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "bash -lc ':</dev/tcp/127.0.0.1/3000'"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s

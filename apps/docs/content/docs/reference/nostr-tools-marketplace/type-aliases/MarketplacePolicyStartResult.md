@@ -6,30 +6,6 @@ full: true
 
 # Type Alias: MarketplacePolicyStartResult
 
-> **MarketplacePolicyStartResult** = `object`
+> **MarketplacePolicyStartResult** = `MarketplaceDriverStartResult`
 
-Defined in: runtime-types.ts:198
-
-## Properties
-
-### data?
-
-> `optional` **data?**: `Record`\<`string`, `unknown`\>
-
-Defined in: runtime-types.ts:201
-
-***
-
-### policy
-
-> **policy**: `string`
-
-Defined in: runtime-types.ts:199
-
-***
-
-### recoveryActions?
-
-> `optional` **recoveryActions?**: [`MarketplacePolicyWatermarkRecoveryAction`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyWatermarkRecoveryAction)[] \| `unknown`[]
-
-Defined in: runtime-types.ts:200
+Defined in: [runtime-types.ts:214](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L214)

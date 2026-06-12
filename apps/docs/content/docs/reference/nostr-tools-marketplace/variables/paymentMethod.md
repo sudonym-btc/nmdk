@@ -8,7 +8,7 @@ full: true
 
 > `const` **paymentMethod**: `object`
 
-Defined in: paymentmethod.ts:172
+Defined in: [paymentmethod.ts:186](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L186)
 
 ## Type Declaration
 

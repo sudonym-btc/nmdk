@@ -6,54 +6,6 @@ full: true
 
 # Type Alias: MarketplacePolicyStartContext
 
-> **MarketplacePolicyStartContext** = `object`
+> **MarketplacePolicyStartContext** = `MarketplaceDriverStartContext`\<[`MarketplaceHighWatermarkDiscovery`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceHighWatermarkDiscovery)\>
 
-Defined in: runtime-types.ts:189
-
-## Properties
-
-### discovery
-
-> **discovery**: [`MarketplaceHighWatermarkDiscovery`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceHighWatermarkDiscovery)
-
-Defined in: runtime-types.ts:194
-
-***
-
-### highWaterMark
-
-> **highWaterMark**: `number`
-
-Defined in: runtime-types.ts:191
-
-***
-
-### nextUnusedIndex
-
-> **nextUnusedIndex**: `number`
-
-Defined in: runtime-types.ts:192
-
-***
-
-### now?
-
-> `optional` **now?**: `number`
-
-Defined in: runtime-types.ts:195
-
-***
-
-### seed
-
-> **seed**: `string`
-
-Defined in: runtime-types.ts:190
-
-***
-
-### unusedWindow
-
-> **unusedWindow**: `number`
-
-Defined in: runtime-types.ts:193
+Defined in: [runtime-types.ts:212](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L212)

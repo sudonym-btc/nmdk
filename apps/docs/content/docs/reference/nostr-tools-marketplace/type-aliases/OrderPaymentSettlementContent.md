@@ -8,7 +8,7 @@ full: true
 
 > **OrderPaymentSettlementContent** = `object`
 
-Defined in: [order-lifecycle.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L100)
+Defined in: [order-lifecycle.ts:115](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L115)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-lifecycle.ts:100](https://github.com/sudonym-btc/nostr-tools/
 
 > **action**: [`PaymentSettlementAction`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentSettlementAction)
 
-Defined in: [order-lifecycle.ts:102](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L102)
+Defined in: [order-lifecycle.ts:117](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L117)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order-lifecycle.ts:102](https://github.com/sudonym-btc/nostr-tools/
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: [order-lifecycle.ts:105](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L105)
+Defined in: [order-lifecycle.ts:120](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L120)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [order-lifecycle.ts:105](https://github.com/sudonym-btc/nostr-tools/
 
 > `optional` **inputs?**: `Record`\<`string`, `unknown`\>[]
 
-Defined in: [order-lifecycle.ts:103](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L103)
+Defined in: [order-lifecycle.ts:118](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L118)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [order-lifecycle.ts:103](https://github.com/sudonym-btc/nostr-tools/
 
 > **method**: [`PaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethod)
 
-Defined in: [order-lifecycle.ts:101](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L101)
+Defined in: [order-lifecycle.ts:116](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L116)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [order-lifecycle.ts:101](https://github.com/sudonym-btc/nostr-tools/
 
 > `optional` **outputs?**: [`OrderPaymentSettlementOutput`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderPaymentSettlementOutput)[]
 
-Defined in: [order-lifecycle.ts:104](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L104)
+Defined in: [order-lifecycle.ts:119](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L119)

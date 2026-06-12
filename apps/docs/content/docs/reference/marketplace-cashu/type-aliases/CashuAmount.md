@@ -8,7 +8,7 @@ full: true
 
 > **CashuAmount** = `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:1](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L1)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:22](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L22)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:1](https://github.co
 
 > **decimals**: `number`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:4](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L4)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:25](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L25)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:4](https://github.co
 
 > **denomination**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:3](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L3)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:24](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L24)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:3](https://github.co
 
 > **value**: `bigint`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:2](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L2)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:23](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L23)

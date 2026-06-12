@@ -1,0 +1,77 @@
+x-cashu-mints: &cashu-mints '[{"mintUrl":"http://mint.cashu.marketplace.test","unit":"sat","denomination":"SAT","decimals":0},{"mintUrl":"http://mint-usd.cashu.marketplace.test","unit":"usd","denomination":"USD","decimals":2}]'
+
+x-arbiter-common: &arbiter-common
+  image: oven/bun:1.2
+  working_dir: /workspace
+  entrypoint: ["bun"]
+  restart: unless-stopped
+  env_file:
+    - ./.nmdk.local.env
+  environment:
+    NODE_ENV: development
+    MARKETPLACE_ARBITER_MANIFEST: /workspace/data/seed/marketplace-seed.json
+    VITE_RELAYS: ws://relay.marketplace.test
+    VITE_NIP46_RELAYS: ws://relay.marketplace.test
+    VITE_EVM_RPC_URL: http://arbitrum.evm.marketplace.test
+    VITE_EVM_BOLTZ_API_URL: http://boltz.evm.marketplace.test/v2
+    VITE_EVM_BUNDLER_URL: http://bundler.evm.marketplace.test
+    VITE_EVM_PAYMASTER_URL: http://paymaster.evm.marketplace.test
+    VITE_CASHU_MINT_URL: http://mint.cashu.marketplace.test
+    VITE_CASHU_MINTS: *cashu-mints
+    MARKETPLACE_CASHU_PUBLIC_MINT_URL: http://mint.cashu.marketplace.test
+    MARKETPLACE_CASHU_PUBLIC_USD_MINT_URL: http://mint-usd.cashu.marketplace.test
+    MARKETPLACE_CASHU_MINTS: *cashu-mints
+  volumes:
+    - ./:/workspace:ro
+  extra_hosts:
+    - host.docker.internal:host-gateway
+  networks:
+    - cashu
+    - evm
+
+services:
+  arbiter-evm:
+    <<: *arbiter-common
+    container_name: nmdk-arbiter-evm
+    command:
+      - dependencies/marketplace-app-ts/arbiter.ts
+      - --account=arbiterEvm
+      - --name=NMDK EVM Arbiter
+      - --policy=evm-escrow
+      - --policy=evm-auction
+      - --relay=ws://relay.marketplace.test
+      - --no-service
+
+  arbiter-cashu:
+    <<: *arbiter-common
+    container_name: nmdk-arbiter-cashu
+    command:
+      - dependencies/marketplace-app-ts/arbiter.ts
+      - --account=arbiterCashu
+      - --name=NMDK Cashu Arbiter
+      - --policy=cashu-escrow
+      - --policy=cashu-auction
+      - --relay=ws://relay.marketplace.test
+      - --no-service
+
+  arbiter-both:
+    <<: *arbiter-common
+    container_name: nmdk-arbiter-both
+    command:
+      - dependencies/marketplace-app-ts/arbiter.ts
+      - --account=arbiterBoth
+      - --name=NMDK Multi Arbiter
+      - --policy=evm-escrow
+      - --policy=evm-auction
+      - --policy=cashu-escrow
+      - --policy=cashu-auction
+      - --relay=ws://relay.marketplace.test
+      - --no-service
+
+networks:
+  cashu:
+    external: true
+    name: marketplace-cashu-stack_default
+  evm:
+    external: true
+    name: ${MARKETPLACE_SHARED_BITCOIN_NETWORK:-nmdk-marketplace_default}

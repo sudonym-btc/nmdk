@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceStructuredMessagesApi
 
-Defined in: runtime-types.ts:861
+Defined in: [runtime-types.ts:827](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L827)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: runtime-types.ts:861
 
 > **template**: (`message`) => `EventTemplate`
 
-Defined in: runtime-types.ts:864
+Defined in: [runtime-types.ts:830](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L830)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:864
 
 > **validate**: (`event`) => `boolean`
 
-Defined in: runtime-types.ts:863
+Defined in: [runtime-types.ts:829](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L829)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: runtime-types.ts:863
 
 > **parse**(`event`): [`ParsedStructuredMessage`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedStructuredMessage)
 
-Defined in: runtime-types.ts:862
+Defined in: [runtime-types.ts:828](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L828)
 
 #### Parameters
 

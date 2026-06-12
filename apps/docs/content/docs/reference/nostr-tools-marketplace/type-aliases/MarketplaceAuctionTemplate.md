@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionTemplate** = `object`
 
-Defined in: auction.ts:23
+Defined in: [auction.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L28)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: auction.ts:23
 
 > **arbiterPubkey**: `string`
 
-Defined in: auction.ts:26
+Defined in: [auction.ts:31](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L31)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: auction.ts:26
 
 > `optional` **auctionType?**: `"english"` \| `string`
 
-Defined in: auction.ts:29
+Defined in: [auction.ts:34](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L34)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: auction.ts:29
 
 > `optional` **content?**: `Record`\<`string`, `unknown`\>
 
-Defined in: auction.ts:37
+Defined in: [auction.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L42)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: auction.ts:37
 
 > `optional` **createdAt?**: `number`
 
-Defined in: auction.ts:39
+Defined in: [auction.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L44)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: auction.ts:39
 
 > **currency**: `string`
 
-Defined in: auction.ts:27
+Defined in: [auction.ts:32](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L32)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: auction.ts:27
 
 > **d**: `string`
 
-Defined in: auction.ts:24
+Defined in: [auction.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L29)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: auction.ts:24
 
 > **decimals**: `number`
 
-Defined in: auction.ts:28
+Defined in: [auction.ts:33](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L33)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: auction.ts:28
 
 > `optional` **endAt?**: `number`
 
-Defined in: auction.ts:31
+Defined in: [auction.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L36)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: auction.ts:31
 
 > `optional` **extraTags?**: `string`[][]
 
-Defined in: auction.ts:38
+Defined in: [auction.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L43)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: auction.ts:38
 
 > **listingAnchor**: `string`
 
-Defined in: auction.ts:25
+Defined in: [auction.ts:30](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L30)
 
 ***
 
@@ -96,7 +96,7 @@ Defined in: auction.ts:25
 
 > `optional` **maxEndAt?**: `number`
 
-Defined in: auction.ts:32
+Defined in: [auction.ts:37](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L37)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: auction.ts:32
 
 > `optional` **minIncrement?**: `string`
 
-Defined in: auction.ts:35
+Defined in: [auction.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L40)
 
 ***
 
@@ -112,7 +112,7 @@ Defined in: auction.ts:35
 
 > `optional` **reserve?**: `string`
 
-Defined in: auction.ts:36
+Defined in: [auction.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L41)
 
 ***
 
@@ -120,7 +120,7 @@ Defined in: auction.ts:36
 
 > `optional` **settlementGrace?**: `number`
 
-Defined in: auction.ts:33
+Defined in: [auction.ts:38](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L38)
 
 ***
 
@@ -128,7 +128,7 @@ Defined in: auction.ts:33
 
 > `optional` **startAt?**: `number`
 
-Defined in: auction.ts:30
+Defined in: [auction.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L35)
 
 ***
 
@@ -136,4 +136,4 @@ Defined in: auction.ts:30
 
 > `optional` **startingBid?**: `string`
 
-Defined in: auction.ts:34
+Defined in: [auction.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L39)

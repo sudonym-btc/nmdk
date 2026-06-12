@@ -14,10 +14,10 @@ single reproducible development snapshot.
 - `dependencies/ndk` - marketplace branch of NDK.
 - `dependencies/marketplace-app-ts` - browser demo client.
 - `dependencies/marketplace-cashu-ts` - Cashu escrow payment policy.
-- `dependencies/marketplace-cashu-stack` - isolated Cashu mints, relay, and regtest Lightning stack.
+- `dependencies/marketplace-cashu-stack` - Cashu mints, relay, and LND nodes on the shared regtest Lightning stack.
 - `dependencies/marketplace-evm-ts` - EVM escrow and auction payment policies.
 - `dependencies/marketplace-evm-contracts` - generated marketplace EVM contract artifacts.
-- `dependencies/marketplace-evm-stack` - isolated EVM/Boltz regtest stack.
+- `dependencies/marketplace-evm-stack` - EVM/Boltz regtest stack plus shared Bitcoin and marketplace edge LND.
 - `dependencies/nips/*` - marketplace-related protocol drafts.
 
 ## Bootstrap
@@ -49,15 +49,36 @@ localhost ports:
 - Nostr relay: `ws://127.0.0.1:18080`
 - Cashu sat mint: `http://127.0.0.1:19338`
 - Cashu USD mint: `http://127.0.0.1:19339`
+- Blossom upload: `http://127.0.0.1:13096`, `https://blossom.marketplace.test`
 - Arbitrum RPC: `http://127.0.0.1:18546`
+- Arbitrum explorer: `http://127.0.0.1:15100`, `https://explorer.arbitrum.evm.marketplace.test`
 - Rootstock RPC: `http://127.0.0.1:18545`
 - Boltz API: `http://127.0.0.1:19001/v2`
+- Marketplace LND REST/RPC: `https://127.0.0.1:28083`, `127.0.0.1:32009`
+- LNbits: `http://127.0.0.1:15055`, `https://lnbits.marketplace.test`
+- Alby Hub: `http://127.0.0.1:15056`, `https://alby.marketplace.test`
 - EVM AA bundler: `http://127.0.0.1:4337`
 - EVM AA paymaster: `http://127.0.0.1:3010`
 
-The command starts the Cashu stack first, which owns the local relay, then the
-EVM/Boltz stack. The EVM stack deploys `MultiEscrow` for both normal escrow
-payments and auction bid lockups.
+The development proxy also exposes the `marketplace.test` DNS surface over
+HTTPS. `./scripts/up.sh` runs a Docker TLS init job which creates a local NMDK
+development CA in `docker/tls/ca/ca.crt` and a SAN certificate in
+`docker/certs/marketplace.test.crt` covering the root domain plus the client,
+relay, Signet, EVM, Cashu, LND, and Boltz `*.marketplace.test` hosts. Install
+that CA into your browser or OS trust store if you want these local HTTPS
+origins to be trusted without warnings. On macOS, run `npm run trust:ca` to add
+the generated development CA to the System keychain; the command explains why it
+needs `sudo` before it asks.
+
+The command starts the top-level marketplace Bitcoin/LND/LNbits stack first.
+It then starts EVM/Boltz against that shared Bitcoin network, starts Cashu on
+the same Bitcoin network, and runs a one-shot liquidity initializer that
+connects the marketplace LND to Cashu and Boltz Lightning nodes. LNbits and
+Alby Hub run on that same marketplace LND with self-payments enabled, and `npm run seed`
+creates deterministic LNbits users plus zap-enabled LNURL pay links for seeded
+marketplace profiles. The profile `lud16` values use the
+`lnbits.marketplace.test` domain. The EVM stack deploys `MultiEscrow` for both
+normal escrow payments and auction bid lockups.
 It writes `dependencies/marketplace-app-ts/.env.local` for the browser demo and
 `.nmdk.local.env` for shell consumers from the generated stack configs. No
 custom development DNS or parent application checkout is required.

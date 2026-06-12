@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceHighWatermarkPass** = `object`
 
-Defined in: runtime-types.ts:212
+Defined in: [runtime-types.ts:224](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L224)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:212
 
 > **inputHighWaterMark**: `number`
 
-Defined in: runtime-types.ts:214
+Defined in: [runtime-types.ts:226](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L226)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:214
 
 > **outputHighWaterMark**: `number`
 
-Defined in: runtime-types.ts:215
+Defined in: [runtime-types.ts:227](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L227)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:215
 
 > **pass**: `number`
 
-Defined in: runtime-types.ts:213
+Defined in: [runtime-types.ts:225](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L225)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: runtime-types.ts:213
 
 > **policyResults**: [`MarketplacePolicyWatermarkDiscovery`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyWatermarkDiscovery)[]
 
-Defined in: runtime-types.ts:216
+Defined in: [runtime-types.ts:228](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L228)

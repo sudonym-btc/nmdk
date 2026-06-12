@@ -6,61 +6,31 @@ full: true
 
 # Type Alias: EvmEscrowPolicy
 
-> **EvmEscrowPolicy** = `object`
+> **EvmEscrowPolicy** = `MarketplaceDriverOrderPolicy`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-evm/type-aliases/GenericPolicyPaymentState), [`EvmEscrowPaymentPolicy`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentPolicy), [`EvmPaymentAsset`](/docs/reference/marketplace-evm/type-aliases/EvmPaymentAsset), [`GenericPaymentIntent`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentIntent), [`GenericPaymentValidationRequest`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationRequest), [`GenericPaymentValidationResult`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationResult), [`GenericPaymentRecoveryItem`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryItem), [`GenericPaymentRecoveryState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryState)\> & `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:228](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L228)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:105](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L105)
 
-## Properties
-
-### family
-
-> **family**: `"escrow"`
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:232](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L232)
-
-***
+## Type Declaration
 
 ### id
 
 > **id**: `"evm:multi-escrow"`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:230](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L230)
-
-***
-
 ### method
 
 > **method**: `"evm"`
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:229](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L229)
-
-***
-
-### subject
-
-> **subject**: `"order"`
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:231](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L231)
-
-## Methods
 
 ### assets()
 
 > **assets**(): [`EvmPaymentAsset`](/docs/reference/marketplace-evm/type-aliases/EvmPaymentAsset)[]
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:234](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L234)
-
 #### Returns
 
 [`EvmPaymentAsset`](/docs/reference/marketplace-evm/type-aliases/EvmPaymentAsset)[]
 
-***
-
 ### client()
 
 > **client**(`seed`, `tradeIndex?`): `object`
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:264](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L264)
 
 #### Parameters
 
@@ -244,75 +214,45 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:264](https
 
 > `optional` **swaps?**: [`EvmSwapService`](/docs/reference/marketplace-evm/type-aliases/EvmSwapService)
 
-***
-
 ### discoverHighWatermark()
 
-> **discoverHighWatermark**(`context`): `Promise`\<\{ `maxUsedIndex`: `number`; `nextUnusedIndex`: `number`; `policy`: `"evm:multi-escrow"`; `recoveryActions`: `unknown`[]; `scannedFrom`: `number`; `scannedThrough`: `number`; `unusedWindow`: `number`; `usedIndexes`: `number`[]; \}\>
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:235](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L235)
+> **discoverHighWatermark**(`context`): `Promise`\<`MarketplaceDriverWatermarkDiscovery` & `object`\>
 
 #### Parameters
 
 ##### context
 
-###### highWaterMark
-
-`number`
-
-###### now?
-
-`number`
-
-###### seed
-
-`string`
-
-###### unusedWindow
-
-`number`
+`MarketplaceDriverWatermarkContext`
 
 #### Returns
 
-`Promise`\<\{ `maxUsedIndex`: `number`; `nextUnusedIndex`: `number`; `policy`: `"evm:multi-escrow"`; `recoveryActions`: `unknown`[]; `scannedFrom`: `number`; `scannedThrough`: `number`; `unusedWindow`: `number`; `usedIndexes`: `number`[]; \}\>
-
-***
+`Promise`\<`MarketplaceDriverWatermarkDiscovery` & `object`\>
 
 ### pay()
 
 > **pay**(`intent`): `AsyncIterable`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-evm/type-aliases/GenericPolicyPaymentState)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:262](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L262)
-
 #### Parameters
 
 ##### intent
 
-[`GenericPaymentIntent`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentIntent)
+`MarketplaceDriverPaymentIntent`
 
 #### Returns
 
 `AsyncIterable`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-evm/type-aliases/GenericPolicyPaymentState)\>
 
-***
-
 ### policies()
 
 > **policies**(): [`EvmEscrowPaymentPolicy`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentPolicy)[]
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:233](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L233)
 
 #### Returns
 
 [`EvmEscrowPaymentPolicy`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentPolicy)[]
 
-***
-
 ### recover()
 
 > **recover**(`payment`): `AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryState)\>
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:261](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L261)
 
 #### Parameters
 
@@ -324,71 +264,37 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:261](https
 
 `AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryState)\>
 
-***
-
 ### startup()
 
-> **startup**(`context`): `Promise`\<\{ `data`: `Record`\<`string`, `unknown`\>; `policy`: `"evm:multi-escrow"`; \}\>
-
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:250](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L250)
+> **startup**(`context`): `Promise`\<`MarketplaceDriverStartResult` & `object`\>
 
 #### Parameters
 
 ##### context
 
-###### discovery
-
-`unknown`
-
-###### highWaterMark
-
-`number`
-
-###### nextUnusedIndex
-
-`number`
-
-###### now?
-
-`number`
-
-###### seed
-
-`string`
-
-###### unusedWindow
-
-`number`
+`MarketplaceDriverStartContext`
 
 #### Returns
 
-`Promise`\<\{ `data`: `Record`\<`string`, `unknown`\>; `policy`: `"evm:multi-escrow"`; \}\>
-
-***
+`Promise`\<`MarketplaceDriverStartResult` & `object`\>
 
 ### state()
 
 > **state**(): [`EvmMarketplacePolicyState`](/docs/reference/marketplace-evm/type-aliases/EvmMarketplacePolicyState)
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:265](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L265)
-
 #### Returns
 
 [`EvmMarketplacePolicyState`](/docs/reference/marketplace-evm/type-aliases/EvmMarketplacePolicyState)
-
-***
 
 ### validatePayment()
 
 > **validatePayment**(`request`): `Promise`\<[`GenericPaymentValidationResult`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationResult)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:263](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L263)
-
 #### Parameters
 
 ##### request
 
-[`GenericPaymentValidationRequest`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationRequest)
+`MarketplaceDriverValidationRequest`
 
 #### Returns
 

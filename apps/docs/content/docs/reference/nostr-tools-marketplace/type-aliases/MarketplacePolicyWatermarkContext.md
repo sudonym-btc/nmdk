@@ -6,38 +6,6 @@ full: true
 
 # Type Alias: MarketplacePolicyWatermarkContext
 
-> **MarketplacePolicyWatermarkContext** = `object`
+> **MarketplacePolicyWatermarkContext** = `MarketplaceDriverWatermarkContext`
 
-Defined in: runtime-types.ts:170
-
-## Properties
-
-### highWaterMark
-
-> **highWaterMark**: `number`
-
-Defined in: runtime-types.ts:172
-
-***
-
-### now?
-
-> `optional` **now?**: `number`
-
-Defined in: runtime-types.ts:174
-
-***
-
-### seed
-
-> **seed**: `string`
-
-Defined in: runtime-types.ts:171
-
-***
-
-### unusedWindow
-
-> **unusedWindow**: `number`
-
-Defined in: runtime-types.ts:173
+Defined in: [runtime-types.ts:208](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L208)

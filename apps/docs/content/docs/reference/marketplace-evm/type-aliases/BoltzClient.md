@@ -8,7 +8,7 @@ full: true
 
 > **BoltzClient** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:75](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L75)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:75](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L75)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:75](https://gith
 
 > **createReverseSwap**(`request`): `Promise`\<[`BoltzReverseSwapResponse`](/docs/reference/marketplace-evm/type-aliases/BoltzReverseSwapResponse)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:78](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L78)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:78](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L78)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:78](https://gith
 
 > **createSubmarineSwap**(`request`): `Promise`\<[`BoltzSubmarineSwapResponse`](/docs/reference/marketplace-evm/type-aliases/BoltzSubmarineSwapResponse)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:79](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L79)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:79](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L79)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:79](https://gith
 
 > **getCooperativeRefundSignature**(`id`): `Promise`\<`` `0x${string}` `` \| `null`\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:83](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L83)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:83](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L83)
 
 #### Parameters
 
@@ -70,7 +70,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:83](https://gith
 
 > **getReversePairs**(): `Promise`\<`BoltzPairTable`\<\{ `fees`: \{ `minerFees`: \{ `claim`: `number`; `lockup`: `number`; \}; `percentage`: `number`; \}; `hash`: `string`; `limits`: \{ `maximal`: `number`; `minimal`: `number`; \}; `rate`: `number`; \}\>\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:76](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L76)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:76](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L76)
 
 #### Returns
 
@@ -82,7 +82,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:76](https://gith
 
 > **getSubmarinePairs**(): `Promise`\<`BoltzPairTable`\<\{ `fees`: \{ `minerFees`: `number`; `percentage`: `number`; \}; `hash`: `string`; `limits`: \{ `maximal`: `number`; `maximalZeroConf`: `number`; `minimal`: `number`; `minimalBatched?`: `number`; \}; `rate`: `number`; \}\>\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:77](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L77)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:77](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L77)
 
 #### Returns
 
@@ -94,7 +94,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:77](https://gith
 
 > **getSubmarinePreimage**(`id`): `Promise`\<`` `0x${string}` ``\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:82](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L82)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:82](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L82)
 
 #### Parameters
 
@@ -112,7 +112,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:82](https://gith
 
 > **getSwap**(`id`): `Promise`\<[`BoltzStatusUpdate`](/docs/reference/marketplace-evm/type-aliases/BoltzStatusUpdate)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:80](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L80)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:80](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L80)
 
 #### Parameters
 
@@ -130,7 +130,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:80](https://gith
 
 > **subscribeSwap**(`id`): `AsyncIterable`\<[`BoltzStatusUpdate`](/docs/reference/marketplace-evm/type-aliases/BoltzStatusUpdate)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:81](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/boltz/types.ts#L81)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:81](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L81)
 
 #### Parameters
 

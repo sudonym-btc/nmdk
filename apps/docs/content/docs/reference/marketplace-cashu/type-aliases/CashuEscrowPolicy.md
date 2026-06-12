@@ -6,123 +6,67 @@ full: true
 
 # Type Alias: CashuEscrowPolicy
 
-> **CashuEscrowPolicy** = `object`
+> **CashuEscrowPolicy** = `MarketplaceDriverOrderPolicy`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-cashu/type-aliases/GenericPolicyPaymentState), [`CashuEscrowPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowPaymentPolicy), [`CashuPaymentAsset`](/docs/reference/marketplace-cashu/type-aliases/CashuPaymentAsset), [`GenericPaymentIntent`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentIntent), [`GenericPaymentValidationRequest`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationRequest), [`GenericPaymentValidationResult`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationResult), [`GenericPaymentRecoveryItem`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryItem), [`GenericPaymentRecoveryState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState)\> & `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:264](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L264)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:129](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L129)
 
-## Properties
-
-### family
-
-> **family**: `"escrow"`
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:268](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L268)
-
-***
+## Type Declaration
 
 ### id
 
 > **id**: `"cashu:p2pk-escrow-v1"`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:266](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L266)
-
-***
-
 ### method
 
 > **method**: `"cashu"`
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:265](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L265)
-
-***
-
-### subject
-
-> **subject**: `"order"`
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:267](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L267)
-
-## Methods
 
 ### assets()
 
 > **assets**(): [`CashuPaymentAsset`](/docs/reference/marketplace-cashu/type-aliases/CashuPaymentAsset)[]
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:270](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L270)
-
 #### Returns
 
 [`CashuPaymentAsset`](/docs/reference/marketplace-cashu/type-aliases/CashuPaymentAsset)[]
 
-***
-
 ### discoverHighWatermark()
 
-> **discoverHighWatermark**(`context`): `Promise`\<\{ `maxUsedIndex`: `number`; `nextUnusedIndex`: `number`; `policy`: `"cashu:p2pk-escrow-v1"`; `recoveryActions`: `unknown`[]; `scannedFrom`: `number`; `scannedThrough`: `number`; `unusedWindow`: `number`; `usedIndexes`: `number`[]; \}\>
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:271](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L271)
+> **discoverHighWatermark**(`context`): `Promise`\<`MarketplaceDriverWatermarkDiscovery` & `object`\>
 
 #### Parameters
 
 ##### context
 
-###### highWaterMark
-
-`number`
-
-###### now?
-
-`number`
-
-###### seed
-
-`string`
-
-###### unusedWindow
-
-`number`
+`MarketplaceDriverWatermarkContext`
 
 #### Returns
 
-`Promise`\<\{ `maxUsedIndex`: `number`; `nextUnusedIndex`: `number`; `policy`: `"cashu:p2pk-escrow-v1"`; `recoveryActions`: `unknown`[]; `scannedFrom`: `number`; `scannedThrough`: `number`; `unusedWindow`: `number`; `usedIndexes`: `number`[]; \}\>
-
-***
+`Promise`\<`MarketplaceDriverWatermarkDiscovery` & `object`\>
 
 ### pay()
 
 > **pay**(`intent`): `AsyncIterable`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-cashu/type-aliases/GenericPolicyPaymentState)\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:298](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L298)
-
 #### Parameters
 
 ##### intent
 
-[`GenericPaymentIntent`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentIntent)
+`MarketplaceDriverPaymentIntent`
 
 #### Returns
 
 `AsyncIterable`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-cashu/type-aliases/GenericPolicyPaymentState)\>
 
-***
-
 ### policies()
 
 > **policies**(): [`CashuEscrowPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowPaymentPolicy)[]
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:269](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L269)
 
 #### Returns
 
 [`CashuEscrowPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowPaymentPolicy)[]
 
-***
-
 ### recover()
 
 > **recover**(`payment`): `AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState)\>
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:297](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L297)
 
 #### Parameters
 
@@ -134,71 +78,37 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:297](https://github.
 
 `AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState)\>
 
-***
-
 ### startup()
 
-> **startup**(`context`): `Promise`\<\{ `data`: `Record`\<`string`, `unknown`\>; `policy`: `"cashu:p2pk-escrow-v1"`; \}\>
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:286](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L286)
+> **startup**(`context`): `Promise`\<`MarketplaceDriverStartResult` & `object`\>
 
 #### Parameters
 
 ##### context
 
-###### discovery
-
-`unknown`
-
-###### highWaterMark
-
-`number`
-
-###### nextUnusedIndex
-
-`number`
-
-###### now?
-
-`number`
-
-###### seed
-
-`string`
-
-###### unusedWindow
-
-`number`
+`MarketplaceDriverStartContext`
 
 #### Returns
 
-`Promise`\<\{ `data`: `Record`\<`string`, `unknown`\>; `policy`: `"cashu:p2pk-escrow-v1"`; \}\>
-
-***
+`Promise`\<`MarketplaceDriverStartResult` & `object`\>
 
 ### state()
 
 > **state**(): [`CashuEscrowPolicyState`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowPolicyState)
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:300](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L300)
-
 #### Returns
 
 [`CashuEscrowPolicyState`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowPolicyState)
-
-***
 
 ### validatePayment()
 
 > **validatePayment**(`request`): `Promise`\<[`GenericPaymentValidationResult`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationResult)\>
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:299](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L299)
-
 #### Parameters
 
 ##### request
 
-[`GenericPaymentValidationRequest`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationRequest)
+`MarketplaceDriverValidationRequest`
 
 #### Returns
 

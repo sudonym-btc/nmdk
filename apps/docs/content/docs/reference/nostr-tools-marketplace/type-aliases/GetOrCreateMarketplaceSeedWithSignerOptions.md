@@ -8,7 +8,7 @@ full: true
 
 > **GetOrCreateMarketplaceSeedWithSignerOptions** = `object`
 
-Defined in: [seed.ts:77](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L77)
+Defined in: [seed.ts:77](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L77)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [seed.ts:77](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **createdAt?**: `number`
 
-Defined in: [seed.ts:82](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L82)
+Defined in: [seed.ts:82](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L82)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [seed.ts:82](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **pool**: `Pick`\<`AbstractSimplePool`, `"querySync"`\>
 
-Defined in: [seed.ts:78](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L78)
+Defined in: [seed.ts:78](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L78)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [seed.ts:78](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **pubkey?**: `string`
 
-Defined in: [seed.ts:80](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L80)
+Defined in: [seed.ts:80](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L80)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [seed.ts:80](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **relays**: `string`[]
 
-Defined in: [seed.ts:79](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L79)
+Defined in: [seed.ts:79](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L79)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [seed.ts:79](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **signer**: [`MarketplaceSeedSigner`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSeedSigner)
 
-Defined in: [seed.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L81)
+Defined in: [seed.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L81)
 
 ## Methods
 
@@ -56,7 +56,7 @@ Defined in: [seed.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **publish**(`event`): `unknown`
 
-Defined in: [seed.ts:83](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L83)
+Defined in: [seed.ts:83](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L83)
 
 #### Parameters
 

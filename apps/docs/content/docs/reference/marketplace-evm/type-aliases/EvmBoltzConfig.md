@@ -8,7 +8,7 @@ full: true
 
 > **EvmBoltzConfig** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:137](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L137)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:139](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L139)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:137](https://github.co
 
 > **apiUrl**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:138](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L138)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:140](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L140)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:138](https://github.co
 
 > `optional` **nativeCurrencyByChainId?**: `Record`\<`number`, `string`\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:140](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L140)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:142](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L142)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:140](https://github.co
 
 > `optional` **wsUrl?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:139](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L139)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:141](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L141)

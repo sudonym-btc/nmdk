@@ -8,15 +8,15 @@ full: true
 
 > **OrderPaymentContent** = `object`
 
-Defined in: [order-lifecycle.ts:56](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L56)
+Defined in: [order-lifecycle.ts:65](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L65)
 
 ## Properties
 
-### proof
+### proof?
 
-> **proof**: [`PaymentProof`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProof)
+> `optional` **proof?**: [`PaymentProof`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProof)
 
-Defined in: [order-lifecycle.ts:57](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L57)
+Defined in: [order-lifecycle.ts:66](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L66)
 
 ***
 
@@ -24,4 +24,12 @@ Defined in: [order-lifecycle.ts:57](https://github.com/sudonym-btc/nostr-tools/b
 
 > `optional` **purpose?**: `string`
 
-Defined in: [order-lifecycle.ts:58](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L58)
+Defined in: [order-lifecycle.ts:68](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L68)
+
+***
+
+### sealedProof?
+
+> `optional` **sealedProof?**: [`SealedPaymentProof`](/docs/reference/nostr-tools-marketplace/type-aliases/SealedPaymentProof)
+
+Defined in: [order-lifecycle.ts:67](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L67)

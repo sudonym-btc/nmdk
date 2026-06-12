@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplacePaymentsApi
 
-Defined in: runtime-types.ts:927
+Defined in: [runtime-types.ts:898](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L898)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: runtime-types.ts:927
 
 > **mine**: `object`
 
-Defined in: runtime-types.ts:928
+Defined in: [runtime-types.ts:899](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L899)
 
 #### fetch()
 
@@ -40,7 +40,7 @@ Defined in: runtime-types.ts:928
 
 > **policyFor**(`payment`): [`MarketplacePaymentPolicyImplementation`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentPolicyImplementation)\<[`MarketplacePolicyPaymentState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyPaymentState)\> \| `undefined`
 
-Defined in: runtime-types.ts:936
+Defined in: [runtime-types.ts:907](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L907)
 
 #### Parameters
 
@@ -58,7 +58,7 @@ Defined in: runtime-types.ts:936
 
 > **recover**(`payment`): `AsyncIterable`\<[`MarketplacePaymentRecoveryState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryState)\>
 
-Defined in: runtime-types.ts:934
+Defined in: [runtime-types.ts:905](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L905)
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Defined in: runtime-types.ts:934
 
 > **validate**(`payment`): `Promise`\<[`MarketplacePaymentValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationResult)\>
 
-Defined in: runtime-types.ts:935
+Defined in: [runtime-types.ts:906](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L906)
 
 #### Parameters
 

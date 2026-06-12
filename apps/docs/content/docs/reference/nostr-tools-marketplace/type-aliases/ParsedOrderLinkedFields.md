@@ -8,7 +8,7 @@ full: true
 
 > **ParsedOrderLinkedFields** = `object`
 
-Defined in: [order-lifecycle.ts:37](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L37)
+Defined in: [order-lifecycle.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L46)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-lifecycle.ts:37](https://github.com/sudonym-btc/nostr-tools/b
 
 > **listingAnchor**: `string`
 
-Defined in: [order-lifecycle.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L40)
+Defined in: [order-lifecycle.ts:49](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L49)
 
 ***
 
@@ -24,15 +24,15 @@ Defined in: [order-lifecycle.ts:40](https://github.com/sudonym-btc/nostr-tools/b
 
 > **orderGroupId**: `string`
 
-Defined in: [order-lifecycle.ts:38](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L38)
+Defined in: [order-lifecycle.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L47)
 
 ***
 
 ### participants
 
-> **participants**: [`PTag`](/docs/reference/nostr-tools-marketplace/type-aliases/PTag)[]
+> **participants**: [`MarketplaceParticipantTag`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantTag)[]
 
-Defined in: [order-lifecycle.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L41)
+Defined in: [order-lifecycle.ts:50](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L50)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [order-lifecycle.ts:41](https://github.com/sudonym-btc/nostr-tools/b
 
 > **refs**: [`OrderLinkedEventRefs`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderLinkedEventRefs)
 
-Defined in: [order-lifecycle.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L42)
+Defined in: [order-lifecycle.ts:51](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L51)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [order-lifecycle.ts:42](https://github.com/sudonym-btc/nostr-tools/b
 
 > **tradeId**: `string`
 
-Defined in: [order-lifecycle.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L39)
+Defined in: [order-lifecycle.ts:48](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L48)

@@ -8,7 +8,7 @@ full: true
 
 > **EnsureMarketplaceSeedOptions** = `object`
 
-Defined in: [seed.ts:51](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L51)
+Defined in: [seed.ts:51](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L51)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [seed.ts:51](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **pool**: `Pick`\<`AbstractSimplePool`, `"querySync"`\>
 
-Defined in: [seed.ts:52](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L52)
+Defined in: [seed.ts:52](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L52)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [seed.ts:52](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **pubkey**: `string`
 
-Defined in: [seed.ts:54](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L54)
+Defined in: [seed.ts:54](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L54)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [seed.ts:54](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **relays**: `string`[]
 
-Defined in: [seed.ts:53](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L53)
+Defined in: [seed.ts:53](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L53)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Defined in: [seed.ts:53](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **create**(): \{ `event`: `Event`; `payload`: [`MarketplaceSeedPayload`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSeedPayload); \} \| `Promise`\<\{ `event`: `Event`; `payload`: [`MarketplaceSeedPayload`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSeedPayload); \}\>
 
-Defined in: [seed.ts:56](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L56)
+Defined in: [seed.ts:56](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L56)
 
 #### Returns
 
@@ -52,7 +52,7 @@ Defined in: [seed.ts:56](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **decrypt**(`event`): [`MarketplaceSeedPayload`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSeedPayload) \| `Promise`\<[`MarketplaceSeedPayload`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSeedPayload)\>
 
-Defined in: [seed.ts:55](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L55)
+Defined in: [seed.ts:55](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L55)
 
 #### Parameters
 
@@ -70,7 +70,7 @@ Defined in: [seed.ts:55](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **publish**(`event`): `unknown`
 
-Defined in: [seed.ts:59](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L59)
+Defined in: [seed.ts:59](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L59)
 
 #### Parameters
 

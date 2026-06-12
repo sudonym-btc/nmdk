@@ -8,7 +8,7 @@ full: true
 
 > **Erc20Approval** = [`EvmCall`](/docs/reference/marketplace-evm/type-aliases/EvmCall) & `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:105](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L105)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:105](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L105)
 
 ## Type Declaration
 

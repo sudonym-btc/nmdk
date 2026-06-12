@@ -8,7 +8,7 @@ full: true
 
 > **ListingImage** = `object`
 
-Defined in: [listing.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/listing.ts#L27)
+Defined in: [listing.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing.ts#L27)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [listing.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/2365
 
 > `optional` **dimensions?**: `string`
 
-Defined in: [listing.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/listing.ts#L29)
+Defined in: [listing.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing.ts#L29)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [listing.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/2365
 
 > **url**: `string`
 
-Defined in: [listing.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/listing.ts#L28)
+Defined in: [listing.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing.ts#L28)

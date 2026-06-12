@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentPublishedState** = `object`
 
-Defined in: runtime-types.ts:526
+Defined in: [runtime-types.ts:495](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L495)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:526
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: runtime-types.ts:530
+Defined in: [runtime-types.ts:499](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L499)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:530
 
 > **event**: `Event`
 
-Defined in: runtime-types.ts:528
+Defined in: [runtime-types.ts:497](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L497)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:528
 
 > **proof**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)
 
-Defined in: runtime-types.ts:529
+Defined in: [runtime-types.ts:498](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L498)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: runtime-types.ts:529
 
 > **type**: `"payment_published"`
 
-Defined in: runtime-types.ts:527
+Defined in: [runtime-types.ts:496](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L496)

@@ -8,7 +8,7 @@ full: true
 
 > **ParsedMarketplaceAuctionBid** = `object`
 
-Defined in: auction.ts:81
+Defined in: [auction.ts:86](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L86)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: auction.ts:81
 
 > **amount**: [`MarketplaceAmount`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAmount)
 
-Defined in: auction.ts:87
+Defined in: [auction.ts:91](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L91)
 
 ***
 
@@ -24,15 +24,7 @@ Defined in: auction.ts:87
 
 > **auctionAnchor**: `string`
 
-Defined in: auction.ts:85
-
-***
-
-### bidId
-
-> **bidId**: `string`
-
-Defined in: auction.ts:83
+Defined in: [auction.ts:89](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L89)
 
 ***
 
@@ -40,7 +32,7 @@ Defined in: auction.ts:83
 
 > **content**: [`MarketplaceAuctionBidContent`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAuctionBidContent)
 
-Defined in: auction.ts:90
+Defined in: [auction.ts:95](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L95)
 
 ***
 
@@ -48,7 +40,7 @@ Defined in: auction.ts:90
 
 > **event**: `Event`
 
-Defined in: auction.ts:82
+Defined in: [auction.ts:87](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L87)
 
 ***
 
@@ -56,7 +48,15 @@ Defined in: auction.ts:82
 
 > **listingAnchor**: `string`
 
-Defined in: auction.ts:86
+Defined in: [auction.ts:90](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L90)
+
+***
+
+### participantProofKeys
+
+> **participantProofKeys**: [`ParticipantProofKeyTag`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofKeyTag)[]
+
+Defined in: [auction.ts:94](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L94)
 
 ***
 
@@ -64,15 +64,15 @@ Defined in: auction.ts:86
 
 > **participantProofs**: [`ParticipantProofTag`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofTag)[]
 
-Defined in: auction.ts:89
+Defined in: [auction.ts:93](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L93)
 
 ***
 
 ### participants
 
-> **participants**: [`PTag`](/docs/reference/nostr-tools-marketplace/type-aliases/PTag)[]
+> **participants**: [`MarketplaceParticipantTag`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantTag)[]
 
-Defined in: auction.ts:88
+Defined in: [auction.ts:92](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L92)
 
 ***
 
@@ -80,4 +80,4 @@ Defined in: auction.ts:88
 
 > **tradeId**: `string`
 
-Defined in: auction.ts:84
+Defined in: [auction.ts:88](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L88)

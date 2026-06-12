@@ -8,7 +8,7 @@ full: true
 
 > **EvmTradeIndexActivity** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:50](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L50)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:50](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L50)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:50](https://
 
 > **chains**: [`EvmChainIndexActivity`](/docs/reference/marketplace-evm/type-aliases/EvmChainIndexActivity)[]
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:53](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L53)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:53](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L53)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:53](https://
 
 > **tradeIndex**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:51](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L51)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:51](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L51)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:51](https://
 
 > **used**: `boolean`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:52](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L52)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:52](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L52)

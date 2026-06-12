@@ -6,22 +6,6 @@ full: true
 
 # Type Alias: GenericPaymentProof
 
-> **GenericPaymentProof** = `object`
+> **GenericPaymentProof** = `MarketplaceDriverPaymentProof`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:106](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L106)
-
-## Properties
-
-### method
-
-> **method**: `string`
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:107](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L107)
-
-***
-
-### params
-
-> **params**: `Record`\<`string`, `unknown`\>
-
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:108](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/types.ts#L108)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:80](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L80)

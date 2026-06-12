@@ -8,7 +8,7 @@ full: true
 
 > **ParsedReview** = `object`
 
-Defined in: [review.ts:5](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L5)
+Defined in: [review.ts:18](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L18)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [review.ts:5](https://github.com/sudonym-btc/nostr-tools/blob/236524
 
 > **content**: `string`
 
-Defined in: [review.ts:13](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L13)
+Defined in: [review.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L27)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [review.ts:13](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **event**: `Event`
 
-Defined in: [review.ts:6](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L6)
+Defined in: [review.ts:19](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L19)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [review.ts:6](https://github.com/sudonym-btc/nostr-tools/blob/236524
 
 > **listingAnchor**: `string`
 
-Defined in: [review.ts:9](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L9)
+Defined in: [review.ts:22](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L22)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [review.ts:9](https://github.com/sudonym-btc/nostr-tools/blob/236524
 
 > `optional` **orderAnchor?**: `string`
 
-Defined in: [review.ts:11](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L11)
+Defined in: [review.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L24)
 
 ***
 
@@ -48,7 +48,23 @@ Defined in: [review.ts:11](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **orderGroupId**: `string`
 
-Defined in: [review.ts:7](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L7)
+Defined in: [review.ts:20](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L20)
+
+***
+
+### participantProofKeys
+
+> **participantProofKeys**: [`ParticipantProofKeyTag`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofKeyTag)[]
+
+Defined in: [review.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L26)
+
+***
+
+### participantProofs
+
+> **participantProofs**: [`ParticipantProofTag`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofTag)[]
+
+Defined in: [review.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L25)
 
 ***
 
@@ -56,15 +72,7 @@ Defined in: [review.ts:7](https://github.com/sudonym-btc/nostr-tools/blob/236524
 
 > **rating**: `number`
 
-Defined in: [review.ts:10](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L10)
-
-***
-
-### reviewProof?
-
-> `optional` **reviewProof?**: `string`[]
-
-Defined in: [review.ts:12](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L12)
+Defined in: [review.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L23)
 
 ***
 
@@ -72,4 +80,4 @@ Defined in: [review.ts:12](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 > **tradeId**: `string`
 
-Defined in: [review.ts:8](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L8)
+Defined in: [review.ts:21](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L21)

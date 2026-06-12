@@ -6,6 +6,6 @@ full: true
 
 # Type Alias: GenericPaymentRecoveryState
 
-> **GenericPaymentRecoveryState** = \{ `data?`: `Record`\<`string`, `unknown`\>; `type`: `"noop"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `status`: `string`; `type`: `"progress"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `type`: `"recovered"`; \}
+> **GenericPaymentRecoveryState** = `Exclude`\<`MarketplaceDriverRecoveryState`\<[`GenericPaymentProof`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentProof)\>, \{ `type`: `"settlement_ready"`; \}\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:200](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/marketplace/types.ts#L200)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:98](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L98)

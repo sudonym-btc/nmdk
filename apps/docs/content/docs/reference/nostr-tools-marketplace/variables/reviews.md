@@ -8,9 +8,23 @@ full: true
 
 > `const` **reviews**: `object`
 
-Defined in: [review.ts:75](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/review.ts#L75)
+Defined in: [review.ts:181](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L181)
 
 ## Type Declaration
+
+### filter
+
+> **filter**: (`query`) => `Filter` = `reviewSearchFilter`
+
+#### Parameters
+
+##### query?
+
+[`ReviewSearchQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/ReviewSearchQuery) = `{}`
+
+#### Returns
+
+`Filter`
 
 ### parse
 
@@ -25,6 +39,60 @@ Defined in: [review.ts:75](https://github.com/sudonym-btc/nostr-tools/blob/23652
 #### Returns
 
 [`ParsedReview`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedReview)
+
+### resolveProof
+
+> **resolveProof**: (`review`) => [`ParticipantProofResolution`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofResolution) = `resolveReviewProof`
+
+#### Parameters
+
+##### review
+
+[`ParsedReview`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedReview)
+
+#### Returns
+
+[`ParticipantProofResolution`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofResolution)
+
+### revealedBuyerPubkey
+
+> **revealedBuyerPubkey**: (`review`) => `string` \| `undefined` = `revealedReviewBuyerPubkey`
+
+#### Parameters
+
+##### review
+
+[`ParsedReview`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedReview)
+
+#### Returns
+
+`string` \| `undefined`
+
+### search
+
+> **search**: (`pool`, `relays`, `query`, `options`) => `Promise`\<[`ParsedReview`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedReview)[]\> = `searchReviews`
+
+#### Parameters
+
+##### pool
+
+`ReviewQueryPool`
+
+##### relays
+
+`string`[]
+
+##### query?
+
+[`ReviewSearchQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/ReviewSearchQuery) = `{}`
+
+##### options?
+
+[`ReviewSearchOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ReviewSearchOptions) = `{}`
+
+#### Returns
+
+`Promise`\<[`ParsedReview`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedReview)[]\>
 
 ### template
 

@@ -8,7 +8,7 @@ full: true
 
 > **EvmExecutionOptions** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:64](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L64)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:65](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L65)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:64](https://github.com
 
 > **chainId**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:65](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L65)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:66](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L66)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:65](https://github.com
 
 > `optional` **operationId?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:66](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L66)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:67](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L67)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:66](https://github.com
 
 > `optional` **waitForReceipt?**: `boolean`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:67](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L67)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:68](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L68)

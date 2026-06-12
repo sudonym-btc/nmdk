@@ -54,3 +54,11 @@
 	path = nips/auction-nip
 	url = git@github.com:sudonym-btc/nips.git
 	branch = codex/marketplace-auction-nip
+[submodule "dependencies/marketplace-location-h3-ts"]
+	path = dependencies/marketplace-location-h3-ts
+	url = git@github.com:sudonym-btc/marketplace-location-h3-ts.git
+	branch = main
+[submodule "dependencies/marketplace-location-interface-ts"]
+	path = dependencies/marketplace-location-interface-ts
+	url = git@github.com:sudonym-btc/marketplace-location-interface-ts.git
+	branch = main

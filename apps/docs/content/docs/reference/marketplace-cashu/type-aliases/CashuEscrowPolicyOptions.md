@@ -8,7 +8,7 @@ full: true
 
 > **CashuEscrowPolicyOptions** = `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:47](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L47)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:51](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L51)
 
 ## Properties
 
@@ -16,7 +16,15 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:4
 
 > `optional` **appId?**: `string`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:50](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L50)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:54](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L54)
+
+***
+
+### logger?
+
+> `optional` **logger?**: `MarketplaceDriverLogger`
+
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:59](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L59)
 
 ***
 
@@ -24,7 +32,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:5
 
 > **mints**: [`CashuMintConfig`](/docs/reference/marketplace-cashu/type-aliases/CashuMintConfig)[]
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:48](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L48)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:52](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L52)
 
 ***
 
@@ -32,7 +40,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:4
 
 > `optional` **now?**: () => `number`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:54](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L54)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:58](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L58)
 
 #### Returns
 
@@ -44,7 +52,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:5
 
 > `optional` **quotePaymentTimeoutMs?**: `number`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:52](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L52)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:56](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L56)
 
 ***
 
@@ -52,7 +60,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:5
 
 > `optional` **quotePollIntervalMs?**: `number`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:51](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L51)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:55](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L55)
 
 ***
 
@@ -60,7 +68,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:5
 
 > **storage**: [`CashuEscrowStorage`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowStorage)
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:49](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L49)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:53](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L53)
 
 ***
 
@@ -68,7 +76,7 @@ Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:4
 
 > `optional` **walletFactory?**: (`mint`) => `Wallet`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:53](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/d549493bcba974136daa096b8ffbd92bdc5e3aa2/src/marketplace/escrowPolicy.ts#L53)
+Defined in: [dependencies/marketplace-cashu-ts/src/marketplace/escrowPolicy.ts:57](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/marketplace/escrowPolicy.ts#L57)
 
 #### Parameters
 

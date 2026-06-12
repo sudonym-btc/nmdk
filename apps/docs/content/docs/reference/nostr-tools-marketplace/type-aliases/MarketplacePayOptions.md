@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePayOptions** = `object`
 
-Defined in: runtime-types.ts:622
+Defined in: [runtime-types.ts:576](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L576)
 
 ## Properties
 
@@ -16,7 +16,15 @@ Defined in: runtime-types.ts:622
 
 > `optional` **accountIndex?**: `number`
 
-Defined in: runtime-types.ts:623
+Defined in: [runtime-types.ts:577](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L577)
+
+***
+
+### identityProof?
+
+> `optional` **identityProof?**: [`MarketplaceIdentityProofMode`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceIdentityProofMode)
+
+Defined in: [runtime-types.ts:582](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L582)
 
 ***
 
@@ -24,7 +32,15 @@ Defined in: runtime-types.ts:623
 
 > `optional` **now?**: `number`
 
-Defined in: runtime-types.ts:625
+Defined in: [runtime-types.ts:579](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L579)
+
+***
+
+### paymentProofPrivacy?
+
+> `optional` **paymentProofPrivacy?**: [`PaymentProofPrivacy`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofPrivacy)
+
+Defined in: [runtime-types.ts:583](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L583)
 
 ***
 
@@ -32,7 +48,7 @@ Defined in: runtime-types.ts:625
 
 > `optional` **route?**: [`MarketplacePaymentRoute`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRoute)
 
-Defined in: runtime-types.ts:626
+Defined in: [runtime-types.ts:580](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L580)
 
 ***
 
@@ -40,7 +56,7 @@ Defined in: runtime-types.ts:626
 
 > `optional` **seed?**: `string`
 
-Defined in: runtime-types.ts:624
+Defined in: [runtime-types.ts:578](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L578)
 
 ***
 
@@ -48,4 +64,4 @@ Defined in: runtime-types.ts:624
 
 > `optional` **settlementId?**: `string`
 
-Defined in: runtime-types.ts:627
+Defined in: [runtime-types.ts:581](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L581)

@@ -6,138 +6,108 @@ full: true
 
 # Type Alias: MarketplacePaymentValidationExpected
 
-> **MarketplacePaymentValidationExpected** = `object`
+> **MarketplacePaymentValidationExpected** = `MarketplaceDriverValidationExpected` & `object`
 
-Defined in: [payment-validation.ts:5](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L5)
+Defined in: [payment-validation.ts:12](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-validation.ts#L12)
 
-## Properties
+## Type Declaration
 
 ### amount?
 
 > `optional` **amount?**: [`MarketplaceAmount`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAmount)
 
-Defined in: [payment-validation.ts:9](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L9)
-
-***
-
 ### asset?
 
 > `optional` **asset?**: `object`
 
-Defined in: [payment-validation.ts:10](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L10)
-
-#### assetId?
+#### asset.assetId?
 
 > `optional` **assetId?**: `string`
 
-#### decimals?
+#### asset.decimals?
 
 > `optional` **decimals?**: `number`
 
-#### denomination?
+#### asset.denomination?
 
 > `optional` **denomination?**: `string`
-
-***
 
 ### contract?
 
 > `optional` **contract?**: `object`
 
-Defined in: [payment-validation.ts:15](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L15)
-
-#### address?
+#### contract.address?
 
 > `optional` **address?**: `string`
 
-#### bytecodeHash?
+#### contract.bytecodeHash?
 
 > `optional` **bytecodeHash?**: `string`
 
-#### chainId?
+#### contract.chainId?
 
 > `optional` **chainId?**: `number`
 
-#### params?
+#### contract.params?
 
 > `optional` **params?**: `Record`\<`string`, `unknown`\>
 
-#### type?
+#### contract.type?
 
 > `optional` **type?**: `string`
-
-***
 
 ### fee?
 
 > `optional` **fee?**: [`MarketplaceAmount`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAmount)
 
-Defined in: [payment-validation.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L27)
-
-***
-
 ### listingAnchor
 
 > **listingAnchor**: `string`
-
-Defined in: [payment-validation.ts:8](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L8)
-
-***
 
 ### participants?
 
 > `optional` **participants?**: `object`
 
-Defined in: [payment-validation.ts:22](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L22)
+#### participants.arbiter?
 
-#### buyer?
+> `optional` **arbiter?**: `object`
+
+#### participants.arbiter.address?
+
+> `optional` **address?**: `string`
+
+#### participants.arbiter.pubkey?
+
+> `optional` **pubkey?**: `string`
+
+#### participants.buyer?
 
 > `optional` **buyer?**: `object`
 
-##### buyer.address?
+#### participants.buyer.address?
 
 > `optional` **address?**: `string`
 
-##### buyer.pubkey?
+#### participants.buyer.pubkey?
 
 > `optional` **pubkey?**: `string`
 
-#### escrow?
-
-> `optional` **escrow?**: `object`
-
-##### escrow.address?
-
-> `optional` **address?**: `string`
-
-##### escrow.pubkey?
-
-> `optional` **pubkey?**: `string`
-
-#### seller?
+#### participants.seller?
 
 > `optional` **seller?**: `object`
 
-##### seller.address?
+#### participants.seller.address?
 
 > `optional` **address?**: `string`
 
-##### seller.pubkey?
+#### participants.seller.pubkey?
 
 > `optional` **pubkey?**: `string`
-
-***
 
 ### settlementId
 
 > **settlementId**: `string`
 
-Defined in: [payment-validation.ts:6](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L6)
-
-***
-
 ### tradeId
 
 > **tradeId**: `string`
-
-Defined in: [payment-validation.ts:7](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/payment-validation.ts#L7)

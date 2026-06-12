@@ -8,7 +8,7 @@ full: true
 
 > **EvmProtocolActivityProbeContext** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:9](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L9)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:9](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L9)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:9](https://g
 
 > **chain**: [`ResolvedEvmChainConfig`](/docs/reference/marketplace-evm/type-aliases/ResolvedEvmChainConfig)
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:10](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L10)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:10](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L10)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:10](https://
 
 > **ownerAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L12)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L12)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:12](https://
 
 > **seed**: [`EvmSeedConfig`](/docs/reference/marketplace-evm/type-aliases/EvmSeedConfig)
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L14)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L14)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:14](https://
 
 > **smartAccountAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L13)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L13)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:13](https://
 
 > **tradeIndex**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:11](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/discovery/types.ts#L11)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:11](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L11)

@@ -26,13 +26,19 @@
     "pay:invoice": "node scripts/pay-invoice.mjs",
     "seed": "node scripts/seed-local-relay.mjs",
     "seed:signet": "node scripts/seed-signet-keys.mjs",
+    "trust:ca": "./scripts/trust-local-ca.sh",
+    "up:arbiters": "./scripts/up-arbiters.sh",
+    "down:arbiters": "./scripts/down-arbiters.sh",
     "up:cashu": "./scripts/up-cashu.sh",
-    "up:evm": "./scripts/up-evm.sh"
+    "up:evm": "./scripts/up-evm.sh",
+    "up:lightning": "./scripts/up-marketplace-lightning.sh"
   },
   "workspaces": [
     "apps/docs",
     "dependencies/nostr-tools",
     "dependencies/marketplace-driver-interface-ts",
+    "dependencies/marketplace-location-interface-ts",
+    "dependencies/marketplace-location-h3-ts",
     "dependencies/marketplace-app-ts",
     "dependencies/marketplace-cashu-ts",
     "dependencies/marketplace-evm-ts",

@@ -8,7 +8,7 @@ full: true
 
 > **EvmEscrowCallBuilder** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:81](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L81)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:81](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L81)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:81](https://git
 
 > **arbitrate**(`params`): [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:86](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L86)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:86](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L86)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:86](https://git
 
 > **claim**(`params`): [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:84](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L84)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:84](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L84)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:84](https://git
 
 > **createTrade**(`params`): [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)[]
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:82](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L82)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:82](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L82)
 
 #### Parameters
 
@@ -70,7 +70,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:82](https://git
 
 > **recycle**(`params`): [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:83](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L83)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:83](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L83)
 
 #### Parameters
 
@@ -88,7 +88,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:83](https://git
 
 > **release**(`params`): [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:85](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L85)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:85](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L85)
 
 #### Parameters
 
@@ -106,7 +106,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:85](https://git
 
 > **withdraw**(`params`): [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:87](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/escrow/types.ts#L87)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:87](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L87)
 
 #### Parameters
 

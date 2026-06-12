@@ -8,7 +8,7 @@ full: true
 
 > **SwapResumeResult** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:90](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L90)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:91](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L91)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:90](https://gith
 
 > `optional` **latestStatus?**: [`BoltzStatusUpdate`](/docs/reference/marketplace-evm/type-aliases/BoltzStatusUpdate)
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:92](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L92)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:93](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L93)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:92](https://gith
 
 > **operation**: [`EvmOperationRecord`](/docs/reference/marketplace-evm/type-aliases/EvmOperationRecord)
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:91](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L91)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:92](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L92)

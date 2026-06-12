@@ -8,7 +8,7 @@ full: true
 
 > **OrderPaymentSettlementOutput** = `object`
 
-Defined in: [order-lifecycle.ts:92](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L92)
+Defined in: [order-lifecycle.ts:107](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L107)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-lifecycle.ts:92](https://github.com/sudonym-btc/nostr-tools/b
 
 > `optional` **amount?**: `string`
 
-Defined in: [order-lifecycle.ts:95](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L95)
+Defined in: [order-lifecycle.ts:110](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L110)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order-lifecycle.ts:95](https://github.com/sudonym-btc/nostr-tools/b
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: [order-lifecycle.ts:97](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L97)
+Defined in: [order-lifecycle.ts:112](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L112)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [order-lifecycle.ts:97](https://github.com/sudonym-btc/nostr-tools/b
 
 > `optional` **proofYs?**: `string`[]
 
-Defined in: [order-lifecycle.ts:96](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L96)
+Defined in: [order-lifecycle.ts:111](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L111)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [order-lifecycle.ts:96](https://github.com/sudonym-btc/nostr-tools/b
 
 > `optional` **pubkey?**: `string`
 
-Defined in: [order-lifecycle.ts:94](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L94)
+Defined in: [order-lifecycle.ts:109](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L109)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [order-lifecycle.ts:94](https://github.com/sudonym-btc/nostr-tools/b
 
 > `optional` **role?**: `string`
 
-Defined in: [order-lifecycle.ts:93](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L93)
+Defined in: [order-lifecycle.ts:108](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L108)

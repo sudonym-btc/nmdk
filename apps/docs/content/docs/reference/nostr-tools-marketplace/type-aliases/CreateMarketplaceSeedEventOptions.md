@@ -8,7 +8,7 @@ full: true
 
 > **CreateMarketplaceSeedEventOptions** = `object`
 
-Defined in: [seed.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L23)
+Defined in: [seed.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L23)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [seed.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **createdAt?**: `number`
 
-Defined in: [seed.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L27)
+Defined in: [seed.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L27)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [seed.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **identityPubkey?**: `string`
 
-Defined in: [seed.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L25)
+Defined in: [seed.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L25)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [seed.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **identitySecretKey**: `Uint8Array`
 
-Defined in: [seed.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L24)
+Defined in: [seed.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L24)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [seed.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **nonce?**: `Uint8Array`
 
-Defined in: [seed.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L28)
+Defined in: [seed.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L28)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [seed.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > `optional` **seed?**: `string`
 
-Defined in: [seed.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L26)
+Defined in: [seed.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L26)

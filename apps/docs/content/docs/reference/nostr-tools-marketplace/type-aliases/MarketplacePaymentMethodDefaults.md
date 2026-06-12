@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentMethodDefaults** = `object`
 
-Defined in: runtime-types.ts:239
+Defined in: [runtime-types.ts:251](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L251)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:239
 
 > `optional` **cashuPubkey?**: `string`
 
-Defined in: runtime-types.ts:243
+Defined in: [runtime-types.ts:255](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L255)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:243
 
 > `optional` **evmAddress?**: `string`
 
-Defined in: runtime-types.ts:241
+Defined in: [runtime-types.ts:253](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L253)
 
 ***
 
@@ -32,12 +32,12 @@ Defined in: runtime-types.ts:241
 
 > `optional` **evmAddressProof?**: `string`
 
-Defined in: runtime-types.ts:242
+Defined in: [runtime-types.ts:254](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L254)
 
 ***
 
-### trustedEscrowPubkeys?
+### trustedArbiterPubkeys?
 
-> `optional` **trustedEscrowPubkeys?**: `string`[]
+> `optional` **trustedArbiterPubkeys?**: `string`[]
 
-Defined in: runtime-types.ts:240
+Defined in: [runtime-types.ts:252](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L252)

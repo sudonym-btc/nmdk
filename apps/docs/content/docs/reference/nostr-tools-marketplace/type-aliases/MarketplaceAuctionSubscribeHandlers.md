@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionSubscribeHandlers** = `object`
 
-Defined in: auction-query.ts:26
+Defined in: [auction-query.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L26)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: auction-query.ts:26
 
 > `optional` **onauction?**: (`auction`) => `void`
 
-Defined in: auction-query.ts:28
+Defined in: [auction-query.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L28)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: auction-query.ts:28
 
 > `optional` **onauctions?**: (`auctions`) => `void`
 
-Defined in: auction-query.ts:29
+Defined in: [auction-query.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L29)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: auction-query.ts:29
 
 > `optional` **onclose?**: (`reasons`) => `void`
 
-Defined in: auction-query.ts:32
+Defined in: [auction-query.ts:32](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L32)
 
 #### Parameters
 
@@ -70,7 +70,7 @@ Defined in: auction-query.ts:32
 
 > `optional` **oneose?**: () => `void`
 
-Defined in: auction-query.ts:31
+Defined in: [auction-query.ts:31](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L31)
 
 #### Returns
 
@@ -82,7 +82,7 @@ Defined in: auction-query.ts:31
 
 > `optional` **onevent?**: (`auction`) => `void`
 
-Defined in: auction-query.ts:27
+Defined in: [auction-query.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L27)
 
 #### Parameters
 
@@ -100,7 +100,7 @@ Defined in: auction-query.ts:27
 
 > `optional` **oninvalid?**: (`event`, `error`) => `void`
 
-Defined in: auction-query.ts:30
+Defined in: [auction-query.ts:30](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L30)
 
 #### Parameters
 

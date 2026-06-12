@@ -8,7 +8,7 @@ full: true
 
 > **SwapAmountLimits** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:35](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L35)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:36](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L36)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:35](https://gith
 
 > `optional` **amountSats?**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:40](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L40)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:41](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L41)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:40](https://gith
 
 > **direction**: `"swap-in"` \| `"swap-out"`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:37](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L37)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:38](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L38)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:37](https://gith
 
 > **from**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:38](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L38)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:39](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L39)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:38](https://gith
 
 > **maximal**: `number` \| `null`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:42](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L42)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:43](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L43)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:42](https://gith
 
 > **minimal**: `number` \| `null`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:41](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L41)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:42](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L42)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:41](https://gith
 
 > `optional` **pairHash?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:43](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L43)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:44](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L44)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:43](https://gith
 
 > **source**: `"boltz"`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:36](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L36)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:37](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L37)
 
 ***
 
@@ -72,4 +72,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:36](https://gith
 
 > **to**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:39](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/types.ts#L39)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:40](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L40)

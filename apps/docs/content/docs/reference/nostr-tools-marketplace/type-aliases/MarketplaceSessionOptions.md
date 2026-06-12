@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceSessionOptions** = `Omit`\<[`MarketplaceRuntimeOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceRuntimeOptions), `"pool"` \| `"relays"` \| `"identity"` \| `"seed"` \| `"signer"` \| `"publish"`\> & `object`
 
-Defined in: runtime-types.ts:752
+Defined in: [runtime-types.ts:711](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L711)
 
 ## Type Declaration
 

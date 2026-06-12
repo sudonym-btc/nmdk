@@ -1,13 +1,13 @@
 {
   "title": "Interfaces",
   "pages": [
+    "MarketplaceArbitrationApi",
+    "MarketplaceArbitrationServicesApi",
+    "MarketplaceArbitrationServiceSelectionsApi",
     "MarketplaceAuctionBidGroupsApi",
     "MarketplaceAuctionCompletesApi",
     "MarketplaceAuctionsApi",
     "MarketplaceClient",
-    "MarketplaceEscrowApi",
-    "MarketplaceEscrowServicesApi",
-    "MarketplaceEscrowServiceSelectionsApi",
     "MarketplaceListingsApi",
     "MarketplaceOrderGroupsApi",
     "MarketplaceOrdersApi",

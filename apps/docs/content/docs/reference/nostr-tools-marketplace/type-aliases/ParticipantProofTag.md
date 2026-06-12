@@ -8,15 +8,23 @@ full: true
 
 > **ParticipantProofTag** = `object`
 
-Defined in: [order.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L39)
+Defined in: participant-proof.ts:21
 
 ## Properties
+
+### mode
+
+> **mode**: [`ParticipantProofMode`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofMode)
+
+Defined in: participant-proof.ts:26
+
+***
 
 ### participantPubkey
 
 > **participantPubkey**: `string`
 
-Defined in: [order.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L41)
+Defined in: participant-proof.ts:24
 
 ***
 
@@ -24,23 +32,15 @@ Defined in: [order.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/236524
 
 > **payload**: `string`
 
-Defined in: [order.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L45)
+Defined in: participant-proof.ts:27
 
 ***
 
-### payloadHash
+### proofId
 
-> **payloadHash**: `string`
+> **proofId**: `string`
 
-Defined in: [order.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L44)
-
-***
-
-### recipientPubkey
-
-> **recipientPubkey**: `string`
-
-Defined in: [order.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L42)
+Defined in: participant-proof.ts:25
 
 ***
 
@@ -48,12 +48,12 @@ Defined in: [order.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/236524
 
 > **role**: `string`
 
-Defined in: [order.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L40)
+Defined in: participant-proof.ts:23
 
 ***
 
-### scheme
+### version
 
-> **scheme**: `string`
+> **version**: `1`
 
-Defined in: [order.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L43)
+Defined in: participant-proof.ts:22

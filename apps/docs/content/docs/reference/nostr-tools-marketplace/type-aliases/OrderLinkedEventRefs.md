@@ -8,7 +8,7 @@ full: true
 
 > **OrderLinkedEventRefs** = `object`
 
-Defined in: [order-lifecycle.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L26)
+Defined in: [order-lifecycle.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L35)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-lifecycle.ts:26](https://github.com/sudonym-btc/nostr-tools/b
 
 > **auctionBids**: `string`[]
 
-Defined in: [order-lifecycle.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L28)
+Defined in: [order-lifecycle.ts:37](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L37)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order-lifecycle.ts:28](https://github.com/sudonym-btc/nostr-tools/b
 
 > **auctionCompletes**: `string`[]
 
-Defined in: [order-lifecycle.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L29)
+Defined in: [order-lifecycle.ts:38](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L38)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [order-lifecycle.ts:29](https://github.com/sudonym-btc/nostr-tools/b
 
 > **cancels**: `string`[]
 
-Defined in: [order-lifecycle.ts:34](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L34)
+Defined in: [order-lifecycle.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L43)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [order-lifecycle.ts:34](https://github.com/sudonym-btc/nostr-tools/b
 
 > **orders**: `string`[]
 
-Defined in: [order-lifecycle.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L27)
+Defined in: [order-lifecycle.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L36)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [order-lifecycle.ts:27](https://github.com/sudonym-btc/nostr-tools/b
 
 > **paymentAcks**: `string`[]
 
-Defined in: [order-lifecycle.ts:31](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L31)
+Defined in: [order-lifecycle.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L40)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [order-lifecycle.ts:31](https://github.com/sudonym-btc/nostr-tools/b
 
 > **paymentNacks**: `string`[]
 
-Defined in: [order-lifecycle.ts:32](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L32)
+Defined in: [order-lifecycle.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L41)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [order-lifecycle.ts:32](https://github.com/sudonym-btc/nostr-tools/b
 
 > **payments**: `string`[]
 
-Defined in: [order-lifecycle.ts:30](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L30)
+Defined in: [order-lifecycle.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L39)
 
 ***
 
@@ -72,4 +72,4 @@ Defined in: [order-lifecycle.ts:30](https://github.com/sudonym-btc/nostr-tools/b
 
 > **settlements**: `string`[]
 
-Defined in: [order-lifecycle.ts:33](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L33)
+Defined in: [order-lifecycle.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L42)

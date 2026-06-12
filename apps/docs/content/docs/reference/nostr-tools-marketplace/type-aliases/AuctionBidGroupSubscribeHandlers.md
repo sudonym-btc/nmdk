@@ -8,7 +8,7 @@ full: true
 
 > **AuctionBidGroupSubscribeHandlers** = `object`
 
-Defined in: auction-bid-group.ts:93
+Defined in: [auction-bid-group.ts:92](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L92)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: auction-bid-group.ts:93
 
 > `optional` **onclose?**: (`reasons`) => `void`
 
-Defined in: auction-bid-group.ts:99
+Defined in: [auction-bid-group.ts:98](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L98)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: auction-bid-group.ts:99
 
 > `optional` **oneose?**: () => `void`
 
-Defined in: auction-bid-group.ts:98
+Defined in: [auction-bid-group.ts:97](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L97)
 
 #### Returns
 
@@ -46,7 +46,7 @@ Defined in: auction-bid-group.ts:98
 
 > `optional` **onevent?**: (`event`) => `void`
 
-Defined in: auction-bid-group.ts:94
+Defined in: [auction-bid-group.ts:93](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L93)
 
 #### Parameters
 
@@ -64,7 +64,7 @@ Defined in: auction-bid-group.ts:94
 
 > `optional` **ongroup?**: (`group`) => `void`
 
-Defined in: auction-bid-group.ts:95
+Defined in: [auction-bid-group.ts:94](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L94)
 
 #### Parameters
 
@@ -82,7 +82,7 @@ Defined in: auction-bid-group.ts:95
 
 > `optional` **ongroups?**: (`groups`) => `void`
 
-Defined in: auction-bid-group.ts:96
+Defined in: [auction-bid-group.ts:95](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L95)
 
 #### Parameters
 
@@ -100,7 +100,7 @@ Defined in: auction-bid-group.ts:96
 
 > `optional` **oninvalid?**: (`event`, `error`) => `void`
 
-Defined in: auction-bid-group.ts:97
+Defined in: [auction-bid-group.ts:96](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L96)
 
 #### Parameters
 

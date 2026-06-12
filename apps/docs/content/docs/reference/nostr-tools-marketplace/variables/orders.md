@@ -8,7 +8,7 @@ full: true
 
 > `const` **orders**: `object`
 
-Defined in: [order.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order.ts#L397)
+Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L370)
 
 ## Type Declaration
 
@@ -196,7 +196,21 @@ Defined in: [order.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 ###### participants
 
-`Iterable`\<[`PTag`](/docs/reference/nostr-tools-marketplace/type-aliases/PTag) \| `OrderGroupParticipantEntry`\>
+`Iterable`\<[`MarketplaceParticipantTag`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantTag) \| [`MarketplaceParticipantEntry`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantEntry)\>
+
+##### Returns
+
+`string`
+
+#### groups.idForEvent
+
+> **idForEvent**: (`event`) => `string` = `participantGroupIdForEvent`
+
+##### Parameters
+
+###### event
+
+`NostrEvent` \| [`ParticipantGroupEvent`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantGroupEvent)
 
 ##### Returns
 
@@ -210,7 +224,7 @@ Defined in: [order.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 ###### order
 
-`NostrEvent` \| [`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder)
+`NostrEvent` \| [`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder) \| [`ParsedMarketplaceAuctionBid`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionBid)
 
 ##### Returns
 
@@ -256,6 +270,48 @@ Defined in: [order.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 [`OrderGroupEvent`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupEvent)
 
+#### groups.parseParticipantEvent
+
+> **parseParticipantEvent**: (`event`) => [`ParticipantGroupEvent`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantGroupEvent) = `parseParticipantGroupEvent`
+
+##### Parameters
+
+###### event
+
+`NostrEvent` \| [`ParticipantGroupEvent`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantGroupEvent)
+
+##### Returns
+
+[`ParticipantGroupEvent`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantGroupEvent)
+
+#### groups.participantEntries
+
+> **participantEntries**: (`event`) => [`MarketplaceParticipantEntry`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantEntry)[] = `participantGroupRoleParticipants`
+
+##### Parameters
+
+###### event
+
+`NostrEvent` \| [`ParticipantGroupEvent`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantGroupEvent)
+
+##### Returns
+
+[`MarketplaceParticipantEntry`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantEntry)[]
+
+#### groups.participantPubkeys
+
+> **participantPubkeys**: (`event`) => `string`[] = `participantGroupParticipantPubkeys`
+
+##### Parameters
+
+###### event
+
+`NostrEvent` \| [`ParticipantGroupEvent`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantGroupEvent)
+
+##### Returns
+
+`string`[]
+
 #### groups.participants
 
 > **participants**: (`order`) => `string`[] = `orderGroupParticipantPubkeys`
@@ -264,7 +320,7 @@ Defined in: [order.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 ###### order
 
-`NostrEvent` \| [`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder)
+`NostrEvent` \| [`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder) \| [`ParsedMarketplaceAuctionBid`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionBid)
 
 ##### Returns
 
@@ -498,6 +554,20 @@ Defined in: [order.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/23652
 
 [`ParsedOrderCancel`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderCancel)
 
+### parseParticipantProofKeyTag
+
+> **parseParticipantProofKeyTag**: (`tag`) => `ProofDisclosureKeyTag` \| `null`
+
+#### Parameters
+
+##### tag
+
+`string`[]
+
+#### Returns
+
+`ProofDisclosureKeyTag` \| `null`
+
 ### parseParticipantProofTag
 
 > **parseParticipantProofTag**: (`tag`) => [`ParticipantProofTag`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofTag) \| `null`
@@ -567,6 +637,20 @@ Defined in: [order.ts:397](https://github.com/sudonym-btc/nostr-tools/blob/23652
 #### Returns
 
 [`ParsedOrderPaymentSettlement`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentSettlement)
+
+### participantProofKeyTag
+
+> **participantProofKeyTag**: (`key`) => `string`[]
+
+#### Parameters
+
+##### key
+
+`ProofDisclosureKeyTag`
+
+#### Returns
+
+`string`[]
 
 ### participantProofTag
 

@@ -8,7 +8,7 @@ full: true
 
 > **EvmAccountManager** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:17](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/accounts.ts#L17)
+Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:17](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/accounts.ts#L17)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:17](https://github.
 
 > **executorForTradeIndex**(`tradeIndex`): [`EvmExecutor`](/docs/reference/marketplace-evm/type-aliases/EvmExecutor)
 
-Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:20](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/accounts.ts#L20)
+Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:20](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/accounts.ts#L20)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:20](https://github.
 
 > **ownerAccount**(`tradeIndex`, `chainId?`): `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:18](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/accounts.ts#L18)
+Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:18](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/accounts.ts#L18)
 
 #### Parameters
 
@@ -176,7 +176,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:18](https://github.
 
 > **smartAccountAddress**(`tradeIndex`, `chainId`): `Promise`\<`` `0x${string}` ``\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:19](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/accounts.ts#L19)
+Defined in: [dependencies/marketplace-evm-ts/src/accounts.ts:19](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/accounts.ts#L19)
 
 #### Parameters
 

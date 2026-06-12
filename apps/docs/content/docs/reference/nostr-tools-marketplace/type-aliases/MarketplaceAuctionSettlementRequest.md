@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionSettlementRequest** = `object`
 
-Defined in: runtime-types.ts:393
+Defined in: [runtime-types.ts:373](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L373)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:393
 
 > `optional` **arbiterPubkey?**: `string`
 
-Defined in: runtime-types.ts:397
+Defined in: [runtime-types.ts:377](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L377)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:397
 
 > `optional` **auctionAnchor?**: `string`
 
-Defined in: runtime-types.ts:395
+Defined in: [runtime-types.ts:375](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L375)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:395
 
 > `optional` **auctionId?**: `string`
 
-Defined in: runtime-types.ts:394
+Defined in: [runtime-types.ts:374](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L374)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: runtime-types.ts:394
 
 > `optional` **bidEvents?**: `Event`[]
 
-Defined in: runtime-types.ts:404
+Defined in: [runtime-types.ts:384](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L384)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: runtime-types.ts:404
 
 > `optional` **bids?**: [`MarketplaceAuctionBidSettlementInput`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAuctionBidSettlementInput)[]
 
-Defined in: runtime-types.ts:403
+Defined in: [runtime-types.ts:383](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L383)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: runtime-types.ts:403
 
 > `optional` **currency?**: `string`
 
-Defined in: runtime-types.ts:398
+Defined in: [runtime-types.ts:378](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L378)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: runtime-types.ts:398
 
 > `optional` **decimals?**: `number`
 
-Defined in: runtime-types.ts:399
+Defined in: [runtime-types.ts:379](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L379)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: runtime-types.ts:399
 
 > `optional` **endAt?**: `number`
 
-Defined in: runtime-types.ts:401
+Defined in: [runtime-types.ts:381](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L381)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: runtime-types.ts:401
 
 > `optional` **listingAnchor?**: `string`
 
-Defined in: runtime-types.ts:396
+Defined in: [runtime-types.ts:376](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L376)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: runtime-types.ts:396
 
 > `optional` **now?**: `number`
 
-Defined in: runtime-types.ts:406
+Defined in: [runtime-types.ts:386](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L386)
 
 ***
 
@@ -96,7 +96,7 @@ Defined in: runtime-types.ts:406
 
 > `optional` **paymentEvents?**: `Event`[]
 
-Defined in: runtime-types.ts:405
+Defined in: [runtime-types.ts:385](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L385)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: runtime-types.ts:405
 
 > `optional` **startAt?**: `number`
 
-Defined in: runtime-types.ts:400
+Defined in: [runtime-types.ts:380](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L380)
 
 ***
 
@@ -112,7 +112,7 @@ Defined in: runtime-types.ts:400
 
 > `optional` **startingBid?**: `string`
 
-Defined in: runtime-types.ts:402
+Defined in: [runtime-types.ts:382](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L382)
 
 ***
 
@@ -120,15 +120,7 @@ Defined in: runtime-types.ts:402
 
 > `optional` **targetOrder?**: `Partial`\<[`OrderTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderTemplate)\>
 
-Defined in: runtime-types.ts:409
-
-***
-
-### targetTradeId?
-
-> `optional` **targetTradeId?**: `string`
-
-Defined in: runtime-types.ts:407
+Defined in: [runtime-types.ts:388](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L388)
 
 ***
 
@@ -136,4 +128,4 @@ Defined in: runtime-types.ts:407
 
 > `optional` **targetUnlockAt?**: `number`
 
-Defined in: runtime-types.ts:408
+Defined in: [runtime-types.ts:387](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L387)

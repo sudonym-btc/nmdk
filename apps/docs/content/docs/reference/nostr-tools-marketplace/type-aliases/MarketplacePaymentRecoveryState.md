@@ -6,6 +6,6 @@ full: true
 
 # Type Alias: MarketplacePaymentRecoveryState
 
-> **MarketplacePaymentRecoveryState** = \{ `data?`: `Record`\<`string`, `unknown`\>; `type`: `"noop"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `status`: `string`; `type`: `"progress"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `type`: `"recovered"`; \} \| \{ `data?`: `Record`\<`string`, `unknown`\>; `proof`: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence); `type`: `"settlement_ready"`; \}
+> **MarketplacePaymentRecoveryState** = `MarketplaceDriverRecoveryState`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)\>
 
-Defined in: runtime-types.ts:344
+Defined in: [runtime-types.ts:328](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L328)

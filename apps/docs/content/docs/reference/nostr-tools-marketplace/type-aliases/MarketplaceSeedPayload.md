@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceSeedPayload** = `object`
 
-Defined in: [seed.ts:13](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L13)
+Defined in: [seed.ts:13](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L13)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [seed.ts:13](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **seed**: `string`
 
-Defined in: [seed.ts:15](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L15)
+Defined in: [seed.ts:15](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L15)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [seed.ts:15](https://github.com/sudonym-btc/nostr-tools/blob/236524e
 
 > **v**: `1`
 
-Defined in: [seed.ts:14](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/seed.ts#L14)
+Defined in: [seed.ts:14](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L14)

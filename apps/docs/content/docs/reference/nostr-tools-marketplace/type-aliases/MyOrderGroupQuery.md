@@ -8,7 +8,7 @@ full: true
 
 > **MyOrderGroupQuery** = `Omit`\<[`OrderQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderQuery), `"identity"`\> & `object`
 
-Defined in: [order-group-types.ts:135](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-group-types.ts#L135)
+Defined in: [order-group-types.ts:134](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L134)
 
 ## Type Declaration
 

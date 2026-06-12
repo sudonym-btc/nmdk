@@ -8,7 +8,7 @@ full: true
 
 > **OrderPaymentAckContent** = `object`
 
-Defined in: [order-lifecycle.ts:68](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L68)
+Defined in: [order-lifecycle.ts:83](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L83)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-lifecycle.ts:68](https://github.com/sudonym-btc/nostr-tools/b
 
 > `optional` **message?**: `string`
 
-Defined in: [order-lifecycle.ts:70](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L70)
+Defined in: [order-lifecycle.ts:85](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L85)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [order-lifecycle.ts:70](https://github.com/sudonym-btc/nostr-tools/b
 
 > **status**: `PaymentAckStatus`
 
-Defined in: [order-lifecycle.ts:69](https://github.com/sudonym-btc/nostr-tools/blob/236524e125b7ac58f1c0f101908f88959eb0a153/marketplace/order-lifecycle.ts#L69)
+Defined in: [order-lifecycle.ts:84](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L84)

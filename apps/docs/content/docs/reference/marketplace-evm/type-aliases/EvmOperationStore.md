@@ -8,7 +8,7 @@ full: true
 
 > **EvmOperationStore** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:117](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L117)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:118](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L118)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:117](https://github.co
 
 > **delete**(`id`): `Promise`\<`void`\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:121](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L121)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:122](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L122)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:121](https://github.co
 
 > **get**(`id`): `Promise`\<[`EvmOperationRecord`](/docs/reference/marketplace-evm/type-aliases/EvmOperationRecord) \| `null`\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:118](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L118)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:119](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L119)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:118](https://github.co
 
 > **list**(`query?`): `Promise`\<[`EvmOperationRecord`](/docs/reference/marketplace-evm/type-aliases/EvmOperationRecord)[]\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:120](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L120)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:121](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L121)
 
 #### Parameters
 
@@ -70,7 +70,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:120](https://github.co
 
 > **put**(`record`): `Promise`\<`void`\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:119](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/types.ts#L119)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:120](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L120)
 
 #### Parameters
 

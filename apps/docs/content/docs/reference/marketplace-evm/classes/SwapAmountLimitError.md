@@ -6,7 +6,7 @@ full: true
 
 # Class: SwapAmountLimitError
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/service.ts#L12)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:12](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/service.ts#L12)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:12](https://gi
 
 > **new SwapAmountLimitError**(`reason`, `limits`): `SwapAmountLimitError`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:16](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/service.ts#L16)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:16](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/service.ts#L16)
 
 #### Parameters
 
@@ -56,7 +56,7 @@ Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 > `readonly` **code**: `"PAYMENT_AMOUNT_LIMIT"` = `'PAYMENT_AMOUNT_LIMIT'`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/service.ts#L14)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/service.ts#L14)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:14](https://gi
 
 > `readonly` **limits**: [`SwapAmountLimits`](/docs/reference/marketplace-evm/type-aliases/SwapAmountLimits)
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:18](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/service.ts#L18)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:18](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/service.ts#L18)
 
 ***
 
@@ -84,7 +84,7 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1075
 
 > `readonly` **name**: `"SwapAmountLimitError"` = `'SwapAmountLimitError'`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/service.ts#L13)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:13](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/service.ts#L13)
 
 #### Overrides
 
@@ -96,7 +96,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:13](https://gi
 
 > `readonly` **reason**: `LimitReason`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:17](https://github.com/sudonym-btc/marketplace-evm-ts/blob/d5d8e551031feaa7faa270fa18bbf2a3a880df46/src/swaps/service.ts#L17)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/service.ts:17](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/service.ts#L17)
 
 ***
 

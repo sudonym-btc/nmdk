@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceHighWatermarkDiscovery** = `object`
 
-Defined in: runtime-types.ts:219
+Defined in: [runtime-types.ts:231](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L231)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: runtime-types.ts:219
 
 > **converged**: `boolean`
 
-Defined in: runtime-types.ts:227
+Defined in: [runtime-types.ts:239](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L239)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: runtime-types.ts:227
 
 > **maxUsedIndex**: `number`
 
-Defined in: runtime-types.ts:221
+Defined in: [runtime-types.ts:233](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L233)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: runtime-types.ts:221
 
 > **nextUnusedIndex**: `number`
 
-Defined in: runtime-types.ts:222
+Defined in: [runtime-types.ts:234](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L234)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: runtime-types.ts:222
 
 > **passes**: [`MarketplaceHighWatermarkPass`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceHighWatermarkPass)[]
 
-Defined in: runtime-types.ts:224
+Defined in: [runtime-types.ts:236](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L236)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: runtime-types.ts:224
 
 > **policyResults**: [`MarketplacePolicyWatermarkDiscovery`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyWatermarkDiscovery)[]
 
-Defined in: runtime-types.ts:225
+Defined in: [runtime-types.ts:237](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L237)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: runtime-types.ts:225
 
 > **recoveryActions**: `unknown`[]
 
-Defined in: runtime-types.ts:226
+Defined in: [runtime-types.ts:238](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L238)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: runtime-types.ts:226
 
 > **seed**: `string`
 
-Defined in: runtime-types.ts:220
+Defined in: [runtime-types.ts:232](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L232)
 
 ***
 
@@ -72,4 +72,4 @@ Defined in: runtime-types.ts:220
 
 > **unusedWindow**: `number`
 
-Defined in: runtime-types.ts:223
+Defined in: [runtime-types.ts:235](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L235)
