@@ -697,7 +697,7 @@ function completedReviewFixture(fixture) {
   const payment = sign(
     marketplace.orders.paymentTemplate({
       tradeId,
-      listingAnchor,
+      anchors: [{ value: listingAnchor, marker: 'listing' }],
       amount,
       participants,
       refs: { orders: [order.id] },
@@ -711,7 +711,6 @@ function completedReviewFixture(fixture) {
           },
         },
       },
-      purpose: 'order_payment',
       extraTags: sharedTags,
       createdAt: createdAt + 1,
     }),
@@ -720,7 +719,7 @@ function completedReviewFixture(fixture) {
   const settlement = sign(
     marketplace.orders.paymentSettlementTemplate({
       tradeId,
-      listingAnchor,
+      anchors: [{ value: listingAnchor, marker: 'listing' }],
       participants,
       refs: { payments: [payment.id] },
       method: 'seed',
@@ -858,6 +857,8 @@ function buildSeed(cashuConfig, evmConfig, relay, publicRelay = relay, lnbits = 
   const profileOptions = id => ({ lud16: lud16For(id) })
   const profiles = [
     profile(accounts.buyer, 'NMDK Demo Buyer', 'Deterministic local buyer account for marketplace testing.', profileOptions('buyer')),
+    profile(accounts.buyerOne, 'NMDK Buyer One', 'Deterministic local buyer account for competing bid testing.', profileOptions('buyerOne')),
+    profile(accounts.buyerTwo, 'NMDK Buyer Two', 'Second deterministic local buyer account for competing bid testing.', profileOptions('buyerTwo')),
     profile(accounts.reviewBuyerAda, 'Avery Stone', 'Seed buyer with completed local marketplace orders.', profileOptions('reviewBuyerAda')),
     profile(accounts.reviewBuyerBen, 'Ben Rowan', 'Seed buyer profile used for review fixtures.', profileOptions('reviewBuyerBen')),
     profile(accounts.reviewBuyerCora, 'Cora Vale', 'Seed buyer profile used for public review proof tests.', profileOptions('reviewBuyerCora')),
@@ -1269,7 +1270,7 @@ function buildSeed(cashuConfig, evmConfig, relay, publicRelay = relay, lnbits = 
       accounts: Object.fromEntries(Object.entries(accounts).map(([id, account]) => [
         id,
         {
-          role: id.startsWith('seller') ? 'seller' : id.startsWith('arbiter') ? 'arbiter' : id,
+          role: id.startsWith('seller') ? 'seller' : id.startsWith('arbiter') ? 'arbiter' : id.startsWith('buyer') ? 'buyer' : id,
           privateKey: account.privateKey,
           pubkey: account.pubkey,
           marketplaceSeed: deterministicMarketplaceSeed(id),

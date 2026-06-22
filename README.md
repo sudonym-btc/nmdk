@@ -79,6 +79,12 @@ creates deterministic LNbits users plus zap-enabled LNURL pay links for seeded
 marketplace profiles. The profile `lud16` values use the
 `lnbits.marketplace.test` domain. The EVM stack deploys `MultiEscrow` for both
 normal escrow payments and auction bid lockups.
+The liquidity initializer provisions large local-regtest channels by default
+and rerunning it repairs drained edges by opening another channel when outbound
+liquidity falls below `MARKETPLACE_EDGE_MIN_OUTBOUND_SAT`. Override
+`MARKETPLACE_EDGE_CHANNEL_SIZE_SAT`, `MARKETPLACE_EDGE_CHANNEL_PUSH_SAT`,
+`MARKETPLACE_EDGE_MIN_OUTBOUND_SAT`, or
+`MARKETPLACE_EDGE_MAX_CHANNELS_PER_EDGE` to tune those dev-channel limits.
 It writes `dependencies/marketplace-app-ts/.env.local` for the browser demo and
 `.nmdk.local.env` for shell consumers from the generated stack configs. No
 custom development DNS or parent application checkout is required.

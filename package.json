@@ -22,7 +22,7 @@
     "docs:check": "npm run docs:api && npm --workspace @sudonym-btc/nmdk-docs run types:check",
     "up": "./scripts/up.sh",
     "down": "./scripts/down.sh",
-    "demo": "cd dependencies/marketplace-app-ts && npm run dev",
+    "demo": "npm --workspace @sudonym-btc/marketplace-app-ts run dev -- --port 5178",
     "pay:invoice": "node scripts/pay-invoice.mjs",
     "seed": "node scripts/seed-local-relay.mjs",
     "seed:signet": "node scripts/seed-signet-keys.mjs",

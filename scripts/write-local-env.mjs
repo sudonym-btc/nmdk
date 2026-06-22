@@ -23,6 +23,8 @@ function envLine(key, value) {
 
 const demoAccountLabels = Object.freeze({
   buyer: 'Buyer',
+  buyerOne: 'Buyer One',
+  buyerTwo: 'Buyer Two',
   sellerOpen: 'Seller - no methods',
   sellerEvm: 'Seller - EVM',
   sellerCashu: 'Seller - Cashu',

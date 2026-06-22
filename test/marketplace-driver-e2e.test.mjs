@@ -22,9 +22,14 @@ import { MemoryCashuEscrowStore } from '../dependencies/marketplace-cashu-ts/dis
 import { deriveCashuEscrowKey } from '../dependencies/marketplace-cashu-ts/dist/seed.js'
 import { MemoryOperationStore } from '../dependencies/marketplace-evm-ts/dist/utils/store.js'
 import {
+  accountFromPrivateKey,
+  anvilFunder,
   createClients,
+  escrowBalance,
   fundAccount,
-  randomTradeId,
+  readTrade,
+  sendCall,
+  signArbitrate,
 } from '../dependencies/marketplace-evm-ts/test/integration/support/evm.mjs'
 import {
   arbitrumAaConfig,
@@ -39,6 +44,16 @@ const cashuConfigPath = resolve(cashuStackDir, 'data/config/marketplace-cashu-st
 const relays = ['ws://127.0.0.1:18080']
 const createdAt = 1_712_678_400
 const zeroAddress = '0x0000000000000000000000000000000000000000'
+const sellerEvmPrivateKey = '0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d'
+const arbiterEvmPrivateKey = '0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a'
+
+function uniqueTestId(prefix) {
+  return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(16).slice(2)}`
+}
+
+function uniqueAccountIndex(base) {
+  return base + Math.floor(Math.random() * 1_000_000)
+}
 
 function sign(template, secretKey = generateSecretKey()) {
   return finalizeEvent(template, secretKey)
@@ -106,9 +121,25 @@ async function canFetch(url) {
   }
 }
 
+async function canRpc(url) {
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', method: 'eth_chainId', params: [], id: 1 }),
+      signal: AbortSignal.timeout(1_000),
+    })
+    if (!response.ok) return false
+    const payload = await response.json()
+    return Boolean(payload.result)
+  } catch {
+    return false
+  }
+}
+
 async function requireEvmStack(t) {
   const config = await readEvmStackConfig()
-  if (!(await canFetch(`${config.boltz.apiUrl}/nodes`))) {
+  if (!(await canRpc(config.chains.arbitrumRegtest.rpcUrl))) {
     t.skip('NMDK EVM stack is not running; run `npm run up` first')
     return null
   }
@@ -229,7 +260,6 @@ async function runMarketplaceBid(api, listing, bid, options) {
   const paymentEvent = paymentState.event
   const parsedBid = api.auctions.parseBid(bidEvent)
   const parsedPayment = marketplace.orders.parsePayment(paymentEvent)
-  assert.equal(parsedPayment.content.purpose, 'auction_bid')
   assert.deepEqual(parsedPayment.refs.auctionBids, [bidEvent.id])
   assert.ok(parsedPayment.content.proof.paymentProof?.params.recycleArgs)
   return { states, bidEvent, paymentEvent, bid: parsedBid, payment: parsedPayment }
@@ -265,7 +295,6 @@ async function runCashuMarketplacePayment(api, listing, order, options, cashuCon
     assert.ok(bidState)
     assert.ok(paymentState)
     const parsedPayment = marketplace.orders.parsePayment(paymentState.event)
-    assert.equal(parsedPayment.content.purpose, 'auction_bid')
     assert.deepEqual(parsedPayment.refs.auctionBids, [bidState.event.id])
     assert.ok(parsedPayment.content.proof.paymentProof?.params.recycleArgs)
     return { states, bidEvent: bidState.event, paymentEvent: paymentState.event, payment: parsedPayment }
@@ -292,8 +321,8 @@ test('marketplace.pay creates and validates EVM USDT and tBTC escrow payments th
   const seed = '1'.repeat(64)
 
   for (const [symbol, value, accountIndex] of [
-    ['USDT', 1_000_000n, 31],
-    ['TBTC', 100_000_000_000_000n, 32],
+    ['USDT', 1_000_000n, uniqueAccountIndex(31)],
+    ['TBTC', 100_000_000_000_000n, uniqueAccountIndex(32)],
   ]) {
     const store = new MemoryOperationStore()
     const policy = createEvmEscrowPolicy({ chains: [chain], operationStore: store, appId: 'marketplace' })
@@ -323,10 +352,10 @@ test('marketplace.pay creates and validates EVM USDT and tBTC escrow payments th
     const api = marketplace.bind(pool, relays, {
       seed,
       publish: async () => {},
-      orderPolicies: [policy],
+      orderDrivers: [policy],
     })
     await runMarketplacePayment(api, listing, {
-      tradeId: `evm-${symbol.toLowerCase()}-escrow-e2e`,
+      tradeId: uniqueTestId(`evm-${symbol.toLowerCase()}-escrow-e2e`),
       listingAnchor: `${listing.kind}:${listing.pubkey}:${listing.tags.find(tag => tag[0] === 'd')?.[1]}`,
       amount: { value: value.toString(), denomination: asset.denomination, decimals: asset.decimals },
       createdAt,
@@ -346,7 +375,7 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
   const arbiterSecretKey = generateSecretKey()
   const listing = listingEvent(sellerSecretKey)
   const seed = '2'.repeat(64)
-  const accountIndex = 41
+  const accountIndex = uniqueAccountIndex(41)
   const value = 1_000_000n
   const store = new MemoryOperationStore()
   const policy = createEvmAuctionPolicy({ chains: [chain], operationStore: store, appId: 'marketplace' })
@@ -374,7 +403,7 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
   const listingAnchor = `${listing.kind}:${listing.pubkey}:${listing.tags.find(tag => tag[0] === 'd')?.[1]}`
   const auction = sign(
     marketplace.auctions.template({
-      d: 'evm-usdt-auction-e2e',
+      d: uniqueTestId('evm-usdt-auction-e2e'),
       listingAnchor,
       arbiterPubkey: getPublicKey(arbiterSecretKey),
       currency: asset.denomination,
@@ -386,7 +415,7 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
   const api = marketplace.bind(pool, relays, {
     seed,
     publish: async () => {},
-    bidPolicies: [policy],
+    auctionDrivers: [policy],
   })
   await runMarketplaceBid(api, listing, {
     amount: { value: value.toString(), denomination: asset.denomination, decimals: asset.decimals },
@@ -395,6 +424,157 @@ test('marketplace.auctions.bid places an EVM USDT auction bid through the real d
     accountIndex,
     auction,
   })
+})
+
+test('marketplace-created EVM escrow payment settles on real MultiEscrow infrastructure with a real Cashu payment alongside it', { timeout: 240_000 }, async t => {
+  const config = await requireEvmStack(t)
+  if (!config) return
+  const cashuConfig = await requireCashuStack(t)
+  if (!cashuConfig) return
+  const chain = evmChainConfig(config)
+  const { publicClient, walletClient } = createClients(config)
+  const sellerEvmAccount = accountFromPrivateKey(sellerEvmPrivateKey)
+  const arbiterEvmAccount = accountFromPrivateKey(arbiterEvmPrivateKey)
+  const sellerSecretKey = generateSecretKey()
+  const buyerSecretKey = generateSecretKey()
+  const arbiterSecretKey = generateSecretKey()
+  const listing = listingEvent(sellerSecretKey)
+  const seed = '6'.repeat(64)
+  const accountIndex = uniqueAccountIndex(61)
+  const value = 1_250_000n
+  const paymentFactor = 700n
+  const bondFactor = 0n
+  const store = new MemoryOperationStore()
+  const policy = createEvmEscrowPolicy({ chains: [chain], operationStore: store, appId: 'marketplace' })
+  const asset = policy.assets().find(candidate =>
+    candidate.assetAddress.toLowerCase() === config.chains.arbitrumRegtest.assets.USDT.address.toLowerCase()
+  )
+  assert.ok(asset)
+  const client = createMarketplaceEvmClient({ chains: [chain], operationStore: store, seed, tradeIndex: accountIndex })
+  const smartAccount = await client.executor.getAddress(chain.chainId)
+  await fundAccount(config, publicClient, { address: smartAccount }, { usdt: value })
+  const { pool } = routeEvents({
+    listing,
+    policy,
+    asset,
+    serviceType: 'EVM',
+    serviceParams: {
+      policyType: 'evm:multi-escrow',
+      arbiterAddress: arbiterEvmAccount.address,
+      contractAddress: chain.multiEscrowAddress,
+      contractBytecodeHash: chain.multiEscrowBytecodeHash,
+      chainId: chain.chainId,
+    },
+    sellerSecretKey,
+    arbiterSecretKey,
+    sellerEvmAddress: sellerEvmAccount.address,
+  })
+  const published = []
+  const api = marketplace.bind(pool, relays, {
+    seed,
+    publish: event => published.push(event),
+    orderDrivers: [policy],
+  })
+  const listingAnchor = `${listing.kind}:${listing.pubkey}:${listing.tags.find(tag => tag[0] === 'd')?.[1]}`
+  const { paymentEvent } = await runMarketplacePayment(api, listing, {
+    tradeId: uniqueTestId('evm-usdt-settlement-e2e'),
+    listingAnchor,
+    amount: { value: value.toString(), denomination: asset.denomination, decimals: asset.decimals },
+    createdAt,
+  }, {
+    accountIndex,
+  })
+  const payment = marketplace.orders.parsePayment(paymentEvent)
+  const proof = payment.content.proof.paymentProof
+  assert.ok(proof)
+  assert.equal(proof.driver, 'evm:multi-escrow')
+  assert.equal(proof.params.policyType, 'evm:multi-escrow')
+  assert.equal(proof.params.buyerAddress.toLowerCase(), smartAccount.toLowerCase())
+  const evmTradeId = proof.params.tradeId.startsWith('0x') ? proof.params.tradeId : `0x${proof.params.tradeId}`
+
+  const sellerBalanceBefore = await escrowBalance(publicClient, chain.multiEscrowAddress, sellerEvmAccount.address, asset.assetAddress)
+  const buyerBalanceBefore = await escrowBalance(publicClient, chain.multiEscrowAddress, smartAccount, asset.assetAddress)
+  const signature = await signArbitrate(
+    config,
+    arbiterEvmAccount,
+    chain.multiEscrowAddress,
+    evmTradeId,
+    paymentFactor,
+    bondFactor,
+  )
+  await sendCall(publicClient, walletClient, accountFromPrivateKey(anvilFunder.privateKey), client.escrow.arbitrate({
+    tradeId: evmTradeId,
+    contractAddress: chain.multiEscrowAddress,
+    paymentFactor,
+    bondFactor,
+    signature,
+  }))
+
+  const sellerBalanceAfter = await escrowBalance(publicClient, chain.multiEscrowAddress, sellerEvmAccount.address, asset.assetAddress)
+  const buyerBalanceAfter = await escrowBalance(publicClient, chain.multiEscrowAddress, smartAccount, asset.assetAddress)
+  assert.equal(sellerBalanceAfter - sellerBalanceBefore, value * paymentFactor / 1000n)
+  assert.equal(buyerBalanceAfter - buyerBalanceBefore, value - (value * paymentFactor / 1000n))
+  const trade = await readTrade(publicClient, chain.multiEscrowAddress, evmTradeId)
+  assert.equal(trade[0].toLowerCase(), zeroAddress)
+
+  const usdMint = cashuConfig.cashu.mints.usd
+  const mint = {
+    mintUrl: usdMint.url,
+    unit: usdMint.unit,
+    denomination: usdMint.denomination,
+    decimals: usdMint.decimals,
+  }
+  const cashuSeller = deriveCashuEscrowKey('7'.repeat(64), {
+    accountIndex: 0,
+    mintUrl: mint.mintUrl,
+    unit: mint.unit,
+    role: 'settlement',
+  })
+  const cashuArbiter = deriveCashuEscrowKey('8'.repeat(64), {
+    accountIndex: 0,
+    mintUrl: mint.mintUrl,
+    unit: mint.unit,
+    role: 'settlement',
+  })
+  const cashuPolicy = createCashuEscrowPolicy({
+    mints: [mint],
+    storage: new MemoryCashuEscrowStore(),
+    appId: 'marketplace',
+  })
+  const cashuAsset = cashuPolicy.assets()[0]
+  const { pool: cashuPool } = routeEvents({
+    listing,
+    policy: cashuPolicy,
+    asset: cashuAsset,
+    serviceType: 'CASHU',
+    serviceParams: {
+      policyType: cashuPolicy.id,
+      policyHash: cashuPolicy.policies()[0].hash,
+      mintUrl: mint.mintUrl,
+      unit: mint.unit,
+      cashuPubkey: cashuArbiter.publicKey,
+    },
+    sellerSecretKey,
+    arbiterSecretKey,
+    sellerCashuPubkey: cashuSeller.publicKey,
+  })
+  const cashuApi = marketplace.bind(cashuPool, relays, {
+    seed: '7'.repeat(64),
+    publish: event => published.push(event),
+    orderDrivers: [cashuPolicy],
+  })
+  const { paymentEvent: cashuPaymentEvent } = await runCashuMarketplacePayment(cashuApi, listing, {
+    tradeId: uniqueTestId('cashu-usd-sidecar-e2e'),
+    listingAnchor,
+    amount: { value: '2500', denomination: 'USD', decimals: 2 },
+    createdAt,
+  }, {
+    accountIndex: uniqueAccountIndex(71),
+  }, cashuConfig)
+  const cashuPayment = marketplace.orders.parsePayment(cashuPaymentEvent)
+  assert.equal(cashuPayment.content.proof.paymentProof?.driver, cashuPolicy.id)
+  assert.equal(cashuPayment.content.proof.paymentProof?.params.policyType, cashuPolicy.id)
+  assert.equal(cashuPayment.content.proof.paymentProof?.params.mint, mint.mintUrl)
 })
 
 test('marketplace pay and bid create Cashu USD proofs through the real usd mint', { timeout: 180_000 }, async t => {
@@ -449,7 +629,7 @@ test('marketplace pay and bid create Cashu USD proofs through the real usd mint'
     const api = marketplace.bind(pool, relays, {
       seed,
       publish: async () => {},
-      ...(bid ? { bidPolicies: [policy] } : { orderPolicies: [policy] }),
+      ...(bid ? { auctionDrivers: [policy] } : { orderDrivers: [policy] }),
     })
     const listingAnchor = `${listing.kind}:${listing.pubkey}:${listing.tags.find(tag => tag[0] === 'd')?.[1]}`
     const auction = bid
