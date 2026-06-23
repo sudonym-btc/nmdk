@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceSessionSeedApi
 
-Defined in: [runtime-types.ts:946](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L946)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1307](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1307)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [runtime-types.ts:946](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **created**: `boolean`
 
-Defined in: [runtime-types.ts:947](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L947)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1308](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1308)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [runtime-types.ts:947](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **event?**: `NostrEvent`
 
-Defined in: [runtime-types.ts:948](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L948)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1309](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1309)
 
 ## Methods
 
@@ -30,7 +30,7 @@ Defined in: [runtime-types.ts:948](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **ensureCreated**(`options?`): `Promise`\<[`MarketplaceSessionSeedEnsureResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSessionSeedEnsureResult)\>
 
-Defined in: [runtime-types.ts:949](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L949)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1310](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1310)
 
 #### Parameters
 
@@ -41,3 +41,25 @@ Defined in: [runtime-types.ts:949](https://github.com/sudonym-btc/nostr-tools/bl
 #### Returns
 
 `Promise`\<[`MarketplaceSessionSeedEnsureResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSessionSeedEnsureResult)\>
+
+***
+
+### owns()
+
+> **owns**(`pubkey`, `path?`): `boolean`
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1311](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1311)
+
+#### Parameters
+
+##### pubkey
+
+`string`
+
+##### path?
+
+[`MarketplaceSessionSeedOwnershipPath`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSessionSeedOwnershipPath)
+
+#### Returns
+
+`boolean`

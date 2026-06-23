@@ -8,4 +8,4 @@ full: true
 
 > **MarketplacePolicyPaymentState** = [`MarketplacePolicyPaymentRequiredState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyPaymentRequiredState) \| [`MarketplacePolicyPaymentProgressState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyPaymentProgressState) \| [`MarketplacePolicyPaymentPaidState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyPaymentPaidState) \| [`MarketplacePolicyPaymentCompletedState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyPaymentCompletedState)
 
-Defined in: [runtime-types.ts:471](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L471)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:537](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L537)

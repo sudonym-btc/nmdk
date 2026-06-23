@@ -194,15 +194,15 @@ Re-exports [GenericPaymentProof](/docs/reference/marketplace-evm/type-aliases/Ge
 
 ***
 
-### GenericPaymentRecoveryItem
+### GenericPaymentSweepInput
 
-Re-exports [GenericPaymentRecoveryItem](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryItem)
+Re-exports [GenericPaymentSweepInput](/docs/reference/marketplace-evm/type-aliases/GenericPaymentSweepInput)
 
 ***
 
-### GenericPaymentRecoveryState
+### GenericPaymentSweepState
 
-Re-exports [GenericPaymentRecoveryState](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryState)
+Re-exports [GenericPaymentSweepState](/docs/reference/marketplace-evm/type-aliases/GenericPaymentSweepState)
 
 ***
 
@@ -221,3 +221,15 @@ Re-exports [GenericPaymentValidationResult](/docs/reference/marketplace-evm/type
 ### GenericPolicyPaymentState
 
 Re-exports [GenericPolicyPaymentState](/docs/reference/marketplace-evm/type-aliases/GenericPolicyPaymentState)
+
+***
+
+### GenericSwapResumeContext
+
+Re-exports [GenericSwapResumeContext](/docs/reference/marketplace-evm/type-aliases/GenericSwapResumeContext)
+
+***
+
+### GenericSwapResumeState
+
+Re-exports [GenericSwapResumeState](/docs/reference/marketplace-evm/type-aliases/GenericSwapResumeState)

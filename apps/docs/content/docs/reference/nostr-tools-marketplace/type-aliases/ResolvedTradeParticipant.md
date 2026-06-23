@@ -8,7 +8,7 @@ full: true
 
 > **ResolvedTradeParticipant** = `object`
 
-Defined in: [order-group-types.ts:54](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L54)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:56](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L56)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-group-types.ts:54](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **authorizationEventId?**: `string`
 
-Defined in: [order-group-types.ts:60](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L60)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:62](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L62)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order-group-types.ts:60](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **error?**: `string`
 
-Defined in: [order-group-types.ts:61](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L61)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:63](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L63)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [order-group-types.ts:61](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **proofId?**: `string`
 
-Defined in: [order-group-types.ts:59](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L59)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:61](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L61)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [order-group-types.ts:59](https://github.com/sudonym-btc/nostr-tools
 
 > **proofStatus**: [`ParticipantResolutionStatus`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantResolutionStatus)
 
-Defined in: [order-group-types.ts:58](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L58)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:60](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L60)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [order-group-types.ts:58](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **realPubkey?**: `string`
 
-Defined in: [order-group-types.ts:57](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L57)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:59](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L59)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [order-group-types.ts:57](https://github.com/sudonym-btc/nostr-tools
 
 > **role**: `OrderGroupRole`
 
-Defined in: [order-group-types.ts:55](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L55)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:57](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L57)
 
 ***
 
@@ -64,4 +64,4 @@ Defined in: [order-group-types.ts:55](https://github.com/sudonym-btc/nostr-tools
 
 > **tradePubkey**: `string`
 
-Defined in: [order-group-types.ts:56](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L56)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:58](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L58)

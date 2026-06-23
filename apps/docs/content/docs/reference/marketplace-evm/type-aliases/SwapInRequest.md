@@ -8,7 +8,7 @@ full: true
 
 > **SwapInRequest** = [`SwapAttemptRequest`](/docs/reference/marketplace-evm/type-aliases/SwapAttemptRequest) & `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L14)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:14](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L14)
 
 ## Type Declaration
 
@@ -43,3 +43,23 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:14](https://gith
 ### postClaimCalls?
 
 > `optional` **postClaimCalls?**: [`NamedEvmCall`](/docs/reference/marketplace-evm/type-aliases/NamedEvmCall)[]
+
+### routeVia?
+
+> `optional` **routeVia?**: `object`
+
+#### routeVia.assetAddress
+
+> **assetAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
+
+#### routeVia.boltzCurrency
+
+> **boltzCurrency**: `string`
+
+#### routeVia.decimals
+
+> **decimals**: `number`
+
+#### routeVia.quoteCurrency
+
+> **quoteCurrency**: `string`

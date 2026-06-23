@@ -6,11 +6,11 @@ full: true
 
 # Interface: MarketplaceSession
 
-Defined in: [runtime-types.ts:952](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L952)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1314](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1314)
 
 ## Extends
 
-- [`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient)
+- `Omit`\<[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient), `"orders"` \| `"auctions"`\>
 
 ## Properties
 
@@ -18,7 +18,7 @@ Defined in: [runtime-types.ts:952](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **arbitration**: [`MarketplaceArbitrationApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceArbitrationApi)
 
-Defined in: [runtime-types.ts:926](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L926)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1280](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1280)
 
 #### Inherited from
 
@@ -30,7 +30,7 @@ Defined in: [runtime-types.ts:926](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **arbitrationServices**: [`MarketplaceArbitrationServicesApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceArbitrationServicesApi)
 
-Defined in: [runtime-types.ts:918](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L918)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1272](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1272)
 
 #### Inherited from
 
@@ -42,7 +42,7 @@ Defined in: [runtime-types.ts:918](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **arbitrationServiceSelections**: [`MarketplaceArbitrationServiceSelectionsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceArbitrationServiceSelectionsApi)
 
-Defined in: [runtime-types.ts:919](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L919)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1273](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1273)
 
 #### Inherited from
 
@@ -52,13 +52,17 @@ Defined in: [runtime-types.ts:919](https://github.com/sudonym-btc/nostr-tools/bl
 
 ### auctions
 
-> **auctions**: [`MarketplaceAuctionsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceAuctionsApi)
+> **auctions**: `MarketplaceSessionAuctionsApi`
 
-Defined in: [runtime-types.ts:924](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L924)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1319](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1319)
 
-#### Inherited from
+***
 
-[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`auctions`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#auctions)
+### drivers
+
+> **drivers**: [`MarketplaceSessionDriversApi`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSessionDriversApi)
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1322](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1322)
 
 ***
 
@@ -66,7 +70,7 @@ Defined in: [runtime-types.ts:924](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **identity**: `object`
 
-Defined in: [runtime-types.ts:953](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L953)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1315](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1315)
 
 #### pubkey
 
@@ -78,7 +82,7 @@ Defined in: [runtime-types.ts:953](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **listings**: [`MarketplaceListingsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceListingsApi)
 
-Defined in: [runtime-types.ts:916](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L916)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1268](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1268)
 
 #### Inherited from
 
@@ -86,15 +90,47 @@ Defined in: [runtime-types.ts:916](https://github.com/sudonym-btc/nostr-tools/bl
 
 ***
 
-### orders
+### locations
 
-> **orders**: [`MarketplaceOrdersApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceOrdersApi)
+> **locations**: [`MarketplaceLocationsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceLocationsApi)
 
-Defined in: [runtime-types.ts:920](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L920)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1270](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1270)
 
 #### Inherited from
 
-[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`orders`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#orders)
+[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`locations`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#locations)
+
+***
+
+### me
+
+> **me**: [`MarketplaceMeApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceMeApi)
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1277](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1277)
+
+#### Inherited from
+
+[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`me`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#me)
+
+***
+
+### nextTradeIndex
+
+> `readonly` **nextTradeIndex**: [`MarketplaceValue`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceValue)\<`number` \| `undefined`\>
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1267](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1267)
+
+#### Inherited from
+
+[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`nextTradeIndex`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#nexttradeindex)
+
+***
+
+### orders
+
+> **orders**: `MarketplaceSessionOrdersApi`
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1318](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1318)
 
 ***
 
@@ -102,7 +138,7 @@ Defined in: [runtime-types.ts:920](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **paymentMethod**: [`MarketplaceSessionPaymentMethodApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceSessionPaymentMethodApi)
 
-Defined in: [runtime-types.ts:957](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L957)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1321](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1321)
 
 #### Overrides
 
@@ -110,23 +146,11 @@ Defined in: [runtime-types.ts:957](https://github.com/sudonym-btc/nostr-tools/bl
 
 ***
 
-### paymentRoutes
-
-> **paymentRoutes**: [`MarketplacePaymentRoutesApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplacePaymentRoutesApi)
-
-Defined in: [runtime-types.ts:923](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L923)
-
-#### Inherited from
-
-[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`paymentRoutes`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#paymentroutes)
-
-***
-
 ### payments
 
 > **payments**: [`MarketplacePaymentsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplacePaymentsApi)
 
-Defined in: [runtime-types.ts:925](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L925)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1279](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1279)
 
 #### Inherited from
 
@@ -138,7 +162,7 @@ Defined in: [runtime-types.ts:925](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **reviews**: [`MarketplaceReviewsApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceReviewsApi)
 
-Defined in: [runtime-types.ts:921](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L921)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1275](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1275)
 
 #### Inherited from
 
@@ -150,7 +174,19 @@ Defined in: [runtime-types.ts:921](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **seed**: [`MarketplaceSessionSeedApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceSessionSeedApi)
 
-Defined in: [runtime-types.ts:956](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L956)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1320](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1320)
+
+***
+
+### shippingOption
+
+> **shippingOption**: [`MarketplaceShippingOptionApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceShippingOptionApi)
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1269](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1269)
+
+#### Inherited from
+
+[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`shippingOption`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#shippingoption)
 
 ***
 
@@ -158,7 +194,7 @@ Defined in: [runtime-types.ts:956](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **structuredMessages**: [`MarketplaceStructuredMessagesApi`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceStructuredMessagesApi)
 
-Defined in: [runtime-types.ts:922](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L922)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1276](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1276)
 
 #### Inherited from
 
@@ -170,7 +206,7 @@ Defined in: [runtime-types.ts:922](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **discoverHighWatermark**(`options?`): `Promise`\<[`MarketplaceHighWatermarkDiscovery`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceHighWatermarkDiscovery)\>
 
-Defined in: [runtime-types.ts:927](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L927)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1281](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1281)
 
 #### Parameters
 
@@ -192,7 +228,7 @@ Defined in: [runtime-types.ts:927](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **getNextAccountIndex**(`options?`): `Promise`\<`number`\>
 
-Defined in: [runtime-types.ts:958](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L958)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1282](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1282)
 
 #### Parameters
 
@@ -204,7 +240,7 @@ Defined in: [runtime-types.ts:958](https://github.com/sudonym-btc/nostr-tools/bl
 
 `Promise`\<`number`\>
 
-#### Overrides
+#### Inherited from
 
 [`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`getNextAccountIndex`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#getnextaccountindex)
 
@@ -214,7 +250,7 @@ Defined in: [runtime-types.ts:958](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **pay**(`listing`, `order`, `options?`): `AsyncIterable`\<[`MarketplacePaymentState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentState)\>
 
-Defined in: [runtime-types.ts:930](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L930)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1285](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1285)
 
 #### Parameters
 
@@ -240,11 +276,37 @@ Defined in: [runtime-types.ts:930](https://github.com/sudonym-btc/nostr-tools/bl
 
 ***
 
+### session()
+
+> **session**(`signer`, `options?`): `Promise`\<`MarketplaceSession`\>
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1284](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1284)
+
+#### Parameters
+
+##### signer
+
+[`MarketplaceSeedSigner`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSeedSigner)
+
+##### options?
+
+[`MarketplaceSessionOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceSessionOptions)
+
+#### Returns
+
+`Promise`\<`MarketplaceSession`\>
+
+#### Inherited from
+
+[`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`session`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#session)
+
+***
+
 ### start()
 
 > **start**(`options?`): `Promise`\<[`MarketplaceStartResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceStartResult)\>
 
-Defined in: [runtime-types.ts:959](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L959)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1283](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1283)
 
 #### Parameters
 
@@ -256,6 +318,6 @@ Defined in: [runtime-types.ts:959](https://github.com/sudonym-btc/nostr-tools/bl
 
 `Promise`\<[`MarketplaceStartResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceStartResult)\>
 
-#### Overrides
+#### Inherited from
 
 [`MarketplaceClient`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient).[`start`](/docs/reference/nostr-tools-marketplace/interfaces/MarketplaceClient#start)

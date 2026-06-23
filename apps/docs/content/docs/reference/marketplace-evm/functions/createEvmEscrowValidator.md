@@ -8,7 +8,7 @@ full: true
 
 > **createEvmEscrowValidator**(`options`): [`EvmEscrowPaymentValidator`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentValidator)
 
-Defined in: [dependencies/marketplace-evm-ts/src/validation/escrowPaymentValidator.ts:80](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/validation/escrowPaymentValidator.ts#L80)
+Defined in: [dependencies/marketplace-evm-ts/src/validation/escrowPaymentValidator.ts:80](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/validation/escrowPaymentValidator.ts#L80)
 
 ## Parameters
 

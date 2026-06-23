@@ -8,4 +8,4 @@ full: true
 
 > **GenericBolt11PaymentRequest** = `MarketplaceDriverBolt11PaymentRequest`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:92](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L92)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:98](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L98)

@@ -8,4 +8,4 @@ full: true
 
 > **MarketplaceAuctionCompleteSubscribeOptions** = `Pick`\<`SubscribeManyParams`, `"maxWait"` \| `"id"` \| `"label"` \| `"abort"`\>
 
-Defined in: [auction-query.ts:62](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-query.ts#L62)
+Defined in: [nostr-tools/marketplace/auction-query.ts:68](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-query.ts#L68)

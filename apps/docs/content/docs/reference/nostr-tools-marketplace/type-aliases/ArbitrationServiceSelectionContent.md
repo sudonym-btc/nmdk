@@ -8,7 +8,7 @@ full: true
 
 > **ArbitrationServiceSelectionContent** = `object`
 
-Defined in: arbitrationservice.ts:62
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:68](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L68)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: arbitrationservice.ts:62
 
 > **paymentMethod**: `Event`
 
-Defined in: arbitrationservice.ts:64
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:70](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L70)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: arbitrationservice.ts:64
 
 > **service**: `Event`
 
-Defined in: arbitrationservice.ts:63
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:69](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L69)

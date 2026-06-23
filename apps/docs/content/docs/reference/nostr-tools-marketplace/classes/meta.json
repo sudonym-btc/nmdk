@@ -1,0 +1,13 @@
+{
+  "title": "Classes",
+  "pages": [
+    "MarketplaceStream",
+    "ReplayStream",
+    "StreamClosed",
+    "StreamEose",
+    "StreamError",
+    "StreamIdle",
+    "StreamLive",
+    "StreamQuerying"
+  ]
+}

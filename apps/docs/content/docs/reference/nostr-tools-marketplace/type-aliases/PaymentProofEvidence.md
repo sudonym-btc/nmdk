@@ -8,20 +8,20 @@ full: true
 
 > **PaymentProofEvidence** = `object`
 
-Defined in: [helper.ts:92](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L92)
+Defined in: [nostr-tools/marketplace/helper.ts:119](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L119)
 
 ## Properties
 
-### method
+### driver
 
-> **method**: [`PaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethod)
+> **driver**: `string`
 
-Defined in: [helper.ts:93](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L93)
+Defined in: [nostr-tools/marketplace/helper.ts:120](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L120)
 
 ***
 
 ### params
 
-> **params**: `Record`\<`string`, `unknown`\>
+> **params**: `MarketplaceDriverPaymentProofParams`
 
-Defined in: [helper.ts:94](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L94)
+Defined in: [nostr-tools/marketplace/helper.ts:121](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L121)

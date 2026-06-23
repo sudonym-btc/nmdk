@@ -8,7 +8,7 @@ full: true
 
 > **AuctionBidGroupSubscribeHandlers** = `object`
 
-Defined in: [auction-bid-group.ts:92](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L92)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:133](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L133)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [auction-bid-group.ts:92](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **onclose?**: (`reasons`) => `void`
 
-Defined in: [auction-bid-group.ts:98](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L98)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:139](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L139)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [auction-bid-group.ts:98](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **oneose?**: () => `void`
 
-Defined in: [auction-bid-group.ts:97](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L97)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:138](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L138)
 
 #### Returns
 
@@ -46,7 +46,7 @@ Defined in: [auction-bid-group.ts:97](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **onevent?**: (`event`) => `void`
 
-Defined in: [auction-bid-group.ts:93](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L93)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:134](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L134)
 
 #### Parameters
 
@@ -64,7 +64,7 @@ Defined in: [auction-bid-group.ts:93](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **ongroup?**: (`group`) => `void`
 
-Defined in: [auction-bid-group.ts:94](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L94)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:135](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L135)
 
 #### Parameters
 
@@ -82,7 +82,7 @@ Defined in: [auction-bid-group.ts:94](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **ongroups?**: (`groups`) => `void`
 
-Defined in: [auction-bid-group.ts:95](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L95)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:136](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L136)
 
 #### Parameters
 
@@ -100,7 +100,7 @@ Defined in: [auction-bid-group.ts:95](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **oninvalid?**: (`event`, `error`) => `void`
 
-Defined in: [auction-bid-group.ts:96](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L96)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:137](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L137)
 
 #### Parameters
 

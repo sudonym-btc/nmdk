@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceArbitrationServiceSelectionsApi
 
-Defined in: [runtime-types.ts:748](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L748)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:930](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L930)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [runtime-types.ts:748](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **parse**: (`event`) => [`ParsedArbitrationServiceSelection`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationServiceSelection)
 
-Defined in: [runtime-types.ts:749](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L749)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:931](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L931)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [runtime-types.ts:749](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **template**: (`selection`) => `EventTemplate`
 
-Defined in: [runtime-types.ts:751](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L751)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:933](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L933)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [runtime-types.ts:751](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **validate**: (`event`) => `boolean`
 
-Defined in: [runtime-types.ts:750](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L750)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:932](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L932)
 
 #### Parameters
 

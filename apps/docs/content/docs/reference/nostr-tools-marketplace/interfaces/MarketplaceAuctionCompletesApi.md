@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceAuctionCompletesApi
 
-Defined in: [runtime-types.ts:873](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L873)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1227](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1227)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [runtime-types.ts:873](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **filter**: (`query`) => `Filter`
 
-Defined in: [runtime-types.ts:874](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L874)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1228](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1228)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [runtime-types.ts:874](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **search**(`query?`, `options?`): `Promise`\<[`ParsedMarketplaceAuctionComplete`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionComplete)[]\>
 
-Defined in: [runtime-types.ts:875](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L875)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1229](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1229)
 
 #### Parameters
 
@@ -54,7 +54,7 @@ Defined in: [runtime-types.ts:875](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **subscribe**(`query`, `handlers`, `options?`): `SubCloser`
 
-Defined in: [runtime-types.ts:879](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L879)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1233](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1233)
 
 #### Parameters
 

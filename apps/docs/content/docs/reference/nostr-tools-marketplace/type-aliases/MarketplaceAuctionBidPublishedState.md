@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionBidPublishedState** = `object`
 
-Defined in: [runtime-types.ts:517](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L517)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:583](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L583)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [runtime-types.ts:517](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: [runtime-types.ts:520](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L520)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:586](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L586)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [runtime-types.ts:520](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **event**: `Event`
 
-Defined in: [runtime-types.ts:519](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L519)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:585](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L585)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [runtime-types.ts:519](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **type**: `"bid_published"`
 
-Defined in: [runtime-types.ts:518](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L518)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:584](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L584)

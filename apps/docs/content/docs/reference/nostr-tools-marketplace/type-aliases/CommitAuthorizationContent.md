@@ -8,7 +8,7 @@ full: true
 
 > **CommitAuthorizationContent** = `object`
 
-Defined in: [order.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L100)
+Defined in: [nostr-tools/marketplace/order.ts:103](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L103)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **commitHash**: `string`
 
-Defined in: [order.ts:102](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L102)
+Defined in: [nostr-tools/marketplace/order.ts:105](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L105)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order.ts:102](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **committedFields**: `string`[]
 
-Defined in: [order.ts:104](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L104)
+Defined in: [nostr-tools/marketplace/order.ts:107](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L107)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [order.ts:104](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **hashAlg**: `"sha256"` \| `string`
 
-Defined in: [order.ts:103](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L103)
+Defined in: [nostr-tools/marketplace/order.ts:106](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L106)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [order.ts:103](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **role**: `string`
 
-Defined in: [order.ts:105](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L105)
+Defined in: [nostr-tools/marketplace/order.ts:108](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L108)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [order.ts:105](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **version**: `number`
 
-Defined in: [order.ts:101](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L101)
+Defined in: [nostr-tools/marketplace/order.ts:104](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L104)

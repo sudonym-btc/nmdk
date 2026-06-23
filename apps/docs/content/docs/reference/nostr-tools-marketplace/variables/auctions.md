@@ -8,7 +8,7 @@ full: true
 
 > `const` **auctions**: `object`
 
-Defined in: [auction.ts:361](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction.ts#L361)
+Defined in: [nostr-tools/marketplace/auction.ts:417](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction.ts#L417)
 
 ## Type Declaration
 
@@ -21,6 +21,24 @@ Defined in: [auction.ts:361](https://github.com/sudonym-btc/nostr-tools/blob/804
 ##### auction
 
 `NostrEvent` \| [`ParsedMarketplaceAuction`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuction)
+
+#### Returns
+
+`string`
+
+### bidChainId
+
+> **bidChainId**: (`seed`, `auctionAnchor`) => `string` = `auctionBidChainId`
+
+#### Parameters
+
+##### seed
+
+`string`
+
+##### auctionAnchor
+
+`string`
 
 #### Returns
 

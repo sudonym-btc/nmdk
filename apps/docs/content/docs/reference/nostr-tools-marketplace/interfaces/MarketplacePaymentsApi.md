@@ -6,83 +6,87 @@ full: true
 
 # Interface: MarketplacePaymentsApi
 
-Defined in: [runtime-types.ts:898](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L898)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1254](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1254)
 
 ## Properties
 
-### mine
+### group
 
-> **mine**: `object`
+> **group**: (`sources`, `options`) => [`MarketplacePaymentGroupStream`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentGroupStream)
 
-Defined in: [runtime-types.ts:899](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L899)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1255](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1255)
 
-#### fetch()
+#### Parameters
 
-> **fetch**(`query?`, `options?`): `Promise`\<[`MarketplacePaymentRecoveryItem`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryItem)[]\>
+##### sources
 
-##### Parameters
+[`PaymentGroupStreamSources`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentGroupStreamSources)
 
-###### query?
+##### options?
 
-`Omit`\<[`OrderQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderQuery), `"identity"`\> & `object`
+[`PaymentGroupStreamOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentGroupStreamOptions) = `{}`
 
-###### options?
+#### Returns
 
-[`OrderSearchOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderSearchOptions) & [`ReduceOrderGroupOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ReduceOrderGroupOptions) & `object`
+[`MarketplacePaymentGroupStream`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentGroupStream)
 
-##### Returns
+***
 
-`Promise`\<[`MarketplacePaymentRecoveryItem`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryItem)[]\>
+### validateGroup
+
+> **validateGroup**: (`group`, `options`) => [`PaymentValidation`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentValidation)
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1256](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1256)
+
+#### Parameters
+
+##### group
+
+[`PaymentGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentGroup)
+
+##### options?
+
+[`PaymentGroupValidationOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentGroupValidationOptions) = `{}`
+
+#### Returns
+
+[`PaymentValidation`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentValidation)
+
+***
+
+### validateGroups
+
+> **validateGroups**: (`groups`, `options`) => [`MarketplacePaymentValidationStream`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationStream)
+
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1257](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1257)
+
+#### Parameters
+
+##### groups
+
+[`MarketplacePaymentGroupStream`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentGroupStream)
+
+##### options?
+
+[`PaymentGroupValidationStreamOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentGroupValidationStreamOptions) = `{}`
+
+#### Returns
+
+[`MarketplacePaymentValidationStream`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationStream)
 
 ## Methods
-
-### policyFor()
-
-> **policyFor**(`payment`): [`MarketplacePaymentPolicyImplementation`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentPolicyImplementation)\<[`MarketplacePolicyPaymentState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyPaymentState)\> \| `undefined`
-
-Defined in: [runtime-types.ts:907](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L907)
-
-#### Parameters
-
-##### payment
-
-[`MarketplacePaymentRecoveryItem`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryItem)
-
-#### Returns
-
-[`MarketplacePaymentPolicyImplementation`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentPolicyImplementation)\<[`MarketplacePolicyPaymentState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePolicyPaymentState)\> \| `undefined`
-
-***
-
-### recover()
-
-> **recover**(`payment`): `AsyncIterable`\<[`MarketplacePaymentRecoveryState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryState)\>
-
-Defined in: [runtime-types.ts:905](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L905)
-
-#### Parameters
-
-##### payment
-
-[`MarketplacePaymentRecoveryItem`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryItem)
-
-#### Returns
-
-`AsyncIterable`\<[`MarketplacePaymentRecoveryState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryState)\>
-
-***
 
 ### validate()
 
 > **validate**(`payment`): `Promise`\<[`MarketplacePaymentValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationResult)\>
 
-Defined in: [runtime-types.ts:906](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L906)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1258](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1258)
 
 #### Parameters
 
 ##### payment
 
-[`MarketplacePaymentRecoveryItem`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRecoveryItem)
+[`MarketplacePaymentValidationItem`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationItem)
 
 #### Returns
 

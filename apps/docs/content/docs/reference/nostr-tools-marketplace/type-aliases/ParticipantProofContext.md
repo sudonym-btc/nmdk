@@ -8,7 +8,7 @@ full: true
 
 > **ParticipantProofContext** = `object`
 
-Defined in: participant-proof.ts:45
+Defined in: [nostr-tools/marketplace/participant-proof.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L45)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant-proof.ts:45
 
 > **listingAnchor**: `string`
 
-Defined in: participant-proof.ts:46
+Defined in: [nostr-tools/marketplace/participant-proof.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L46)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: participant-proof.ts:46
 
 > `optional` **orderGroupId?**: `string`
 
-Defined in: participant-proof.ts:48
+Defined in: [nostr-tools/marketplace/participant-proof.ts:48](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L48)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: participant-proof.ts:48
 
 > `optional` **participantPubkey?**: `string`
 
-Defined in: participant-proof.ts:50
+Defined in: [nostr-tools/marketplace/participant-proof.ts:50](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L50)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: participant-proof.ts:50
 
 > `optional` **requireOrderGroupId?**: `boolean`
 
-Defined in: participant-proof.ts:51
+Defined in: [nostr-tools/marketplace/participant-proof.ts:51](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L51)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: participant-proof.ts:51
 
 > `optional` **role?**: `string`
 
-Defined in: participant-proof.ts:49
+Defined in: [nostr-tools/marketplace/participant-proof.ts:49](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L49)
 
 ***
 
@@ -56,4 +56,4 @@ Defined in: participant-proof.ts:49
 
 > **tradeId**: `string`
 
-Defined in: participant-proof.ts:47
+Defined in: [nostr-tools/marketplace/participant-proof.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L47)

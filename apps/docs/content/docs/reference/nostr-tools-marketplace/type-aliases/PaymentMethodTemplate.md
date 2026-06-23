@@ -8,7 +8,7 @@ full: true
 
 > **PaymentMethodTemplate** = `object`
 
-Defined in: [paymentmethod.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L23)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L25)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [paymentmethod.ts:23](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **acceptedPaymentForms?**: [`AcceptedPaymentForm`](/docs/reference/nostr-tools-marketplace/type-aliases/AcceptedPaymentForm)[]
 
-Defined in: [paymentmethod.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L26)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L28)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [paymentmethod.ts:26](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **cashuPubkey?**: `string`
 
-Defined in: [paymentmethod.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L29)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:31](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L31)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [paymentmethod.ts:29](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **createdAt?**: `number`
 
-Defined in: [paymentmethod.ts:31](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L31)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:33](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L33)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [paymentmethod.ts:31](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **evmAddress?**: `string`
 
-Defined in: [paymentmethod.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L27)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L29)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [paymentmethod.ts:27](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **evmAddressProof?**: `string`
 
-Defined in: [paymentmethod.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L28)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:30](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L30)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [paymentmethod.ts:28](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **extraTags?**: `string`[][]
 
-Defined in: [paymentmethod.ts:30](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L30)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:32](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L32)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [paymentmethod.ts:30](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **supportedContractBytecodeHashes?**: `string`[]
 
-Defined in: [paymentmethod.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L25)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L27)
 
 ***
 
@@ -72,4 +72,4 @@ Defined in: [paymentmethod.ts:25](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **trustedArbiterPubkeys?**: `string`[]
 
-Defined in: [paymentmethod.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/paymentmethod.ts#L24)
+Defined in: [nostr-tools/marketplace/paymentmethod.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/paymentmethod.ts#L26)

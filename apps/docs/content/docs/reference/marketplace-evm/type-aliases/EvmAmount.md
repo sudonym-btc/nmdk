@@ -8,15 +8,23 @@ full: true
 
 > **EvmAmount** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:19](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L19)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:27](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L27)
 
 ## Properties
+
+### currency?
+
+> `optional` **currency?**: `string`
+
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:29](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L29)
+
+***
 
 ### decimals
 
 > **decimals**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:22](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L22)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:31](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L31)
 
 ***
 
@@ -24,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:22](https://github.com
 
 > **denomination**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:21](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L21)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:30](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L30)
 
 ***
 
@@ -32,4 +40,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:21](https://github.com
 
 > **value**: `bigint`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:20](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L20)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:28](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L28)

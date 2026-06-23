@@ -6,6 +6,6 @@ full: true
 
 # Type Alias: AuctionBidGroupEvent
 
-> **AuctionBidGroupEvent** = [`ParsedMarketplaceAuctionBid`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionBid) \| [`ParsedOrderPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPayment) \| [`ParsedOrderPaymentAck`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentAck) \| [`ParsedOrderPaymentNack`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentNack) \| [`ParsedOrderPaymentSettlement`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentSettlement)
+> **AuctionBidGroupEvent** = [`ParsedMarketplaceAuctionBid`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionBid) \| [`ParsedPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPayment) \| [`ParsedPaymentAck`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentAck) \| [`ParsedPaymentNack`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentNack) \| [`ParsedPaymentSettlement`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentSettlement)
 
-Defined in: [auction-bid-group.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L45)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:58](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L58)

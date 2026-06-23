@@ -8,4 +8,4 @@ full: true
 
 > **ParticipantGroupEvent** = [`ParsedOrder`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrder) \| [`ParsedMarketplaceAuctionBid`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionBid)
 
-Defined in: [order-group-core.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-core.ts#L100)
+Defined in: [nostr-tools/marketplace/order-group-core.ts:107](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-core.ts#L107)

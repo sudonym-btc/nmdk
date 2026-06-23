@@ -86,15 +86,15 @@ Re-exports [GenericPaymentProof](/docs/reference/marketplace-cashu/type-aliases/
 
 ***
 
-### GenericPaymentRecoveryItem
+### GenericPaymentSweepInput
 
-Re-exports [GenericPaymentRecoveryItem](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryItem)
+Re-exports [GenericPaymentSweepInput](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepInput)
 
 ***
 
-### GenericPaymentRecoveryState
+### GenericPaymentSweepState
 
-Re-exports [GenericPaymentRecoveryState](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState)
+Re-exports [GenericPaymentSweepState](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepState)
 
 ***
 
@@ -113,3 +113,15 @@ Re-exports [GenericPaymentValidationResult](/docs/reference/marketplace-cashu/ty
 ### GenericPolicyPaymentState
 
 Re-exports [GenericPolicyPaymentState](/docs/reference/marketplace-cashu/type-aliases/GenericPolicyPaymentState)
+
+***
+
+### GenericSwapResumeContext
+
+Re-exports [GenericSwapResumeContext](/docs/reference/marketplace-cashu/type-aliases/GenericSwapResumeContext)
+
+***
+
+### GenericSwapResumeState
+
+Re-exports [GenericSwapResumeState](/docs/reference/marketplace-cashu/type-aliases/GenericSwapResumeState)

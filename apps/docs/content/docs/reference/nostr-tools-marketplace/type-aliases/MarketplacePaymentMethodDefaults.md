@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentMethodDefaults** = `object`
 
-Defined in: [runtime-types.ts:251](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L251)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:313](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L313)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [runtime-types.ts:251](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **cashuPubkey?**: `string`
 
-Defined in: [runtime-types.ts:255](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L255)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:317](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L317)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [runtime-types.ts:255](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **evmAddress?**: `string`
 
-Defined in: [runtime-types.ts:253](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L253)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:315](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L315)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [runtime-types.ts:253](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **evmAddressProof?**: `string`
 
-Defined in: [runtime-types.ts:254](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L254)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:316](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L316)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [runtime-types.ts:254](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **trustedArbiterPubkeys?**: `string`[]
 
-Defined in: [runtime-types.ts:252](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L252)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:314](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L314)

@@ -8,9 +8,13 @@ full: true
 
 > **MarketplacePaymentValidationResult** = `MarketplaceDriverValidationResult` & `object`
 
-Defined in: [payment-validation.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-validation.ts#L44)
+Defined in: [nostr-tools/marketplace/payment-validation.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-validation.ts#L47)
 
 ## Type Declaration
+
+### amount?
+
+> `optional` **amount?**: [`MarketplaceAmount`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAmount)
 
 ### amountMatched?
 
@@ -32,13 +36,13 @@ Defined in: [payment-validation.ts:44](https://github.com/sudonym-btc/nostr-tool
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
+### driver
+
+> **driver**: `string`
+
 ### error?
 
 > `optional` **error?**: `string`
-
-### method
-
-> **method**: [`PaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethod)
 
 ### orderEventId?
 
@@ -55,3 +59,7 @@ Defined in: [payment-validation.ts:44](https://github.com/sudonym-btc/nostr-tool
 ### status
 
 > **status**: [`MarketplacePaymentValidationStatus`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationStatus)
+
+### terms?
+
+> `optional` **terms?**: [`MarketplaceValidatedPaymentTerms`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceValidatedPaymentTerms)

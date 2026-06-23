@@ -8,7 +8,7 @@ full: true
 
 > **EvmPayRequest** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:189](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L189)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:203](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L203)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:189](https
 
 > **chains**: [`ResolvedEvmMarketplaceChainConfig`](/docs/reference/marketplace-evm/type-aliases/ResolvedEvmMarketplaceChainConfig)[]
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:190](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L190)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:204](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L204)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:190](https
 
 > **intent**: [`GenericPaymentIntent`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentIntent)
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:192](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L192)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:206](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L206)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:192](https
 
 > `optional` **logger?**: `MarketplaceDriverLogger`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:195](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L195)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:209](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L209)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:195](https
 
 > **operationStore**: [`EvmOperationStore`](/docs/reference/marketplace-evm/type-aliases/EvmOperationStore)
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:191](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L191)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:205](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L205)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:191](https
 
 > **state**: [`EvmMarketplacePolicyState`](/docs/reference/marketplace-evm/type-aliases/EvmMarketplacePolicyState)
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:193](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L193)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:207](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L207)
 
 ## Methods
 
@@ -56,7 +56,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:193](https
 
 > **setState**(`state`): `void`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:194](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L194)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:208](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L208)
 
 #### Parameters
 

@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentValidationPolicy** = `MarketplaceDriverValidationPolicy`\<[`MarketplacePaymentValidationRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationRequest), [`MarketplacePaymentValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationResult)\> & `object`
 
-Defined in: [payment-validation.ts:58](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-validation.ts#L58)
+Defined in: [nostr-tools/marketplace/payment-validation.ts:63](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-validation.ts#L63)
 
 ## Type Declaration
 
@@ -26,9 +26,17 @@ Defined in: [payment-validation.ts:58](https://github.com/sudonym-btc/nostr-tool
 
 `boolean` \| `Promise`\<`boolean`\>
 
-### method
+### driver?
 
-> **method**: [`PaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethod) \| `"*"`
+> `optional` **driver?**: `string` \| `"*"`
+
+### id?
+
+> `optional` **id?**: `string`
+
+### method?
+
+> `optional` **method?**: `string`
 
 ### validatePayment
 

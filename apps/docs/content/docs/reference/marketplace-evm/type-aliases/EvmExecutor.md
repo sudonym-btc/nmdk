@@ -8,7 +8,7 @@ full: true
 
 > **EvmExecutor** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:78](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L78)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:92](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L92)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:78](https://github.com
 
 > **execute**(`calls`, `options`): `Promise`\<[`EvmExecutionResult`](/docs/reference/marketplace-evm/type-aliases/EvmExecutionResult)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:80](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L80)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:94](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L94)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/types.ts:80](https://github.com
 
 > **getAddress**(`chainId`): `Promise`\<`` `0x${string}` ``\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/types.ts:79](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/types.ts#L79)
+Defined in: [dependencies/marketplace-evm-ts/src/types.ts:93](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/types.ts#L93)
 
 #### Parameters
 

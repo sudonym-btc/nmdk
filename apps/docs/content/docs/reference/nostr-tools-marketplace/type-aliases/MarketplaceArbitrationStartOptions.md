@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceArbitrationStartOptions** = `Omit`\<[`OrderQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderQuery), `"identity"`\> & [`OrderSubscribeOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderSubscribeOptions) & [`ReduceOrderGroupOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ReduceOrderGroupOptions) & `object`
 
-Defined in: [runtime-types.ts:679](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L679)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:832](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L832)
 
 ## Type Declaration
 
@@ -27,6 +27,10 @@ Defined in: [runtime-types.ts:679](https://github.com/sudonym-btc/nostr-tools/bl
 ### auctionSettlement?
 
 > `optional` **auctionSettlement?**: `Omit`\<[`MarketplaceAuctionSettlementRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAuctionSettlementRequest), `"auctionAnchor"` \| `"auctionId"` \| `"listingAnchor"`\>
+
+### auctionSettlementSweepIntervalMs?
+
+> `optional` **auctionSettlementSweepIntervalMs?**: `number`
 
 ### autoAck?
 

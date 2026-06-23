@@ -8,4 +8,4 @@ full: true
 
 > **OrderGroupResolutionStatus** = `"complete"` \| `"partial"` \| `"public_only"` \| `"invalid"`
 
-Defined in: [order-group-types.ts:52](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L52)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:54](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L54)

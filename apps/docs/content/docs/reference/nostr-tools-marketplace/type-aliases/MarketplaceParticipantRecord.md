@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceParticipantRecord** = `object`
 
-Defined in: participant.ts:18
+Defined in: [nostr-tools/marketplace/participant.ts:18](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L18)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant.ts:18
 
 > **participants**: `Iterable`\<[`MarketplaceParticipantTag`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantTag) \| [`MarketplaceParticipantEntry`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantEntry)\>
 
-Defined in: participant.ts:20
+Defined in: [nostr-tools/marketplace/participant.ts:20](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L20)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: participant.ts:20
 
 > **tradeId**: `string`
 
-Defined in: participant.ts:19
+Defined in: [nostr-tools/marketplace/participant.ts:19](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L19)

@@ -8,7 +8,7 @@ full: true
 
 > **ReviewSearchQuery** = `object`
 
-Defined in: [review.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L43)
+Defined in: [nostr-tools/marketplace/review.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L44)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [review.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **authors?**: `string`[]
 
-Defined in: [review.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L47)
+Defined in: [nostr-tools/marketplace/review.ts:48](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L48)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [review.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **limit?**: `number`
 
-Defined in: [review.ts:50](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L50)
+Defined in: [nostr-tools/marketplace/review.ts:51](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L51)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [review.ts:50](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **listingAnchor?**: `string`
 
-Defined in: [review.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L44)
+Defined in: [nostr-tools/marketplace/review.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L45)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [review.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **orderGroupId?**: `string`
 
-Defined in: [review.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L45)
+Defined in: [nostr-tools/marketplace/review.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L46)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [review.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **since?**: `number`
 
-Defined in: [review.ts:48](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L48)
+Defined in: [nostr-tools/marketplace/review.ts:49](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L49)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [review.ts:48](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **tradeId?**: `string`
 
-Defined in: [review.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L46)
+Defined in: [nostr-tools/marketplace/review.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L47)
 
 ***
 
@@ -64,4 +64,4 @@ Defined in: [review.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **until?**: `number`
 
-Defined in: [review.ts:49](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L49)
+Defined in: [nostr-tools/marketplace/review.ts:50](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L50)

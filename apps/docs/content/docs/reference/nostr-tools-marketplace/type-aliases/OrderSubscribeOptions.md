@@ -8,4 +8,4 @@ full: true
 
 > **OrderSubscribeOptions** = `Pick`\<`SubscribeManyParams`, `"maxWait"` \| `"id"` \| `"label"` \| `"abort"`\>
 
-Defined in: [order-query.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L46)
+Defined in: [nostr-tools/marketplace/order-query.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-query.ts#L45)

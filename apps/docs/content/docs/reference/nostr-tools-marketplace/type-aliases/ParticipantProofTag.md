@@ -8,7 +8,7 @@ full: true
 
 > **ParticipantProofTag** = `object`
 
-Defined in: participant-proof.ts:21
+Defined in: [nostr-tools/marketplace/participant-proof.ts:21](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L21)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant-proof.ts:21
 
 > **mode**: [`ParticipantProofMode`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofMode)
 
-Defined in: participant-proof.ts:26
+Defined in: [nostr-tools/marketplace/participant-proof.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L26)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: participant-proof.ts:26
 
 > **participantPubkey**: `string`
 
-Defined in: participant-proof.ts:24
+Defined in: [nostr-tools/marketplace/participant-proof.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L24)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: participant-proof.ts:24
 
 > **payload**: `string`
 
-Defined in: participant-proof.ts:27
+Defined in: [nostr-tools/marketplace/participant-proof.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L27)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: participant-proof.ts:27
 
 > **proofId**: `string`
 
-Defined in: participant-proof.ts:25
+Defined in: [nostr-tools/marketplace/participant-proof.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L25)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: participant-proof.ts:25
 
 > **role**: `string`
 
-Defined in: participant-proof.ts:23
+Defined in: [nostr-tools/marketplace/participant-proof.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L23)
 
 ***
 
@@ -56,4 +56,4 @@ Defined in: participant-proof.ts:23
 
 > **version**: `1`
 
-Defined in: participant-proof.ts:22
+Defined in: [nostr-tools/marketplace/participant-proof.ts:22](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L22)

@@ -41,11 +41,13 @@ full: true
 - [GenericPaymentIdentity](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentIdentity)
 - [GenericPaymentIntent](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentIntent)
 - [GenericPaymentProof](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentProof)
-- [GenericPaymentRecoveryItem](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryItem)
-- [GenericPaymentRecoveryState](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState)
+- [GenericPaymentSweepInput](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepInput)
+- [GenericPaymentSweepState](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepState)
 - [GenericPaymentValidationRequest](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationRequest)
 - [GenericPaymentValidationResult](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationResult)
 - [GenericPolicyPaymentState](/docs/reference/marketplace-cashu/type-aliases/GenericPolicyPaymentState)
+- [GenericSwapResumeContext](/docs/reference/marketplace-cashu/type-aliases/GenericSwapResumeContext)
+- [GenericSwapResumeState](/docs/reference/marketplace-cashu/type-aliases/GenericSwapResumeState)
 
 ## Functions
 

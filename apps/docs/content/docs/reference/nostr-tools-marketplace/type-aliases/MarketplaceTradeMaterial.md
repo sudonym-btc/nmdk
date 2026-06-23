@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceTradeMaterial** = `object`
 
-Defined in: [seed.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L45)
+Defined in: [nostr-tools/marketplace/seed.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/seed.ts#L44)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [seed.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/8049e0a
 
 > **tradeId**: `string`
 
-Defined in: [seed.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L46)
+Defined in: [nostr-tools/marketplace/seed.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/seed.ts#L45)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [seed.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/8049e0a
 
 > **tradePubkey**: `string`
 
-Defined in: [seed.ts:48](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L48)
+Defined in: [nostr-tools/marketplace/seed.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/seed.ts#L47)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [seed.ts:48](https://github.com/sudonym-btc/nostr-tools/blob/8049e0a
 
 > **tradeSecretKey**: `Uint8Array`
 
-Defined in: [seed.ts:47](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L47)
+Defined in: [nostr-tools/marketplace/seed.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/seed.ts#L46)

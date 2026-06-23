@@ -8,7 +8,7 @@ full: true
 
 > **EvmPaymentAsset** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:52](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L52)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:56](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L56)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:52](https:
 
 > **appId**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:57](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L57)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:62](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L62)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:57](https:
 
 > **assetAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:59](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L59)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:64](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L64)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:59](https:
 
 > **assetId**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:54](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L54)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:58](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L58)
 
 ***
 
@@ -40,7 +40,15 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:54](https:
 
 > `optional` **boltzCurrency?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:60](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L60)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:65](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L65)
+
+***
+
+### boltzRouteVia?
+
+> `optional` **boltzRouteVia?**: `EvmBoltzRouteVia`
+
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:66](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L66)
 
 ***
 
@@ -48,7 +56,15 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:60](https:
 
 > **chainId**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:58](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L58)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:63](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L63)
+
+***
+
+### currency?
+
+> `optional` **currency?**: `string`
+
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:59](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L59)
 
 ***
 
@@ -56,7 +72,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:58](https:
 
 > **decimals**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:56](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L56)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:61](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L61)
 
 ***
 
@@ -64,7 +80,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:56](https:
 
 > **denomination**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:55](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L55)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:60](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L60)
 
 ***
 
@@ -72,4 +88,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:55](https:
 
 > **method**: `"evm"`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:53](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L53)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:57](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L57)

@@ -8,7 +8,7 @@ full: true
 
 > **EvmSmartAccountAddressResolver** = (`context`) => `Promise`\<[`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:35](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/discovery/types.ts#L35)
+Defined in: [dependencies/marketplace-evm-ts/src/discovery/types.ts:35](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/discovery/types.ts#L35)
 
 ## Parameters
 

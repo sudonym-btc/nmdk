@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceOrderIdentity** = `object`
 
-Defined in: [order-query.ts:16](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L16)
+Defined in: [nostr-tools/marketplace/identity.ts:4](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/identity.ts#L4)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [order-query.ts:16](https://github.com/sudonym-btc/nostr-tools/blob/
 
 > `optional` **pubkey?**: `string`
 
-Defined in: [order-query.ts:17](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L17)
+Defined in: [nostr-tools/marketplace/identity.ts:5](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/identity.ts#L5)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [order-query.ts:17](https://github.com/sudonym-btc/nostr-tools/blob/
 
 > `optional` **roles?**: `OrderGroupRole`[]
 
-Defined in: [order-query.ts:19](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L19)
+Defined in: [nostr-tools/marketplace/identity.ts:7](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/identity.ts#L7)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [order-query.ts:19](https://github.com/sudonym-btc/nostr-tools/blob/
 
 > `optional` **seed?**: `string`
 
-Defined in: [order-query.ts:18](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L18)
+Defined in: [nostr-tools/marketplace/identity.ts:6](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/identity.ts#L6)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [order-query.ts:18](https://github.com/sudonym-btc/nostr-tools/blob/
 
 > `optional` **tempKeyWindow?**: `number`
 
-Defined in: [order-query.ts:20](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L20)
+Defined in: [nostr-tools/marketplace/identity.ts:8](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/identity.ts#L8)

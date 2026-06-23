@@ -8,7 +8,7 @@ full: true
 
 > **CancellationPolicy** = `object`
 
-Defined in: [helper.ts:84](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L84)
+Defined in: [nostr-tools/marketplace/helper.ts:111](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L111)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [helper.ts:84](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **refundFraction**: `number`
 
-Defined in: [helper.ts:85](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L85)
+Defined in: [nostr-tools/marketplace/helper.ts:112](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L112)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [helper.ts:85](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **secondsAfterOrder?**: `number`
 
-Defined in: [helper.ts:87](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L87)
+Defined in: [nostr-tools/marketplace/helper.ts:114](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L114)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [helper.ts:87](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **secondsBeforeStart?**: `number`
 
-Defined in: [helper.ts:86](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L86)
+Defined in: [nostr-tools/marketplace/helper.ts:113](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L113)

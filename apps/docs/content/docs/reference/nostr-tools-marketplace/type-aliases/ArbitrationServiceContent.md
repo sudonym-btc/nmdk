@@ -8,7 +8,7 @@ full: true
 
 > **ArbitrationServiceContent** = `object`
 
-Defined in: arbitrationservice.ts:34
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L35)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: arbitrationservice.ts:34
 
 > **fee**: [`ArbitrationFee`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationFee)
 
-Defined in: arbitrationservice.ts:38
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L39)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: arbitrationservice.ts:38
 
 > **maxDuration**: `number`
 
-Defined in: arbitrationservice.ts:37
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:38](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L38)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: arbitrationservice.ts:37
 
 > **params**: [`ArbitrationServiceParams`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceParams)
 
-Defined in: arbitrationservice.ts:39
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L40)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: arbitrationservice.ts:39
 
 > **pubkey**: `string`
 
-Defined in: arbitrationservice.ts:35
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L36)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: arbitrationservice.ts:35
 
 > **type**: [`ArbitrationType`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationType)
 
-Defined in: arbitrationservice.ts:36
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:37](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L37)

@@ -8,15 +8,27 @@ full: true
 
 > **MarketplaceAmount** = `object`
 
-Defined in: [helper.ts:72](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L72)
+Defined in: [nostr-tools/marketplace/helper.ts:93](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L93)
 
 ## Properties
+
+### currency?
+
+> `optional` **currency?**: `string`
+
+Defined in: [nostr-tools/marketplace/helper.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L100)
+
+Logical marketplace currency. Payment routes may settle this through
+assets with different denominations/decimals, but marketplace events
+should compare and display this currency, not the rail-specific asset.
+
+***
 
 ### decimals
 
 > **decimals**: `number`
 
-Defined in: [helper.ts:75](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L75)
+Defined in: [nostr-tools/marketplace/helper.ts:102](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L102)
 
 ***
 
@@ -24,7 +36,7 @@ Defined in: [helper.ts:75](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **denomination**: `string`
 
-Defined in: [helper.ts:74](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L74)
+Defined in: [nostr-tools/marketplace/helper.ts:101](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L101)
 
 ***
 
@@ -32,4 +44,4 @@ Defined in: [helper.ts:74](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > **value**: `string`
 
-Defined in: [helper.ts:73](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L73)
+Defined in: [nostr-tools/marketplace/helper.ts:94](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L94)

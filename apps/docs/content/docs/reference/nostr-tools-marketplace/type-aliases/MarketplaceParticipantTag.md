@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceParticipantTag** = `object`
 
-Defined in: participant.ts:7
+Defined in: [nostr-tools/marketplace/participant.ts:7](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L7)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant.ts:7
 
 > **pubkey**: `string`
 
-Defined in: participant.ts:8
+Defined in: [nostr-tools/marketplace/participant.ts:8](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L8)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: participant.ts:8
 
 > `optional` **relayHint?**: `string`
 
-Defined in: participant.ts:9
+Defined in: [nostr-tools/marketplace/participant.ts:9](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L9)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: participant.ts:9
 
 > `optional` **role?**: [`MarketplaceParticipantRole`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantRole)
 
-Defined in: participant.ts:10
+Defined in: [nostr-tools/marketplace/participant.ts:10](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L10)

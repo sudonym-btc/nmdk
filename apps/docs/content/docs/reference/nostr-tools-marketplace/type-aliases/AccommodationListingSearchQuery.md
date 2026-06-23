@@ -8,7 +8,7 @@ full: true
 
 > **AccommodationListingSearchQuery** = `Omit`\<[`ListingSearchQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/ListingSearchQuery), `"profiles"` \| `"tagFilters"`\> & `object`
 
-Defined in: [listing/accommodation.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L42)
+Defined in: [nostr-tools/marketplace/listing/accommodation.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/listing/accommodation.ts#L44)
 
 ## Type Declaration
 

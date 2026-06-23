@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceParticipantEntry** = `object`
 
-Defined in: participant.ts:13
+Defined in: [nostr-tools/marketplace/participant.ts:13](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L13)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant.ts:13
 
 > **pubkey**: `string`
 
-Defined in: participant.ts:15
+Defined in: [nostr-tools/marketplace/participant.ts:15](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L15)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: participant.ts:15
 
 > **role**: [`MarketplaceParticipantGroupRole`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantGroupRole)
 
-Defined in: participant.ts:14
+Defined in: [nostr-tools/marketplace/participant.ts:14](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant.ts#L14)

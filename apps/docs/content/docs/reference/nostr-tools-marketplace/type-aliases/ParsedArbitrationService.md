@@ -8,7 +8,7 @@ full: true
 
 > **ParsedArbitrationService** = `object`
 
-Defined in: arbitrationservice.ts:42
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L43)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: arbitrationservice.ts:42
 
 > **content**: [`ArbitrationServiceContent`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceContent)
 
-Defined in: arbitrationservice.ts:45
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:46](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L46)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: arbitrationservice.ts:45
 
 > **d**: `string`
 
-Defined in: arbitrationservice.ts:44
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:45](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L45)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: arbitrationservice.ts:44
 
 > **event**: `Event`
 
-Defined in: arbitrationservice.ts:43
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:44](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L44)

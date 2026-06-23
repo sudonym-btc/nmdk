@@ -6,9 +6,9 @@ full: true
 
 # Type Alias: EvmEscrowPolicy
 
-> **EvmEscrowPolicy** = `MarketplaceDriverOrderPolicy`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-evm/type-aliases/GenericPolicyPaymentState), [`EvmEscrowPaymentPolicy`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentPolicy), [`EvmPaymentAsset`](/docs/reference/marketplace-evm/type-aliases/EvmPaymentAsset), [`GenericPaymentIntent`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentIntent), [`GenericPaymentValidationRequest`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationRequest), [`GenericPaymentValidationResult`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationResult), [`GenericPaymentRecoveryItem`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryItem), [`GenericPaymentRecoveryState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryState)\> & `object`
+> **EvmEscrowPolicy** = `MarketplaceDriverOrderPolicy`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-evm/type-aliases/GenericPolicyPaymentState), [`EvmEscrowPaymentPolicy`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentPolicy), [`EvmPaymentAsset`](/docs/reference/marketplace-evm/type-aliases/EvmPaymentAsset), [`GenericPaymentIntent`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentIntent), [`GenericPaymentValidationRequest`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationRequest), [`GenericPaymentValidationResult`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationResult), [`GenericPaymentSweepInput`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentSweepInput), [`GenericPaymentSweepState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentSweepState), [`GenericSwapResumeContext`](/docs/reference/marketplace-evm/type-aliases/GenericSwapResumeContext), [`GenericSwapResumeState`](/docs/reference/marketplace-evm/type-aliases/GenericSwapResumeState)\> & `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:105](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L105)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:113](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L113)
 
 ## Type Declaration
 
@@ -250,19 +250,19 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:105](https
 
 [`EvmEscrowPaymentPolicy`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPaymentPolicy)[]
 
-### recover()
+### resumeSwapOperations()
 
-> **recover**(`payment`): `AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryState)\>
+> **resumeSwapOperations**(`context`): `AsyncIterable`\<`MarketplaceDriverSwapResumeState`\>
 
 #### Parameters
 
-##### payment
+##### context
 
-[`GenericPaymentRecoveryItem`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryItem)
+[`GenericSwapResumeContext`](/docs/reference/marketplace-evm/type-aliases/GenericSwapResumeContext)
 
 #### Returns
 
-`AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentRecoveryState)\>
+`AsyncIterable`\<`MarketplaceDriverSwapResumeState`\>
 
 ### startup()
 
@@ -285,6 +285,20 @@ Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:105](https
 #### Returns
 
 [`EvmMarketplacePolicyState`](/docs/reference/marketplace-evm/type-aliases/EvmMarketplacePolicyState)
+
+### sweepPayment()
+
+> **sweepPayment**(`payment`): `AsyncIterable`\<[`GenericPaymentSweepState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentSweepState)\>
+
+#### Parameters
+
+##### payment
+
+[`GenericPaymentSweepInput`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentSweepInput)
+
+#### Returns
+
+`AsyncIterable`\<[`GenericPaymentSweepState`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentSweepState)\>
 
 ### validatePayment()
 

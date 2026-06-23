@@ -8,7 +8,7 @@ full: true
 
 > **EvmSeedConfig** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:5](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/seed.ts#L5)
+Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:5](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/seed.ts#L5)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:5](https://github.com/s
 
 > `optional` **namespace?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:8](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/seed.ts#L8)
+Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:8](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/seed.ts#L8)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:8](https://github.com/s
 
 > `optional` **role?**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:7](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/seed.ts#L7)
+Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:7](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/seed.ts#L7)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:7](https://github.com/s
 
 > **seed**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:6](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/seed.ts#L6)
+Defined in: [dependencies/marketplace-evm-ts/src/seed.ts:6](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/seed.ts#L6)

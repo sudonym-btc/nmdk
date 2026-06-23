@@ -8,7 +8,7 @@ full: true
 
 > **AccommodationListing** = `object`
 
-Defined in: [listing/accommodation.ts:18](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L18)
+Defined in: [nostr-tools/marketplace/listing/accommodation.ts:20](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/listing/accommodation.ts#L20)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [listing/accommodation.ts:18](https://github.com/sudonym-btc/nostr-t
 
 > `optional` **checkIn?**: `string`
 
-Defined in: [listing/accommodation.ts:20](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L20)
+Defined in: [nostr-tools/marketplace/listing/accommodation.ts:22](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/listing/accommodation.ts#L22)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [listing/accommodation.ts:20](https://github.com/sudonym-btc/nostr-t
 
 > `optional` **checkOut?**: `string`
 
-Defined in: [listing/accommodation.ts:21](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L21)
+Defined in: [nostr-tools/marketplace/listing/accommodation.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/listing/accommodation.ts#L23)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [listing/accommodation.ts:21](https://github.com/sudonym-btc/nostr-t
 
 > **h3**: `string`[]
 
-Defined in: [listing/accommodation.ts:22](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L22)
+Defined in: [nostr-tools/marketplace/listing/accommodation.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/listing/accommodation.ts#L24)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [listing/accommodation.ts:22](https://github.com/sudonym-btc/nostr-t
 
 > **specs**: `Record`\<`string`, `true` \| `string` \| `number`\>
 
-Defined in: [listing/accommodation.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L23)
+Defined in: [nostr-tools/marketplace/listing/accommodation.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/listing/accommodation.ts#L25)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [listing/accommodation.ts:23](https://github.com/sudonym-btc/nostr-t
 
 > `optional` **type?**: `string`
 
-Defined in: [listing/accommodation.ts:19](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/listing/accommodation.ts#L19)
+Defined in: [nostr-tools/marketplace/listing/accommodation.ts:21](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/listing/accommodation.ts#L21)

@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionBidSettlementInput** = `object`
 
-Defined in: [runtime-types.ts:391](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L391)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:457](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L457)
 
 ## Properties
 
@@ -16,12 +16,12 @@ Defined in: [runtime-types.ts:391](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **bid**: `Event` \| [`ParsedMarketplaceAuctionBid`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedMarketplaceAuctionBid)
 
-Defined in: [runtime-types.ts:392](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L392)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:458](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L458)
 
 ***
 
 ### payment?
 
-> `optional` **payment?**: `Event` \| [`ParsedOrderPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPayment)
+> `optional` **payment?**: `Event` \| [`ParsedPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPayment)
 
-Defined in: [runtime-types.ts:393](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L393)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:459](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L459)

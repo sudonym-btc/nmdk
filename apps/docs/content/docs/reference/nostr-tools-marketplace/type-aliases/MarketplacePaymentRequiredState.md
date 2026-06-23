@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentRequiredState** = `object`
 
-Defined in: [runtime-types.ts:477](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L477)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:543](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L543)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [runtime-types.ts:477](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: [runtime-types.ts:480](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L480)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:546](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L546)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [runtime-types.ts:480](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **request**: [`MarketplacePaymentRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentRequest)
 
-Defined in: [runtime-types.ts:479](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L479)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:545](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L545)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [runtime-types.ts:479](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **type**: `"payment_required"`
 
-Defined in: [runtime-types.ts:478](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L478)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:544](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L544)

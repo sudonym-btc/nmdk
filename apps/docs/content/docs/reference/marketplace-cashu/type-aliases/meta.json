@@ -25,10 +25,12 @@
     "GenericPaymentIdentity",
     "GenericPaymentIntent",
     "GenericPaymentProof",
-    "GenericPaymentRecoveryItem",
-    "GenericPaymentRecoveryState",
+    "GenericPaymentSweepInput",
+    "GenericPaymentSweepState",
     "GenericPaymentValidationRequest",
     "GenericPaymentValidationResult",
-    "GenericPolicyPaymentState"
+    "GenericPolicyPaymentState",
+    "GenericSwapResumeContext",
+    "GenericSwapResumeState"
   ]
 }

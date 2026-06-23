@@ -8,7 +8,7 @@ full: true
 
 > **ArbitrationServiceSelectionTemplate** = `object`
 
-Defined in: arbitrationservice.ts:74
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:80](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L80)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: arbitrationservice.ts:74
 
 > `optional` **createdAt?**: `number`
 
-Defined in: arbitrationservice.ts:80
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:86](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L86)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: arbitrationservice.ts:80
 
 > `optional` **extraTags?**: `string`[][]
 
-Defined in: arbitrationservice.ts:79
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:85](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L85)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: arbitrationservice.ts:79
 
 > `optional` **listingAnchor?**: `string`
 
-Defined in: arbitrationservice.ts:76
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:82](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L82)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: arbitrationservice.ts:76
 
 > **paymentMethod**: `Event` \| `string`
 
-Defined in: arbitrationservice.ts:78
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:84](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L84)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: arbitrationservice.ts:78
 
 > **service**: `Event` \| `string`
 
-Defined in: arbitrationservice.ts:77
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:83](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L83)
 
 ***
 
@@ -56,4 +56,4 @@ Defined in: arbitrationservice.ts:77
 
 > **tradeId**: `string`
 
-Defined in: arbitrationservice.ts:75
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:81](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L81)

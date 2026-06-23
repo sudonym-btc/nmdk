@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentValidationExpected** = `MarketplaceDriverValidationExpected` & `object`
 
-Defined in: [payment-validation.ts:12](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-validation.ts#L12)
+Defined in: [nostr-tools/marketplace/payment-validation.ts:14](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-validation.ts#L14)
 
 ## Type Declaration
 
@@ -23,6 +23,10 @@ Defined in: [payment-validation.ts:12](https://github.com/sudonym-btc/nostr-tool
 #### asset.assetId?
 
 > `optional` **assetId?**: `string`
+
+#### asset.currency?
+
+> `optional` **currency?**: `string`
 
 #### asset.decimals?
 
@@ -60,9 +64,9 @@ Defined in: [payment-validation.ts:12](https://github.com/sudonym-btc/nostr-tool
 
 > `optional` **fee?**: [`MarketplaceAmount`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAmount)
 
-### listingAnchor
+### listingAnchor?
 
-> **listingAnchor**: `string`
+> `optional` **listingAnchor?**: `string`
 
 ### participants?
 
@@ -104,10 +108,10 @@ Defined in: [payment-validation.ts:12](https://github.com/sudonym-btc/nostr-tool
 
 > `optional` **pubkey?**: `string`
 
-### settlementId
+### settlementId?
 
-> **settlementId**: `string`
+> `optional` **settlementId?**: `string`
 
-### tradeId
+### tradeId?
 
-> **tradeId**: `string`
+> `optional` **tradeId?**: `string`

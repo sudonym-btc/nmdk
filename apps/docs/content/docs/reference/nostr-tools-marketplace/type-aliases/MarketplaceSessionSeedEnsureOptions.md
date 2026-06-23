@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceSessionSeedEnsureOptions** = `object`
 
-Defined in: [runtime-types.ts:937](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L937)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1292](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1292)
 
 ## Properties
 
@@ -16,4 +16,4 @@ Defined in: [runtime-types.ts:937](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **createdAt?**: `number`
 
-Defined in: [runtime-types.ts:938](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L938)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1293](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1293)

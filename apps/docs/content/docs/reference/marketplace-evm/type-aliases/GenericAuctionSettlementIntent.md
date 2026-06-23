@@ -6,6 +6,6 @@ full: true
 
 # Type Alias: GenericAuctionSettlementIntent
 
-> **GenericAuctionSettlementIntent** = `MarketplaceDriverAuctionSettlementIntent`\<[`GenericPaymentProof`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentProof), [`GenericPaymentValidationRequest`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentValidationRequest)\[`"expected"`\]\>
+> **GenericAuctionSettlementIntent** = `MarketplaceDriverAuctionSettlementIntent`\<[`GenericPaymentProof`](/docs/reference/marketplace-evm/type-aliases/GenericPaymentProof), `MarketplaceDriverValidationExpected`\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:99](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/types.ts#L99)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/types.ts:107](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/types.ts#L107)

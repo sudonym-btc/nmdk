@@ -8,7 +8,7 @@ full: true
 
 > **MarketplacePaymentProgressState** = `object`
 
-Defined in: [runtime-types.ts:483](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L483)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:549](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L549)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [runtime-types.ts:483](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-Defined in: [runtime-types.ts:486](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L486)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:552](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L552)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [runtime-types.ts:486](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **status**: `string`
 
-Defined in: [runtime-types.ts:485](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L485)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:551](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L551)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [runtime-types.ts:485](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **type**: `"payment_progress"`
 
-Defined in: [runtime-types.ts:484](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L484)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:550](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L550)

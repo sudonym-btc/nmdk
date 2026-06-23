@@ -6,9 +6,9 @@ full: true
 
 # Type Alias: CashuAuctionPolicy
 
-> **CashuAuctionPolicy** = `MarketplaceDriverAuctionPolicy`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-cashu/type-aliases/GenericPolicyPaymentState), [`CashuAuctionPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuAuctionPaymentPolicy), [`CashuPaymentAsset`](/docs/reference/marketplace-cashu/type-aliases/CashuPaymentAsset), [`GenericPaymentIntent`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentIntent), [`GenericPaymentValidationRequest`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationRequest), [`GenericPaymentValidationResult`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationResult), [`GenericPaymentRecoveryItem`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryItem), [`GenericPaymentRecoveryState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState), [`GenericAuctionSettlementIntent`](/docs/reference/marketplace-cashu/type-aliases/GenericAuctionSettlementIntent), [`GenericAuctionSettlementResult`](/docs/reference/marketplace-cashu/type-aliases/GenericAuctionSettlementResult)\> & `object`
+> **CashuAuctionPolicy** = `MarketplaceDriverAuctionPolicy`\<[`GenericPolicyPaymentState`](/docs/reference/marketplace-cashu/type-aliases/GenericPolicyPaymentState), [`CashuAuctionPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuAuctionPaymentPolicy), [`CashuPaymentAsset`](/docs/reference/marketplace-cashu/type-aliases/CashuPaymentAsset), [`GenericPaymentIntent`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentIntent), [`GenericPaymentValidationRequest`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationRequest), [`GenericPaymentValidationResult`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentValidationResult), [`GenericPaymentSweepInput`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepInput), [`GenericPaymentSweepState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepState), [`GenericSwapResumeContext`](/docs/reference/marketplace-cashu/type-aliases/GenericSwapResumeContext), [`GenericSwapResumeState`](/docs/reference/marketplace-cashu/type-aliases/GenericSwapResumeState), [`GenericAuctionSettlementIntent`](/docs/reference/marketplace-cashu/type-aliases/GenericAuctionSettlementIntent), [`GenericAuctionSettlementResult`](/docs/reference/marketplace-cashu/type-aliases/GenericAuctionSettlementResult)\> & `object`
 
-Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:165](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/11af907cbdd93ca36b6b25f68fcccd38b5d889df/src/types.ts#L165)
+Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:173](https://github.com/sudonym-btc/marketplace-cashu-ts/blob/9b0626bc4cb94e77a666457a4e2cbb0b0fb20bcc/src/types.ts#L173)
 
 ## Type Declaration
 
@@ -64,20 +64,6 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:165](https://github.
 
 [`CashuAuctionPaymentPolicy`](/docs/reference/marketplace-cashu/type-aliases/CashuAuctionPaymentPolicy)[]
 
-### recover()
-
-> **recover**(`payment`): `AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState)\>
-
-#### Parameters
-
-##### payment
-
-[`GenericPaymentRecoveryItem`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryItem)
-
-#### Returns
-
-`AsyncIterable`\<[`GenericPaymentRecoveryState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentRecoveryState)\>
-
 ### recyclePayment()
 
 > **recyclePayment**(`intent`): `Promise`\<[`GenericAuctionSettlementResult`](/docs/reference/marketplace-cashu/type-aliases/GenericAuctionSettlementResult)\>
@@ -127,6 +113,20 @@ Defined in: [dependencies/marketplace-cashu-ts/src/types.ts:165](https://github.
 #### Returns
 
 [`CashuEscrowPolicyState`](/docs/reference/marketplace-cashu/type-aliases/CashuEscrowPolicyState)
+
+### sweepPayment()
+
+> **sweepPayment**(`payment`): `AsyncIterable`\<[`GenericPaymentSweepState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepState)\>
+
+#### Parameters
+
+##### payment
+
+[`GenericPaymentSweepInput`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepInput)
+
+#### Returns
+
+`AsyncIterable`\<[`GenericPaymentSweepState`](/docs/reference/marketplace-cashu/type-aliases/GenericPaymentSweepState)\>
 
 ### validatePayment()
 

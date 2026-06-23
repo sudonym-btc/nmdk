@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceArbitrationServicesApi
 
-Defined in: [runtime-types.ts:738](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L738)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:920](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L920)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [runtime-types.ts:738](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **calculateFee**: (`fee`, `amount`, `asset`) => `bigint`
 
-Defined in: [runtime-types.ts:745](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L745)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:927](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L927)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: [runtime-types.ts:745](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **filter**: (`query`) => `Filter`
 
-Defined in: [runtime-types.ts:742](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L742)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:924](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L924)
 
 #### Parameters
 
@@ -58,7 +58,7 @@ Defined in: [runtime-types.ts:742](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **parse**: (`event`) => [`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService)
 
-Defined in: [runtime-types.ts:739](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L739)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:921](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L921)
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Defined in: [runtime-types.ts:739](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **template**: (`service`) => `EventTemplate`
 
-Defined in: [runtime-types.ts:741](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L741)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:923](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L923)
 
 #### Parameters
 
@@ -94,7 +94,7 @@ Defined in: [runtime-types.ts:741](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **validate**: (`event`) => `boolean`
 
-Defined in: [runtime-types.ts:740](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L740)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:922](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L922)
 
 #### Parameters
 
@@ -110,15 +110,19 @@ Defined in: [runtime-types.ts:740](https://github.com/sudonym-btc/nostr-tools/bl
 
 ### findOne()
 
-> **findOne**(`query?`): `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService) \| `null`\>
+> **findOne**(`query?`, `options?`): `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService) \| `null`\>
 
-Defined in: [runtime-types.ts:744](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L744)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:926](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L926)
 
 #### Parameters
 
 ##### query?
 
 [`ArbitrationServiceFindQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceFindQuery)
+
+##### options?
+
+[`ArbitrationServiceSearchOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceSearchOptions)
 
 #### Returns
 
@@ -128,15 +132,19 @@ Defined in: [runtime-types.ts:744](https://github.com/sudonym-btc/nostr-tools/bl
 
 ### search()
 
-> **search**(`query?`): `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService)[]\>
+> **search**(`query?`, `options?`): `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService)[]\>
 
-Defined in: [runtime-types.ts:743](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L743)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:925](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L925)
 
 #### Parameters
 
 ##### query?
 
 [`ArbitrationServiceFindQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceFindQuery)
+
+##### options?
+
+[`ArbitrationServiceSearchOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceSearchOptions)
 
 #### Returns
 

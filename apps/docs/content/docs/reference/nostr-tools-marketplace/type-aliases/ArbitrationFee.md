@@ -8,7 +8,7 @@ full: true
 
 > **ArbitrationFee** = `object`
 
-Defined in: arbitrationservice.ts:17
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:18](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L18)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: arbitrationservice.ts:17
 
 > `optional` **assetOverrides?**: `Record`\<`string`, `Omit`\<`ArbitrationFee`, `"assetOverrides"`\>\>
 
-Defined in: arbitrationservice.ts:22
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L23)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: arbitrationservice.ts:22
 
 > **base**: `string`
 
-Defined in: arbitrationservice.ts:19
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:20](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L20)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: arbitrationservice.ts:19
 
 > **max**: `string`
 
-Defined in: arbitrationservice.ts:21
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:22](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L22)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: arbitrationservice.ts:21
 
 > **min**: `string`
 
-Defined in: arbitrationservice.ts:20
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:21](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L21)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: arbitrationservice.ts:20
 
 > **ppm**: `number`
 
-Defined in: arbitrationservice.ts:18
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:19](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L19)

@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceAuctionSettlementRequest** = `object`
 
-Defined in: [runtime-types.ts:373](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L373)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:439](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L439)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [runtime-types.ts:373](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **arbiterPubkey?**: `string`
 
-Defined in: [runtime-types.ts:377](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L377)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:443](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L443)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [runtime-types.ts:377](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **auctionAnchor?**: `string`
 
-Defined in: [runtime-types.ts:375](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L375)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:441](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L441)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [runtime-types.ts:375](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **auctionId?**: `string`
 
-Defined in: [runtime-types.ts:374](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L374)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:440](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L440)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [runtime-types.ts:374](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **bidEvents?**: `Event`[]
 
-Defined in: [runtime-types.ts:384](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L384)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:450](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L450)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [runtime-types.ts:384](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **bids?**: [`MarketplaceAuctionBidSettlementInput`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAuctionBidSettlementInput)[]
 
-Defined in: [runtime-types.ts:383](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L383)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:449](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L449)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [runtime-types.ts:383](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **currency?**: `string`
 
-Defined in: [runtime-types.ts:378](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L378)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:444](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L444)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [runtime-types.ts:378](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **decimals?**: `number`
 
-Defined in: [runtime-types.ts:379](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L379)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:445](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L445)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [runtime-types.ts:379](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **endAt?**: `number`
 
-Defined in: [runtime-types.ts:381](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L381)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:447](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L447)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [runtime-types.ts:381](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **listingAnchor?**: `string`
 
-Defined in: [runtime-types.ts:376](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L376)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:442](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L442)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: [runtime-types.ts:376](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **now?**: `number`
 
-Defined in: [runtime-types.ts:386](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L386)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:452](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L452)
 
 ***
 
@@ -96,7 +96,7 @@ Defined in: [runtime-types.ts:386](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **paymentEvents?**: `Event`[]
 
-Defined in: [runtime-types.ts:385](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L385)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:451](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L451)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: [runtime-types.ts:385](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **startAt?**: `number`
 
-Defined in: [runtime-types.ts:380](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L380)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:446](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L446)
 
 ***
 
@@ -112,7 +112,7 @@ Defined in: [runtime-types.ts:380](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **startingBid?**: `string`
 
-Defined in: [runtime-types.ts:382](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L382)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:448](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L448)
 
 ***
 
@@ -120,7 +120,7 @@ Defined in: [runtime-types.ts:382](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **targetOrder?**: `Partial`\<[`OrderTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderTemplate)\>
 
-Defined in: [runtime-types.ts:388](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L388)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:454](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L454)
 
 ***
 
@@ -128,4 +128,4 @@ Defined in: [runtime-types.ts:388](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **targetUnlockAt?**: `number`
 
-Defined in: [runtime-types.ts:387](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L387)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:453](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L453)

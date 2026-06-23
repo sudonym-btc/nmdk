@@ -8,7 +8,7 @@ full: true
 
 > `const` **arbitrationServiceSelections**: `object`
 
-Defined in: arbitrationservice.ts:241
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:256](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L256)
 
 ## Type Declaration
 

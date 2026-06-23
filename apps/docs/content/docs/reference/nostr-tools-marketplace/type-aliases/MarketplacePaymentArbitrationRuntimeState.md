@@ -8,4 +8,4 @@ full: true
 
 > **MarketplacePaymentArbitrationRuntimeState** = [`MarketplacePaymentArbitrationState`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentArbitrationState) \| \{ `data?`: `Record`\<`string`, `unknown`\>; `event`: `Event`; `proof?`: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence); `type`: `"settlement_published"`; \}
 
-Defined in: [runtime-types.ts:369](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L369)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:435](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L435)

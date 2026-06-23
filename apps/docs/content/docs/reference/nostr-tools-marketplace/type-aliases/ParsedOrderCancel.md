@@ -6,9 +6,9 @@ full: true
 
 # Type Alias: ParsedOrderCancel
 
-> **ParsedOrderCancel** = [`ParsedOrderLinkedFields`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderLinkedFields) & `object`
+> **ParsedOrderCancel** = [`ParsedPaymentLifecycleFields`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentLifecycleFields) & `object`
 
-Defined in: [order-lifecycle.ts:134](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-lifecycle.ts#L134)
+Defined in: nostr-tools/marketplace/payment-lifecycle.ts:159
 
 ## Type Declaration
 

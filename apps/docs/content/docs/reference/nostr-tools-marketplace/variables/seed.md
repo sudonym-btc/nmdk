@@ -8,7 +8,7 @@ full: true
 
 > `const` **seed**: `object`
 
-Defined in: [seed.ts:272](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/seed.ts#L272)
+Defined in: [nostr-tools/marketplace/seed.ts:275](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/seed.ts#L275)
 
 ## Type Declaration
 

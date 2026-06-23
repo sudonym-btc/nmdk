@@ -8,7 +8,7 @@ full: true
 
 > **SealedParticipantProof** = `object`
 
-Defined in: participant-proof.ts:87
+Defined in: [nostr-tools/marketplace/participant-proof.ts:87](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L87)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant-proof.ts:87
 
 > **disclosureKey**: `Uint8Array`
 
-Defined in: participant-proof.ts:89
+Defined in: [nostr-tools/marketplace/participant-proof.ts:89](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L89)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: participant-proof.ts:89
 
 > **proof**: [`ParticipantProofTag`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofTag)
 
-Defined in: participant-proof.ts:88
+Defined in: [nostr-tools/marketplace/participant-proof.ts:88](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L88)

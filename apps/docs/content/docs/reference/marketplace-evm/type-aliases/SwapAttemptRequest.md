@@ -8,7 +8,7 @@ full: true
 
 > **SwapAttemptRequest** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:9](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L9)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:9](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L9)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:9](https://githu
 
 > **attemptIndex**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:11](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L11)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:11](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L11)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:11](https://gith
 
 > **tradeIndex**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:10](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L10)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:10](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L10)

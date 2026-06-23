@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplacePaymentMethodApi
 
-Defined in: [runtime-types.ts:729](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L729)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:911](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L911)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [runtime-types.ts:729](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **canonicalAssetId**: (`assetId`) => `string`
 
-Defined in: [runtime-types.ts:735](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L735)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:917](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L917)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [runtime-types.ts:735](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **filter**: (`query`) => `Filter`
 
-Defined in: [runtime-types.ts:733](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L733)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:915](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L915)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [runtime-types.ts:733](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **parse**: (`event`) => [`ParsedPaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentMethod)
 
-Defined in: [runtime-types.ts:730](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L730)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:912](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L912)
 
 #### Parameters
 
@@ -68,7 +68,7 @@ Defined in: [runtime-types.ts:730](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **template**: (`method`) => `EventTemplate`
 
-Defined in: [runtime-types.ts:732](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L732)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:914](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L914)
 
 #### Parameters
 
@@ -86,7 +86,7 @@ Defined in: [runtime-types.ts:732](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **validate**: (`event`) => `boolean`
 
-Defined in: [runtime-types.ts:731](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L731)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:913](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L913)
 
 #### Parameters
 
@@ -102,15 +102,19 @@ Defined in: [runtime-types.ts:731](https://github.com/sudonym-btc/nostr-tools/bl
 
 ### findOne()
 
-> **findOne**(`query?`): `Promise`\<[`ParsedPaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentMethod) \| `null`\>
+> **findOne**(`query?`, `options?`): `Promise`\<[`ParsedPaymentMethod`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentMethod) \| `null`\>
 
-Defined in: [runtime-types.ts:734](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L734)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:916](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L916)
 
 #### Parameters
 
 ##### query?
 
 [`PaymentMethodFindQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethodFindQuery)
+
+##### options?
+
+[`PaymentMethodFindOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentMethodFindOptions)
 
 #### Returns
 

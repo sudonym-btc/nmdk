@@ -2,9 +2,11 @@
   "title": "nostr-tools/marketplace",
   "pages": [
     "index",
+    "classes",
     "interfaces",
     "type-aliases",
     "functions",
-    "variables"
+    "variables",
+    "nostr-tools"
   ]
 }

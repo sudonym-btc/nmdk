@@ -6,7 +6,7 @@ full: true
 
 # Interface: MarketplaceStructuredMessagesApi
 
-Defined in: [runtime-types.ts:827](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L827)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:997](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L997)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [runtime-types.ts:827](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **template**: (`message`) => `EventTemplate`
 
-Defined in: [runtime-types.ts:830](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L830)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:1000](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L1000)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [runtime-types.ts:830](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **validate**: (`event`) => `boolean`
 
-Defined in: [runtime-types.ts:829](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L829)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:999](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L999)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [runtime-types.ts:829](https://github.com/sudonym-btc/nostr-tools/bl
 
 > **parse**(`event`): [`ParsedStructuredMessage`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedStructuredMessage)
 
-Defined in: [runtime-types.ts:828](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L828)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:998](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L998)
 
 #### Parameters
 

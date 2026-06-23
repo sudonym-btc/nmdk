@@ -8,4 +8,4 @@ full: true
 
 > **ReviewProofResolutionStatus** = [`ParticipantProofResolutionStatus`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofResolutionStatus)
 
-Defined in: [review.ts:57](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L57)
+Defined in: [nostr-tools/marketplace/review.ts:59](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L59)

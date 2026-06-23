@@ -8,7 +8,7 @@ full: true
 
 > **ParticipantProofResolution** = `object`
 
-Defined in: participant-proof.ts:61
+Defined in: [nostr-tools/marketplace/participant-proof.ts:61](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L61)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant-proof.ts:61
 
 > `optional` **authorizationEventId?**: `string`
 
-Defined in: participant-proof.ts:67
+Defined in: [nostr-tools/marketplace/participant-proof.ts:67](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L67)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: participant-proof.ts:67
 
 > `optional` **error?**: `string`
 
-Defined in: participant-proof.ts:68
+Defined in: [nostr-tools/marketplace/participant-proof.ts:68](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L68)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: participant-proof.ts:68
 
 > `optional` **participantPubkey?**: `string`
 
-Defined in: participant-proof.ts:64
+Defined in: [nostr-tools/marketplace/participant-proof.ts:64](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L64)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: participant-proof.ts:64
 
 > `optional` **proofId?**: `string`
 
-Defined in: participant-proof.ts:65
+Defined in: [nostr-tools/marketplace/participant-proof.ts:65](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L65)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: participant-proof.ts:65
 
 > `optional` **realPubkey?**: `string`
 
-Defined in: participant-proof.ts:66
+Defined in: [nostr-tools/marketplace/participant-proof.ts:66](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L66)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: participant-proof.ts:66
 
 > `optional` **role?**: `string`
 
-Defined in: participant-proof.ts:63
+Defined in: [nostr-tools/marketplace/participant-proof.ts:63](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L63)
 
 ***
 
@@ -64,4 +64,4 @@ Defined in: participant-proof.ts:63
 
 > **status**: [`ParticipantProofResolutionStatus`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofResolutionStatus)
 
-Defined in: participant-proof.ts:62
+Defined in: [nostr-tools/marketplace/participant-proof.ts:62](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L62)

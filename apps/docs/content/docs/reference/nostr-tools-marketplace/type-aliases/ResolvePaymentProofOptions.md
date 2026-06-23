@@ -8,7 +8,7 @@ full: true
 
 > **ResolvePaymentProofOptions** = `object`
 
-Defined in: [payment-proof.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L39)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:52](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L52)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [payment-proof.ts:39](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **keys?**: [`PaymentProofKeyTag`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofKeyTag)[]
 
-Defined in: [payment-proof.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L40)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:53](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L53)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [payment-proof.ts:40](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **signer?**: [`ParticipantProofDecryptSigner`](/docs/reference/nostr-tools-marketplace/type-aliases/ParticipantProofDecryptSigner)
 
-Defined in: [payment-proof.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L41)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:54](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L54)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [payment-proof.ts:41](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **signerPubkey?**: `string`
 
-Defined in: [payment-proof.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L42)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:55](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L55)

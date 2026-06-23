@@ -8,7 +8,7 @@ full: true
 
 > `const` **orders**: `object`
 
-Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L370)
+Defined in: [nostr-tools/marketplace/order.ts:376](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L376)
 
 ## Type Declaration
 
@@ -104,24 +104,6 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 `boolean`
 
-#### groups.buckets
-
-> **buckets**: (`groups`, `identity`) => [`OrderGroupBuckets`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupBuckets) = `bucketOrderGroups`
-
-##### Parameters
-
-###### groups
-
-[`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]
-
-###### identity
-
-[`MarketplaceOrderIdentity`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceOrderIdentity)
-
-##### Returns
-
-[`OrderGroupBuckets`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupBuckets)
-
 #### groups.eventKinds
 
 > **eventKinds**: `number`[] = `orderGroupEventKinds`
@@ -146,7 +128,7 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 ###### options?
 
-[`ReduceOrderGroupOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ReduceOrderGroupOptions) = `{}`
+[`ReduceOrderGroupOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ReduceOrderGroupOptions) & `object` = `{}`
 
 ##### Returns
 
@@ -229,32 +211,6 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 ##### Returns
 
 `string`
-
-#### groups.mine
-
-> **mine**: (`pool`, `relays`, `query`, `options`) => `Promise`\<[`OrderGroupBuckets`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupBuckets)\> = `searchMyOrderGroups`
-
-##### Parameters
-
-###### pool
-
-`OrderGroupQueryPool`
-
-###### relays
-
-`string`[]
-
-###### query
-
-[`MyOrderGroupQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/MyOrderGroupQuery)
-
-###### options?
-
-[`OrderGroupSearchOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupSearchOptions) = `{}`
-
-##### Returns
-
-`Promise`\<[`OrderGroupBuckets`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupBuckets)\>
 
 #### groups.parseEvent
 
@@ -394,6 +350,24 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 `Promise`\<[`ResolvedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ResolvedOrderGroup)\>
 
+#### groups.roles
+
+> **roles**: (`groups`, `identity`) => [`OrderGroupRoles`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupRoles) = `roleOrderGroups`
+
+##### Parameters
+
+###### groups
+
+[`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]
+
+###### identity
+
+[`MarketplaceOrderIdentity`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceOrderIdentity)
+
+##### Returns
+
+[`OrderGroupRoles`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupRoles)
+
 #### groups.search
 
 > **search**: (`pool`, `relays`, `query`, `options`) => `Promise`\<[`ParsedOrderGroup`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderGroup)[]\> = `searchOrderGroups`
@@ -450,35 +424,19 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 `SubCloser`
 
-#### groups.subscribeMine
+#### groups.validateOrder
 
-> **subscribeMine**: (`pool`, `relays`, `query`, `handlers`, `options`) => `SubCloser` = `subscribeMyOrderGroups`
+> **validateOrder**: (`request`) => [`MarketplaceOrderValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceOrderValidationResult) = `validateMarketplaceOrder`
 
 ##### Parameters
 
-###### pool
+###### request
 
-`OrderGroupSubscribePool`
-
-###### relays
-
-`string`[]
-
-###### query
-
-[`MyOrderGroupQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/MyOrderGroupQuery)
-
-###### handlers
-
-[`OrderGroupSubscribeHandlers`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderGroupSubscribeHandlers) & `object`
-
-###### options?
-
-`OrderGroupSubscribeOptions` = `{}`
+[`MarketplaceOrderValidationRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceOrderValidationRequest)
 
 ##### Returns
 
-`SubCloser`
+[`MarketplaceOrderValidationResult`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceOrderValidationResult)
 
 #### groups.validatePayments
 
@@ -514,13 +472,17 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 ### identityPubkeys
 
-> **identityPubkeys**: (`identity`) => `string`[] = `orderQueries.identityPubkeys`
+> **identityPubkeys**: (`identity`, `fallbackRoles`) => `string`[] = `orderQueries.identityPubkeys`
 
 #### Parameters
 
 ##### identity?
 
 [`MarketplaceOrderIdentity`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceOrderIdentity) = `{}`
+
+##### fallbackRoles?
+
+[`MarketplaceParticipantGroupRole`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantGroupRole)[] = `...`
 
 #### Returns
 
@@ -584,7 +546,7 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 ### parsePayment
 
-> **parsePayment**: (`event`) => [`ParsedOrderPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPayment) = `parseOrderPaymentEvent`
+> **parsePayment**: (`event`) => [`ParsedPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPayment) = `parsePaymentEvent`
 
 #### Parameters
 
@@ -594,11 +556,11 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 #### Returns
 
-[`ParsedOrderPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPayment)
+[`ParsedPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPayment)
 
 ### parsePaymentAck
 
-> **parsePaymentAck**: (`event`) => [`ParsedOrderPaymentAck`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentAck) = `parseOrderPaymentAckEvent`
+> **parsePaymentAck**: (`event`) => [`ParsedPaymentAck`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentAck) = `parsePaymentAckEvent`
 
 #### Parameters
 
@@ -608,11 +570,11 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 #### Returns
 
-[`ParsedOrderPaymentAck`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentAck)
+[`ParsedPaymentAck`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentAck)
 
 ### parsePaymentNack
 
-> **parsePaymentNack**: (`event`) => [`ParsedOrderPaymentNack`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentNack) = `parseOrderPaymentNackEvent`
+> **parsePaymentNack**: (`event`) => [`ParsedPaymentNack`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentNack) = `parsePaymentNackEvent`
 
 #### Parameters
 
@@ -622,11 +584,11 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 #### Returns
 
-[`ParsedOrderPaymentNack`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentNack)
+[`ParsedPaymentNack`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentNack)
 
 ### parsePaymentSettlement
 
-> **parsePaymentSettlement**: (`event`) => [`ParsedOrderPaymentSettlement`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentSettlement) = `parseOrderPaymentSettlementEvent`
+> **parsePaymentSettlement**: (`event`) => [`ParsedPaymentSettlement`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentSettlement) = `parsePaymentSettlementEvent`
 
 #### Parameters
 
@@ -636,7 +598,7 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 #### Returns
 
-[`ParsedOrderPaymentSettlement`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPaymentSettlement)
+[`ParsedPaymentSettlement`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPaymentSettlement)
 
 ### participantProofKeyTag
 
@@ -668,13 +630,13 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 ### paymentAckTemplate
 
-> **paymentAckTemplate**: (`ack`) => `EventTemplate` = `generateOrderPaymentAckEventTemplate`
+> **paymentAckTemplate**: (`ack`) => `EventTemplate` = `generatePaymentAckEventTemplate`
 
 #### Parameters
 
 ##### ack
 
-[`OrderPaymentAckTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderPaymentAckTemplate)
+[`PaymentAckTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentAckTemplate)
 
 #### Returns
 
@@ -682,13 +644,13 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 ### paymentNackTemplate
 
-> **paymentNackTemplate**: (`nack`) => `EventTemplate` = `generateOrderPaymentNackEventTemplate`
+> **paymentNackTemplate**: (`nack`) => `EventTemplate` = `generatePaymentNackEventTemplate`
 
 #### Parameters
 
 ##### nack
 
-[`OrderPaymentNackTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderPaymentNackTemplate)
+[`PaymentNackTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentNackTemplate)
 
 #### Returns
 
@@ -696,13 +658,13 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 ### paymentSettlementTemplate
 
-> **paymentSettlementTemplate**: (`settlement`) => `EventTemplate` = `generateOrderPaymentSettlementEventTemplate`
+> **paymentSettlementTemplate**: (`settlement`) => `EventTemplate` = `generatePaymentSettlementEventTemplate`
 
 #### Parameters
 
 ##### settlement
 
-[`OrderPaymentSettlementTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderPaymentSettlementTemplate)
+[`PaymentSettlementTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentSettlementTemplate)
 
 #### Returns
 
@@ -710,13 +672,13 @@ Defined in: [order.ts:370](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 ### paymentTemplate
 
-> **paymentTemplate**: (`payment`) => `EventTemplate` = `generateOrderPaymentEventTemplate`
+> **paymentTemplate**: (`payment`) => `EventTemplate` = `generatePaymentEventTemplate`
 
 #### Parameters
 
 ##### payment
 
-[`OrderPaymentTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderPaymentTemplate)
+[`PaymentTemplate`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentTemplate)
 
 #### Returns
 

@@ -8,7 +8,7 @@ full: true
 
 > `const` **arbitrationServices**: `object`
 
-Defined in: arbitrationservice.ts:231
+Defined in: [nostr-tools/marketplace/arbitrationservice.ts:246](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/arbitrationservice.ts#L246)
 
 ## Type Declaration
 
@@ -50,7 +50,7 @@ Defined in: arbitrationservice.ts:231
 
 ### findOne
 
-> **findOne**: (`pool`, `relays`, `query`) => `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService) \| `null`\> = `findArbitrationService`
+> **findOne**: (`pool`, `relays`, `query`, `options`) => `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService) \| `null`\> = `findArbitrationService`
 
 #### Parameters
 
@@ -65,6 +65,10 @@ Defined in: arbitrationservice.ts:231
 ##### query?
 
 [`ArbitrationServiceFindQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceFindQuery) = `{}`
+
+##### options?
+
+[`ArbitrationServiceSearchOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceSearchOptions) = `{}`
 
 #### Returns
 
@@ -86,7 +90,7 @@ Defined in: arbitrationservice.ts:231
 
 ### search
 
-> **search**: (`pool`, `relays`, `query`) => `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService)[]\> = `searchArbitrationServices`
+> **search**: (`pool`, `relays`, `query`, `options`) => `Promise`\<[`ParsedArbitrationService`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedArbitrationService)[]\> = `searchArbitrationServices`
 
 #### Parameters
 
@@ -101,6 +105,10 @@ Defined in: arbitrationservice.ts:231
 ##### query?
 
 [`ArbitrationServiceFindQuery`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceFindQuery) = `{}`
+
+##### options?
+
+[`ArbitrationServiceSearchOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ArbitrationServiceSearchOptions) = `{}`
 
 #### Returns
 

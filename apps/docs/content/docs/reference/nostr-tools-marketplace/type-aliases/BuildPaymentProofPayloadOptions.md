@@ -8,7 +8,7 @@ full: true
 
 > **BuildPaymentProofPayloadOptions** = `object`
 
-Defined in: [payment-proof.ts:57](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L57)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:70](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L70)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [payment-proof.ts:57](https://github.com/sudonym-btc/nostr-tools/blo
 
 > `optional` **mode?**: [`PaymentProofPrivacy`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofPrivacy)
 
-Defined in: [payment-proof.ts:58](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L58)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:71](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L71)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [payment-proof.ts:58](https://github.com/sudonym-btc/nostr-tools/blo
 
 > **recipientPubkeys**: `Iterable`\<`string` \| `undefined`\>
 
-Defined in: [payment-proof.ts:60](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L60)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:73](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L73)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [payment-proof.ts:60](https://github.com/sudonym-btc/nostr-tools/blo
 
 > **senderSecretKey**: `Uint8Array`
 
-Defined in: [payment-proof.ts:59](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L59)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:72](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L72)

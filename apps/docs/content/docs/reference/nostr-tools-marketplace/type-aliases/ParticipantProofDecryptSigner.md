@@ -8,7 +8,7 @@ full: true
 
 > **ParticipantProofDecryptSigner** = `object`
 
-Defined in: participant-proof.ts:71
+Defined in: [nostr-tools/marketplace/participant-proof.ts:71](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L71)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: participant-proof.ts:71
 
 > `optional` **getPublicKey?**: () => `Promise`\<`string`\> \| `string`
 
-Defined in: participant-proof.ts:72
+Defined in: [nostr-tools/marketplace/participant-proof.ts:72](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L72)
 
 #### Returns
 
@@ -28,7 +28,7 @@ Defined in: participant-proof.ts:72
 
 > **nip44Decrypt**: (`pubkey`, `ciphertext`) => `Promise`\<`string`\> \| `string`
 
-Defined in: participant-proof.ts:73
+Defined in: [nostr-tools/marketplace/participant-proof.ts:73](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/participant-proof.ts#L73)
 
 #### Parameters
 

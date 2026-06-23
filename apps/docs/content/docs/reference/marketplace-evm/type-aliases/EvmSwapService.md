@@ -8,7 +8,7 @@ full: true
 
 > **EvmSwapService** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:105](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L105)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:113](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L113)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:105](https://git
 
 > **listActive**(): `Promise`\<[`EvmOperationRecord`](/docs/reference/marketplace-evm/type-aliases/EvmOperationRecord)[]\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:109](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L109)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:117](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L117)
 
 #### Returns
 
@@ -28,7 +28,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:109](https://git
 
 > **resume**(`id`): `Promise`\<[`SwapResumeResult`](/docs/reference/marketplace-evm/type-aliases/SwapResumeResult)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:108](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L108)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:116](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L116)
 
 #### Parameters
 
@@ -46,7 +46,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:108](https://git
 
 > **swapIn**(`request`): `Promise`\<[`SwapInResult`](/docs/reference/marketplace-evm/type-aliases/SwapInResult)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:106](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L106)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:114](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L114)
 
 #### Parameters
 
@@ -64,7 +64,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:106](https://git
 
 > **swapOut**(`request`): `Promise`\<[`SwapOutResult`](/docs/reference/marketplace-evm/type-aliases/SwapOutResult)\>
 
-Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:107](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/swaps/types.ts#L107)
+Defined in: [dependencies/marketplace-evm-ts/src/swaps/types.ts:115](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/swaps/types.ts#L115)
 
 #### Parameters
 

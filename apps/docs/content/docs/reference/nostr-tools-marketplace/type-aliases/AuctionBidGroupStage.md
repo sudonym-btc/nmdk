@@ -8,4 +8,4 @@ full: true
 
 > **AuctionBidGroupStage** = `"bid"` \| `"funded"` \| `"accepted"` \| `"rejected"` \| `"refunded"` \| `"promoted"` \| `"settled"`
 
-Defined in: [auction-bid-group.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L36)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:49](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L49)

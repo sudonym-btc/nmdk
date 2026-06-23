@@ -8,7 +8,7 @@ full: true
 
 > `const` **reviews**: `object`
 
-Defined in: [review.ts:181](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/review.ts#L181)
+Defined in: [nostr-tools/marketplace/review.ts:183](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/review.ts#L183)
 
 ## Type Declaration
 

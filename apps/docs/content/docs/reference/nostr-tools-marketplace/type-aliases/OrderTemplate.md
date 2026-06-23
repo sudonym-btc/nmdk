@@ -8,7 +8,7 @@ full: true
 
 > **OrderTemplate** = `Omit`\<[`OrderContent`](/docs/reference/nostr-tools-marketplace/type-aliases/OrderContent), `"quantity"`\> & `object`
 
-Defined in: [order.ts:88](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order.ts#L88)
+Defined in: [nostr-tools/marketplace/order.ts:91](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order.ts#L91)
 
 ## Type Declaration
 

@@ -8,7 +8,7 @@ full: true
 
 > **SealedPaymentProof** = `object`
 
-Defined in: [payment-proof.ts:21](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L21)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L25)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [payment-proof.ts:21](https://github.com/sudonym-btc/nostr-tools/blo
 
 > **mode**: `"sealed:v1"`
 
-Defined in: [payment-proof.ts:23](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L23)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:27](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L27)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [payment-proof.ts:23](https://github.com/sudonym-btc/nostr-tools/blo
 
 > **payload**: `string`
 
-Defined in: [payment-proof.ts:25](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L25)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:29](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L29)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [payment-proof.ts:25](https://github.com/sudonym-btc/nostr-tools/blo
 
 > **proofId**: `string`
 
-Defined in: [payment-proof.ts:24](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L24)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:28](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L28)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [payment-proof.ts:24](https://github.com/sudonym-btc/nostr-tools/blo
 
 > **version**: `1`
 
-Defined in: [payment-proof.ts:22](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L22)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:26](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L26)

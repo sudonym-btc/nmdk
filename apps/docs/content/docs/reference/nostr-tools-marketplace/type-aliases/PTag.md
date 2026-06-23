@@ -8,4 +8,4 @@ full: true
 
 > **PTag** = [`MarketplaceParticipantTag`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceParticipantTag)
 
-Defined in: [helper.ts:90](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L90)
+Defined in: [nostr-tools/marketplace/helper.ts:117](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L117)

@@ -6,9 +6,9 @@ full: true
 
 # Type Alias: MarketplaceAuctionPaymentSettlementIntent
 
-> **MarketplaceAuctionPaymentSettlementIntent** = `MarketplaceDriverAuctionSettlementIntent`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence), [`MarketplacePaymentValidationRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationRequest)\[`"expected"`\]\> & `object`
+> **MarketplaceAuctionPaymentSettlementIntent** = `MarketplaceDriverAuctionSettlementIntent`\<[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence), [`MarketplacePaymentValidationExpected`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationExpected)\> & `object`
 
-Defined in: [runtime-types.ts:402](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L402)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:468](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L468)
 
 ## Type Declaration
 
@@ -20,13 +20,13 @@ Defined in: [runtime-types.ts:402](https://github.com/sudonym-btc/nostr-tools/bl
 
 > `optional` **data?**: `Record`\<`string`, `unknown`\>
 
-### expected
+### expected?
 
-> **expected**: [`MarketplacePaymentValidationRequest`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationRequest)\[`"expected"`\]
+> `optional` **expected?**: [`MarketplacePaymentValidationExpected`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplacePaymentValidationExpected)
 
 ### payment
 
-> **payment**: [`ParsedOrderPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedOrderPayment)
+> **payment**: [`ParsedPayment`](/docs/reference/nostr-tools-marketplace/type-aliases/ParsedPayment)
 
 ### proof
 

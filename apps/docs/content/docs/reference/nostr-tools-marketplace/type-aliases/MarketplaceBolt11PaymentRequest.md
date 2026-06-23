@@ -8,7 +8,7 @@ full: true
 
 > **MarketplaceBolt11PaymentRequest** = `MarketplaceDriverBolt11PaymentRequest` & `object`
 
-Defined in: [runtime-types.ts:446](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L446)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:512](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L512)
 
 ## Type Declaration
 

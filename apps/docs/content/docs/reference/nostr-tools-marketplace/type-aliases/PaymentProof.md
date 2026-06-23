@@ -8,7 +8,7 @@ full: true
 
 > **PaymentProof** = `object`
 
-Defined in: [helper.ts:97](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L97)
+Defined in: [nostr-tools/marketplace/helper.ts:124](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L124)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [helper.ts:97](https://github.com/sudonym-btc/nostr-tools/blob/8049e
 
 > `optional` **arbitration?**: `object`
 
-Defined in: [helper.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L100)
+Defined in: [nostr-tools/marketplace/helper.ts:126](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L126)
 
 #### arbitrationService
 
@@ -28,16 +28,8 @@ Defined in: [helper.ts:100](https://github.com/sudonym-btc/nostr-tools/blob/8049
 
 ***
 
-### listing
-
-> **listing**: `Event`
-
-Defined in: [helper.ts:98](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L98)
-
-***
-
 ### paymentProof
 
 > **paymentProof**: [`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence) \| `null`
 
-Defined in: [helper.ts:99](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/helper.ts#L99)
+Defined in: [nostr-tools/marketplace/helper.ts:125](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/helper.ts#L125)

@@ -8,7 +8,7 @@ full: true
 
 > **EvmEscrowFeePolicy** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:7](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L7)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:7](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/escrow/types.ts#L7)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:7](https://gith
 
 > **base**: `bigint`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:9](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L9)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:9](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/escrow/types.ts#L9)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:9](https://gith
 
 > **max**: `bigint`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:11](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L11)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:11](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/escrow/types.ts#L11)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:11](https://git
 
 > **min**: `bigint`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:10](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L10)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:10](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/escrow/types.ts#L10)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:10](https://git
 
 > **ppm**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:8](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/escrow/types.ts#L8)
+Defined in: [dependencies/marketplace-evm-ts/src/escrow/types.ts:8](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/escrow/types.ts#L8)

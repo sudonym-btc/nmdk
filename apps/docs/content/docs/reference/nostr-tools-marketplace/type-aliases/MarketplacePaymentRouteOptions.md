@@ -8,12 +8,12 @@ full: true
 
 > **MarketplacePaymentRouteOptions** = `object`
 
-Defined in: [runtime-types.ts:590](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L590)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:725](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L725)
 
 ## Properties
 
-### subject?
+### amount?
 
-> `optional` **subject?**: `"order"` \| `"bid"`
+> `optional` **amount?**: [`MarketplaceAmount`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceAmount)
 
-Defined in: [runtime-types.ts:591](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/runtime-types.ts#L591)
+Defined in: [nostr-tools/marketplace/runtime-types.ts:726](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/runtime-types.ts#L726)

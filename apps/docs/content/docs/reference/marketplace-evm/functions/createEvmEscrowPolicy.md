@@ -8,7 +8,7 @@ full: true
 
 > **createEvmEscrowPolicy**(`options`): [`EvmEscrowPolicy`](/docs/reference/marketplace-evm/type-aliases/EvmEscrowPolicy)
 
-Defined in: [dependencies/marketplace-evm-ts/src/marketplace/escrowPolicy.ts:33](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/marketplace/escrowPolicy.ts#L33)
+Defined in: [dependencies/marketplace-evm-ts/src/marketplace/escrowPolicy.ts:34](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/marketplace/escrowPolicy.ts#L34)
 
 ## Parameters
 

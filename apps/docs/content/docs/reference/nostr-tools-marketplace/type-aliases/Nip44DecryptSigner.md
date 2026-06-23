@@ -8,27 +8,27 @@ full: true
 
 > **Nip44DecryptSigner** = `object`
 
-Defined in: [order-group-types.ts:39](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L39)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L41)
 
 ## Properties
 
 ### getPublicKey?
 
-> `optional` **getPublicKey?**: () => `Promise`\<`string`\>
+> `optional` **getPublicKey?**: () => `Promise`\<`string`\> \| `string`
 
-Defined in: [order-group-types.ts:40](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L40)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:42](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L42)
 
 #### Returns
 
-`Promise`\<`string`\>
+`Promise`\<`string`\> \| `string`
 
 ***
 
 ### nip44Decrypt
 
-> **nip44Decrypt**: (`pubkey`, `ciphertext`) => `Promise`\<`string`\>
+> **nip44Decrypt**: (`pubkey`, `ciphertext`) => `Promise`\<`string`\> \| `string`
 
-Defined in: [order-group-types.ts:41](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-group-types.ts#L41)
+Defined in: [nostr-tools/marketplace/order-group-types.ts:43](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-group-types.ts#L43)
 
 #### Parameters
 
@@ -42,4 +42,4 @@ Defined in: [order-group-types.ts:41](https://github.com/sudonym-btc/nostr-tools
 
 #### Returns
 
-`Promise`\<`string`\>
+`Promise`\<`string`\> \| `string`

@@ -8,7 +8,7 @@ full: true
 
 > **BoltzCurrencyResolver** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:86](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L86)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:109](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/boltz/types.ts#L109)
 
 ## Methods
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:86](https://gith
 
 > **currencyForAsset**(`chainId`, `assetAddress?`): `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:87](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/boltz/types.ts#L87)
+Defined in: [dependencies/marketplace-evm-ts/src/boltz/types.ts:110](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/boltz/types.ts#L110)
 
 #### Parameters
 

@@ -8,7 +8,7 @@ full: true
 
 > **OrderSearchOptions** = `object`
 
-Defined in: [order-query.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L35)
+Defined in: [nostr-tools/marketplace/order-query.ts:33](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-query.ts#L33)
 
 ## Properties
 
@@ -16,4 +16,12 @@ Defined in: [order-query.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/
 
 > `optional` **maxWait?**: `number`
 
-Defined in: [order-query.ts:36](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/order-query.ts#L36)
+Defined in: [nostr-tools/marketplace/order-query.ts:34](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-query.ts#L34)
+
+***
+
+### oninvalid?
+
+> `optional` **oninvalid?**: [`MarketplaceInvalidEventHandler`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceInvalidEventHandler)
+
+Defined in: [nostr-tools/marketplace/order-query.ts:35](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/order-query.ts#L35)

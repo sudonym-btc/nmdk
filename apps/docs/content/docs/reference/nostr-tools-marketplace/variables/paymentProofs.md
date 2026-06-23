@@ -8,7 +8,7 @@ full: true
 
 > `const` **paymentProofs**: `object`
 
-Defined in: [payment-proof.ts:225](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/payment-proof.ts#L225)
+Defined in: [nostr-tools/marketplace/payment-proof.ts:315](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/payment-proof.ts#L315)
 
 ## Type Declaration
 
@@ -80,6 +80,34 @@ Defined in: [payment-proof.ts:225](https://github.com/sudonym-btc/nostr-tools/bl
 
 `string`[]
 
+### paramsDecryptor
+
+> **paramsDecryptor**: (`options`) => `MarketplaceDriverPaymentProofParamsDecryptor` = `paymentProofParamsDecryptor`
+
+#### Parameters
+
+##### options?
+
+[`ResolvePaymentProofOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ResolvePaymentProofOptions) = `{}`
+
+#### Returns
+
+`MarketplaceDriverPaymentProofParamsDecryptor`
+
+### paramsId
+
+> **paramsId**: (`params`) => `string` = `paymentProofParamsId`
+
+#### Parameters
+
+##### params
+
+`Record`\<`string`, `unknown`\>
+
+#### Returns
+
+`string`
+
 ### parse
 
 > **parse**: (`json`) => [`PaymentProof`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProof) \| `null` \| `undefined` = `parsePaymentProof`
@@ -140,6 +168,24 @@ Defined in: [payment-proof.ts:225](https://github.com/sudonym-btc/nostr-tools/bl
 
 `Promise`\<[`PaymentProofResolution`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofResolution)\>
 
+### resolveParams
+
+> **resolveParams**: (`proof`, `options`) => `Promise`\<[`PaymentProofParamsResolution`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofParamsResolution)\> = `resolvePaymentProofParams`
+
+#### Parameters
+
+##### proof
+
+[`PaymentProofEvidence`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofEvidence)
+
+##### options?
+
+[`ResolvePaymentProofOptions`](/docs/reference/nostr-tools-marketplace/type-aliases/ResolvePaymentProofOptions) = `{}`
+
+#### Returns
+
+`Promise`\<[`PaymentProofParamsResolution`](/docs/reference/nostr-tools-marketplace/type-aliases/PaymentProofParamsResolution)\>
+
 ### seal
 
 > **seal**: (`proof`, `disclosureKey?`) => `object` = `sealPaymentProof`
@@ -165,3 +211,29 @@ Defined in: [payment-proof.ts:225](https://github.com/sudonym-btc/nostr-tools/bl
 ##### proof
 
 > **proof**: [`SealedPaymentProof`](/docs/reference/nostr-tools-marketplace/type-aliases/SealedPaymentProof)
+
+### sealParams
+
+> **sealParams**: (`params`, `disclosureKey?`) => `object` = `sealPaymentProofParams`
+
+#### Parameters
+
+##### params
+
+`Record`\<`string`, `unknown`\>
+
+##### disclosureKey?
+
+`Uint8Array`\<`ArrayBufferLike`\>
+
+#### Returns
+
+`object`
+
+##### disclosureKey
+
+> **disclosureKey**: `Uint8Array`
+
+##### params
+
+> **params**: `MarketplaceDriverEncryptedPaymentProofParams`

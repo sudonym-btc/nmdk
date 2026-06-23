@@ -8,7 +8,7 @@ full: true
 
 > **AuctionBidGroupSearchOptions** = `object`
 
-Defined in: [auction-bid-group.ts:85](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L85)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:125](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L125)
 
 ## Properties
 
@@ -16,4 +16,12 @@ Defined in: [auction-bid-group.ts:85](https://github.com/sudonym-btc/nostr-tools
 
 > `optional` **maxWait?**: `number`
 
-Defined in: [auction-bid-group.ts:86](https://github.com/sudonym-btc/nostr-tools/blob/8049e0af7b8f760c118605505fc244388fb10bff/marketplace/auction-bid-group.ts#L86)
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:126](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L126)
+
+***
+
+### oninvalid?
+
+> `optional` **oninvalid?**: [`MarketplaceInvalidEventHandler`](/docs/reference/nostr-tools-marketplace/type-aliases/MarketplaceInvalidEventHandler)
+
+Defined in: [nostr-tools/marketplace/auction-bid-group.ts:127](https://github.com/sudonym-btc/nostr-tools/blob/4b3571f936a7136e57a48e4ec021087a540cf28e/marketplace/auction-bid-group.ts#L127)

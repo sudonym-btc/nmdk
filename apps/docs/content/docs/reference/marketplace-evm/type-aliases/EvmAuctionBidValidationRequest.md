@@ -8,7 +8,7 @@ full: true
 
 > **EvmAuctionBidValidationRequest** = `object`
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:21](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L21)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:21](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L21)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:21](https://gi
 
 > **arbiterAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:29](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L29)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:29](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L29)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:29](https://gi
 
 > **assetAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:30](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L30)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:30](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L30)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:30](https://gi
 
 > **auctionId**: `string`
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:24](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L24)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:24](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L24)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:24](https://gi
 
 > **bidAmount**: [`EvmAmount`](/docs/reference/marketplace-evm/type-aliases/EvmAmount)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:31](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L31)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:31](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L31)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:31](https://gi
 
 > `optional` **bidderAddress?**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:27](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L27)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:27](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L27)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:27](https://gi
 
 > **chainId**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:22](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L22)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:22](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L22)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:22](https://gi
 
 > `optional` **contextHash?**: [`EvmHex`](/docs/reference/marketplace-evm/type-aliases/EvmHex)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:33](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L33)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:33](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L33)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:33](https://gi
 
 > **contractAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:25](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L25)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:25](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L25)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:25](https://gi
 
 > `optional` **contractBytecodeHash?**: [`EvmHex`](/docs/reference/marketplace-evm/type-aliases/EvmHex)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:26](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L26)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:26](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L26)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:26](https://gi
 
 > `optional` **escrowFee?**: [`EvmAmount`](/docs/reference/marketplace-evm/type-aliases/EvmAmount)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:32](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L32)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:32](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L32)
 
 ***
 
@@ -96,7 +96,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:32](https://gi
 
 > `optional` **minConfirmations?**: `number`
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:35](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L35)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:35](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L35)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:35](https://gi
 
 > `optional` **recycleCovenantHash?**: [`EvmHex`](/docs/reference/marketplace-evm/type-aliases/EvmHex)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:34](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L34)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:34](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L34)
 
 ***
 
@@ -112,7 +112,7 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:34](https://gi
 
 > **sellerAddress**: [`EvmAddress`](/docs/reference/marketplace-evm/type-aliases/EvmAddress)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:28](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L28)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:28](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L28)
 
 ***
 
@@ -120,4 +120,4 @@ Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:28](https://gi
 
 > **txHash**: [`EvmHash`](/docs/reference/marketplace-evm/type-aliases/EvmHash)
 
-Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:23](https://github.com/sudonym-btc/marketplace-evm-ts/blob/efd7a64865c387ee7d1b6acdbef8115722f177b4/src/auction/types.ts#L23)
+Defined in: [dependencies/marketplace-evm-ts/src/auction/types.ts:23](https://github.com/sudonym-btc/marketplace-evm-ts/blob/8bf3abd83b51006e416f86f320282518e6e611ee/src/auction/types.ts#L23)
