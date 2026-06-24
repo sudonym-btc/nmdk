@@ -30,6 +30,6 @@ npm run types:check
 Package docs are generated inside their own submodule repositories. This app
 does not generate package API references.
 
-`scripts/generate-package-links.mjs` reads the current submodule commits and
-regenerates `content/docs/packages.mdx` with GitHub links to package-owned docs
-at those exact commits.
+`scripts/generate-package-links.mjs` reads the package submodule remotes and
+regenerates `content/docs/packages.mdx` with links to each package's rendered
+GitHub Pages docs.

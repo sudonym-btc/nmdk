@@ -67,16 +67,24 @@ function githubBaseUrl(remote) {
   return remote.replace(/\.git$/, '');
 }
 
+function githubPagesUrl(remote) {
+  const baseUrl = githubBaseUrl(remote);
+  const match = baseUrl.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)$/);
+
+  if (!match) return null;
+
+  return `https://${match[1]}.github.io/${match[2]}/`;
+}
+
 function packageDocUrl(pkg) {
   const cwd = path.join(repoRoot, pkg.path);
+  const remote = git(['remote', 'get-url', 'origin'], cwd);
+  const pagesUrl = githubPagesUrl(remote);
+
+  if (pagesUrl) return pagesUrl;
+
   const sha = git(['rev-parse', 'HEAD'], cwd);
-  const remote = githubBaseUrl(git(['remote', 'get-url', 'origin'], cwd));
-
-  if (!remote.startsWith('https://github.com/')) {
-    return `${remote}/tree/${sha}/${pkg.docsPath}`;
-  }
-
-  return `${remote}/tree/${sha}/${pkg.docsPath}`;
+  return `${githubBaseUrl(remote)}/tree/${sha}/${pkg.docsPath}`;
 }
 
 const cards = packages
@@ -91,15 +99,15 @@ const cards = packages
 
 const body = `---
 title: Package Docs
-description: Links to package-owned documentation at the submodule commits pinned by this NMDK checkout.
+description: Links to package-owned GitHub Pages documentation sites.
 ---
 
 # Package Docs
 
 NMDK owns the integration guide and local development workflow. Individual
 packages own their getting-started docs and API references in their own
-repositories. These links point at the exact submodule commits pinned by this
-checkout.
+repositories. These links point to the rendered GitHub Pages docs for each
+package.
 
 <Cards>
 ${cards}
