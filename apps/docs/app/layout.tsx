@@ -5,10 +5,10 @@ import './global.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://sudonym-btc.github.io/nmdk/'),
   title: {
-    default: 'NMDK API Reference',
+    default: 'NMDK Docs',
     template: '%s | NMDK',
   },
-  description: 'Generated API reference for NMDK marketplace packages.',
+  description: 'Integration docs and package-owned documentation links for NMDK.',
 };
 
 export default function Layout({ children }: LayoutProps<'/'>) {
