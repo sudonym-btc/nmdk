@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "api:generate": "node scripts/generate-api.mjs",
+    "api:generate": "npm run packages:generate",
+    "packages:generate": "node scripts/generate-package-links.mjs",
     "build": "next build",
     "dev": "next dev",
     "start": "serve out",
@@ -29,8 +30,6 @@
     "postcss": "^8.5.15",
     "serve": "^14.2.6",
     "tailwindcss": "^4.3.0",
-    "typedoc": "0.28.19",
-    "typedoc-plugin-markdown": "4.12.0",
     "typescript": "^6.0.3"
   }
 }

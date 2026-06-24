@@ -1,6 +1,7 @@
 # NMDK Docs
 
-Fumadocs/Next.js site for generated NMDK API references.
+Fumadocs/Next.js site for NMDK integration docs and package-owned documentation
+links.
 
 ## Commands
 
@@ -8,6 +9,7 @@ Run from the repository root:
 
 ```bash
 npm run docs:api
+npm run docs:links
 npm run docs:dev
 npm run docs:build
 npm run docs:check
@@ -17,17 +19,17 @@ Run from this workspace:
 
 ```bash
 npm run api:generate
+npm run packages:generate
 npm run dev
 npm run build
 npm run types:check
 ```
 
-## Generated References
+## Package Links
 
-`scripts/generate-api.mjs` uses TypeDoc and `typedoc-plugin-markdown` to regenerate:
+Package docs are generated inside their own submodule repositories. This app
+does not generate package API references.
 
-- `content/docs/reference/nostr-tools-marketplace` from `dependencies/nostr-tools/marketplace.ts`
-- `content/docs/reference/marketplace-evm` from `dependencies/marketplace-evm-ts/src/index.ts`
-- `content/docs/reference/marketplace-cashu` from `dependencies/marketplace-cashu-ts/src/index.ts`
-
-The generator adds Fumadocs frontmatter and `meta.json` files after TypeDoc runs.
+`scripts/generate-package-links.mjs` reads the current submodule commits and
+regenerates `content/docs/packages.mdx` with GitHub links to package-owned docs
+at those exact commits.
