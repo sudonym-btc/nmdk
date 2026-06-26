@@ -28,6 +28,10 @@ mine_blocks() {
   btc generatetoaddress "$count" "$address" >/dev/null
 }
 
+is_initial_block_download() {
+  btc getblockchaininfo | tr -d ' ' | grep -q '"initialblockdownload":true'
+}
+
 until btc getblockchaininfo >/dev/null 2>&1; do
   echo "waiting for shared bitcoind..."
   sleep 1
@@ -47,6 +51,11 @@ client_balance="$(btc_wallet client getbalance | awk '{printf "%.8f", $1}')"
 if awk "BEGIN { exit !($client_balance < 1) }"; then
   client_address="$(btc_wallet client getnewaddress "" bech32m)"
   btc_wallet regtest -named sendtoaddress address="$client_address" amount="$CLIENT_FUND_AMOUNT_BTC" fee_rate=1 >/dev/null
+  mine_blocks 1
+fi
+
+if is_initial_block_download; then
+  echo "mining a fresh shared regtest block to leave initial block download..."
   mine_blocks 1
 fi
 

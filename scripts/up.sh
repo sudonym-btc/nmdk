@@ -29,6 +29,9 @@ echo "Starting NMDK EVM stack..."
 (
   export MARKETPLACE_EVM_USE_SHARED_BITCOIN=1
   cd "$ROOT/dependencies/marketplace-evm-stack"
+  if [ "${MARKETPLACE_EVM_RESET_ON_UP:-1}" != "0" ]; then
+    ./scripts/reset.sh
+  fi
   ./scripts/up.sh
   ./scripts/wait.sh
 )

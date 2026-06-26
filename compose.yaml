@@ -3,7 +3,60 @@ services:
     image: hostr-signet:latest
     build:
       context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
-      dockerfile: apps/signet/Dockerfile
+      dockerfile_inline: |
+        FROM node:20-slim AS build
+
+        WORKDIR /app
+
+        ARG PNPM_VERSION=10.14.0
+        RUN corepack enable && corepack prepare pnpm@$${PNPM_VERSION} --activate
+
+        COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+        COPY apps/signet/package.json ./apps/signet/
+        COPY packages/signet-types ./packages/signet-types
+
+        ENV CI=true
+        RUN pnpm install --frozen-lockfile
+
+        COPY apps/signet ./apps/signet
+
+        WORKDIR /app/apps/signet
+        ENV DATABASE_URL="file:/app/config/signet.db"
+        RUN pnpm prisma generate
+        RUN pnpm build
+
+        FROM node:20-slim AS runtime
+
+        WORKDIR /app
+
+        ARG PNPM_VERSION=10.14.0
+        RUN apt-get update && apt-get install -y --no-install-recommends openssl wget ca-certificates && rm -rf /var/lib/apt/lists/*
+
+        COPY --from=build /app/node_modules ./node_modules
+        COPY --from=build /app/package.json ./
+        COPY --from=build /app/pnpm-workspace.yaml ./
+        COPY --from=build /app/packages/signet-types ./packages/signet-types
+
+        COPY --from=build /app/apps/signet/node_modules ./apps/signet/node_modules
+        COPY --from=build /app/apps/signet/package.json ./apps/signet/
+        COPY --from=build /app/apps/signet/dist ./apps/signet/dist
+        COPY --from=build /app/apps/signet/prisma ./apps/signet/prisma
+        COPY --from=build /app/apps/signet/prisma.config.ts ./apps/signet/prisma.config.ts
+        COPY --from=build /app/apps/signet/entrypoint.sh ./apps/signet/entrypoint.sh
+
+        RUN chmod +x ./apps/signet/entrypoint.sh
+        RUN corepack enable && corepack prepare pnpm@$${PNPM_VERSION} --activate
+
+        WORKDIR /app/apps/signet
+
+        ENV DATABASE_URL="file:/app/config/signet.db"
+        ENV SIGNET_PORT=3000
+        ENV SIGNET_HOST=0.0.0.0
+
+        EXPOSE 3000
+
+        ENTRYPOINT ["./entrypoint.sh"]
+        CMD ["start", "--config", "/app/config/signet.json"]
     environment:
       DATABASE_URL: file:/app/config/signet.db
       EXTERNAL_URL: http://127.0.0.1:13047
@@ -42,7 +95,32 @@ services:
     image: hostr-signet-ui:latest
     build:
       context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
-      dockerfile: apps/signet-ui/Dockerfile
+      dockerfile_inline: |
+        FROM node:20-slim AS build
+        WORKDIR /app
+        ARG PNPM_VERSION=10.14.0
+        RUN corepack enable && corepack prepare pnpm@$${PNPM_VERSION} --activate
+        COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+        COPY apps/signet-ui/package.json ./apps/signet-ui/
+        COPY packages/signet-types ./packages/signet-types
+        RUN pnpm install --frozen-lockfile
+        COPY apps/signet-ui ./apps/signet-ui
+        WORKDIR /app/apps/signet-ui
+        RUN pnpm build
+
+        FROM node:20-slim AS runtime
+        WORKDIR /app
+        ENV NODE_ENV=production
+        COPY --from=build /app/apps/signet-ui/dist ./dist
+        COPY --from=build /app/apps/signet-ui/server.mjs ./server.mjs
+        RUN npm install --no-save express@4 http-proxy-middleware@3
+
+        ENV UI_PORT=4174
+        ENV UI_HOST=0.0.0.0
+        ENV DAEMON_URL=http://signet:3000
+
+        EXPOSE 4174
+        CMD ["node", "server.mjs"]
     depends_on:
       signet:
         condition: service_healthy

@@ -86,12 +86,18 @@ wait_no_pending_channels() {
 
 fund_lnd_if_needed() {
   local node="$1"
+  fund_lnd_if_below "$node" "$MIN_WALLET_BALANCE_SAT"
+}
+
+fund_lnd_if_below() {
+  local node="$1"
+  local required_balance_sat="$2"
   local balance
   balance="$(ln_node "$node" walletbalance | jq -r '.confirmed_balance // .total_balance // "0"')"
-  if [ "$balance" -lt "$MIN_WALLET_BALANCE_SAT" ]; then
+  if [ "$balance" -lt "$required_balance_sat" ]; then
     local address
     address="$(ln_node "$node" newaddress p2wkh | jq -r .address)"
-    echo "funding $node LND at $address"
+    echo "funding $node LND at $address (confirmed balance ${balance} sat; target ${required_balance_sat} sat)"
     btc_wallet -named sendtoaddress address="$address" amount="$FUND_AMOUNT_BTC" fee_rate=1 >/dev/null
     MARKETPLACE_FUNDED_LND=1
   fi
@@ -116,6 +122,14 @@ open_channel() {
   local target="$2"
   local target_host="$3"
   local target_pubkey="$4"
+
+  fund_lnd_if_below "$source" "$CHANNEL_SIZE_SAT"
+  if [ "$MARKETPLACE_FUNDED_LND" = "1" ]; then
+    mine_blocks 6
+    wait_lnd_synced "$source"
+    wait_lnd_synced "$target"
+    MARKETPLACE_FUNDED_LND=0
+  fi
 
   echo "opening $source -> $target channel (${CHANNEL_SIZE_SAT} sat, ${CHANNEL_PUSH_SAT} sat push)"
   ln_node "$source" connect "$target_pubkey@$target_host:9735" >/dev/null 2>&1 || true
@@ -190,6 +204,7 @@ if [ "$MARKETPLACE_FUNDED_LND" = "1" ]; then
   for node in $nodes; do
     wait_lnd_synced "$node"
   done
+  MARKETPLACE_FUNDED_LND=0
 fi
 
 if [ "$ENABLE_CASHU" = "1" ]; then

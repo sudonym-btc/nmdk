@@ -20,7 +20,7 @@ x-marketplace-lnd-command: &marketplace-lnd-command
   - --tlsextradomain=lnd.marketplace.test
   - --tlsextradomain=lnd.evm.marketplace.test
   - --tlsextradomain=marketplace-lnd.evm.marketplace.test
-  - --bitcoin.timelockdelta=18
+  - --bitcoin.timelockdelta=24
   - --bitcoin.active
   - --bitcoin.regtest
   - --bitcoin.node=bitcoind
