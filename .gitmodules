@@ -37,23 +37,23 @@
 [submodule "dependencies/nips/accommodation-nip"]
 	path = dependencies/nips/accommodation-nip
 	url = git@github.com:sudonym-btc/specification.git
-	branch = codex/spec-accommodation-listing-profile
+	branch = draft/accommodation-listing-profile
 [submodule "dependencies/nips/order-nip"]
 	path = dependencies/nips/order-nip
 	url = git@github.com:sudonym-btc/specification.git
-	branch = codex/spec-orders
+	branch = draft/orders
 [submodule "dependencies/nips/arbiter-nip"]
 	path = dependencies/nips/arbiter-nip
 	url = git@github.com:sudonym-btc/specification.git
-	branch = codex/spec-arbitration-services
+	branch = draft/arbitration-services
 [submodule "dependencies/nips/marketplace-listing-nip"]
 	path = dependencies/nips/marketplace-listing-nip
 	url = git@github.com:sudonym-btc/specification.git
-	branch = codex/spec-marketplace-listing-extension
+	branch = draft/marketplace-listing-extension
 [submodule "dependencies/nips/auction-nip"]
 	path = dependencies/nips/auction-nip
 	url = git@github.com:sudonym-btc/specification.git
-	branch = codex/spec-marketplace-auctions
+	branch = draft/marketplace-auctions
 [submodule "dependencies/marketplace-location-h3-ts"]
 	path = dependencies/marketplace-location-h3-ts
 	url = git@github.com:sudonym-btc/marketplace-location-h3-ts.git
