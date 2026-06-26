@@ -69,24 +69,75 @@ function marketplaceLndContainer() {
   )
 }
 
-function marketplacePayer(invoice) {
-  const container = marketplaceLndContainer()
-  return run('marketplace', 'docker', [
+function findContainer(names, fallback, matcher) {
+  return names.find(matcher) ?? fallback
+}
+
+function payerCandidates() {
+  const names = runningDockerContainerNames()
+  return [
+    {
+      label: 'marketplace',
+      container: marketplaceLndContainer(),
+      lnddir: '/app/lnd',
+    },
+    {
+      label: 'evm-lnd-1',
+      container: findContainer(
+        names,
+        'marketplace-evm-stack-lnd-1-1',
+        name => /(^|[-_])evm-stack-lnd-1([-_]|$)/.test(name) || /(^|[-_])lnd-1-1$/.test(name),
+      ),
+      lnddir: '/app/lnd',
+    },
+    {
+      label: 'evm-lnd-2',
+      container: findContainer(
+        names,
+        'marketplace-evm-stack-lnd-2-1',
+        name => /(^|[-_])evm-stack-lnd-2([-_]|$)/.test(name) || /(^|[-_])lnd-2-1$/.test(name),
+      ),
+      lnddir: '/app/lnd',
+    },
+    {
+      label: 'evm-lnd-3',
+      container: findContainer(
+        names,
+        'marketplace-evm-stack-lnd-3-1',
+        name => /(^|[-_])evm-stack-lnd-3([-_]|$)/.test(name) || /(^|[-_])lnd-3-1$/.test(name),
+      ),
+      lnddir: '/app/lnd',
+    },
+    {
+      label: 'cashu-buyer',
+      container: findContainer(
+        names,
+        'marketplace-cashu-stack-lnd-buyer-1',
+        name => /(^|[-_])cashu-stack-lnd-buyer([-_]|$)/.test(name) || /(^|[-_])lnd-buyer([-_]|$)/.test(name),
+      ),
+      lnddir: '/lnd',
+    },
+  ].filter((candidate, index, candidates) =>
+    candidate.container && candidates.findIndex(other => other.container === candidate.container) === index)
+}
+
+function lndPayer(invoice, candidate) {
+  return run(candidate.label, 'docker', [
     'exec',
-    container,
+    candidate.container,
     'lncli',
     '--network=regtest',
     '--rpcserver=localhost:10009',
-    '--tlscertpath=/app/lnd/tls.cert',
-    '--macaroonpath=/app/lnd/data/chain/bitcoin/regtest/admin.macaroon',
+    `--lnddir=${candidate.lnddir}`,
     'payinvoice',
     '--force',
+    '--fee_limit=10000',
     invoice,
   ])
 }
 
 function printFailure(attempt) {
-  console.error('Unable to settle invoice with marketplace LND.')
+  console.error(`Unable to settle invoice with ${attempt.label} LND.`)
   if (attempt.error) console.error(attempt.error.message)
   if (attempt.signal) console.error(`signal: ${attempt.signal}`)
   if (attempt.status !== null && attempt.status !== undefined) console.error(`exit: ${attempt.status}`)
@@ -104,14 +155,20 @@ try {
     process.exit(2)
   }
 
-  const attempt = marketplacePayer(invoice)
-  if (attempt.ok) {
-    console.log('Invoice paid with marketplace LND.')
-    if (attempt.output) console.log(attempt.output)
-    process.exit(0)
+  let lastAttempt
+  for (const candidate of payerCandidates()) {
+    console.error(`Trying ${candidate.label} LND (${candidate.container})...`)
+    const attempt = lndPayer(invoice, candidate)
+    lastAttempt = attempt
+    if (attempt.ok) {
+      console.log(`Invoice paid with ${candidate.label} LND.`)
+      if (attempt.output) console.log(attempt.output)
+      process.exit(0)
+    }
+    printFailure(attempt)
   }
 
-  printFailure(attempt)
+  if (!lastAttempt) console.error('No LND payer containers are running.')
   process.exit(1)
 } catch (err) {
   console.error(err instanceof Error ? err.message : String(err))

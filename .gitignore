@@ -6,6 +6,7 @@ __pycache__/
 _site/
 .nmdk.local.env
 data/
+artifacts/marketplace-demo/
 
 # Stack runtime data
 dependencies/marketplace-cashu-stack/data/

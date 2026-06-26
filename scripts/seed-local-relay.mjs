@@ -971,7 +971,7 @@ function buildSeed(cashuConfig, evmConfig, relay, publicRelay = relay, lnbits = 
       sellerId: 'sellerEvm',
       account: accounts.sellerEvm,
       currency: 'USD',
-      amount: '8500.00',
+      amount: '850.00',
       options: {
         title: '2014 Toyota Hilux - USD',
         summary: 'Second-hand pickup truck with local EVM escrow support.',
@@ -1073,9 +1073,9 @@ function buildSeed(cashuConfig, evmConfig, relay, publicRelay = relay, lnbits = 
       d: 'nmdk-auction-evm-usd',
       currency: 'USD',
       decimals: 2,
-      startingBid: '100',
-      minIncrement: '10',
-      reserve: '250',
+      startingBid: '5000',
+      minIncrement: '1000',
+      reserve: '7500',
       content: { route: 'evm-usd' },
     }),
     auctionEvent(accounts.sellerEvm, listingsByD['nmdk-sellerEvm-btc'], accounts.arbiterEvm, {

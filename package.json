@@ -24,6 +24,8 @@
     "up": "./scripts/up.sh",
     "down": "./scripts/down.sh",
     "demo": "npm --workspace @sudonym-btc/marketplace-app-ts run dev -- --port 5178",
+    "demo:capture": "node scripts/capture-marketplace-demo.mjs",
+    "demo:capture:up": "npm run up && npm run up:arbiters && npm run demo:capture",
     "pay:invoice": "node scripts/pay-invoice.mjs",
     "seed": "node scripts/seed-local-relay.mjs",
     "seed:signet": "node scripts/seed-signet-keys.mjs",
@@ -45,5 +47,8 @@
     "dependencies/marketplace-cashu-ts",
     "dependencies/marketplace-evm-ts",
     "dependencies/marketplace-evm-contracts"
-  ]
+  ],
+  "devDependencies": {
+    "playwright": "^1.61.1"
+  }
 }

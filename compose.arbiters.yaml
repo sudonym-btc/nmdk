@@ -1,4 +1,4 @@
-x-cashu-mints: &cashu-mints '[{"mintUrl":"http://mint.cashu.marketplace.test","unit":"sat","denomination":"SAT","decimals":0},{"mintUrl":"http://mint-usd.cashu.marketplace.test","unit":"usd","denomination":"USD","decimals":2}]'
+x-cashu-mints: &cashu-mints '[{"mintUrl":"https://mint.cashu.marketplace.test","unit":"sat","denomination":"SAT","decimals":0},{"mintUrl":"https://mint-usd.cashu.marketplace.test","unit":"usd","denomination":"USD","decimals":2}]'
 
 x-arbiter-common: &arbiter-common
   image: oven/bun:1.2
@@ -16,10 +16,10 @@ x-arbiter-common: &arbiter-common
     VITE_EVM_BOLTZ_API_URL: http://boltz.evm.marketplace.test/v2
     VITE_EVM_BUNDLER_URL: http://bundler.evm.marketplace.test
     VITE_EVM_PAYMASTER_URL: http://paymaster.evm.marketplace.test
-    VITE_CASHU_MINT_URL: http://mint.cashu.marketplace.test
+    VITE_CASHU_MINT_URL: https://mint.cashu.marketplace.test
     VITE_CASHU_MINTS: *cashu-mints
-    MARKETPLACE_CASHU_PUBLIC_MINT_URL: http://mint.cashu.marketplace.test
-    MARKETPLACE_CASHU_PUBLIC_USD_MINT_URL: http://mint-usd.cashu.marketplace.test
+    MARKETPLACE_CASHU_PUBLIC_MINT_URL: https://mint.cashu.marketplace.test
+    MARKETPLACE_CASHU_PUBLIC_USD_MINT_URL: https://mint-usd.cashu.marketplace.test
     MARKETPLACE_CASHU_MINTS: *cashu-mints
   volumes:
     - ./:/workspace:ro

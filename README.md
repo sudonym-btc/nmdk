@@ -104,6 +104,20 @@ Or run the demo client after the stack is ready:
 npm run demo
 ```
 
+Regenerate a reproducible browser recording of the demo flows:
+
+```sh
+npm run demo:capture:up
+```
+
+The capture starts the local stack, starts the EVM/Cashu arbiters, launches the
+Vite client when needed, and writes screenshots plus a WebM recording under
+`artifacts/marketplace-demo/<run-id>/`. The scripted flows place USD and BTC
+orders, place USD and BTC bids, submit a Cashu-backed BTC bid, create one
+negotiation, pay the generated invoices, and wait for arbiter payment ACK
+events before finishing. Use `npm run demo:capture` when the stack and arbiters
+are already running.
+
 Run the stack-backed marketplace driver tests after the stack is ready:
 
 ```sh
