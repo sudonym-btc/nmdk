@@ -78,7 +78,10 @@ Alby Hub run on that same marketplace LND with self-payments enabled, and `npm r
 creates deterministic LNbits users plus zap-enabled LNURL pay links for seeded
 marketplace profiles. The profile `lud16` values use the
 `lnbits.marketplace.test` domain. The EVM stack deploys `MultiEscrow` for both
-normal escrow payments and auction bid lockups.
+normal escrow payments and auction bid lockups. For deterministic one-command
+launches, the disposable EVM/Boltz regtest volumes are reset by default before
+startup; set `MARKETPLACE_EVM_RESET_ON_UP=0` if you deliberately want to
+preserve them.
 The liquidity initializer provisions large local-regtest channels by default
 and rerunning it repairs drained edges by opening another channel when outbound
 liquidity falls below `MARKETPLACE_EDGE_MIN_OUTBOUND_SAT`. Override
@@ -89,7 +92,13 @@ It writes `dependencies/marketplace-app-ts/.env.local` for the browser demo and
 `.nmdk.local.env` for shell consumers from the generated stack configs. No
 custom development DNS or parent application checkout is required.
 
-Run the demo client after the stack is ready:
+Launch the full stack and demo client in one command:
+
+```sh
+npm run demo:up
+```
+
+Or run the demo client after the stack is ready:
 
 ```sh
 npm run demo
