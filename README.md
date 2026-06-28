@@ -107,16 +107,17 @@ npm run demo
 Regenerate a reproducible browser recording of the demo flows:
 
 ```sh
-npm run demo:capture:up
+npm run demo:capture:fresh
 ```
 
-The capture starts the local stack, starts the EVM/Cashu arbiters, launches the
-Vite client when needed, and writes screenshots plus a WebM recording under
-`artifacts/marketplace-demo/<run-id>/`. The scripted flows place USD and BTC
-orders, place USD and BTC bids, submit a Cashu-backed BTC bid, create one
-negotiation, pay the generated invoices, and wait for arbiter payment ACK
-events before finishing. Use `npm run demo:capture` when the stack and arbiters
-are already running.
+The fresh capture resets disposable stack data, starts the local stack, starts
+the EVM/Cashu arbiters, launches the Vite client when needed, and writes
+screenshots plus a WebM recording under `artifacts/marketplace-demo/<run-id>/`.
+The scripted flows place USD and BTC orders, place USD and BTC bids, submit a
+Cashu-backed BTC bid, create one negotiation, pay the generated invoices, and
+wait for arbiter payment ACK events before finishing. Use `npm run
+demo:capture` when the stack and arbiters are already running and you
+intentionally want to capture against the current relay history.
 
 Run the stack-backed marketplace driver tests after the stack is ready:
 

@@ -15,6 +15,7 @@ const defaultBaseUrl = process.env.NMDK_DEMO_CAPTURE_BASE_URL ?? 'http://localho
 const defaultRelay = process.env.NMDK_DEMO_CAPTURE_RELAY ?? 'ws://127.0.0.1:18080'
 const defaultOutRoot = resolve(root, 'artifacts/marketplace-demo')
 const paymentAckKind = 32124
+const ackTimeoutMs = Number.parseInt(process.env.NMDK_DEMO_CAPTURE_ACK_TIMEOUT_MS ?? '', 10) || 240_000
 
 const targets = {
   evmUsdOrder: { d: 'nmdk-sellerEvm-usd', title: '2014 Toyota Hilux - USD' },
@@ -40,6 +41,10 @@ Options:
 
 The full local NMDK stack must be running. If the Vite demo is not running,
 this script starts it and stops it before exiting.
+
+During capture, code preview widgets fade on a 6-second loop: roughly 3 seconds
+visible and 3 seconds transparent. Stills temporarily hide those previews so the
+underlying marketplace widget is visible in each screenshot.
 `.trim()
 }
 
@@ -184,7 +189,7 @@ async function paymentAckEvents(relay, since) {
 }
 
 async function waitForAckCount(relay, since, expectedCount, label) {
-  const deadline = Date.now() + 120_000
+  const deadline = Date.now() + ackTimeoutMs
   let latest = []
   while (Date.now() < deadline) {
     latest = await paymentAckEvents(relay, since)
@@ -218,6 +223,53 @@ async function waitUntilEnabledWithRefresh(page, locator, label, timeoutMs = 90_
   let nextRefreshAt = 0
   await locator.waitFor({ state: 'visible', timeout: timeoutMs })
   while (Date.now() < deadline) {
+    if (await locator.isEnabled()) return
+    const refreshButton = page.getByRole('button', { name: 'Refresh' }).last()
+    if (Date.now() >= nextRefreshAt && await refreshButton.count() > 0 && await refreshButton.isVisible() && await refreshButton.isEnabled()) {
+      await refreshButton.evaluate(element => element.click())
+      nextRefreshAt = Date.now() + 10_000
+    }
+    await new Promise(resolveTimeout => setTimeout(resolveTimeout, 500))
+  }
+  throw new Error(`${label} did not become enabled`)
+}
+
+function parseMinimumAmount(text) {
+  const match = text.match(/^Minimum is\s+([0-9][0-9,]*(?:\.[0-9]+)?)/i)
+  return match ? match[1].replaceAll(',', '') : undefined
+}
+
+async function visibleMinimumAmount(page) {
+  const messages = page.getByText(/^Minimum is /)
+  const count = await messages.count()
+  for (let index = count - 1; index >= 0; index -= 1) {
+    const message = messages.nth(index)
+    if (!await message.isVisible()) continue
+    const text = await message.textContent()
+    const amount = text ? parseMinimumAmount(text.trim()) : undefined
+    if (amount) return amount
+  }
+  return undefined
+}
+
+async function fillVisibleMinimumBid(page, lastFilled) {
+  const minimum = await visibleMinimumAmount(page)
+  if (!minimum || minimum === lastFilled.value) return false
+  const amountInput = page.getByTestId('bid-amount-input')
+  if (!await amountInput.isVisible()) return false
+  await amountInput.fill(minimum)
+  lastFilled.value = minimum
+  return true
+}
+
+async function waitForBidContinueEnabled(page, locator, label, timeoutMs = 120_000) {
+  const deadline = Date.now() + timeoutMs
+  const lastFilled = { value: undefined }
+  let nextRefreshAt = 0
+  await locator.waitFor({ state: 'visible', timeout: timeoutMs })
+  while (Date.now() < deadline) {
+    if (await locator.isEnabled()) return
+    await fillVisibleMinimumBid(page, lastFilled)
     if (await locator.isEnabled()) return
     const refreshButton = page.getByRole('button', { name: 'Refresh' }).last()
     if (Date.now() >= nextRefreshAt && await refreshButton.count() > 0 && await refreshButton.isVisible() && await refreshButton.isEnabled()) {
@@ -287,9 +339,19 @@ async function waitForMarketplaceReady(page, label) {
 
 async function screenshot(page, outDir, manifest, name, note) {
   const path = resolve(outDir, `${name}.png`)
-  await page.screenshot({ path, fullPage: true })
-  manifest.screenshots.push({ name, note, path })
-  return path
+  await page.evaluate(() => {
+    document.documentElement.setAttribute('data-code-hint-capture-screenshot', 'true')
+  })
+  await page.waitForTimeout(650)
+  try {
+    await page.screenshot({ path, fullPage: true })
+    manifest.screenshots.push({ name, note, path, codeHints: 'transparent' })
+    return path
+  } finally {
+    await page.evaluate(() => {
+      document.documentElement.removeAttribute('data-code-hint-capture-screenshot')
+    }).catch(() => undefined)
+  }
 }
 
 async function loginAsBuyer(page, baseUrl, outDir, manifest) {
@@ -376,7 +438,7 @@ async function captureBid({
     await amountInput.fill(listing.bidAmount)
   }
   const bidButton = page.getByTestId('bid-continue-button')
-  await waitUntilEnabledWithRefresh(page, bidButton, `${label} bid continue`, 120_000)
+  await waitForBidContinueEnabled(page, bidButton, `${label} bid continue`, 120_000)
   await screenshot(page, outDir, manifest, `${label}-bid-dialog`, `Prepared a funded bid for ${listing.title}.`)
   await clickDemoControl(bidButton, `${label} bid continue`)
 
@@ -459,7 +521,12 @@ async function main() {
     baseUrl: options.baseUrl,
     relay: options.relay,
     runSince,
+    ackTimeoutMs,
     stack,
+    codeHints: {
+      video: 'cycle-3s-visible-3s-transparent',
+      screenshots: 'transparent',
+    },
     screenshots: [],
     flows: [],
     initialAckCount: initialAcks.length,
@@ -487,6 +554,21 @@ async function main() {
       size: { width: 1440, height: 1000 },
     },
     viewport: { width: 1440, height: 1000 },
+  })
+  await context.addInitScript(() => {
+    try {
+      window.localStorage.setItem('show_code', 'true')
+    } catch {
+      // Storage can be unavailable in unusual browser contexts.
+    }
+    const applyCaptureMode = () => {
+      document.documentElement?.setAttribute('data-code-hint-capture', 'cycle')
+    }
+    if (document.documentElement) {
+      applyCaptureMode()
+    } else {
+      window.addEventListener('DOMContentLoaded', applyCaptureMode, { once: true })
+    }
   })
   const page = await context.newPage()
   page.on('console', message => {
