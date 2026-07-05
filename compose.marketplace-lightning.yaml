@@ -10,6 +10,8 @@ x-marketplace-bitcoind-command: &marketplace-bitcoind-command
   - -txindex
   - -rpcallowip=0.0.0.0/0
   - -rpcbind=0.0.0.0
+  - -rpcuser=regtest
+  - -rpcpassword=regtest
   - -deprecatedrpc=warnings
 
 x-marketplace-lnd-command: &marketplace-lnd-command
@@ -27,12 +29,38 @@ x-marketplace-lnd-command: &marketplace-lnd-command
   - --bitcoind.rpchost=bitcoind
   - --bitcoind.zmqpubrawtx=bitcoind:29000
   - --bitcoind.zmqpubrawblock=bitcoind:29001
-  - --bitcoind.rpccookie=/app/bitcoin/regtest/.cookie
+  - --bitcoind.rpcuser=regtest
+  - --bitcoind.rpcpass=regtest
   - --noseedbackup
   - --protocol.wumbo-channels
   - --allow-circular-route
   - --lnddir=/app/lnd
   - --maxpendingchannels=10
+
+x-marketplace-lnd-entrypoint: &marketplace-lnd-entrypoint
+  - bash
+  - -lc
+  - |
+    bitcoin_rpc_ready() {
+      auth=$(printf 'regtest:regtest' | base64 -w0 2>/dev/null || printf 'regtest:regtest' | base64 | tr -d '\n')
+      body='{"jsonrpc":"1.0","id":"lnd-start","method":"getblockchaininfo","params":[]}'
+      exec 3<>/dev/tcp/bitcoind/18443 || return 1
+      printf 'POST / HTTP/1.1\r\nHost: bitcoind\r\nAuthorization: Basic %s\r\nContent-Type: text/plain\r\nContent-Length: %s\r\nConnection: close\r\n\r\n%s' "$$auth" "$${#body}" "$$body" >&3
+      response=$(cat <&3 || true)
+      exec 3<&- 3>&- || true
+      printf '%s\n' "$$response" | grep -q 'HTTP/1.1 200'
+    }
+
+    for i in $(seq 1 120); do
+      if bitcoin_rpc_ready; then
+        sleep 2
+        exec lnd "$$@"
+      fi
+      sleep 1
+    done
+    echo "timed out waiting for bitcoind RPC before starting lnd" >&2
+    exit 1
+  - --
 
 services:
   bitcoind:
@@ -40,6 +68,38 @@ services:
     restart: unless-stopped
     hostname: bitcoind
     user: '${UID:-1000}:${GID:-1000}'
+    stop_grace_period: 2m
+    entrypoint:
+      - bash
+      - -lc
+      - |
+        set -eu
+        bitcoind "$$@" &
+        pid=$$!
+        stop_bitcoind() {
+          bitcoin-cli -regtest -rpcuser=regtest -rpcpassword=regtest stop >/dev/null 2>&1 ||
+            kill -TERM "$$pid" >/dev/null 2>&1 ||
+            true
+          wait "$$pid" || true
+          exit 0
+        }
+        trap stop_bitcoind TERM INT
+
+        for i in $(seq 1 120); do
+          if bitcoin-cli -regtest -rpcuser=regtest -rpcpassword=regtest getblockchaininfo >/dev/null 2>&1; then
+            break
+          fi
+          sleep 1
+        done
+        bitcoin-cli -regtest -rpcuser=regtest -rpcpassword=regtest getblockchaininfo >/dev/null 2>&1
+        bitcoin-cli -regtest -rpcuser=regtest -rpcpassword=regtest createwallet regtest >/dev/null 2>&1 ||
+          bitcoin-cli -regtest -rpcuser=regtest -rpcpassword=regtest loadwallet regtest >/dev/null 2>&1 ||
+          true
+        bitcoin-cli -regtest -rpcuser=regtest -rpcpassword=regtest createwallet client >/dev/null 2>&1 ||
+          bitcoin-cli -regtest -rpcuser=regtest -rpcpassword=regtest loadwallet client >/dev/null 2>&1 ||
+          true
+        wait "$$pid"
+      - --
     command: *marketplace-bitcoind-command
     expose:
       - 18443
@@ -58,8 +118,9 @@ services:
         [
           "CMD",
           "bitcoin-cli",
-          "--rpccookiefile=/app/bitcoin/regtest/.cookie",
           "-regtest",
+          "-rpcuser=regtest",
+          "-rpcpassword=regtest",
           "getblockchaininfo",
         ]
       interval: 1s
@@ -75,7 +136,8 @@ services:
         condition: service_started
     environment:
       BITCOIN_RPC_HOST: bitcoind
-      BITCOIN_COOKIE: /bitcoin/regtest/.cookie
+      BITCOIN_RPC_USER: regtest
+      BITCOIN_RPC_PASSWORD: regtest
     volumes:
       - marketplace-bitcoin-data:/bitcoin
       - ./docker/marketplace-lightning:/scripts:ro
@@ -89,6 +151,7 @@ services:
     depends_on:
       bitcoin-init:
         condition: service_completed_successfully
+    entrypoint: *marketplace-lnd-entrypoint
     command: *marketplace-lnd-command
     expose:
       - 8081
@@ -232,6 +295,10 @@ services:
       - marketplace-bitcoin-data:/bitcoin
       - marketplace-lnd-data:/marketplace-lnd
       - ${MARKETPLACE_EVM_STACK_DATA_DIR:-./dependencies/marketplace-evm-stack/data}/lnd1:/lnd-1
+      - ${MARKETPLACE_EVM_STACK_DATA_DIR:-./dependencies/marketplace-evm-stack/data}/lnd2:/lnd-2
+      - ${MARKETPLACE_EVM_STACK_DATA_DIR:-./dependencies/marketplace-evm-stack/data}/lnd3:/lnd-3
+      - ${MARKETPLACE_EVM_STACK_DATA_DIR:-./dependencies/marketplace-evm-stack/data}/cln1:/cln-1
+      - ${MARKETPLACE_EVM_STACK_DATA_DIR:-./dependencies/marketplace-evm-stack/data}/cln2:/cln-2
       - ${MARKETPLACE_CASHU_STACK_DATA_DIR:-./dependencies/marketplace-cashu-stack/data}/lnd-mint:/lnd-mint
       - ${MARKETPLACE_CASHU_STACK_DATA_DIR:-./dependencies/marketplace-cashu-stack/data}/lnd-buyer:/lnd-buyer
       - ./docker/marketplace-lightning:/scripts:ro

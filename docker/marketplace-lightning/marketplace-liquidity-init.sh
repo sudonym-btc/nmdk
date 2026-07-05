@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BITCOIN_COOKIE="${BITCOIN_COOKIE:-/bitcoin/regtest/.cookie}"
 BITCOIN_RPC_HOST="${BITCOIN_RPC_HOST:-bitcoind}"
+BITCOIN_RPC_USER="${BITCOIN_RPC_USER:-regtest}"
+BITCOIN_RPC_PASSWORD="${BITCOIN_RPC_PASSWORD:-regtest}"
 CHANNEL_SIZE_SAT="${MARKETPLACE_EDGE_CHANNEL_SIZE_SAT:-100000000}"
 CHANNEL_PUSH_SAT="${MARKETPLACE_EDGE_CHANNEL_PUSH_SAT:-10000000}"
 MIN_OUTBOUND_SAT="${MARKETPLACE_EDGE_MIN_OUTBOUND_SAT:-50000000}"
@@ -13,11 +14,11 @@ ENABLE_CASHU="${MARKETPLACE_EDGE_ENABLE_CASHU:-1}"
 ENABLE_BOLTZ="${MARKETPLACE_EDGE_ENABLE_BOLTZ:-1}"
 
 btc() {
-  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpccookiefile="$BITCOIN_COOKIE" "$@"
+  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpcuser="$BITCOIN_RPC_USER" -rpcpassword="$BITCOIN_RPC_PASSWORD" "$@"
 }
 
 btc_wallet() {
-  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpccookiefile="$BITCOIN_COOKIE" -rpcwallet=regtest "$@"
+  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpcuser="$BITCOIN_RPC_USER" -rpcpassword="$BITCOIN_RPC_PASSWORD" -rpcwallet=regtest "$@"
 }
 
 ln_node() {
@@ -30,6 +31,26 @@ ln_node() {
       ;;
     lnd1)
       lncli --network=regtest --rpcserver=lnd-1:10009 --lnddir=/lnd-1 "$@"
+      ;;
+    lnd2)
+      lncli --network=regtest --rpcserver=lnd-2:10009 --lnddir=/lnd-2 "$@"
+      ;;
+    lnd3)
+      lncli --network=regtest --rpcserver=lnd-3:10009 --lnddir=/lnd-3 "$@"
+      ;;
+    cln1)
+      if [ "${1:-}" = "pendingchannels" ]; then
+        printf '{"pending_open_channels":[]}\n'
+        return 0
+      fi
+      lightning-cli --network=regtest --lightning-dir=/cln-1 "$@"
+      ;;
+    cln2)
+      if [ "${1:-}" = "pendingchannels" ]; then
+        printf '{"pending_open_channels":[]}\n'
+        return 0
+      fi
+      lightning-cli --network=regtest --lightning-dir=/cln-2 "$@"
       ;;
     mint)
       lncli --network=regtest --rpcserver=lnd-mint:10009 --lnddir=/lnd-mint "$@"
@@ -69,11 +90,16 @@ ensure_bitcoin_ready() {
 
 wait_lnd_synced() {
   local node="$1"
-  until lnd_height="$(ln_node "$node" getinfo 2>/dev/null | jq -r 'if (.synced_to_chain // false) then "synced" else (.block_height // 0 | tostring) end')" &&
+  until lnd_height="$(ln_node "$node" getinfo 2>/dev/null | jq -r 'if (.synced_to_chain // false) then "synced" else (.block_height // .blockheight // 0 | tostring) end')" &&
     { [ "$lnd_height" = "synced" ] || [ "$lnd_height" -ge "$(btc getblockcount)" ]; }; do
     echo "waiting for $node LND to sync..."
     sleep 1
   done
+}
+
+node_pubkey() {
+  local node="$1"
+  ln_node "$node" getinfo | jq -r '.identity_pubkey // .id'
 }
 
 wait_no_pending_channels() {
@@ -110,11 +136,49 @@ active_channel_count() {
     jq --arg pub "$remote_pubkey" '[.channels[]? | select(.remote_pubkey == $pub and .active == true)] | length'
 }
 
+channel_count() {
+  local source="$1"
+  local remote_pubkey="$2"
+  ln_node "$source" listchannels |
+    jq --arg pub "$remote_pubkey" '[.channels[]? | select(.remote_pubkey == $pub)] | length'
+}
+
 active_outbound_sat() {
   local source="$1"
   local remote_pubkey="$2"
   ln_node "$source" listchannels |
     jq --arg pub "$remote_pubkey" '[.channels[]? | select(.remote_pubkey == $pub and .active == true) | (.local_balance | tonumber)] | add // 0'
+}
+
+connect_peer() {
+  local source="$1"
+  local target_host="$2"
+  local target_pubkey="$3"
+  ln_node "$source" connect "$target_pubkey@$target_host:9735" >/dev/null 2>&1 || true
+}
+
+reconnect_existing_channel() {
+  local source="$1"
+  local target="$2"
+  local target_host="$3"
+  local target_pubkey="$4"
+
+  echo "reconnecting existing $source -> $target channel"
+  for _ in $(seq 1 30); do
+    connect_peer "$source" "$target_host" "$target_pubkey"
+    local count
+    local outbound
+    count="$(active_channel_count "$source" "$target_pubkey")"
+    outbound="$(active_outbound_sat "$source" "$target_pubkey")"
+    if [ "$count" -gt 0 ] && [ "$outbound" -ge "$MIN_OUTBOUND_SAT" ]; then
+      echo "active $source -> $target liquidity ready: ${outbound} sat outbound across ${count} channel(s)"
+      return 0
+    fi
+    sleep 2
+  done
+
+  echo "existing $source -> $target channel did not become active after reconnect attempts" >&2
+  return 1
 }
 
 open_channel() {
@@ -132,7 +196,7 @@ open_channel() {
   fi
 
   echo "opening $source -> $target channel (${CHANNEL_SIZE_SAT} sat, ${CHANNEL_PUSH_SAT} sat push)"
-  ln_node "$source" connect "$target_pubkey@$target_host:9735" >/dev/null 2>&1 || true
+  connect_peer "$source" "$target_host" "$target_pubkey"
   ln_node "$source" openchannel "$target_pubkey" "$CHANNEL_SIZE_SAT" "$CHANNEL_PUSH_SAT" >/dev/null
   mine_blocks 6
 
@@ -147,12 +211,19 @@ ensure_channel() {
   local target="$2"
   local target_host="$3"
   local target_pubkey
-  target_pubkey="$(ln_node "$target" getinfo | jq -r .identity_pubkey)"
+  target_pubkey="$(node_pubkey "$target")"
 
   local count
+  local existing
   local outbound
+  existing="$(channel_count "$source" "$target_pubkey")"
   count="$(active_channel_count "$source" "$target_pubkey")"
   outbound="$(active_outbound_sat "$source" "$target_pubkey")"
+
+  if [ "$existing" -gt 0 ] && { [ "$count" -eq 0 ] || [ "$outbound" -lt "$MIN_OUTBOUND_SAT" ]; }; then
+    reconnect_existing_channel "$source" "$target" "$target_host" "$target_pubkey" || return 1
+    return 0
+  fi
 
   while [ "$count" -eq 0 ] || [ "$outbound" -lt "$MIN_OUTBOUND_SAT" ]; do
     if [ "$count" -ge "$MAX_CHANNELS_PER_EDGE" ]; then
@@ -183,14 +254,17 @@ ensure_channel() {
 ensure_bitcoin_ready
 
 nodes="marketplace"
+sync_nodes="marketplace"
 if [ "$ENABLE_CASHU" = "1" ]; then
   nodes="$nodes mint buyer"
+  sync_nodes="$sync_nodes mint buyer"
 fi
 if [ "$ENABLE_BOLTZ" = "1" ]; then
-  nodes="$nodes lnd1"
+  nodes="$nodes lnd1 lnd2 lnd3"
+  sync_nodes="$sync_nodes lnd1 lnd2 lnd3 cln1 cln2"
 fi
 
-for node in $nodes; do
+for node in $sync_nodes; do
   wait_lnd_synced "$node"
 done
 
@@ -214,6 +288,10 @@ fi
 
 if [ "$ENABLE_BOLTZ" = "1" ]; then
   ensure_channel marketplace lnd1 lnd-1
+  ensure_channel marketplace lnd2 lnd-2
+  ensure_channel marketplace lnd3 lnd-3
+  ensure_channel marketplace cln1 cln-1
+  ensure_channel marketplace cln2 cln-2
 fi
 
 echo "marketplace shared Lightning liquidity ready"

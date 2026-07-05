@@ -23,8 +23,8 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
     ports:
-      - "100.95.205.9:80:80"
-      - "100.95.205.9:443:443"
+      - "${MARKETPLACE_PROXY_BIND_IP:-0.0.0.0}:80:80"
+      - "${MARKETPLACE_PROXY_BIND_IP:-0.0.0.0}:443:443"
     volumes:
       - ./docker/marketplace-development/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./docker/certs:/etc/nginx/certs:ro

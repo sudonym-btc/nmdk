@@ -1,24 +1,38 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BITCOIN_COOKIE="${BITCOIN_COOKIE:-/bitcoin/regtest/.cookie}"
 BITCOIN_RPC_HOST="${BITCOIN_RPC_HOST:-bitcoind}"
+BITCOIN_RPC_USER="${BITCOIN_RPC_USER:-regtest}"
+BITCOIN_RPC_PASSWORD="${BITCOIN_RPC_PASSWORD:-regtest}"
 MIN_BLOCK_HEIGHT="${MARKETPLACE_BITCOIN_MIN_BLOCK_HEIGHT:-150}"
 CLIENT_FUND_AMOUNT_BTC="${MARKETPLACE_BITCOIN_CLIENT_FUND_AMOUNT_BTC:-10}"
 
 btc() {
-  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpccookiefile="$BITCOIN_COOKIE" "$@"
+  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpcuser="$BITCOIN_RPC_USER" -rpcpassword="$BITCOIN_RPC_PASSWORD" "$@"
 }
 
 btc_wallet() {
-  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpccookiefile="$BITCOIN_COOKIE" -rpcwallet="$1" "${@:2}"
+  bitcoin-cli -regtest -rpcconnect="$BITCOIN_RPC_HOST" -rpcuser="$BITCOIN_RPC_USER" -rpcpassword="$BITCOIN_RPC_PASSWORD" -rpcwallet="$1" "${@:2}"
 }
 
 ensure_wallet_loaded() {
   local wallet="$1"
-  btc createwallet "$wallet" >/dev/null 2>&1 ||
-    btc loadwallet "$wallet" >/dev/null 2>&1 ||
-    true
+  local i
+  for i in $(seq 1 60); do
+    if btc listwallets | grep -Fq "\"$wallet\""; then
+      return 0
+    fi
+    btc createwallet "$wallet" >/dev/null 2>&1 ||
+      btc loadwallet "$wallet" >/dev/null 2>&1 ||
+      true
+    if btc listwallets | grep -Fq "\"$wallet\""; then
+      return 0
+    fi
+    sleep 1
+  done
+  echo "timed out waiting for Bitcoin wallet '$wallet' to load" >&2
+  btc listwallets >&2 || true
+  return 1
 }
 
 mine_blocks() {

@@ -21,8 +21,7 @@ export COMPOSE_PROJECT_NAME="$STACK_PROJECT"
 (cd "$ROOT" && docker compose -f compose.marketplace-lightning.yaml down --volumes --remove-orphans)
 
 mkdir -p "$STACK_DATA_DIR"
-find "$STACK_DATA_DIR" -mindepth 1 -type f ! -name .gitkeep -delete
-find "$STACK_DATA_DIR" -mindepth 1 -type d -empty -delete
+find "$STACK_DATA_DIR" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
 mkdir -p "$STACK_DATA_DIR/bitcoind" "$STACK_DATA_DIR/marketplace-lnd" "$STACK_DATA_DIR/lnbits" "$STACK_DATA_DIR/albyhub"
 touch \
   "$STACK_DATA_DIR/.gitkeep" \
