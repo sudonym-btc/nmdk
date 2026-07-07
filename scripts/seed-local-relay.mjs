@@ -66,7 +66,7 @@ Options:
   --public-relay <url> Relay URL to write into the manifest. Defaults to the publish relay.
   --lnbits-url <url>  LNbits API URL for seeded LUD16 accounts. Defaults to NMDK_LNBITS_URL or http://127.0.0.1:15055.
   --public-lnbits-url <url> Public LNbits URL used in LUD16 values. Defaults to https://lnbits.marketplace.test.
-  --skip-lnbits      Do not create LNbits users/pay links or add lud16 to profiles.
+  --skip-lnbits      Offline/dev only: skip LNbits users/pay links and omit profile lud16 values.
   --manifest <path>   Manifest path. Defaults to data/seed/marketplace-seed.json.
   --keepalive         Keep the process alive after seeding so a compose container stays up.
   --help              Print this help.
@@ -1352,6 +1352,8 @@ async function main() {
   console.log(`Reviews: ${seed.manifest.eventSummary.reviews.length}`)
   if (lnbits) {
     console.log(`LNbits LUD16 accounts: ${Object.keys(lnbits.accounts).length}`)
+  } else {
+    console.warn('LNbits seeding skipped: seeded profiles do not include lud16 Lightning addresses.')
   }
 
   if (options.keepalive) {

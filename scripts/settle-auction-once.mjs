@@ -16,6 +16,7 @@ import {
 import { decrypt as nip44Decrypt, encrypt as nip44Encrypt, getConversationKey } from 'nostr-tools/nip44'
 import { SimplePool } from 'nostr-tools/pool'
 import { finalizeEvent, getPublicKey } from 'nostr-tools/pure'
+import { privateKeyToAccount } from '../dependencies/marketplace-evm-ts/node_modules/viem/_esm/accounts/index.js'
 
 import { MemoryCashuEscrowStore } from '../dependencies/marketplace-cashu-ts/dist/storage.js'
 import { MemoryOperationStore } from '../dependencies/marketplace-evm-ts/dist/utils/store.js'
@@ -24,6 +25,7 @@ import { settleMarketplaceAuction } from '../dependencies/nostr-tools/marketplac
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const root = resolve(scriptDir, '..')
 const defaultManifestPath = resolve(root, 'data/seed/marketplace-seed.json')
+const defaultEvmConfigPath = resolve(root, 'dependencies/marketplace-evm-stack/data/config/marketplace-evm-stack.json')
 const zeroAddress = '0x0000000000000000000000000000000000000000'
 const devCaBundle = resolve(root, 'docker/tls/ca/ca-bundle.crt')
 const caReexecFlag = 'MARKETPLACE_SETTLE_AUCTION_CA_REEXEC'
@@ -138,6 +140,10 @@ function parseJson(value, fallback) {
   return JSON.parse(value)
 }
 
+function readJson(path) {
+  return JSON.parse(readFileSync(path, 'utf8'))
+}
+
 function relaysFrom(env, explicit) {
   if (explicit.length > 0) return explicit
   const configured = envValue(env, 'VITE_RELAYS') ?? envValue(env, 'MARKETPLACE_RELAYS')
@@ -184,6 +190,7 @@ class LocalSigner {
 }
 
 function buildEvmAuctionPolicy(env) {
+  const evmConfig = readJson(defaultEvmConfigPath)
   const chainId = Number.parseInt(envValue(env, 'VITE_EVM_CHAIN_ID') ?? '0', 10)
   if (!Number.isFinite(chainId) || chainId <= 0) throw new Error('Missing VITE_EVM_CHAIN_ID')
   const assets = parseJson(envValue(env, 'VITE_EVM_ASSETS'), [])
@@ -224,6 +231,7 @@ function buildEvmAuctionPolicy(env) {
   return createEvmAuctionPolicy({
     chains: [chain],
     operationStore: new MemoryOperationStore(),
+    settlementAccount: privateKeyToAccount(evmConfig.accounts.arbiter.privateKey),
     appId: 'marketplace',
   })
 }
