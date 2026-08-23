@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { chmodSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -1339,7 +1339,8 @@ async function main() {
     relayCounts: counts,
   }
   mkdirSync(dirname(options.manifestPath), { recursive: true })
-  writeFileSync(options.manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
+  writeFileSync(options.manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, { mode: 0o600 })
+  chmodSync(options.manifestPath, 0o600)
 
   console.log(`Seeded ${seed.events.length} marketplace fixture events to ${options.relay}`)
   console.log(`Wrote ${options.manifestPath}`)

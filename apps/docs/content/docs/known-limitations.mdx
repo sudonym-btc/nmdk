@@ -1,0 +1,15 @@
+---
+title: Known limitations
+description: Explicitly deferred production blockers.
+---
+
+# Known limitations
+
+`MultiEscrow` currently permits a settled trade ID to be created again after
+its record is deleted. That can make old signed authorizations relevant to a
+recreated ID. The permanent used-ID or per-trade nonce fix was deliberately
+excluded from this work.
+
+This remains a release blocker for public-chain and real-value use. Run NMDK
+only on disposable development chains until the fix, replay tests, migration
+plan, and independent contract audit are complete.

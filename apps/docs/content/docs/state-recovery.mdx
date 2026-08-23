@@ -1,0 +1,31 @@
+---
+title: State and recovery
+description: Minimal durable records, idempotency, and publication recovery.
+---
+
+# State and recovery
+
+Operations progress through prepared, externally created, funded, settled,
+publication pending, and complete states. Each durable transition happens
+before the next external effect. Concurrent workers need atomic
+create-if-absent or compare-and-set semantics.
+
+Cashu stores mint/unit, derivation version and index, quote ID, fingerprint,
+status, and public receipts. Terminal records do not retain proofs. EVM stores
+chain and configured contract identity, account index, swap/provider ID,
+transaction or user-operation hashes, fingerprint, confirmations, and public
+receipts—never private keys or preimages.
+
+Completed-operation tombstones and signed settlement outboxes are never aged
+out automatically. Operators may archive them only after the complete financial
+and dispute horizon while retaining immutable event and external receipt
+references.
+
+Startup reconciles authoritative mint/provider/chain state. Recovered payments
+produce the same publication-ready proof and durable outbox item as an
+uninterrupted payment.
+
+Cashu bids carry buyer-signed exact promotion and 100%-refund swap commitments.
+The arbiter cannot redirect their outputs. Lost mint responses restore the same
+outputs through NUT-09, and buyer refund proofs are delivered only inside a
+whole-proof sealed payload.

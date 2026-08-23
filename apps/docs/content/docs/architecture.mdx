@@ -1,0 +1,21 @@
+---
+title: Architecture
+description: Package ownership, data flow, and trust boundaries.
+---
+
+# Architecture
+
+The marketplace application asks the `nostr-tools` runtime to route an order or
+auction payment. The runtime validates signed events and exact participant
+context, then calls a policy through the driver interface. Cashu and EVM
+drivers perform their own payment-system validation and return a typed proof
+plus a sensitivity classification. A durable settlement journal records the
+financial receipt before the runtime publishes its Nostr event.
+
+Relays, proof parameters, swap providers, browser storage, and remote RPCs are
+untrusted. The configured policy—not a submitted proof—defines acceptable mint,
+contract, bytecode, asset, amount, participant, timeout, and provider targets.
+
+The aggregate root owns compatibility, CI, documentation, and exact submodule
+pins. Implementation changes are committed in their owning package before the
+root pointer moves.

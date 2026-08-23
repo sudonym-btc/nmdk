@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import { chmodSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -19,6 +19,11 @@ function readJson(path) {
 
 function envLine(key, value) {
   return `${key}=${typeof value === 'string' ? value : JSON.stringify(value)}`
+}
+
+function writePrivateFile(path, contents) {
+  writeFileSync(path, contents, { mode: 0o600 })
+  chmodSync(path, 0o600)
 }
 
 const demoAccountLabels = Object.freeze({
@@ -52,6 +57,18 @@ const cashu = readJson(cashuConfigPath)
 const evm = readJson(evmConfigPath)
 const arbitrum = evm.chains.arbitrumRegtest
 const aa = arbitrum.accountAbstraction
+const boltzTrust = arbitrum.boltzTrust
+
+if (
+  !boltzTrust?.erc20Swap?.address ||
+  !boltzTrust.erc20Swap.runtimeBytecodeHash ||
+  !Array.isArray(boltzTrust.dexCallTargets) ||
+  boltzTrust.dexCallTargets.length === 0
+) {
+  throw new Error(
+    `EVM stack config ${evmConfigPath} is missing deployed Boltz trust roots; restart the EVM stack to regenerate it`,
+  )
+}
 
 const tbtcAsset = Object.values(arbitrum.assets).find(asset => asset.boltzCurrency?.toUpperCase() === 'TBTC')
 const assets = Object.values(arbitrum.assets).map(asset => ({
@@ -76,6 +93,7 @@ const cashuMints = Object.entries(cashu.cashu.mints).map(([key, mint]) => ({
   unit: mint.unit,
   denomination: mint.denomination ?? key.toUpperCase(),
   decimals: mint.decimals ?? (mint.unit === 'usd' ? 2 : 0),
+  ...(mint.auctionKeysetPolicies ? { auctionKeysetPolicies: mint.auctionKeysetPolicies } : {}),
 }))
 
 const demoAccounts = Object.entries(localDevAccounts).map(([id, account]) => ({
@@ -105,6 +123,7 @@ const lines = [
   envLine('VITE_EVM_RPC_URL', publicUrls.arbitrumRpc),
   envLine('VITE_EVM_BLOCK_EXPLORER_URL', publicUrls.arbitrumExplorer),
   envLine('VITE_EVM_BOLTZ_API_URL', publicUrls.boltzApi),
+  envLine('VITE_EVM_BOLTZ_TRUST', boltzTrust),
   envLine('VITE_EVM_ENTRY_POINT_ADDRESS', aa.entryPointAddress),
   envLine('VITE_EVM_ACCOUNT_FACTORY_ADDRESS', aa.factoryAddress),
   envLine('VITE_EVM_BUNDLER_URL', publicUrls.bundler),
@@ -129,13 +148,13 @@ const lines = [
 ]
 
 const appEnvPath = resolve(appDir, '.env.local')
-writeFileSync(appEnvPath, `${lines.join('\n')}\n`)
+writePrivateFile(appEnvPath, `${lines.join('\n')}\n`)
 
 const appDevelopmentEnvPath = resolve(appDir, '.env.development.local')
-writeFileSync(appDevelopmentEnvPath, `${lines.join('\n')}\n`)
+writePrivateFile(appDevelopmentEnvPath, `${lines.join('\n')}\n`)
 
 const shellEnvPath = resolve(root, '.nmdk.local.env')
-writeFileSync(shellEnvPath, `${lines.filter(line => line && !line.startsWith('#')).join('\n')}\n`)
+writePrivateFile(shellEnvPath, `${lines.filter(line => line && !line.startsWith('#')).join('\n')}\n`)
 
 console.log(`Wrote ${appEnvPath}`)
 console.log(`Wrote ${appDevelopmentEnvPath}`)

@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible non-security defect in the pinned NMDK snapshot.
+body:
+  - type: markdown
+    attributes:
+      value: Do not report vulnerabilities or include live secrets here; use SECURITY.md.
+  - type: input
+    id: commit
+    attributes:
+      label: NMDK commit
+      placeholder: Full aggregate commit SHA
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Deterministic reproduction
+      description: Include commands, fixed test seed, expected result, and actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node/npm/Bun/Docker versions, and affected package SHA.
+    validations:
+      required: true

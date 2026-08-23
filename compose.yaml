@@ -1,10 +1,10 @@
 services:
   signet:
-    image: hostr-signet:latest
+    image: hostr-signet:nmdk-7c79aa0
     build:
       context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
       dockerfile_inline: |
-        FROM node:20-slim AS build
+        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS build
 
         WORKDIR /app
 
@@ -25,7 +25,7 @@ services:
         RUN pnpm prisma generate
         RUN pnpm build
 
-        FROM node:20-slim AS runtime
+        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS runtime
 
         WORKDIR /app
 
@@ -92,11 +92,11 @@ services:
     restart: unless-stopped
 
   signet-ui:
-    image: hostr-signet-ui:latest
+    image: hostr-signet-ui:nmdk-7c79aa0
     build:
       context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
       dockerfile_inline: |
-        FROM node:20-slim AS build
+        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS build
         WORKDIR /app
         ARG PNPM_VERSION=10.14.0
         RUN corepack enable && corepack prepare pnpm@$${PNPM_VERSION} --activate
@@ -108,12 +108,17 @@ services:
         WORKDIR /app/apps/signet-ui
         RUN pnpm build
 
-        FROM node:20-slim AS runtime
+        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS runtime
         WORKDIR /app
         ENV NODE_ENV=production
-        COPY --from=build /app/apps/signet-ui/dist ./dist
-        COPY --from=build /app/apps/signet-ui/server.mjs ./server.mjs
-        RUN npm install --no-save express@4 http-proxy-middleware@3
+        COPY --from=build /app/node_modules ./node_modules
+        COPY --from=build /app/packages ./packages
+        COPY --from=build /app/apps/signet-ui/node_modules ./apps/signet-ui/node_modules
+        COPY --from=build /app/apps/signet-ui/package.json ./apps/signet-ui/package.json
+        COPY --from=build /app/apps/signet-ui/dist ./apps/signet-ui/dist
+        COPY --from=build /app/apps/signet-ui/server.mjs ./apps/signet-ui/server.mjs
+
+        WORKDIR /app/apps/signet-ui
 
         ENV UI_PORT=4174
         ENV UI_HOST=0.0.0.0
@@ -144,7 +149,7 @@ services:
     restart: unless-stopped
 
   blossom:
-    image: ghcr.io/hzrd149/blossom-server:6.1.5
+    image: ghcr.io/hzrd149/blossom-server:6.1.5@sha256:061bf8ecf42e92f01cb5dfe669cb7ef025c68022c48fbc14806dfdd1df2596ba
     platform: linux/amd64
     restart: unless-stopped
     environment:

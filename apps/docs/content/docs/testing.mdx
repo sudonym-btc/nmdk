@@ -1,0 +1,24 @@
+---
+title: Testing
+description: Hermetic, package, and fresh-stack verification gates.
+---
+
+# Testing
+
+```sh
+npm test                  # hermetic source, unit, artifact, docs, policy checks
+npm run test:packages     # pack/install/import in a blank consumer
+npm run audit:production  # production dependency gate
+npm run test:integration  # required fresh Cashu/EVM/Lightning matrix
+```
+
+The hermetic gate uses a digest-pinned, one-shot Foundry container for Solidity
+behavior/fuzz tests; it does not require long-running services. Unit tests do
+not probe localhost. Integration suites fail if required services
+are missing. IDs, keys, and accounts come from fixed fixtures and
+`NMDK_TEST_SEED`; clocks are fixed or supplied explicitly, and stacks use
+isolated, reset state. The Cashu gate exercises a real NUT-11 refund and NUT-09
+lost-response restore. Security-critical regressions cover malformed proofs,
+malicious providers, duplicate requests, representative post-submission
+crashes, recovery, and secret erasure. Every new durable boundary or
+multi-worker store must add its own crash/concurrency test before release.

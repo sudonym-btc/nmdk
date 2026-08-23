@@ -1,0 +1,21 @@
+---
+title: Compatibility
+description: Package and toolchain compatibility for the pinned snapshot.
+---
+
+# Compatibility
+
+The aggregate Git commit and recursive submodule SHAs are authoritative.
+
+| Component | Compatible line |
+| --- | --- |
+| Driver and location interfaces | 0.1.x |
+| Cashu driver | 0.1.x with interface 0.1.x, Cashu TS 4.5.x, NUT-11, and NUT-09/keyset policy for auctions |
+| EVM driver | 0.1.x with contracts/interface 0.1.x, EIP-712 v7, and viem 2.55.x |
+| H3 provider | 0.1.x with location interface 0.1.x and H3 4.4.x |
+| Marketplace runtime | nostr-tools 2.23.5 marketplace line |
+| Aggregate tools | Node 24 or 25, npm 11.x (CI: 11.6.2), Bun 1.3.14, Compose v2+ |
+
+Each release bundle contains `nmdk-snapshot.json`, checksums, a CycloneDX SBOM,
+and `THIRD_PARTY_LICENSES.json`. Protocol and persisted-state compatibility require explicit versioning
+and migration even when package APIs remain source-compatible.

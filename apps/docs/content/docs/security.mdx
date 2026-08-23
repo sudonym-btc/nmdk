@@ -1,0 +1,24 @@
+---
+title: Security model
+description: Proof confidentiality, trust boundaries, and fund-safety invariants.
+---
+
+# Security model
+
+Public metadata may be relayed and persisted. Confidential terms require
+participant encryption. Cashu proofs are bearer value and must use an
+authorized sealed channel. Seeds, `nsec` values, private keys, preimages, and
+macaroons must never enter relay content, logs, or application local storage.
+A short-lived NIP-46 client authorization may use browser session storage for
+at most eight hours; local `nsec` credentials are memory-only.
+
+EVM proofs are accepted only for the configured registry contract address and
+known runtime bytecode hash, with exact buyer, seller, arbiter, asset, amount,
+fee, timeout, context, and policy. Provider-produced calls are decoded and
+allowlisted locally before execution.
+
+A retry resumes the same request fingerprint and operation ID. Financial
+receipts are durable before publication; publication retries do not repeat the
+financial action.
+
+Use the private process in `SECURITY.md` for vulnerability reports.

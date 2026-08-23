@@ -1,4 +1,18 @@
 {
   "title": "NMDK",
-  "pages": ["index", "packages"]
+  "pages": [
+    "index",
+    "getting-started",
+    "architecture",
+    "protocol",
+    "specifications",
+    "security",
+    "state-recovery",
+    "testing",
+    "operations",
+    "release",
+    "compatibility",
+    "known-limitations",
+    "packages"
+  ]
 }

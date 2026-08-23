@@ -1,0 +1,34 @@
+---
+title: Operations
+description: Deployment, monitoring, recovery, rollback, and incident response.
+---
+
+# Operations
+
+Production deployments use immutable images and explicit trust roots. Before
+accepting traffic, record the aggregate and recursive submodule SHAs, pass every
+release gate, verify the escrow runtime hash and EIP-712 domain, verify the chain
+ID and Boltz decoder trust roots, require Cashu NUT-11/NUT-09 capabilities and
+active keyset horizons, and review the known limitations.
+
+Keep long-term Nostr keys, Cashu seeds, EVM keys, provider credentials, bearer
+proofs, and sealed settlement plaintext out of images, persistent browser
+storage, public events, logs, metrics, and release artifacts. Only a short-lived
+NIP-46 client authorization may be session-scoped in the browser. Back up only
+journals and the minimum versioned recovery records under operator-managed
+encryption and access control, and rehearse restoration. Proof payloads are
+sealed, but journal metadata is not encrypted by the library.
+
+Monitor stale operations, refund failures, contract or chain mismatches, nonce
+failures, NUT-09 recovery failures, relay publication failures, and journal
+decryption failures. Reconcile every terminal event with one durable receipt.
+Resume ambiguous work with its original operation ID after checking authoritative
+chain or mint state; never blindly resubmit.
+
+Disable new work before rollback. Never roll back across an incompatible escrow
+domain, journal schema, or trust policy. For a suspected secret disclosure, stop
+affected workers, revoke credentials, rotate signers/owners, move funds through
+the nonce-bound path, preserve sanitized evidence, and follow `SECURITY.md`.
+
+The complete checklist and recovery procedures also ship in the source tree as
+`docs/operations.md`.

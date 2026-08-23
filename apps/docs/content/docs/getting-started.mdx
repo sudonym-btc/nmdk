@@ -1,0 +1,40 @@
+---
+title: Getting started
+description: Reproduce the pinned NMDK workspace and its deterministic checks.
+---
+
+# Getting started
+
+## Prerequisites
+
+- Git with recursive submodule support
+- Node.js 24 or 25 and npm 11.x (CI uses npm 11.6.2)
+- Bun 1.3.14
+- Docker Engine and Docker Compose v2+
+- macOS or Linux with at least 16 GB RAM and 30 GB free disk for the full stack
+
+Clone with anonymous HTTPS access and install exactly from the root lockfile:
+
+```sh
+git clone --recurse-submodules https://github.com/sudonym-btc/nmdk.git
+cd nmdk
+./scripts/bootstrap.sh
+npm test
+```
+
+`npm test` is the hermetic gate and does not require running services. Package
+tarballs can be verified independently with `npm run test:packages`.
+
+For the disposable integration environment:
+
+```sh
+npm run up
+npm run test:integration
+npm run down
+```
+
+The stack does not modify the host trust store. HTTPS remains available with a
+development certificate; run `npm run trust:ca` only if you explicitly want to
+trust the generated local CA. Review that script before entering `sudo` and
+run `npm run untrust:ca` to remove the certificate from the system keychain
+when finished.

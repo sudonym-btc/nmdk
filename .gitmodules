@@ -1,64 +1,64 @@
 [submodule "dependencies/nostr-tools"]
 	path = dependencies/nostr-tools
-	url = git@github.com:sudonym-btc/nostr-tools.git
+	url = https://github.com/sudonym-btc/nostr-tools.git
 	branch = marketplace
 [submodule "dependencies/ndk"]
 	path = dependencies/ndk
-	url = git@github.com:sudonym-btc/ndk.git
+	url = https://github.com/sudonym-btc/ndk.git
 	branch = marketplace
 [submodule "dependencies/marketplace-app-ts"]
 	path = dependencies/marketplace-app-ts
-	url = git@github.com:sudonym-btc/marketplace-app-ts.git
+	url = https://github.com/sudonym-btc/marketplace-app-ts.git
 	branch = main
 [submodule "dependencies/marketplace-cashu-ts"]
 	path = dependencies/marketplace-cashu-ts
-	url = git@github.com:sudonym-btc/marketplace-cashu-ts.git
+	url = https://github.com/sudonym-btc/marketplace-cashu-ts.git
 	branch = main
 [submodule "dependencies/marketplace-cashu-stack"]
 	path = dependencies/marketplace-cashu-stack
-	url = git@github.com:sudonym-btc/marketplace-cashu-stack.git
+	url = https://github.com/sudonym-btc/marketplace-cashu-stack.git
 	branch = main
 [submodule "dependencies/marketplace-evm-contracts"]
 	path = dependencies/marketplace-evm-contracts
-	url = git@github.com:sudonym-btc/marketplace-evm-contracts.git
+	url = https://github.com/sudonym-btc/marketplace-evm-contracts.git
 	branch = main
 [submodule "dependencies/marketplace-evm-stack"]
 	path = dependencies/marketplace-evm-stack
-	url = git@github.com:sudonym-btc/marketplace-evm-stack.git
+	url = https://github.com/sudonym-btc/marketplace-evm-stack.git
 	branch = main
 [submodule "dependencies/marketplace-evm-ts"]
 	path = dependencies/marketplace-evm-ts
-	url = git@github.com:sudonym-btc/marketplace-evm-ts.git
+	url = https://github.com/sudonym-btc/marketplace-evm-ts.git
 	branch = main
 [submodule "dependencies/marketplace-driver-interface-ts"]
 	path = dependencies/marketplace-driver-interface-ts
-	url = git@github.com:sudonym-btc/marketplace-driver-interface-ts.git
+	url = https://github.com/sudonym-btc/marketplace-driver-interface-ts.git
 	branch = main
 [submodule "dependencies/nips/accommodation-nip"]
 	path = dependencies/nips/accommodation-nip
-	url = git@github.com:sudonym-btc/specification.git
+	url = https://github.com/sudonym-btc/specification.git
 	branch = draft/accommodation-listing-profile
 [submodule "dependencies/nips/order-nip"]
 	path = dependencies/nips/order-nip
-	url = git@github.com:sudonym-btc/specification.git
+	url = https://github.com/sudonym-btc/specification.git
 	branch = draft/orders
 [submodule "dependencies/nips/arbiter-nip"]
 	path = dependencies/nips/arbiter-nip
-	url = git@github.com:sudonym-btc/specification.git
+	url = https://github.com/sudonym-btc/specification.git
 	branch = draft/arbitration-services
 [submodule "dependencies/nips/marketplace-listing-nip"]
 	path = dependencies/nips/marketplace-listing-nip
-	url = git@github.com:sudonym-btc/specification.git
+	url = https://github.com/sudonym-btc/specification.git
 	branch = draft/marketplace-listing-extension
 [submodule "dependencies/nips/auction-nip"]
 	path = dependencies/nips/auction-nip
-	url = git@github.com:sudonym-btc/specification.git
+	url = https://github.com/sudonym-btc/specification.git
 	branch = draft/marketplace-auctions
 [submodule "dependencies/marketplace-location-h3-ts"]
 	path = dependencies/marketplace-location-h3-ts
-	url = git@github.com:sudonym-btc/marketplace-location-h3-ts.git
+	url = https://github.com/sudonym-btc/marketplace-location-h3-ts.git
 	branch = main
 [submodule "dependencies/marketplace-location-interface-ts"]
 	path = dependencies/marketplace-location-interface-ts
-	url = git@github.com:sudonym-btc/marketplace-location-interface-ts.git
+	url = https://github.com/sudonym-btc/marketplace-location-interface-ts.git
 	branch = main

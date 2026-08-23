@@ -1,6 +1,6 @@
 services:
   marketplace-development-tls-init:
-    image: alpine:3.20
+    image: alpine:3.20@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc
     container_name: marketplace-development-tls-init
     restart: "no"
     environment:
@@ -14,7 +14,7 @@ services:
       - nmdk
 
   marketplace-development-proxy:
-    image: nginx:alpine
+    image: nginx:alpine@sha256:54f2a904c251d5a34adf545a72d32515a15e08418dae0266e23be2e18c66fefa
     container_name: marketplace-development-proxy
     restart: unless-stopped
     depends_on:

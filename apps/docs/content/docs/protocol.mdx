@@ -1,0 +1,24 @@
+---
+title: Protocol conformance
+description: Canonical cross-client decisions and test-vector requirements.
+---
+
+# Protocol conformance
+
+The drafts under `dependencies/nips/` are normative and shared fixed vectors
+prevent implementations from inventing alternate encodings.
+
+- Seed recovery chooses the newest valid signed and decryptable event. Equal
+  timestamps use the lexicographically greatest event ID.
+- Order-group identifiers hash the specified UTF-8 JSON representation using
+  sorted `{role, pubkey}` objects.
+- Arbitration matching uses a machine-readable policy identifier; labels are
+  presentation only.
+- Auction ties have one amount/time/event-ID ordering.
+- EVM arbitration uses factor scale 1000.
+- Cashu bearer proofs are never public relay content.
+- Cashu escrow requires advertised NUT-11; auctions additionally bind NUT-09
+  recovery and an explicit exact-keyset active-through operator policy.
+
+Protocol changes require positive and negative vectors, implementation results
+from every affected client, and an explicit compatibility or migration plan.

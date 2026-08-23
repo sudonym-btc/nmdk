@@ -2,6 +2,10 @@
 
 Nostr Markets Development Kit.
 
+> **Development status:** this snapshot is not approved for public-chain or
+> real-value use. Read [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md), especially
+> the intentionally deferred `MultiEscrow` trade-ID replay issue.
+
 This repository pins the marketplace protocol, client runtime, payment drivers,
 demo clients, and local development stacks used by Nostr marketplace work. It is
 intentionally an aggregate repository: the implementation repos remain nested
@@ -22,8 +26,13 @@ single reproducible development snapshot.
 
 ## Bootstrap
 
+Supported local versions are Node.js 24 or 25, npm 11.x, Bun 1.3.14, Git, and
+Docker Compose v2 or newer. CI pins npm 11.6.2 as the reproducible reference.
+The full local stack is intended for macOS/Linux and
+requires approximately 16 GB RAM and 30 GB free disk. Submodules use anonymous
+HTTPS URLs.
+
 ```sh
-git submodule update --init --recursive
 ./scripts/bootstrap.sh
 ```
 
@@ -33,9 +42,16 @@ git submodule update --init --recursive
 ./scripts/test.sh
 ```
 
-The test wrapper runs the fast local checks for the marketplace runtime, Cashu
-driver, EVM contracts, EVM driver, and demo client typecheck. Integration tests
-that require Docker stacks are still run from their owning package or stack.
+The hermetic test wrapper checks every interface/driver, all marketplace runtime
+tests, generated contract artifact drift, the application, docs, and repository
+policy. It does not silently probe or skip unavailable local infrastructure.
+
+Verify publishable tarballs and production dependencies separately:
+
+```sh
+npm run test:packages
+npm run audit:production
+```
 
 ## Stacks
 
@@ -66,9 +82,10 @@ development CA in `docker/tls/ca/ca.crt` and a SAN certificate in
 `docker/certs/marketplace.test.crt` covering the root domain plus the client,
 relay, Signet, EVM, Cashu, LND, and Boltz `*.marketplace.test` hosts. Install
 that CA into your browser or OS trust store if you want these local HTTPS
-origins to be trusted without warnings. On macOS, run `npm run trust:ca` to add
+origins to be trusted without warnings. Host trust is never modified by
+`npm run up`. On macOS, run `npm run trust:ca` explicitly to add
 the generated development CA to the System keychain; the command explains why it
-needs `sudo` before it asks.
+needs `sudo` before it asks. Run `npm run untrust:ca` to remove it afterward.
 
 The command starts the top-level marketplace Bitcoin/LND/LNbits stack first.
 It then starts EVM/Boltz against that shared Bitcoin network, starts Cashu on
@@ -122,11 +139,18 @@ intentionally want to capture against the current relay history.
 Run the stack-backed marketplace driver tests after the stack is ready:
 
 ```sh
-npm run test:e2e
+npm run test:integration
 ```
 
 Those tests call `nostr-tools/marketplace` methods initialized with the real EVM
-and Cashu drivers. They skip cleanly when the Docker stacks are not running.
+and Cashu drivers. They include a real NUT-11 Cashu refund with NUT-09 lost-
+response recovery, contract/AA/DEX integration, and the cross-driver matrix.
+Missing or unhealthy services fail the suite. CI starts from fresh volumes and
+supplies a fixed `NMDK_TEST_SEED`.
+
+Architecture, protocol decisions, persisted-state rules, testing, security,
+and releases are documented under [`docs/`](docs/architecture.md) and in the
+Fumadocs site under `apps/docs`.
 
 The individual stack wrappers are still available:
 

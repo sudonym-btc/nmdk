@@ -1,12 +1,26 @@
 #!/usr/bin/env node
 
-import { existsSync, readFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import {
+  closeSync,
+  existsSync,
+  fsyncSync,
+  mkdirSync,
+  openSync,
+  readdirSync,
+  readFileSync,
+  renameSync,
+  unlinkSync,
+  writeFileSync,
+} from 'node:fs'
+import { homedir } from 'node:os'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { createCashuAuctionPolicy } from '@sudonym-btc/marketplace-cashu'
 import { createEvmAuctionPolicy } from '@sudonym-btc/marketplace-evm'
 import {
+  MarketplaceAuction,
   MarketplaceAuctionComplete,
   MarketplaceOrder,
   MarketplacePayment,
@@ -15,11 +29,11 @@ import {
 } from 'nostr-tools/kinds'
 import { decrypt as nip44Decrypt, encrypt as nip44Encrypt, getConversationKey } from 'nostr-tools/nip44'
 import { SimplePool } from 'nostr-tools/pool'
-import { finalizeEvent, getPublicKey } from 'nostr-tools/pure'
-import { privateKeyToAccount } from '../dependencies/marketplace-evm-ts/node_modules/viem/_esm/accounts/index.js'
+import { finalizeEvent, getPublicKey, verifyEvent } from 'nostr-tools/pure'
+import { privateKeyToAccount } from 'viem/accounts'
 
 import { MemoryCashuEscrowStore } from '../dependencies/marketplace-cashu-ts/dist/storage.js'
-import { MemoryOperationStore } from '../dependencies/marketplace-evm-ts/dist/utils/store.js'
+import { parseAuctionEvent, validateAuctionEvent } from '../dependencies/nostr-tools/marketplace/auction.ts'
 import { settleMarketplaceAuction } from '../dependencies/nostr-tools/marketplace/runtime-auction-settlement.ts'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -30,13 +44,16 @@ const zeroAddress = '0x0000000000000000000000000000000000000000'
 const devCaBundle = resolve(root, 'docker/tls/ca/ca-bundle.crt')
 const caReexecFlag = 'MARKETPLACE_SETTLE_AUCTION_CA_REEXEC'
 
-if (
-  globalThis.Bun &&
-  !process.env[caReexecFlag] &&
-  !process.env.NODE_EXTRA_CA_CERTS &&
-  !process.env.SSL_CERT_FILE &&
-  existsSync(devCaBundle)
-) {
+async function reexecWithDevCaIfNeeded() {
+  if (
+    !globalThis.Bun ||
+    process.env[caReexecFlag] ||
+    process.env.NODE_EXTRA_CA_CERTS ||
+    process.env.SSL_CERT_FILE ||
+    !existsSync(devCaBundle)
+  ) {
+    return
+  }
   const proc = Bun.spawn({
     cmd: [process.execPath, ...process.argv.slice(1)],
     env: {
@@ -55,8 +72,8 @@ if (
 function usage() {
   return `
 Usage:
-  scripts/settle-auction-once.mjs --method evm --account arbiterEvm --auction-anchor <addr>
-  scripts/settle-auction-once.mjs --method cashu --account arbiterCashu --auction-anchor <addr>
+  scripts/settle-auction-once.mjs --method evm --account arbiterEvm --auction-anchor <addr> --now <unix-seconds>
+  scripts/settle-auction-once.mjs --method cashu --account arbiterCashu --auction-anchor <addr> --now <unix-seconds>
 
 Options:
   --method <evm|cashu>       Auction policy to use.
@@ -65,8 +82,8 @@ Options:
   --relay <url>              Relay URL. Defaults to VITE_RELAYS or ws://127.0.0.1:18080.
   --manifest <path>          Seed manifest path.
   --seed-source <name>       marketplaceSeed or privateKey. Defaults to marketplaceSeed.
-  --now <unix-seconds>       Timestamp for emitted settlement events.
-  --wait-until-ended         Query the auction and wait until its end_at before settling.
+  --now <unix-seconds>       Required deterministic timestamp for emitted settlement events.
+  --wait-until-ended         Wait instead of failing if the auction has not ended. The end check is always enforced.
 `.trim()
 }
 
@@ -94,7 +111,9 @@ function parseArgs(argv) {
   if (args.seedSource && args.seedSource !== 'marketplaceSeed' && args.seedSource !== 'privateKey') {
     throw new Error('--seed-source must be marketplaceSeed or privateKey')
   }
-  if (args.now !== undefined && !Number.isFinite(args.now)) throw new Error('--now must be a unix timestamp')
+  if (args.now === undefined || !Number.isSafeInteger(args.now) || args.now < 0) {
+    throw new Error('--now is required and must be a non-negative unix timestamp')
+  }
   return args
 }
 
@@ -138,6 +157,15 @@ function envValue(env, name) {
 function parseJson(value, fallback) {
   if (!value) return fallback
   return JSON.parse(value)
+}
+
+function parseOptionalJson(value) {
+  if (!value) return undefined
+  try {
+    return JSON.parse(value)
+  } catch {
+    return undefined
+  }
 }
 
 function readJson(path) {
@@ -189,11 +217,224 @@ class LocalSigner {
   }
 }
 
-function buildEvmAuctionPolicy(env) {
+class FileSettlementJournal {
+  constructor(directory) {
+    this.directory = directory
+  }
+
+  path(id) {
+    if (!/^auction:[a-f0-9]{64}$/.test(id)) throw new Error(`Invalid settlement journal id: ${id}`)
+    return resolve(this.directory, `${id.replace(':', '-')}.json`)
+  }
+
+  async get(id) {
+    const path = this.path(id)
+    if (!existsSync(path)) return null
+    const record = JSON.parse(readFileSync(path, 'utf8'))
+    if (record?.version !== 1 || record.id !== id) {
+      throw new Error(`Invalid settlement journal record: ${path}`)
+    }
+    return record
+  }
+
+  async put(record) {
+    const path = this.path(record.id)
+    mkdirSync(this.directory, { recursive: true, mode: 0o700 })
+    const temporary = `${path}.${process.pid}.tmp`
+    const fd = openSync(temporary, 'w', 0o600)
+    try {
+      writeFileSync(fd, `${JSON.stringify(record)}\n`)
+      fsyncSync(fd)
+    } catch (error) {
+      try { unlinkSync(temporary) } catch {}
+      throw error
+    } finally {
+      closeSync(fd)
+    }
+    renameSync(temporary, path)
+    const directoryFd = openSync(this.directory, 'r')
+    try {
+      fsyncSync(directoryFd)
+    } finally {
+      closeSync(directoryFd)
+    }
+  }
+}
+
+function settlementJournalDirectory(env) {
+  const configured = envValue(env, 'MARKETPLACE_SETTLEMENT_JOURNAL_DIR')
+  if (configured) return resolve(configured)
+  const stateHome = envValue(env, 'XDG_STATE_HOME') ?? resolve(homedir(), '.local/state')
+  return resolve(stateHome, 'nmdk', 'auction-settlements')
+}
+
+const bigintMarker = '__nmdkEvmOperationBigIntV1'
+let temporaryFileSequence = 0
+
+function encodeState(_key, value) {
+  return typeof value === 'bigint' ? { [bigintMarker]: value.toString() } : value
+}
+
+function decodeState(_key, value) {
+  if (
+    value &&
+    typeof value === 'object' &&
+    !Array.isArray(value) &&
+    Object.keys(value).length === 1 &&
+    typeof value[bigintMarker] === 'string' &&
+    /^-?\d+$/.test(value[bigintMarker])
+  ) {
+    return BigInt(value[bigintMarker])
+  }
+  return value
+}
+
+function fsyncDirectory(directory) {
+  const directoryFd = openSync(directory, 'r')
+  try {
+    fsyncSync(directoryFd)
+  } finally {
+    closeSync(directoryFd)
+  }
+}
+
+function operationStatusMatches(record, status) {
+  if (!status) return true
+  return Array.isArray(status) ? status.includes(record.status) : record.status === status
+}
+
+function operationMatches(record, query = {}) {
+  return (
+    (query.kind === undefined || record.kind === query.kind) &&
+    operationStatusMatches(record, query.status) &&
+    (query.chainId === undefined || record.chainId === query.chainId) &&
+    (query.tradeId === undefined || record.tradeId === query.tradeId) &&
+    (query.swapId === undefined || record.swapId === query.swapId)
+  )
+}
+
+/**
+ * Durable operation storage for settlement-side EVM transactions and swaps.
+ * Each record is independently replaced and fsynced so a process restart can
+ * reconcile a transaction submitted before the prior invocation exited.
+ */
+export class FileEvmOperationStore {
+  constructor(directory) {
+    this.directory = resolve(directory)
+  }
+
+  path(id) {
+    if (typeof id !== 'string' || id.length === 0) throw new Error('EVM operation id is required')
+    const digest = createHash('sha256').update(id).digest('hex')
+    return resolve(this.directory, `${digest}.json`)
+  }
+
+  readPath(path) {
+    const envelope = JSON.parse(readFileSync(path, 'utf8'), decodeState)
+    if (
+      envelope?.version !== 1 ||
+      !envelope.record ||
+      typeof envelope.record !== 'object' ||
+      typeof envelope.record.id !== 'string' ||
+      this.path(envelope.record.id) !== path
+    ) {
+      throw new Error(`Invalid EVM operation record: ${path}`)
+    }
+    return envelope.record
+  }
+
+  payload(record) {
+    if (!record || typeof record !== 'object' || typeof record.id !== 'string' || record.id.length === 0) {
+      throw new Error('Invalid EVM operation record')
+    }
+    return `${JSON.stringify({ version: 1, record }, encodeState)}\n`
+  }
+
+  async get(id) {
+    const path = this.path(id)
+    if (!existsSync(path)) return null
+    return this.readPath(path)
+  }
+
+  async put(record) {
+    const path = this.path(record?.id)
+    mkdirSync(this.directory, { recursive: true, mode: 0o700 })
+    const temporary = `${path}.${process.pid}.${temporaryFileSequence += 1}.tmp`
+    const fd = openSync(temporary, 'wx', 0o600)
+    try {
+      writeFileSync(fd, this.payload(record))
+      fsyncSync(fd)
+    } catch (error) {
+      try { unlinkSync(temporary) } catch {}
+      throw error
+    } finally {
+      closeSync(fd)
+    }
+    renameSync(temporary, path)
+    fsyncDirectory(this.directory)
+  }
+
+  async putIfAbsent(record) {
+    const path = this.path(record?.id)
+    mkdirSync(this.directory, { recursive: true, mode: 0o700 })
+    let fd
+    try {
+      fd = openSync(path, 'wx', 0o600)
+    } catch (error) {
+      if (error?.code === 'EEXIST') return false
+      throw error
+    }
+    try {
+      writeFileSync(fd, this.payload(record))
+      fsyncSync(fd)
+    } catch (error) {
+      try { unlinkSync(path) } catch {}
+      throw error
+    } finally {
+      closeSync(fd)
+    }
+    fsyncDirectory(this.directory)
+    return true
+  }
+
+  async list(query = {}) {
+    if (!existsSync(this.directory)) return []
+    return readdirSync(this.directory)
+      .filter(name => /^[a-f0-9]{64}\.json$/.test(name))
+      .sort()
+      .map(name => this.readPath(resolve(this.directory, name)))
+      .filter(record => operationMatches(record, query))
+  }
+
+  async delete(id) {
+    const path = this.path(id)
+    try {
+      unlinkSync(path)
+    } catch (error) {
+      if (error?.code === 'ENOENT') return
+      throw error
+    }
+    fsyncDirectory(this.directory)
+  }
+}
+
+function evmOperationStoreDirectory(env) {
+  const configured = envValue(env, 'MARKETPLACE_EVM_OPERATION_STORE_DIR')
+  if (configured) return resolve(configured)
+  const stateHome = envValue(env, 'XDG_STATE_HOME') ?? resolve(homedir(), '.local/state')
+  return resolve(stateHome, 'nmdk', 'evm-operations')
+}
+
+function buildEvmAuctionPolicy(env, operationStore) {
   const evmConfig = readJson(defaultEvmConfigPath)
   const chainId = Number.parseInt(envValue(env, 'VITE_EVM_CHAIN_ID') ?? '0', 10)
   if (!Number.isFinite(chainId) || chainId <= 0) throw new Error('Missing VITE_EVM_CHAIN_ID')
   const assets = parseJson(envValue(env, 'VITE_EVM_ASSETS'), [])
+  const boltzApiUrl = envValue(env, 'VITE_EVM_BOLTZ_API_URL')
+  const boltzTrust = parseOptionalJson(envValue(env, 'VITE_EVM_BOLTZ_TRUST'))
+  if (boltzApiUrl && !boltzTrust?.erc20Swap?.address) {
+    console.warn('[settle-auction-once] Lightning-to-EVM swaps disabled: VITE_EVM_BOLTZ_TRUST is missing or invalid')
+  }
   const chain = {
     id: `evm-${chainId}`,
     chainId,
@@ -215,7 +456,9 @@ function buildEvmAuctionPolicy(env) {
       ...(asset.boltzCurrency ? { boltzCurrency: asset.boltzCurrency } : {}),
       ...(asset.boltzRouteVia ? { boltzRouteVia: asset.boltzRouteVia } : {}),
     })),
-    boltz: envValue(env, 'VITE_EVM_BOLTZ_API_URL') ? { apiUrl: envValue(env, 'VITE_EVM_BOLTZ_API_URL') } : undefined,
+    boltz: boltzApiUrl && boltzTrust?.erc20Swap?.address
+      ? { apiUrl: boltzApiUrl, trustByChainId: { [chainId]: boltzTrust } }
+      : undefined,
     accountAbstraction: {
       entryPointAddress: envValue(env, 'VITE_EVM_ENTRY_POINT_ADDRESS') ?? zeroAddress,
       entryPointVersion: '0.7',
@@ -230,7 +473,7 @@ function buildEvmAuctionPolicy(env) {
   }
   return createEvmAuctionPolicy({
     chains: [chain],
-    operationStore: new MemoryOperationStore(),
+    operationStore,
     settlementAccount: privateKeyToAccount(evmConfig.accounts.arbiter.privateKey),
     appId: 'marketplace',
   })
@@ -249,30 +492,148 @@ function buildCashuAuctionPolicy(env) {
       denomination: mint.denomination ?? 'SAT',
       decimals: mint.decimals ?? 0,
       ...(mint.policyHash ? { policyHash: mint.policyHash } : {}),
+      ...(mint.auctionKeysetPolicies ? { auctionKeysetPolicies: mint.auctionKeysetPolicies } : {}),
     })),
     storage: new MemoryCashuEscrowStore(),
     appId: 'marketplace',
   })
 }
 
-function auctionFilter(anchor) {
+export function auctionFilter(anchor) {
   const [kind, pubkey, ...rest] = anchor.split(':')
   const d = rest.join(':')
-  if (!kind || !pubkey || !d) throw new Error(`Invalid auction anchor: ${anchor}`)
-  return { kinds: [Number.parseInt(kind, 10)], authors: [pubkey], '#d': [d] }
+  if (
+    kind !== String(MarketplaceAuction) ||
+    !/^[a-f0-9]{64}$/.test(pubkey ?? '') ||
+    !d
+  ) {
+    throw new Error(`Invalid auction anchor: ${anchor}`)
+  }
+  return { kinds: [MarketplaceAuction], authors: [pubkey], '#d': [d] }
 }
 
-async function waitUntilAuctionEnded(pool, relays, auctionAnchor) {
-  const events = await pool.querySync(relays, auctionFilter(auctionAnchor))
-  const auction = events.sort((a, b) => b.created_at - a.created_at)[0]
-  if (!auction) throw new Error(`Auction not found: ${auctionAnchor}`)
-  const endAt = Number.parseInt(auction.tags.find(tag => tag[0] === 'end_at')?.[1] ?? '0', 10)
-  if (!Number.isFinite(endAt) || endAt <= 0) return
-  const now = Math.floor(Date.now() / 1000)
-  const waitMs = Math.max(0, (endAt - now + 1) * 1000)
-  if (waitMs > 0) {
-    console.log('[settle-auction-once] waiting for auction end', { auctionAnchor, endAt, waitMs })
-    await new Promise(resolveWait => setTimeout(resolveWait, waitMs))
+function assertCanonicalAuctionTerms(auction) {
+  if (!/^[a-f0-9]{64}$/.test(auction.arbiterPubkey)) throw new Error('Auction has an invalid arbiter pubkey')
+  if (!/^\d+:[a-f0-9]{64}:.+$/.test(auction.listingAnchor)) throw new Error('Auction has an invalid listing anchor')
+  if (!Number.isSafeInteger(auction.decimals) || auction.decimals < 0) throw new Error('Auction has invalid decimals')
+  if (auction.startAt !== undefined && (!Number.isSafeInteger(auction.startAt) || auction.startAt < 0)) {
+    throw new Error('Auction has an invalid start_at')
+  }
+  if (!Number.isSafeInteger(auction.endAt) || auction.endAt <= 0) {
+    throw new Error('Auction settlement requires a valid end_at')
+  }
+  if (auction.startAt !== undefined && auction.startAt > auction.endAt) {
+    throw new Error('Auction start_at must not be after end_at')
+  }
+  if (auction.startingBid !== undefined && !/^\d+$/.test(auction.startingBid)) {
+    throw new Error('Auction has an invalid starting_bid')
+  }
+}
+
+/** Resolve the newest signed, structurally valid replacement for an auction. */
+export async function fetchNewestCanonicalAuction(pool, relays, auctionAnchor) {
+  const filter = auctionFilter(auctionAnchor)
+  const events = await pool.querySync(relays, filter)
+  const parsedById = new Map()
+  for (const event of events) {
+    if (!verifyEvent(event) || !validateAuctionEvent(event)) continue
+    try {
+      const auction = parseAuctionEvent(event)
+      if (auction.auctionAnchor !== auctionAnchor) continue
+      assertCanonicalAuctionTerms(auction)
+      parsedById.set(event.id, auction)
+    } catch {}
+  }
+  const [auction] = [...parsedById.values()].sort((left, right) =>
+    right.event.created_at - left.event.created_at || right.event.id.localeCompare(left.event.id),
+  )
+  if (!auction) throw new Error(`No valid canonical auction found: ${auctionAnchor}`)
+  return auction
+}
+
+const settlementTermKeys = [
+  'auctionId',
+  'auctionAnchor',
+  'listingAnchor',
+  'arbiterPubkey',
+  'currency',
+  'decimals',
+  'startAt',
+  'endAt',
+  'startingBid',
+]
+
+function expectedSettlementTerms(auction) {
+  return {
+    auctionId: auction.d,
+    auctionAnchor: auction.auctionAnchor,
+    listingAnchor: auction.listingAnchor,
+    arbiterPubkey: auction.arbiterPubkey,
+    currency: auction.currency,
+    decimals: auction.decimals,
+    ...(auction.startAt !== undefined ? { startAt: auction.startAt } : {}),
+    endAt: auction.endAt,
+    ...(auction.startingBid !== undefined ? { startingBid: auction.startingBid } : {}),
+  }
+}
+
+export function assertSettlementRequestMatchesAuction(request, auction) {
+  const expected = expectedSettlementTerms(auction)
+  for (const key of settlementTermKeys) {
+    if (request[key] !== expected[key]) {
+      throw new Error(`Settlement request ${key} does not match canonical auction`)
+    }
+  }
+}
+
+export function settlementRequestForAuction(auction, signerPubkey, now, wallNow = Math.floor(Date.now() / 1000)) {
+  assertCanonicalAuctionTerms(auction)
+  if (signerPubkey !== auction.arbiterPubkey) {
+    throw new Error('Local signer is not the configured auction arbiter')
+  }
+  if (!Number.isSafeInteger(now) || now < auction.endAt) {
+    throw new Error('Settlement event timestamp must be at or after auction end_at')
+  }
+  if (!Number.isSafeInteger(wallNow) || wallNow < auction.endAt) {
+    throw new Error(`Auction has not ended yet: end_at=${auction.endAt}`)
+  }
+  const request = { ...expectedSettlementTerms(auction), now }
+  assertSettlementRequestMatchesAuction(request, auction)
+  return request
+}
+
+export async function resolveAuctionForSettlement({
+  pool,
+  relays,
+  auctionAnchor,
+  signerPubkey,
+  now,
+  waitUntilEnded = false,
+  secondsNow = () => Math.floor(Date.now() / 1000),
+  sleep = waitMs => new Promise(resolveWait => setTimeout(resolveWait, waitMs)),
+  onWait,
+}) {
+  for (;;) {
+    const auction = await fetchNewestCanonicalAuction(pool, relays, auctionAnchor)
+    assertCanonicalAuctionTerms(auction)
+    if (signerPubkey !== auction.arbiterPubkey) {
+      throw new Error('Local signer is not the configured auction arbiter')
+    }
+    if (!Number.isSafeInteger(now) || now < auction.endAt) {
+      throw new Error('Settlement event timestamp must be at or after auction end_at')
+    }
+    const wallNow = secondsNow()
+    if (!Number.isSafeInteger(wallNow) || wallNow < 0) throw new Error('Current unix timestamp is invalid')
+    if (wallNow >= auction.endAt) {
+      return {
+        auction,
+        request: settlementRequestForAuction(auction, signerPubkey, now, wallNow),
+      }
+    }
+    if (!waitUntilEnded) throw new Error(`Auction has not ended yet: end_at=${auction.endAt}`)
+    const waitMs = Math.max(1_000, (auction.endAt - wallNow + 1) * 1_000)
+    onWait?.({ auctionAnchor, endAt: auction.endAt, waitMs })
+    await sleep(waitMs)
   }
 }
 
@@ -285,17 +646,27 @@ function eventSummary(event) {
   }
 }
 
-async function publishEvent(pool, relays, signer, event) {
+function publishFailureReason(result, relay) {
+  if (result.status === 'rejected') {
+    return `${relay}: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`
+  }
+  return `${relay}: ${String(result.value)}`
+}
+
+export async function publishEvent(pool, relays, signer, event) {
   const results = await Promise.allSettled(pool.publish(relays, event, {
     onauth: authEvent => Promise.resolve(signer.signEvent(authEvent)),
   }))
-  const failures = results
-    .map(result => result.status === 'rejected' ? String(result.reason) : result.value)
-    .filter(value =>
-      typeof value === 'string' &&
-      (value.startsWith('connection failure:') || value.startsWith('connection skipped')),
-    )
-  if (failures.length === results.length) throw new Error(`Relay publish failed: ${failures.join('; ')}`)
+  const explicitlyAccepted = results.some(result =>
+    result.status === 'fulfilled' &&
+    typeof result.value === 'string' &&
+    !result.value.startsWith('connection failure:') &&
+    !result.value.startsWith('connection skipped'),
+  )
+  if (!explicitlyAccepted) {
+    const failures = results.map((result, index) => publishFailureReason(result, relays[index] ?? `relay-${index}`))
+    throw new Error(`No relay accepted event ${event.id}: ${failures.join('; ') || 'no relays configured'}`)
+  }
 }
 
 async function queryVerification(pool, relays, auctionAnchor) {
@@ -319,6 +690,7 @@ async function queryVerification(pool, relays, auctionAnchor) {
 }
 
 async function main() {
+  await reexecWithDevCaIfNeeded()
   const args = parseArgs(process.argv.slice(2))
   if (args.help) {
     console.log(usage())
@@ -331,10 +703,22 @@ async function main() {
   const signer = new LocalSigner(hexToBytes(account.privateKey))
   const pubkey = signer.getPublicKey()
   const pool = new SimplePool({ enableReconnect: false })
-  const bidPolicy = args.method === 'evm' ? buildEvmAuctionPolicy(env) : buildCashuAuctionPolicy(env)
+  const journalDirectory = settlementJournalDirectory(env)
+  const operationStoreDirectory = evmOperationStoreDirectory(env)
   const published = []
   try {
-    if (args.waitUntilEnded) await waitUntilAuctionEnded(pool, relays, args.auctionAnchor)
+    const { auction, request } = await resolveAuctionForSettlement({
+      pool,
+      relays,
+      auctionAnchor: args.auctionAnchor,
+      signerPubkey: pubkey,
+      now: args.now,
+      waitUntilEnded: args.waitUntilEnded,
+      onWait: details => console.log('[settle-auction-once] waiting for auction end', details),
+    })
+    const bidPolicy = args.method === 'evm'
+      ? buildEvmAuctionPolicy(env, new FileEvmOperationStore(operationStoreDirectory))
+      : buildCashuAuctionPolicy(env)
     const states = []
     const opts = {
       pool,
@@ -343,16 +727,14 @@ async function main() {
       identity: { pubkey },
       seed: args.seedSource === 'privateKey' ? account.privateKey : account.marketplaceSeed,
       bidPolicies: [bidPolicy],
+      settlementJournal: new FileSettlementJournal(journalDirectory),
       publish: async event => {
         await publishEvent(pool, relays, signer, event)
         published.push(eventSummary(event))
         console.log('[settle-auction-once] published', eventSummary(event))
       },
     }
-    const request = {
-      auctionAnchor: args.auctionAnchor,
-      ...(args.now !== undefined ? { now: args.now } : {}),
-    }
+    assertSettlementRequestMatchesAuction(request, auction)
     for await (const state of settleMarketplaceAuction(opts, request)) {
       states.push({
         type: state.type,
@@ -378,7 +760,10 @@ async function main() {
       account: args.account,
       pubkey,
       relays,
+      journalDirectory,
+      ...(args.method === 'evm' ? { operationStoreDirectory } : {}),
       auctionAnchor: args.auctionAnchor,
+      auction: eventSummary(auction.event),
       states,
       published,
       verification,
@@ -388,7 +773,9 @@ async function main() {
   }
 }
 
-main().catch(error => {
-  console.error('[settle-auction-once] failed', error)
-  process.exit(1)
-})
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch(error => {
+    console.error('[settle-auction-once] failed', error)
+    process.exit(1)
+  })
+}

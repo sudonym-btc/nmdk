@@ -17,19 +17,21 @@ import {
   createEvmEscrowPolicy,
 } from '@sudonym-btc/marketplace-evm'
 import * as marketplace from 'nostr-tools/marketplace'
-import { finalizeEvent, generateSecretKey, getPublicKey } from 'nostr-tools/pure'
+import { decrypt as decryptNip44, getConversationKey } from 'nostr-tools/nip44'
+import { finalizeEvent, getPublicKey } from 'nostr-tools/pure'
 
 import { MemoryCashuEscrowStore } from '../dependencies/marketplace-cashu-ts/dist/storage.js'
 import { deriveCashuEscrowKey } from '../dependencies/marketplace-cashu-ts/dist/seed.js'
 import { MemoryOperationStore } from '../dependencies/marketplace-evm-ts/dist/utils/store.js'
 import {
   createClients,
-  randomTradeId,
 } from '../dependencies/marketplace-evm-ts/test/integration/support/evm.mjs'
 import {
   arbitrumAaConfig,
   readStackConfig as readEvmStackConfig,
 } from '../dependencies/marketplace-evm-ts/test/integration/support/stack.mjs'
+import { collectPaymentStates } from './collect-payment-states.mjs'
+import { requireGeneratedEvmBoltzTrust } from './evm-boltz-trust.mjs'
 
 const execFileAsync = promisify(execFile)
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -39,13 +41,30 @@ const cashuConfigPath = resolve(cashuStackDir, 'data/config/marketplace-cashu-st
 const relays = ['ws://127.0.0.1:18080']
 const createdAt = 1_712_678_400
 const zeroAddress = '0x0000000000000000000000000000000000000000'
-const runId = Date.now().toString(36)
+const matrixSeed = process.env.NMDK_TEST_SEED ?? 'nmdk-payment-matrix-v1'
+const runId = createHash('sha256').update(matrixSeed).digest('hex').slice(0, 12)
+let sequence = 0
 
 function seedFor(label) {
   return createHash('sha256').update(`${label}:${runId}`).digest('hex')
 }
 
-function sign(template, secretKey = generateSecretKey()) {
+function nextSecretKey(label = 'event') {
+  const digest = createHash('sha256').update(`${matrixSeed}:${label}:${sequence}`).digest()
+  sequence += 1
+  return Uint8Array.from(digest)
+}
+
+function tradeProofSigner(seed, accountIndex) {
+  const trade = marketplace.seed.deriveTradeMaterial(seed, { index: accountIndex, role: 'buyer' })
+  return {
+    getPublicKey: () => trade.tradePubkey,
+    nip44Decrypt: (pubkey, ciphertext) =>
+      decryptNip44(ciphertext, getConversationKey(trade.tradeSecretKey, pubkey)),
+  }
+}
+
+function sign(template, secretKey = nextSecretKey()) {
   return finalizeEvent(template, secretKey)
 }
 
@@ -53,10 +72,10 @@ function listingAnchor(listing) {
   return `${listing.kind}:${listing.pubkey}:${listing.tags.find(tag => tag[0] === 'd')?.[1]}`
 }
 
-function listingEvent(secretKey = generateSecretKey(), overrides = {}) {
+function listingEvent(secretKey = nextSecretKey('listing'), overrides = {}) {
   return sign(
     marketplace.accommodationListings.template({
-      d: `matrix-listing-${runId}-${Math.random().toString(16).slice(2)}`,
+      d: `matrix-listing-${runId}-${sequence++}`,
       title: `NMDK Matrix ${overrides.currency ?? 'USD'} Listing`,
       summary: 'Marketplace payment matrix smoke listing',
       description: 'A local-only listing used by scripts/test-payment-matrix.mjs.',
@@ -113,6 +132,10 @@ function poolFor(method, service) {
 function evmChainConfig(config) {
   const arbitrum = config.chains.arbitrumRegtest
   const { publicClient } = createClients(config)
+  const boltzTrust = requireGeneratedEvmBoltzTrust(
+    arbitrum.boltzTrust,
+    'marketplace-evm-stack chains.arbitrumRegtest.boltzTrust',
+  )
   const tbtcAsset = Object.values(arbitrum.assets).find(asset => asset.boltzCurrency?.toUpperCase() === 'TBTC')
   return {
     id: 'arbitrum-regtest',
@@ -149,6 +172,7 @@ function evmChainConfig(config) {
     multiEscrowBytecodeHash: arbitrum.multiEscrow.runtimeBytecodeHash,
     boltz: {
       apiUrl: config.boltz.apiUrl,
+      trustByChainId: { [arbitrum.chainId]: boltzTrust },
     },
   }
 }
@@ -224,35 +248,30 @@ async function requireCashuStack() {
   return config
 }
 
-async function payBolt11Invoice(bolt11) {
+async function payBolt11Invoice(bolt11, { signal } = {}) {
   if (!/^ln/i.test(bolt11)) return
   await execFileAsync('npm', ['run', 'pay:invoice', '--', bolt11], {
     cwd: root,
     env: { ...process.env, NMDK_PAY_INVOICE_TIMEOUT_MS: '240000' },
     timeout: 240_000,
+    ...(signal ? { signal } : {}),
   })
 }
 
-async function collectPaymentStates(stream) {
-  const states = []
-  for await (const state of stream) {
-    states.push(state)
-    if (state.type === 'payment_required' && state.request?.bolt11) {
-      await payBolt11Invoice(state.request.bolt11)
-    }
-  }
-  return states
-}
-
-async function runMarketplacePayment(api, listing, order, options) {
-  const states = await collectPaymentStates(api.pay(listing, order, options))
+async function runMarketplacePayment(api, listing, order, options, proofSigner) {
+  const states = await collectPaymentStates(api.pay(listing, order, options), payBolt11Invoice)
   const orderState = states.find(state => state.type === 'order_published')
   const paymentState = states.find(state => state.type === 'payment_published')
+  const completedState = states.find(state => state.type === 'completed')
   assert.ok(orderState)
   assert.ok(paymentState)
+  assert.ok(completedState)
   const group = api.orders.groups.reduce([orderState.event, paymentState.event])
-  const validated = await api.orders.groups.resolveAndValidate(group)
-  assert.equal(validated.group.stage, 'commit')
+  const validated = await api.orders.groups.resolveAndValidate(group, { signer: proofSigner })
+  assert.equal(validated.group.stage, 'commit', JSON.stringify({
+    payment: validated.payment,
+    order: validated.order,
+  }, null, 2))
   return {
     states,
     orderEvent: orderState.event,
@@ -261,16 +280,20 @@ async function runMarketplacePayment(api, listing, order, options) {
   }
 }
 
-async function runMarketplaceBid(api, listing, bid, options) {
-  const states = await collectPaymentStates(api.auctions.bid(listing, bid, options))
+async function runMarketplaceBid(api, listing, bid, options, proofSigner) {
+  const states = await collectPaymentStates(api.auctions.bid(listing, bid, options), payBolt11Invoice)
   const bidState = states.find(state => state.type === 'bid_published')
   const paymentState = states.find(state => state.type === 'payment_published')
+  const completedState = states.find(state => state.type === 'completed')
   assert.ok(bidState)
   assert.ok(paymentState)
+  assert.ok(completedState)
   const parsedPayment = marketplace.orders.parsePayment(paymentState.event)
-  assert.equal(parsedPayment.content.purpose, 'auction_bid')
+  const resolution = await marketplace.paymentProofs.resolve(parsedPayment, { signer: proofSigner })
+  assert.equal(resolution.status, 'resolved', resolution.error)
+  assert.ok(resolution.proof?.paymentProof)
   assert.deepEqual(parsedPayment.refs.auctionBids, [bidState.event.id])
-  assert.ok(parsedPayment.content.proof.paymentProof?.params.recycleArgs)
+  assert.ok(resolution.proof.paymentProof.params.recycleArgs)
   return {
     states,
     bidEvent: bidState.event,
@@ -282,8 +305,8 @@ async function runMarketplaceBid(api, listing, bid, options) {
 async function testEvmUsdOrder() {
   const config = await requireEvmStack()
   const chain = evmChainConfig(config)
-  const sellerSecretKey = generateSecretKey()
-  const arbiterSecretKey = generateSecretKey()
+  const sellerSecretKey = nextSecretKey('seller')
+  const arbiterSecretKey = nextSecretKey('arbiter')
   const listing = listingEvent(sellerSecretKey, { currency: 'USD', amount: '50.00' })
   const seed = seedFor('evm-usd-order')
   const accountIndex = 771
@@ -313,24 +336,24 @@ async function testEvmUsdOrder() {
   const api = marketplace.bind(pool, relays, {
     seed,
     publish: async () => {},
-    orderPolicies: [policy],
+    orderDrivers: [policy],
   })
   const result = await runMarketplacePayment(api, listing, {
-    tradeId: randomTradeId(),
+    tradeId: `0x${seedFor('evm-usd-order-trade')}`,
     listingAnchor: listingAnchor(listing),
     amount: { value: marketplaceValue.toString(), currency: 'USD', denomination: 'USD', decimals: 2 },
     createdAt,
   }, {
     accountIndex,
-  })
+  }, tradeProofSigner(seed, accountIndex))
   return { order: result.orderEvent.id, payment: result.paymentEvent.id }
 }
 
 async function testEvmUsdBid() {
   const config = await requireEvmStack()
   const chain = evmChainConfig(config)
-  const sellerSecretKey = generateSecretKey()
-  const arbiterSecretKey = generateSecretKey()
+  const sellerSecretKey = nextSecretKey('seller')
+  const arbiterSecretKey = nextSecretKey('arbiter')
   const listing = listingEvent(sellerSecretKey, { currency: 'USD', amount: '60.00' })
   const seed = seedFor('evm-usd-bid')
   const accountIndex = 772
@@ -371,7 +394,7 @@ async function testEvmUsdBid() {
   const api = marketplace.bind(pool, relays, {
     seed,
     publish: async () => {},
-    bidPolicies: [policy],
+    auctionDrivers: [policy],
   })
   const result = await runMarketplaceBid(api, listing, {
     amount: { value: marketplaceValue.toString(), currency: 'USD', denomination: 'USD', decimals: 2 },
@@ -379,7 +402,7 @@ async function testEvmUsdBid() {
   }, {
     accountIndex,
     auction,
-  })
+  }, tradeProofSigner(seed, accountIndex))
   return { bid: result.bidEvent.id, payment: result.paymentEvent.id }
 }
 
@@ -391,9 +414,10 @@ async function testCashuSatOrder() {
     unit: satMint.unit,
     denomination: satMint.denomination,
     decimals: satMint.decimals,
+    auctionKeysetPolicies: satMint.auctionKeysetPolicies,
   }
-  const sellerSecretKey = generateSecretKey()
-  const arbiterSecretKey = generateSecretKey()
+  const sellerSecretKey = nextSecretKey('seller')
+  const arbiterSecretKey = nextSecretKey('arbiter')
   const listing = listingEvent(sellerSecretKey, { currency: 'BTC', amount: '0.00012000' })
   const seed = seedFor('cashu-sat-order')
   const sellerCashu = deriveCashuEscrowKey(seedFor('cashu-seller-order'), {
@@ -433,7 +457,7 @@ async function testCashuSatOrder() {
   const api = marketplace.bind(pool, relays, {
     seed,
     publish: async () => {},
-    orderPolicies: [policy],
+    orderDrivers: [policy],
   })
   const result = await runMarketplacePayment(api, listing, {
     tradeId: `cashu-sat-order-${runId}`,
@@ -442,7 +466,7 @@ async function testCashuSatOrder() {
     createdAt,
   }, {
     accountIndex: 773,
-  })
+  }, tradeProofSigner(seed, 773))
   return { order: result.orderEvent.id, payment: result.paymentEvent.id }
 }
 
@@ -454,9 +478,10 @@ async function testCashuSatBid() {
     unit: satMint.unit,
     denomination: satMint.denomination,
     decimals: satMint.decimals,
+    auctionKeysetPolicies: satMint.auctionKeysetPolicies,
   }
-  const sellerSecretKey = generateSecretKey()
-  const arbiterSecretKey = generateSecretKey()
+  const sellerSecretKey = nextSecretKey('seller')
+  const arbiterSecretKey = nextSecretKey('arbiter')
   const listing = listingEvent(sellerSecretKey, { currency: 'BTC', amount: '0.00015000' })
   const seed = seedFor('cashu-sat-bid')
   const sellerCashu = deriveCashuEscrowKey(seedFor('cashu-seller-bid'), {
@@ -507,7 +532,7 @@ async function testCashuSatBid() {
   const api = marketplace.bind(pool, relays, {
     seed,
     publish: async () => {},
-    bidPolicies: [policy],
+    auctionDrivers: [policy],
   })
   const result = await runMarketplaceBid(api, listing, {
     amount: { value: '15000', denomination: 'BTC', decimals: 8 },
@@ -515,7 +540,7 @@ async function testCashuSatBid() {
   }, {
     accountIndex: 774,
     auction,
-  })
+  }, tradeProofSigner(seed, 774))
   return { bid: result.bidEvent.id, payment: result.paymentEvent.id }
 }
 

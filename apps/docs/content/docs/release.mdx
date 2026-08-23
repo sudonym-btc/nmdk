@@ -1,0 +1,16 @@
+---
+title: Release process
+description: Dependency order and production release gates.
+---
+
+# Release process
+
+Release interfaces first, then contract artifacts, driver implementations,
+the Nostr runtime, and finally the app/aggregate snapshot. Published manifests
+use compatible package versions rather than sibling filesystem paths.
+
+A release candidate needs all CI and fresh-stack checks, clean regenerated
+artifacts/docs, clean external tarball installs, a CycloneDX SBOM and
+`THIRD_PARTY_LICENSES.json`,
+npm provenance, security review, migration/rollback notes, and an anonymous
+recursive clone rehearsal. The aggregate tag records every submodule SHA.

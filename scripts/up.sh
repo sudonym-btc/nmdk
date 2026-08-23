@@ -48,10 +48,14 @@ echo "Starting NMDK Signet remote signer and Blossom server..."
 echo "Starting NMDK development proxy..."
 (cd "$ROOT" && docker compose -f compose.marketplace-development.yaml up -d --force-recreate marketplace-development-proxy)
 
-echo "Trusting NMDK local development CA..."
-if ! "$ROOT/scripts/trust-local-ca.sh"; then
-  echo "Warning: unable to install the NMDK local CA into the host trust store."
-  echo "HTTPS will still be served, but browsers may show certificate warnings."
+if [ "${MARKETPLACE_TRUST_LOCAL_CA:-0}" = "1" ]; then
+  echo "Trusting NMDK local development CA (explicitly requested)..."
+  if ! "$ROOT/scripts/trust-local-ca.sh"; then
+    echo "Warning: unable to install the NMDK local CA into the host trust store."
+    echo "HTTPS will still be served, but browsers may show certificate warnings."
+  fi
+else
+  echo "Skipping host CA installation. Run 'npm run trust:ca' explicitly if required."
 fi
 
 node "$ROOT/scripts/write-local-env.mjs"

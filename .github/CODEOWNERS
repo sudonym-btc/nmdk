@@ -1,0 +1,5 @@
+* @sudonym-btc
+/dependencies/marketplace-cashu-ts/ @sudonym-btc
+/dependencies/marketplace-evm-contracts/ @sudonym-btc
+/dependencies/marketplace-evm-ts/ @sudonym-btc
+/dependencies/nips/ @sudonym-btc

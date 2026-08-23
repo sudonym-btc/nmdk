@@ -64,7 +64,7 @@ x-marketplace-lnd-entrypoint: &marketplace-lnd-entrypoint
 
 services:
   bitcoind:
-    image: ${MARKETPLACE_BITCOIN_IMAGE:-boltz/bitcoin-core:latest}
+    image: ${MARKETPLACE_BITCOIN_IMAGE:-boltz/bitcoin-core@sha256:14bf4e0976c90d90f0f62e21f02d2744479d85c32797e68f6baa35fcfd50e8da}
     restart: unless-stopped
     hostname: bitcoind
     user: '${UID:-1000}:${GID:-1000}'
@@ -129,7 +129,7 @@ services:
       start_period: 5s
 
   bitcoin-init:
-    image: ${MARKETPLACE_LIGHTNING_SCRIPTS_IMAGE:-boltz/scripts:latest}
+    image: ${MARKETPLACE_LIGHTNING_SCRIPTS_IMAGE:-boltz/scripts@sha256:5c4ffdf9b3cc47e3f9a1dfecc359d72c7b9425f439080b146813969f75a00849}
     restart: "no"
     depends_on:
       bitcoind:
@@ -144,7 +144,7 @@ services:
     entrypoint: ["bash", "/scripts/bitcoin-init.sh"]
 
   marketplace-lnd:
-    image: ${LND_IMAGE:-boltz/lnd:latest}
+    image: ${LND_IMAGE:-boltz/lnd@sha256:cd1cb6d1394fdca47e75ef0b51b4806369ad04533cb9f764d12f90fe021e77fe}
     restart: unless-stopped
     hostname: marketplace-lnd
     user: '${UID:-1000}:${GID:-1000}'
@@ -176,7 +176,7 @@ services:
       start_period: 10s
 
   lnbits:
-    image: ${LNBITS_IMAGE:-lnbits/lnbits:v1.5.4}
+    image: ${LNBITS_IMAGE:-lnbits/lnbits:v1.5.4@sha256:ce5ca587ada6f4d41d0da8f4fe554c421296dbcc649edda634bb57559046f370}
     restart: unless-stopped
     depends_on:
       marketplace-lnd:
@@ -214,7 +214,7 @@ services:
       start_period: 300s
 
   albyhub:
-    image: ${ALBYHUB_IMAGE:-ghcr.io/getalby/hub:master-25c027b}
+    image: ${ALBYHUB_IMAGE:-ghcr.io/getalby/hub:master-25c027b@sha256:e57a09c8a4f7abda8770bb586d25887375bd3fd498f3e70a8a241e4d1432a11f}
     platform: linux/amd64
     restart: unless-stopped
     depends_on:
@@ -245,7 +245,7 @@ services:
       start_period: 300s
 
   lnbits-init:
-    image: python:3.12-alpine
+    image: python:3.12-alpine@sha256:6d43704baacd1bfbe7c295d7f13079d5d8104ed33568873133f8fc69980419df
     profiles: ["tools"]
     restart: "no"
     depends_on:
@@ -262,7 +262,7 @@ services:
     command: ["python3", "/scripts/lnbits-init.py"]
 
   alby-init:
-    image: python:3.14-alpine
+    image: python:3.14-alpine@sha256:26730869004e2b9c4b9ad09cab8625e81d256d1ce97e72df5520e806b1709f92
     profiles: ["tools"]
     restart: "no"
     depends_on:
@@ -276,7 +276,7 @@ services:
     command: ["python3", "/scripts/alby-init.py"]
 
   marketplace-liquidity-init:
-    image: ${MARKETPLACE_LIGHTNING_SCRIPTS_IMAGE:-boltz/scripts:latest}
+    image: ${MARKETPLACE_LIGHTNING_SCRIPTS_IMAGE:-boltz/scripts@sha256:5c4ffdf9b3cc47e3f9a1dfecc359d72c7b9425f439080b146813969f75a00849}
     restart: "no"
     depends_on:
       bitcoin-init:

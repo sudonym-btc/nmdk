@@ -7,6 +7,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(scriptDir, '..');
 const repoRoot = path.resolve(appDir, '../..');
 const outputFile = path.join(appDir, 'content/docs/packages.mdx');
+const specificationsOutputFile = path.join(appDir, 'content/docs/specifications.mdx');
 
 const packages = [
   {
@@ -67,22 +68,9 @@ function githubBaseUrl(remote) {
   return remote.replace(/\.git$/, '');
 }
 
-function githubPagesUrl(remote) {
-  const baseUrl = githubBaseUrl(remote);
-  const match = baseUrl.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)$/);
-
-  if (!match) return null;
-
-  return `https://${match[1]}.github.io/${match[2]}/`;
-}
-
 function packageDocUrl(pkg) {
   const cwd = path.join(repoRoot, pkg.path);
   const remote = git(['remote', 'get-url', 'origin'], cwd);
-  const pagesUrl = githubPagesUrl(remote);
-
-  if (pagesUrl) return pagesUrl;
-
   const sha = git(['rev-parse', 'HEAD'], cwd);
   return `${githubBaseUrl(remote)}/tree/${sha}/${pkg.docsPath}`;
 }
@@ -99,15 +87,15 @@ const cards = packages
 
 const body = `---
 title: Package Docs
-description: Links to package-owned GitHub Pages documentation sites.
+description: Documentation at the exact package commits pinned by this NMDK snapshot.
 ---
 
 # Package Docs
 
 NMDK owns the integration guide and local development workflow. Individual
 packages own their getting-started docs and API references in their own
-repositories. These links point to the rendered GitHub Pages docs for each
-package.
+repositories. These immutable links point to the exact commits pinned by this
+NMDK snapshot, so the documentation cannot silently drift to another release.
 
 <Cards>
 ${cards}
@@ -116,3 +104,39 @@ ${cards}
 
 mkdirSync(path.dirname(outputFile), { recursive: true });
 writeFileSync(outputFile, body);
+
+const specifications = [
+  ['Marketplace listing extension', 'dependencies/nips/marketplace-listing-nip', 'Listing payment, fulfillment, and marketplace metadata.'],
+  ['Orders and settlement', 'dependencies/nips/order-nip', 'Order groups, participants, payment proofs, seed recovery, and settlement.'],
+  ['Auctions', 'dependencies/nips/auction-nip', 'Auction creation, bids, deterministic ordering, and settlement.'],
+  ['Arbitration services', 'dependencies/nips/arbiter-nip', 'Machine-readable arbitration policies, fees, and evidence.'],
+  ['Accommodation profile', 'dependencies/nips/accommodation-nip', 'Accommodation-specific listing fields and constraints.'],
+];
+
+const specificationCards = specifications.map(([title, directory, description]) => {
+  const cwd = path.join(repoRoot, directory);
+  const remote = git(['remote', 'get-url', 'origin'], cwd);
+  const sha = git(['rev-parse', 'HEAD'], cwd);
+  const href = `${githubBaseUrl(remote)}/blob/${sha}/XX.md`;
+  return `  <Card title="${title}" href="${href}">
+    ${description}
+  </Card>`;
+}).join('\n');
+
+const specificationsBody = `---
+title: Protocol specifications
+description: Normative marketplace drafts at the exact commits pinned by this snapshot.
+---
+
+# Protocol specifications
+
+These immutable links expose every normative draft used by this NMDK snapshot.
+Implementation behavior is checked against shared conformance vectors; copied
+branch README files are not normative.
+
+<Cards>
+${specificationCards}
+</Cards>
+`;
+
+writeFileSync(specificationsOutputFile, specificationsBody);
