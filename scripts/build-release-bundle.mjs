@@ -29,9 +29,11 @@ for (const directory of packageDirs) {
 const submodules = execFileSync('git', ['submodule', 'status', '--recursive'], {
   cwd: root,
   encoding: 'utf8',
-}).trim().split('\n').filter(Boolean).map(line => {
-  const match = line.match(/^.(\S+)\s+(\S+)/)
-  if (!match) throw new Error(`Unable to parse submodule status: ${line}`)
+}).trimEnd().split('\n').filter(Boolean).map(line => {
+  const match = line.match(/^ ([0-9a-f]{40})\s+(\S+)/)
+  if (!match) {
+    throw new Error(`Submodule must be initialized at its recorded commit: ${line}`)
+  }
   return { commit: match[1], path: match[2] }
 })
 
