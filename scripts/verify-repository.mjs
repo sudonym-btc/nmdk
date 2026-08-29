@@ -42,6 +42,7 @@ const requiredFiles = [
   'CHANGELOG.md',
   '.github/CODEOWNERS',
   'docs/architecture.md',
+  'docs/demo.md',
   'docs/security-model.md',
   'docs/state-and-recovery.md',
   'docs/operations.md',

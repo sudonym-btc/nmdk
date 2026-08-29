@@ -31,3 +31,10 @@ skips.
 Run `npm test`, `npm run test:packages`, and `npm run audit:production` for all
 pull requests. Run `npm run test:integration` against freshly reset stacks for
 changes to drivers, settlement, contracts, or runtime orchestration.
+
+Major changes to the protocol, drivers, stack orchestration, seeded demo, or
+marketplace UI must pass `npm run demo:verify:fresh`. This is the destructive,
+clean-state acceptance rehearsal: it reinstalls the pinned recursive workspace,
+removes disposable volumes, cold-starts all services, runs hermetic and
+integration tests, records the complete buyer and arbiter-dashboard flows, and
+tears the stack down. Pull-request CI runs the same command from a fresh clone.

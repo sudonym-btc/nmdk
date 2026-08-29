@@ -12,6 +12,27 @@ intentionally an aggregate repository: the implementation repos remain nested
 submodules so each package can keep its own release cadence while NMDK provides a
 single reproducible development snapshot.
 
+## Demo quick start
+
+Install the prerequisites listed below, then use exactly two steps:
+
+```sh
+git clone --recurse-submodules https://github.com/sudonym-btc/nmdk.git && cd nmdk
+npm run demo:quickstart
+```
+
+`demo:quickstart` verifies the supported toolchain, installs the pinned workspace,
+cold-starts the disposable Cashu, EVM, Lightning, relay, proxy, and arbiter
+services, seeds deterministic demo accounts, and starts the browser client. Open
+<http://127.0.0.1:5178> when Vite reports that it is ready. Press `Ctrl-C` to
+stop the client and run `npm run down` to stop the stack.
+
+On `/login`, choose **Buyer** to browse, order, bid, negotiate, and inspect **My
+Orders**. Choose **Arbiter - EVM**, then select **Escrow → Dashboard** to
+monitor every seeded order or auction bid that names that account, together
+with the actions the current payment driver says are safe. All accounts, funds,
+and chain state are local deterministic fixtures.
+
 ## Contents
 
 - `dependencies/nostr-tools` - marketplace runtime and event helpers.
@@ -24,10 +45,11 @@ single reproducible development snapshot.
 - `dependencies/marketplace-evm-stack` - EVM/Boltz regtest stack plus shared Bitcoin and marketplace edge LND.
 - `dependencies/nips/*` - marketplace-related protocol drafts.
 
-## Bootstrap
+## Prerequisites and development setup
 
-Supported local versions are Node.js 24 or 25, npm 11.x, Bun 1.3.14, Git, and
-Docker Compose v2 or newer. CI pins npm 11.6.2 as the reproducible reference.
+Supported local versions are Node.js 24 or 25, npm 11.x, Bun 1.3.14, Git,
+Docker Engine, and Docker Compose v2 or newer. The Docker daemon must be
+running. CI pins npm 11.6.2 as the reproducible reference.
 The full local stack is intended for macOS/Linux and
 requires approximately 16 GB RAM and 30 GB free disk. Submodules use anonymous
 HTTPS URLs.
@@ -35,6 +57,9 @@ HTTPS URLs.
 ```sh
 ./scripts/bootstrap.sh
 ```
+
+The quick start runs this bootstrap automatically. Run it directly when you
+only need dependencies and hermetic development checks.
 
 ## Checks
 
@@ -132,9 +157,27 @@ the EVM/Cashu arbiters, launches the Vite client when needed, and writes
 screenshots plus a WebM recording under `artifacts/marketplace-demo/<run-id>/`.
 The scripted flows place USD and BTC orders, place USD and BTC bids, submit a
 Cashu-backed BTC bid, create one negotiation, pay the generated invoices, and
-wait for arbiter payment ACK events before finishing. Use `npm run
-demo:capture` when the stack and arbiters are already running and you
-intentionally want to capture against the current relay history.
+wait for arbiter payment ACK events. It finishes by signing in as the seeded EVM
+arbiter and recording `/escrow`, where the participating auctions and orders
+must expose current driver-backed actions. Use `npm run demo:capture` when the
+stack and arbiters are already running and you intentionally want to capture
+against the current relay history.
+
+For a major protocol, driver, orchestration, or demo change, run the complete
+fresh-checkout rehearsal:
+
+```sh
+npm run demo:verify:fresh
+```
+
+That single command reproduces the lockfile install, installs the pinned
+Playwright Chromium, runs the hermetic gate, deletes disposable stack state,
+cold-starts every service, runs the integration matrix, runs the full browser
+capture including the escrow dashboard, and always tears the stack down. This
+is also the required pull-request integration workflow. Set
+`NMDK_DEMO_VERIFY_KEEP_STACK=1` only when debugging a failed local run.
+On Linux, Playwright may request `sudo` once to install its Chromium system
+libraries; CI runners install those dependencies non-interactively.
 
 Run the stack-backed marketplace driver tests after the stack is ready:
 
@@ -149,8 +192,9 @@ Missing or unhealthy services fail the suite. CI starts from fresh volumes and
 supplies a fixed `NMDK_TEST_SEED`.
 
 Architecture, protocol decisions, persisted-state rules, testing, security,
-and releases are documented under [`docs/`](docs/architecture.md) and in the
-Fumadocs site under `apps/docs`.
+and releases are documented under [`docs/`](docs/architecture.md). The complete
+manual and automated walkthrough is in [`docs/demo.md`](docs/demo.md). The same
+material is published through the Fumadocs site under `apps/docs`.
 
 The individual stack wrappers are still available:
 

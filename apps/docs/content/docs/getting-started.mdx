@@ -13,17 +13,32 @@ description: Reproduce the pinned NMDK workspace and its deterministic checks.
 - Docker Engine and Docker Compose v2+
 - macOS or Linux with at least 16 GB RAM and 30 GB free disk for the full stack
 
-Clone with anonymous HTTPS access and install exactly from the root lockfile:
+## Two-step demo
+
+Clone with anonymous HTTPS access, then run the self-contained quick start:
 
 ```sh
-git clone --recurse-submodules https://github.com/sudonym-btc/nmdk.git
-cd nmdk
-./scripts/bootstrap.sh
-npm test
+git clone --recurse-submodules https://github.com/sudonym-btc/nmdk.git && cd nmdk
+npm run demo:quickstart
 ```
 
-`npm test` is the hermetic gate and does not require running services. Package
-tarballs can be verified independently with `npm run test:packages`.
+Open [http://127.0.0.1:5178](http://127.0.0.1:5178) when Vite is ready. The
+quick start verifies the toolchain, installs the exact root lockfile, starts and
+seeds every disposable service, starts all arbiters, and then runs the client.
+Press `Ctrl-C` to stop the client and run `npm run down` to stop the services.
+
+Choose **Buyer** on `/login` for listings, checkout, bids, negotiations, and
+**My Orders**. Choose **Arbiter - EVM**, then select **Escrow → Dashboard** to
+see the orders and auction bids involving that arbiter plus the actions
+currently permitted by their payment drivers. Every displayed account and
+balance is a deterministic local fixture.
+
+## Development checks
+
+For source-only work, `./scripts/bootstrap.sh` installs the recursive workspace
+without starting services. `npm test` is the hermetic gate and does not require
+running services. Package tarballs can be verified independently with `npm run
+test:packages`.
 
 For the disposable integration environment:
 
@@ -32,6 +47,22 @@ npm run up
 npm run test:integration
 npm run down
 ```
+
+For a major protocol, payment-driver, orchestration, or demo change, use the
+single clean-state acceptance command:
+
+```sh
+npm run demo:verify:fresh
+```
+
+It reproduces bootstrap, installs the pinned capture browser, runs `npm test`,
+removes disposable volumes, cold-starts all services, runs the integration
+matrix, records all buyer flows and the arbiter `/escrow` dashboard, and tears
+everything down even after failure. The same command is run from a fresh
+recursive checkout in pull-request CI.
+
+On Linux, the Playwright installer may request `sudo` once for Chromium's
+system libraries. CI installs those packages non-interactively.
 
 The stack does not modify the host trust store. HTTPS remains available with a
 development certificate; run `npm run trust:ca` only if you explicitly want to

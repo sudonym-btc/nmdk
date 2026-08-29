@@ -1,0 +1,57 @@
+---
+title: Demo
+description: Two-step startup, buyer and arbiter walkthrough, and cold-start acceptance.
+---
+
+# Demo
+
+## Start
+
+With the documented toolchain and Docker daemon installed:
+
+```sh
+git clone --recurse-submodules https://github.com/sudonym-btc/nmdk.git && cd nmdk
+npm run demo:quickstart
+```
+
+Open [http://127.0.0.1:5178](http://127.0.0.1:5178). The quick start reproduces
+the pinned install, cold-starts and seeds all disposable services, starts three
+arbiter daemons, and runs Vite. Stop Vite with `Ctrl-C` and services with `npm
+run down`.
+
+## Walkthrough
+
+Choose **Buyer** to browse listings, create orders and bids, negotiate, and
+inspect payment lifecycles under **My Orders**. Choose **Arbiter - EVM**, then
+select **Escrow → Dashboard** to see records that name that arbiter. Each record
+shows its live payment-driver and validation state, plus only the actions the
+driver says are currently safe.
+
+All identities, balances, invoices, mints, chains, and relay events are local
+deterministic fixtures.
+
+To exercise a real driver-backed action, the launcher copies the generated
+disposable Anvil arbiter key into the ignored, mode-`0600` app `.env.local`.
+The browser accepts it only in Vite development mode on loopback or
+`*.marketplace.test`, and only for the matching seeded Nostr arbiter. Never use
+this mechanism for a production escrow; production keys belong in a server-side
+signer.
+
+## Capture and acceptance
+
+`npm run demo:capture:fresh` resets the stacks and records the full buyer and
+arbiter flow under `artifacts/marketplace-demo/<run-id>/`. It fails unless the
+escrow page loads a participating record with an attached enabled driver-backed
+action.
+
+For any major protocol, driver, orchestration, fixture, or UI change, run:
+
+```sh
+npm run demo:verify:fresh
+```
+
+This one command reproduces bootstrap, runs hermetic tests, destroys disposable
+state, cold-starts every service, runs the Cashu/EVM/Lightning integration
+matrix, records the browser flow, and tears the stack down. Pull-request CI runs
+the same gate from a fresh recursive checkout and retains the screenshots,
+video, errors, and machine-readable manifest.

@@ -13,7 +13,7 @@ permissions:
 jobs:
   bundle:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     env:
       NMDK_REQUIRE_STACKS: '1'
       NMDK_TEST_SEED: nmdk-release-v1
@@ -49,15 +49,29 @@ jobs:
           npm run verify:compose
           git diff --exit-code
 
+      - name: Install pinned demo browser
+        run: npm run demo:browser:install
+
       - name: Start a fresh deterministic stack
         run: npm run up
 
       - name: Run the release integration matrix
         run: npm run test:integration
 
+      - name: Record the release demo and escrow dashboard
+        run: npm run demo:capture
+
       - name: Stop and remove stack state
         if: always()
         run: npm run down
+
+      - name: Reject runtime-generated repository drift
+        run: |
+          status="$(git status --porcelain --untracked-files=all --ignore-submodules=none)"
+          if [ -n "$status" ]; then
+            printf '%s\n' "$status"
+            exit 1
+          fi
 
       - name: Build release bundle and SBOM
         run: npm run release:bundle
@@ -66,7 +80,9 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: nmdk-release-bundle
-          path: artifacts/release
+          path: |
+            artifacts/release
+            artifacts/marketplace-demo
           if-no-files-found: error
 
       - name: Attest bundle provenance

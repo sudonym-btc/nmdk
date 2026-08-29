@@ -18,4 +18,4 @@
 - [ ] `npm test`
 - [ ] `npm run test:packages`
 - [ ] `npm run audit:production`
-- [ ] Fresh-stack integration matrix when applicable
+- [ ] `npm run demo:verify:fresh` for protocol, driver, orchestration, fixture, or demo changes

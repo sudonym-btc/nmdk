@@ -24,3 +24,11 @@ crash or concurrency regression before release.
 
 Container images and GitHub Actions are pinned by immutable digest/commit.
 Updating a pin is a reviewed dependency change with a recorded test run.
+
+`npm run demo:verify:fresh` is required for major protocol, driver, stack, or
+demo changes. It recreates the recursive workspace install, installs the pinned
+Playwright Chromium, runs `npm test`, deletes disposable stack state,
+cold-starts all services, runs `npm run test:integration`, and records the full
+buyer plus arbiter-dashboard browser flow. Its exit trap tears down the stack
+after success or failure. Pull-request integration CI runs this same command
+from a fresh recursive checkout and retains the capture artifacts.

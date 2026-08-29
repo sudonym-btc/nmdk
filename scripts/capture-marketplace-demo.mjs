@@ -43,6 +43,9 @@ Options:
 The full local NMDK stack must be running. If the Vite demo is not running,
 this script starts it and stops it before exiting.
 
+The capture finishes at /escrow as the seeded EVM arbiter and fails unless at
+least one participating record has an attached, enabled driver-backed action.
+
 During capture, code preview widgets fade on a 6-second loop: roughly 3 seconds
 visible and 3 seconds transparent. Stills temporarily hide those previews so the
 underlying marketplace widget is visible in each screenshot.
@@ -163,15 +166,70 @@ async function waitForApp(baseUrl) {
 }
 
 async function ensureDemoServer(baseUrl) {
-  if (await canFetch(baseUrl)) return undefined
+  if (await canFetch(baseUrl)) {
+    if (process.env.NMDK_DEMO_CAPTURE_REQUIRE_OWN_SERVER === '1') {
+      throw new Error(`${baseUrl} is already serving content; the fresh capture must own its demo server`)
+    }
+    return undefined
+  }
 
-  const child = spawn('npm', ['run', 'demo'], {
+  const parsedBaseUrl = new URL(baseUrl)
+  const hostname = parsedBaseUrl.hostname === '[::1]' ? '::1' : parsedBaseUrl.hostname
+  if (!['localhost', '127.0.0.1', '::1'].includes(hostname)) {
+    throw new Error(`Cannot start the local demo for non-loopback URL ${baseUrl}`)
+  }
+  const port = parsedBaseUrl.port || (parsedBaseUrl.protocol === 'https:' ? '443' : '80')
+
+  const child = spawn('npm', ['run', 'demo', '--', '--host', hostname, '--port', port, '--strictPort'], {
     cwd: root,
     env: { ...process.env, BROWSER: 'none' },
     stdio: 'inherit',
+    detached: process.platform !== 'win32',
   })
-  await waitForApp(baseUrl)
+  const exitedBeforeReady = new Promise((_, reject) => {
+    child.once('exit', (code, signal) => {
+      reject(new Error(`Demo server exited before becoming ready (code ${code ?? 'none'}, signal ${signal ?? 'none'})`))
+    })
+  })
+  const spawnFailed = new Promise((_, reject) => {
+    child.once('error', error => reject(new Error(`Unable to start demo server: ${error.message}`, { cause: error })))
+  })
+  try {
+    await Promise.race([waitForApp(baseUrl), exitedBeforeReady, spawnFailed])
+  } catch (error) {
+    await stopDemoServer(child)
+    throw error
+  }
   return child
+}
+
+async function stopDemoServer(child) {
+  if (!child || child.exitCode !== null || child.signalCode !== null) return
+
+  const exited = new Promise(resolveExit => child.once('exit', resolveExit))
+  try {
+    if (process.platform === 'win32') child.kill('SIGTERM')
+    else process.kill(-child.pid, 'SIGTERM')
+  } catch {
+    child.kill('SIGTERM')
+  }
+  await Promise.race([
+    exited,
+    new Promise(resolveTimeout => setTimeout(resolveTimeout, 5_000)),
+  ])
+
+  if (child.exitCode === null && child.signalCode === null) {
+    try {
+      if (process.platform === 'win32') child.kill('SIGKILL')
+      else process.kill(-child.pid, 'SIGKILL')
+    } catch {
+      child.kill('SIGKILL')
+    }
+    await Promise.race([
+      exited,
+      new Promise(resolveTimeout => setTimeout(resolveTimeout, 2_000)),
+    ])
+  }
 }
 
 function dockerPs() {
@@ -607,6 +665,52 @@ async function captureNegotiation({ page, baseUrl, listing, amount, outDir, mani
   })
 }
 
+async function captureEscrowDashboard({ page, baseUrl, outDir, manifest }) {
+  await logoutDemoAccount(page, baseUrl, 'buyer')
+  await loginAsDemoAccount(
+    page,
+    baseUrl,
+    'arbiterEvm',
+    'EVM arbiter',
+    outDir,
+    manifest,
+  )
+  await page.goto(`${baseUrl}/escrow`)
+  await waitForMarketplaceReady(page, 'escrow dashboard')
+
+  const records = page.getByTestId('escrow-record-card')
+  await records.first().waitFor({ state: 'visible', timeout: 120_000 })
+  const attachedActions = page.getByTestId('escrow-record-actions')
+  await attachedActions.first().waitFor({ state: 'visible', timeout: 120_000 })
+  const enabledActions = attachedActions.locator('button:not([disabled])')
+  await enabledActions.first().waitFor({ state: 'visible', timeout: 120_000 })
+
+  const recordCount = await records.count()
+  const actionGroupCount = await attachedActions.count()
+  const enabledActionCount = await enabledActions.count()
+  if (actionGroupCount !== recordCount) {
+    throw new Error(`Escrow dashboard rendered ${recordCount} records but only ${actionGroupCount} attached action groups`)
+  }
+  const actionLabels = await attachedActions.allInnerTexts()
+  await screenshot(
+    page,
+    outDir,
+    manifest,
+    'escrow-dashboard',
+    `EVM arbiter dashboard shows ${recordCount} participating trade records with current driver-backed actions.`,
+  )
+
+  manifest.flows.push({
+    label: 'escrow-dashboard',
+    type: 'escrow-dashboard',
+    account: 'arbiterEvm',
+    recordCount,
+    actionGroupCount,
+    enabledActionCount,
+    actionLabels,
+  })
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2))
   if (options.help) {
@@ -619,7 +723,6 @@ async function main() {
   mkdirSync(outDir, { recursive: true })
 
   const stack = options.skipStackCheck ? [] : requireArbitersRunning()
-  const appProcess = await ensureDemoServer(options.baseUrl)
   const manifestSeed = readSeedManifest()
   const runSince = Math.floor(Date.now() / 1000) - 5
   const initialAcks = await paymentAckEvents(options.relay, runSince)
@@ -697,8 +800,10 @@ async function main() {
   page.setDefaultTimeout(60_000)
   page.setDefaultNavigationTimeout(90_000)
 
+  let appProcess
   let runError
   try {
+    appProcess = await ensureDemoServer(options.baseUrl)
     await loginAsBuyer(page, options.baseUrl, outDir, runManifest)
 
     await captureOrder({
@@ -856,6 +961,12 @@ async function main() {
       outDir,
       manifest: runManifest,
     })
+    await captureEscrowDashboard({
+      page,
+      baseUrl: options.baseUrl,
+      outDir,
+      manifest: runManifest,
+    })
   } catch (error) {
     runError = serializeError(error)
     runManifest.error = runError
@@ -876,7 +987,7 @@ async function main() {
       runManifest.video = finalVideoPath
     }
     await browser.close()
-    if (appProcess) appProcess.kill('SIGTERM')
+    await stopDemoServer(appProcess)
   }
 
   const finalAcks = await paymentAckEvents(options.relay, runSince)

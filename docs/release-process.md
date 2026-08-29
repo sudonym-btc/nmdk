@@ -20,7 +20,7 @@ A release candidate requires:
 - regenerated docs and contract artifacts with no diff;
 - CycloneDX SBOM, `THIRD_PARTY_LICENSES.json`, checksums, and npm provenance;
 - no unresolved critical/high security finding;
-- a clean anonymous recursive clone rehearsal;
+- a clean anonymous recursive clone rehearsal with `npm run demo:verify:fresh`;
 - changelog, support matrix, migration, rollback, and secret-purge notes.
 
 The aggregate release records every submodule SHA. Documentation links use

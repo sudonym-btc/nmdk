@@ -3,6 +3,7 @@
   "pages": [
     "index",
     "getting-started",
+    "demo",
     "architecture",
     "protocol",
     "specifications",

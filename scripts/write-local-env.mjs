@@ -133,6 +133,7 @@ const lines = [
   envLine('VITE_EVM_MULTI_ESCROW_BYTECODE_HASH', arbitrum.multiEscrow.runtimeBytecodeHash),
   envLine('VITE_EVM_ARBITER_ADDRESS', evm.accounts.arbiter.address),
   envLine('VITE_EVM_ARBITER_NOSTR_PUBKEY', localDevAccounts.arbiterEvm.pubkey),
+  envLine('VITE_EVM_ARBITER_PRIVATE_KEY', evm.accounts.arbiter.privateKey),
   envLine('VITE_EVM_ASSETS', assets),
   '',
   envLine('VITE_LNBITS_URL', publicUrls.lnbits),

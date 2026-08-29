@@ -9,4 +9,5 @@ node "$ROOT/scripts/verify-environment.mjs"
 npm ci --ignore-scripts
 
 echo "NMDK dependencies installed from the root lockfile."
-echo "Run 'npm test' for hermetic checks or 'npm run test:integration' with fresh stacks."
+echo "Run 'npm test' for hermetic checks, 'npm run demo:up' for the demo,"
+echo "or 'npm run demo:verify:fresh' for the complete cold-start acceptance gate."

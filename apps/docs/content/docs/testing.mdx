@@ -10,6 +10,7 @@ npm test                  # hermetic source, unit, artifact, docs, policy checks
 npm run test:packages     # pack/install/import in a blank consumer
 npm run audit:production  # production dependency gate
 npm run test:integration  # required fresh Cashu/EVM/Lightning matrix
+npm run demo:verify:fresh # full cold-start, integration, and browser-capture gate
 ```
 
 The hermetic gate uses a digest-pinned, one-shot Foundry container for Solidity
@@ -22,3 +23,11 @@ lost-response restore. Security-critical regressions cover malformed proofs,
 malicious providers, duplicate requests, representative post-submission
 crashes, recovery, and secret erasure. Every new durable boundary or
 multi-worker store must add its own crash/concurrency test before release.
+
+`demo:verify:fresh` is the acceptance gate for major changes. It runs from a
+recursive checkout, recreates the lockfile install, installs pinned Chromium,
+deletes disposable state, starts every service, runs the entire integration
+matrix, and exercises the deterministic browser recording. Capture success
+requires the seeded EVM arbiter to open `/escrow`, load at least one
+`escrow-record-card`, and expose its driver-derived action group. CI uploads the
+recording, screenshots, and manifest for diagnosis.

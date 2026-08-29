@@ -18,12 +18,13 @@ concurrency:
 jobs:
   fresh-stack:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 150
     env:
       NMDK_REQUIRE_STACKS: '1'
       NMDK_TEST_SEED: nmdk-ci-v1
       MARKETPLACE_TRUST_LOCAL_CA: '0'
       MARKETPLACE_EVM_RESET_ON_UP: '1'
+      NMDK_DEMO_VERIFY_REQUIRE_CLEAN: '1'
     steps:
       - name: Checkout pinned snapshot
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -44,18 +45,21 @@ jobs:
         with:
           bun-version: 1.3.14
 
-      - name: Install from root lockfile
-        run: npm ci --ignore-scripts
-
-      - name: Start a fresh deterministic stack
-        run: npm run up
-
-      - name: Run required integration matrix
-        run: npm run test:integration
+      - name: Rehearse fresh install, cold stack, tests, and browser capture
+        run: npm run demo:verify:fresh
 
       - name: Show unhealthy services
         if: failure()
         run: docker ps -a
+
+      - name: Upload browser capture evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: nmdk-marketplace-demo-${{ github.run_attempt }}
+          path: artifacts/marketplace-demo
+          if-no-files-found: warn
+          retention-days: 14
 
       - name: Stop and remove stack state
         if: always()
