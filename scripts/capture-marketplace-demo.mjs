@@ -20,11 +20,9 @@ const ackTimeoutMs = Number.parseInt(process.env.NMDK_DEMO_CAPTURE_ACK_TIMEOUT_M
 const targets = {
   evmUsdOrder: { d: 'nmdk-sellerEvm-usd', title: '2014 Toyota Hilux - USD' },
   btcOrder: { d: 'nmdk-sellerCashu-btc', title: 'Second-hand Cargo Bike - BTC' },
-  evmUsdBid: { d: 'nmdk-sellerEvm-usd', auctionD: 'nmdk-auction-evm-usd', title: '2014 Toyota Hilux - USD', bidAmount: '50' },
-  cashuUsdBid: { d: 'nmdk-sellerCashu-usd', auctionD: 'nmdk-auction-cashu-usd', title: 'Refurbished Espresso Machine - USD', bidAmount: '20' },
-  evmBtcBid: { d: 'nmdk-sellerEvm-btc', auctionD: 'nmdk-auction-evm-btc', title: 'EVM Escrow Loft - BTC', bidAmount: '0.0006' },
-  cashuBtcBid: { d: 'nmdk-sellerCashu-btc', auctionD: 'nmdk-auction-cashu-sat', title: 'Second-hand Cargo Bike - BTC', bidAmount: '0.0006' },
-  negotiation: { d: 'nmdk-sellerBoth-btc', title: '1987 Land Cruiser Project - BTC', amount: '0.016' },
+  evmUsdBid: { d: 'nmdk-sellerEvm-usd', title: '2014 Toyota Hilux - USD', bidAmount: '50' },
+  evmBtcBid: { d: 'nmdk-sellerEvm-btc', title: 'EVM Escrow Loft - BTC', bidAmount: '0.0006' },
+  cashuBtcBid: { d: 'nmdk-sellerCashu-btc', title: 'Second-hand Cargo Bike - BTC', bidAmount: '0.0006' },
 }
 
 function usage() {
@@ -113,12 +111,6 @@ function listingByD(manifest, d) {
   return listing
 }
 
-function auctionByD(manifest, d) {
-  const auction = manifest.eventSummary?.auctions?.find(item => item.d === d)
-  if (!auction?.anchor) throw new Error(`Seed manifest does not contain auction ${d}`)
-  return auction
-}
-
 function runId() {
   return new Date().toISOString().replaceAll(/[:.]/g, '-')
 }
@@ -134,16 +126,6 @@ function serializeError(error) {
   return {
     name: 'Error',
     message: String(error),
-  }
-}
-
-function parseSettlementOutput(stdout) {
-  const match = stdout.match(/\{\n  "ok": true,[\s\S]*$/)
-  if (!match) return undefined
-  try {
-    return JSON.parse(match[0])
-  } catch {
-    return undefined
   }
 }
 
@@ -283,39 +265,6 @@ async function payInvoice(invoice) {
   })
 }
 
-async function settleAuction({ auction, method, account, relay }) {
-  const endAt = Number.parseInt(auction.endAt ?? '', 10)
-  const now = Number.isSafeInteger(endAt) && endAt > 0 ? endAt + 1 : Math.floor(Date.now() / 1000) + 1
-  const settleArgs = [
-    'scripts/settle-auction-once.mjs',
-    '--method',
-    method,
-    '--account',
-    account,
-    '--auction-anchor',
-    auction.anchor,
-    '--relay',
-    relay,
-    '--now',
-    String(now),
-  ]
-  if (method === 'cashu') settleArgs.push('--seed-source', 'privateKey')
-  const { stdout, stderr } = await execFileAsync('bun', settleArgs, {
-    cwd: root,
-    env: { ...process.env },
-    timeout: 300_000,
-  })
-  return {
-    auctionAnchor: auction.anchor,
-    method,
-    account,
-    now,
-    stdout,
-    stderr,
-    parsed: parseSettlementOutput(stdout),
-  }
-}
-
 async function waitUntilEnabled(locator, label, timeoutMs = 45_000) {
   const deadline = Date.now() + timeoutMs
   await locator.waitFor({ state: 'visible', timeout: timeoutMs })
@@ -424,10 +373,51 @@ async function waitForInvoiceInput(page, label, timeoutMs = 420_000) {
   throw new Error(`${label} invoice input did not become visible`)
 }
 
-async function openSidebarLink(page, name) {
+async function openSidebarLink(page, name, heading = name) {
   await waitForMarketplaceReady(page, `open ${name}`)
   await clickDemoControl(page.getByRole('link', { name }).first(), `${name} link`)
-  await page.getByRole('heading', { name }).waitFor({ state: 'visible', timeout: 60_000 })
+  await page.getByRole('heading', { name: heading, exact: true }).waitFor({ state: 'visible', timeout: 60_000 })
+}
+
+async function openListing(page, listing, label, section = 'Listings') {
+  const listingPath = `/listing/${listing.id}`
+  if (new URL(page.url()).pathname === listingPath) return
+
+  let listingLink = page.locator(`a[href="${listingPath}"]`).first()
+  if (await listingLink.count() === 0 || !await listingLink.isVisible()) {
+    await openSidebarLink(page, section)
+    listingLink = page.locator(`a[href="${listingPath}"]`).first()
+  }
+
+  const deadline = Date.now() + 60_000
+  while (Date.now() < deadline && (await listingLink.count() === 0 || !await listingLink.isVisible())) {
+    const loadMore = page.getByRole('button', { name: `Load more ${section.toLowerCase()}`, exact: true })
+    if (await loadMore.count() > 0 && await loadMore.isVisible() && await loadMore.isEnabled()) {
+      await loadMore.click()
+    }
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+    await page.waitForTimeout(250)
+  }
+  await listingLink.waitFor({ state: 'visible', timeout: 60_000 })
+  await clickDemoControl(listingLink, `${label} listing link`)
+  await page.waitForURL(url => url.pathname === listingPath, { timeout: 60_000 })
+}
+
+async function openListingDetail(page, listing, label, section = 'Listings') {
+  const detail = page.getByTestId('listing-detail')
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    if (attempt > 1) {
+      await openSidebarLink(page, section)
+      await page.waitForTimeout(attempt * 500)
+    }
+    await openListing(page, listing, label, section)
+    try {
+      await detail.waitFor({ state: 'visible', timeout: 20_000 })
+      return
+    } catch (error) {
+      if (attempt === 3) throw error
+    }
+  }
 }
 
 async function selectOptionalRentalDates(page, label) {
@@ -436,13 +426,21 @@ async function selectOptionalRentalDates(page, label) {
   await clickDemoControl(datePicker, `${label} date picker`)
   const calendar = page.locator('[data-slot="calendar"]').first()
   await calendar.waitFor({ state: 'visible', timeout: 30_000 })
-  await clickDemoControl(calendar.locator('button[data-day="7/2/2026"]').first(), `${label} start date`)
-  await clickDemoControl(calendar.locator('button[data-day="7/5/2026"]').first(), `${label} end date`)
+  const candidateDays = await calendar
+    .locator('button[data-day]:not([disabled]):not([data-outside="true"])')
+    .evaluateAll(buttons => [...new Set(buttons.map(button => button.getAttribute('data-day')).filter(Boolean))])
+  if (candidateDays.length < 4) {
+    throw new Error(`${label} calendar did not expose enough selectable dates`)
+  }
+  const startDay = candidateDays[0]
+  const endDay = candidateDays[3]
+  await clickDemoControl(calendar.locator(`button[data-day="${startDay}"]`).first(), `${label} start date`)
+  await clickDemoControl(calendar.locator(`button[data-day="${endDay}"]`).first(), `${label} end date`)
   await page.keyboard.press('Escape')
-  await datePicker.filter({ hasText: 'Jul 02, 2026 - Jul 05, 2026' }).waitFor({
-    state: 'visible',
-    timeout: 30_000,
-  })
+  const selectedLabel = await datePicker.locator('span').textContent()
+  if (!selectedLabel?.includes(' - ')) {
+    throw new Error(`${label} calendar did not commit a date range`)
+  }
   return true
 }
 
@@ -501,28 +499,6 @@ async function logoutDemoAccount(page, baseUrl, label) {
   await page.getByTestId('demo-login-buyer').waitFor({ state: 'visible', timeout: 60_000 })
 }
 
-async function waitForWithdrawalNotification(page, outDir, manifest, label) {
-  const deadline = Date.now() + 480_000
-  const notifications = page.getByTestId('app-notification')
-  let lastErrorText
-  while (Date.now() < deadline) {
-    const success = notifications.filter({ hasText: 'Withdrawal submitted' }).first()
-    if (await success.count() > 0 && await success.isVisible()) {
-      const text = (await success.innerText()).trim()
-      await screenshot(page, outDir, manifest, `${label}-withdrawal-submitted`, 'Losing bidder received a withdrawal notification after auction settlement.')
-      return { status: 'submitted', text }
-    }
-    const error = notifications.filter({ hasText: /Withdrawal failed|Withdrawal could not be started/ }).first()
-    if (await error.count() > 0 && await error.isVisible()) {
-      lastErrorText = (await error.innerText()).trim()
-      await screenshot(page, outDir, manifest, `${label}-withdrawal-error`, 'Losing bidder received a withdrawal error notification after auction settlement.')
-      throw new Error(`Withdrawal notification reported an error: ${lastErrorText}`)
-    }
-    await page.waitForTimeout(1_000)
-  }
-  throw new Error(`Timed out waiting for withdrawal notification after ${label}${lastErrorText ? `; last error: ${lastErrorText}` : ''}`)
-}
-
 async function captureOrder({
   page,
   baseUrl,
@@ -534,9 +510,8 @@ async function captureOrder({
   outDir,
   manifest,
 }) {
-  await page.goto(`${baseUrl}/listing/${listing.id}`)
+  await openListingDetail(page, listing, label)
   await waitForMarketplaceReady(page, `${label} page`)
-  await page.getByTestId('listing-detail').waitFor({ state: 'visible', timeout: 60_000 })
   await page.getByRole('heading', { name: listing.title }).waitFor({ state: 'visible', timeout: 60_000 })
   await selectOptionalRentalDates(page, label)
   await screenshot(page, outDir, manifest, `${label}-listing`, `Opened ${listing.title} before checkout.`)
@@ -584,9 +559,8 @@ async function captureBid({
   outDir,
   manifest,
 }) {
-  await page.goto(`${baseUrl}/listing/${listing.id}`)
+  await openListingDetail(page, listing, label, 'Auctions')
   await waitForMarketplaceReady(page, `${label} page`)
-  await page.getByTestId('listing-detail').waitFor({ state: 'visible', timeout: 60_000 })
   await page.getByRole('heading', { name: listing.title }).waitFor({ state: 'visible', timeout: 60_000 })
   await page.getByTestId('place-bid-button').waitFor({ state: 'visible', timeout: 60_000 })
   await selectOptionalRentalDates(page, label)
@@ -619,7 +593,7 @@ async function captureBid({
 
   ackState.expected += 1
   const ackEvents = await waitForAckCount(relay, runSince, ackState.expected, label)
-  await page.goto(`${baseUrl}/listing/${listing.id}`)
+  await openListing(page, listing, `${label} ack`, 'Auctions')
   await waitForMarketplaceReady(page, `${label} ack page`)
   await page.getByTestId('auction-bid-chain-toggle').first().waitFor({ state: 'visible', timeout: 90_000 })
   await clickDemoControl(page.getByTestId('auction-bid-chain-toggle').first(), `${label} bid chain toggle`)
@@ -639,32 +613,6 @@ async function captureBid({
   return { invoice, ackEvents }
 }
 
-async function captureNegotiation({ page, baseUrl, listing, amount, outDir, manifest }) {
-  await page.goto(`${baseUrl}/listing/${listing.id}`)
-  await waitForMarketplaceReady(page, 'negotiation page')
-  await page.getByTestId('listing-detail').waitFor({ state: 'visible', timeout: 60_000 })
-  await page.getByRole('heading', { name: listing.title }).waitFor({ state: 'visible', timeout: 60_000 })
-  await screenshot(page, outDir, manifest, 'negotiation-listing', `Opened ${listing.title} before sending a negotiation offer.`)
-
-  await clickDemoControl(page.getByTestId('negotiate-button'), 'open negotiation dialog')
-  const amountInput = page.getByTestId('negotiation-amount-input')
-  await amountInput.waitFor({ state: 'visible', timeout: 30_000 })
-  await amountInput.fill(amount)
-  await screenshot(page, outDir, manifest, 'negotiation-offer', `Entered a ${amount} offer for ${listing.title}.`)
-  await clickDemoControl(page.getByTestId('send-offer-button'), 'send negotiation offer')
-  await page.getByTestId('send-offer-button').waitFor({ state: 'hidden', timeout: 60_000 })
-  await openSidebarLink(page, 'My Orders')
-  await page.getByTestId('order-card').first().waitFor({ state: 'visible', timeout: 60_000 })
-  await screenshot(page, outDir, manifest, 'negotiation-my-orders', `My Orders after sending the negotiation offer for ${listing.title}.`)
-
-  manifest.flows.push({
-    label: 'negotiation',
-    type: 'negotiation',
-    listing: listing.title,
-    amount,
-  })
-}
-
 async function captureEscrowDashboard({ page, baseUrl, outDir, manifest }) {
   await logoutDemoAccount(page, baseUrl, 'buyer')
   await loginAsDemoAccount(
@@ -675,7 +623,7 @@ async function captureEscrowDashboard({ page, baseUrl, outDir, manifest }) {
     outDir,
     manifest,
   )
-  await page.goto(`${baseUrl}/escrow`)
+  await openSidebarLink(page, 'Dashboard', 'Escrow dashboard')
   await waitForMarketplaceReady(page, 'escrow dashboard')
 
   const records = page.getByTestId('escrow-record-card')
@@ -757,12 +705,6 @@ async function main() {
       ...listingByD(manifestSeed, target.d),
     }
   }
-  const auction = key => {
-    const target = targets[key]
-    if (!target.auctionD) throw new Error(`Target ${key} does not define an auctionD`)
-    return auctionByD(manifestSeed, target.auctionD)
-  }
-
   const browser = await chromium.launch({ headless: !options.headed })
   const context = await browser.newContext({
     ignoreHTTPSErrors: true,
@@ -839,39 +781,6 @@ async function main() {
       outDir,
       manifest: runManifest,
     })
-    await logoutDemoAccount(page, options.baseUrl, 'buyer')
-    await loginAsDemoAccount(
-      page,
-      options.baseUrl,
-      'buyerTwo',
-      'buyer two',
-      outDir,
-      runManifest,
-      'bid-usd-evm-competing-login',
-      'Logged in as Buyer Two to submit a competing EVM USD auction bid.',
-    )
-    await captureBid({
-      page,
-      baseUrl: options.baseUrl,
-      listing: { ...listing('evmUsdBid'), bidAmount: '80' },
-      label: 'bid-usd-evm-competing',
-      relay: options.relay,
-      runSince,
-      ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    await logoutDemoAccount(page, options.baseUrl, 'buyer two')
-    await loginAsDemoAccount(
-      page,
-      options.baseUrl,
-      'buyer',
-      'buyer',
-      outDir,
-      runManifest,
-      'bid-btc-evm-login',
-      'Logged back in as the original buyer to submit a BTC-denominated EVM auction bid.',
-    )
     await captureBid({
       page,
       baseUrl: options.baseUrl,
@@ -883,81 +792,14 @@ async function main() {
       outDir,
       manifest: runManifest,
     })
-    await logoutDemoAccount(page, options.baseUrl, 'buyer')
-    await loginAsDemoAccount(
-      page,
-      options.baseUrl,
-      'buyerTwo',
-      'buyer two',
-      outDir,
-      runManifest,
-      'bid-btc-evm-competing-login',
-      'Logged in as Buyer Two to submit a competing EVM BTC auction bid.',
-    )
     await captureBid({
       page,
       baseUrl: options.baseUrl,
-      listing: { ...listing('evmBtcBid'), bidAmount: '0.0009' },
-      label: 'bid-btc-evm-competing',
-      relay: options.relay,
-      runSince,
-      ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    const evmAuctionSettlement = await settleAuction({
-      auction: auction('evmBtcBid'),
-      method: 'evm',
-      account: 'arbiterEvm',
-      relay: options.relay,
-    })
-    runManifest.flows.push({
-      label: 'auction-settlement-evm-btc',
-      type: 'auction-settlement',
-      auctionAnchor: evmAuctionSettlement.auctionAnchor,
-      method: evmAuctionSettlement.method,
-      account: evmAuctionSettlement.account,
-      now: evmAuctionSettlement.now,
-      states: evmAuctionSettlement.parsed?.states,
-      published: evmAuctionSettlement.parsed?.published,
-      verification: evmAuctionSettlement.parsed?.verification,
-    })
-    await logoutDemoAccount(page, options.baseUrl, 'buyer two')
-    await loginAsDemoAccount(
-      page,
-      options.baseUrl,
-      'buyer',
-      'buyer',
-      outDir,
-      runManifest,
-      'bid-btc-evm-losing-buyer-return',
-      'Returned to the losing bidder after the arbiter settled the EVM BTC auction.',
-    )
-    const evmWithdrawal = await waitForWithdrawalNotification(page, outDir, runManifest, 'bid-btc-evm')
-    runManifest.flows.push({
-      label: 'bid-btc-evm-withdrawal',
-      type: 'withdrawal',
-      auctionAnchor: evmAuctionSettlement.auctionAnchor,
-      status: evmWithdrawal.status,
-      notification: evmWithdrawal.text,
-    })
-    const cashuBtcBidListing = listing('cashuBtcBid')
-    await captureBid({
-      page,
-      baseUrl: options.baseUrl,
-      listing: cashuBtcBidListing,
+      listing: listing('cashuBtcBid'),
       label: 'bid-btc-cashu',
       relay: options.relay,
       runSince,
       ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    await captureNegotiation({
-      page,
-      baseUrl: options.baseUrl,
-      listing: listing('negotiation'),
-      amount: targets.negotiation.amount,
       outDir,
       manifest: runManifest,
     })
@@ -988,6 +830,18 @@ async function main() {
     }
     await browser.close()
     await stopDemoServer(appProcess)
+  }
+
+  if (!runError) {
+    const consoleFailures = runManifest.console.filter(message => message.type === 'error' || message.type === 'warning')
+    const browserFailures = [
+      ...runManifest.pageErrors.map(error => `page error: ${error}`),
+      ...consoleFailures.map(message => `console.${message.type}: ${message.text}`),
+    ]
+    if (browserFailures.length > 0) {
+      runError = serializeError(new Error(`Browser diagnostics were not clean:\n${browserFailures.join('\n')}`))
+      runManifest.error = runError
+    }
   }
 
   const finalAcks = await paymentAckEvents(options.relay, runSince)

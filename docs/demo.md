@@ -36,19 +36,24 @@ in a server-side signer.
 
 ## Record the deterministic flow
 
-After bootstrap, this command resets disposable state and records the complete
-buyer and escrow-dashboard walkthrough:
+After bootstrap, this command resets disposable state and records representative
+buyer payment flows plus the escrow-dashboard walkthrough:
 
 ```sh
 npm run demo:capture:fresh
 ```
 
 It installs the Playwright Chromium revision from the root lockfile, starts the
-stack and Vite, pays the local invoices, waits for payment acknowledgements,
+stack and an isolated Vite server on `127.0.0.1:15178`, pays the local invoices,
+waits for payment acknowledgements,
 opens `/escrow` as `arbiterEvm`, and fails unless a participating record has an
 attached enabled driver-backed action. Screenshots, video, console/page errors,
 flow results, record/action counts, and ACK IDs are written under
 `artifacts/marketplace-demo/<run-id>/`.
+
+The automation covers funded USD/BTC orders, EVM/Cashu auction bids, and the
+escrow dashboard. Use the manual walkthrough above for negotiation and broader
+navigation checks.
 
 ## Required gate for major changes
 
@@ -62,3 +67,6 @@ recursive checkout and uploads the capture evidence.
 Set `NMDK_DEMO_VERIFY_KEEP_STACK=1` only while diagnosing a local failure. A
 normal retry should begin with the default cleanup behavior. On Linux,
 Playwright may request `sudo` once to install Chromium system libraries.
+
+If startup reports a fixed-port conflict, run `npm run down`, stop any unrelated
+process using the port listed in the root README, and retry.

@@ -21,7 +21,7 @@ git clone --recurse-submodules https://github.com/sudonym-btc/nmdk.git && cd nmd
 npm run demo:quickstart
 ```
 
-`demo:quickstart` verifies the supported toolchain, installs the pinned workspace,
+`demo:quickstart` checks the required command versions, installs the pinned workspace,
 cold-starts the disposable Cashu, EVM, Lightning, relay, proxy, and arbiter
 services, seeds deterministic demo accounts, and starts the browser client. Open
 <http://127.0.0.1:5178> when Vite reports that it is ready. Press `Ctrl-C` to
@@ -38,12 +38,16 @@ and chain state are local deterministic fixtures.
 - `dependencies/nostr-tools` - marketplace runtime and event helpers.
 - `dependencies/ndk` - marketplace branch of NDK.
 - `dependencies/marketplace-app-ts` - browser demo client.
+- `dependencies/marketplace-driver-interface-ts` - shared payment-driver contracts and lifecycle types.
 - `dependencies/marketplace-cashu-ts` - Cashu escrow payment policy.
 - `dependencies/marketplace-cashu-stack` - Cashu mints, relay, and LND nodes on the shared regtest Lightning stack.
 - `dependencies/marketplace-evm-ts` - EVM escrow and auction payment policies.
 - `dependencies/marketplace-evm-contracts` - generated marketplace EVM contract artifacts.
 - `dependencies/marketplace-evm-stack` - EVM/Boltz regtest stack plus shared Bitcoin and marketplace edge LND.
+- `dependencies/marketplace-location-interface-ts` - pluggable marketplace location contract.
+- `dependencies/marketplace-location-h3-ts` - H3-backed location implementation.
 - `dependencies/nips/*` - marketplace-related protocol drafts.
+- `apps/docs` - generated package and protocol documentation site.
 
 ## Prerequisites and development setup
 
@@ -60,6 +64,32 @@ HTTPS URLs.
 
 The quick start runs this bootstrap automatically. Run it directly when you
 only need dependencies and hermetic development checks.
+
+## Marketplace API
+
+Applications use one session facade for orders, live escrow records, and
+driver-authorized actions:
+
+```ts
+for await (const state of session.orders.create(listing, { quantity: 1 })) {
+  renderOrderState(state)
+}
+
+const records = await session.escrow.records.list()
+const liveRecords = session.escrow.records.watch()
+
+const releasable = records.find(record => record.actions.includes('release'))
+if (releasable) {
+  for await (const state of session.escrow.execute(releasable, 'release')) {
+    renderSettlementState(state)
+  }
+}
+```
+
+`execute()` refetches and revalidates the record before invoking a driver, so
+stale UI state cannot authorize a financial action. See the
+[marketplace getting-started guide](dependencies/nostr-tools/docs/marketplace/getting-started.md)
+for session setup, bidding, negotiation, and the complete lifecycle types.
 
 ## Checks
 
@@ -153,18 +183,19 @@ npm run demo:capture:fresh
 ```
 
 The fresh capture resets disposable stack data, starts the local stack, starts
-the EVM/Cashu arbiters, launches the Vite client when needed, and writes
-screenshots plus a WebM recording under `artifacts/marketplace-demo/<run-id>/`.
+the EVM/Cashu arbiters, launches its own Vite client on `127.0.0.1:15178`, and
+writes screenshots plus a WebM recording under
+`artifacts/marketplace-demo/<run-id>/`.
 The scripted flows place USD and BTC orders, place USD and BTC bids, submit a
-Cashu-backed BTC bid, create one negotiation, pay the generated invoices, and
-wait for arbiter payment ACK events. It finishes by signing in as the seeded EVM
+Cashu-backed BTC bid, pay the generated invoices, and wait for arbiter payment
+ACK events. It finishes by signing in as the seeded EVM
 arbiter and recording `/escrow`, where the participating auctions and orders
 must expose current driver-backed actions. Use `npm run demo:capture` when the
 stack and arbiters are already running and you intentionally want to capture
 against the current relay history.
 
 For a major protocol, driver, orchestration, or demo change, run the complete
-fresh-checkout rehearsal:
+clean-state acceptance gate:
 
 ```sh
 npm run demo:verify:fresh
@@ -173,11 +204,15 @@ npm run demo:verify:fresh
 That single command reproduces the lockfile install, installs the pinned
 Playwright Chromium, runs the hermetic gate, deletes disposable stack state,
 cold-starts every service, runs the integration matrix, runs the full browser
-capture including the escrow dashboard, and always tears the stack down. This
-is also the required pull-request integration workflow. Set
+capture including the escrow dashboard, and always tears the stack down.
+Pull-request CI runs the same gate from a fresh recursive checkout. Set
 `NMDK_DEMO_VERIFY_KEEP_STACK=1` only when debugging a failed local run.
 On Linux, Playwright may request `sudo` once to install its Chromium system
 libraries; CI runners install those dependencies non-interactively.
+
+If a local cold start is interrupted, run `npm run down` and retry. If startup
+still reports an occupied port, stop the process using the fixed localhost port
+listed above before rerunning the gate.
 
 Run the stack-backed marketplace driver tests after the stack is ready:
 
