@@ -45,6 +45,8 @@
     "demo:capture": "node scripts/capture-marketplace-demo.mjs",
     "demo:capture:up": "npm run demo:browser:install && npm run up && npm run up:arbiters && npm run demo:capture",
     "demo:capture:fresh": "npm run demo:browser:install && npm run down && npm run reset:stacks && npm run up && NMDK_DEMO_CAPTURE_BASE_URL=http://127.0.0.1:15178 NMDK_DEMO_CAPTURE_REQUIRE_OWN_SERVER=1 npm run demo:capture",
+    "demo:intro": "node scripts/capture-marketplace-demo.mjs --intro",
+    "demo:intro:fresh": "npm run demo:browser:install && npm run down && npm run reset:stacks && NMDK_SEED_AUCTION_DURATION_SECONDS=150 npm run up && NMDK_DEMO_CAPTURE_BASE_URL=http://127.0.0.1:15178 NMDK_DEMO_CAPTURE_DOCS_URL=http://127.0.0.1:15179 NMDK_DEMO_CAPTURE_REQUIRE_OWN_SERVER=1 npm run demo:intro",
     "demo:verify:fresh": "./scripts/verify-fresh-demo.sh",
     "pay:invoice": "node scripts/pay-invoice.mjs",
     "seed": "node scripts/seed-local-relay.mjs",

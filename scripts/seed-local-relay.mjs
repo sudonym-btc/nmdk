@@ -43,9 +43,13 @@ const configuredCreatedAt = Number.parseInt(process.env.NMDK_SEED_CREATED_AT ?? 
 const defaultCreatedAt = Number.isSafeInteger(configuredCreatedAt) && configuredCreatedAt > 0
   ? configuredCreatedAt
   : seedNow - 600
+const configuredAuctionDuration = Number.parseInt(process.env.NMDK_SEED_AUCTION_DURATION_SECONDS ?? '', 10)
+const auctionDuration = Number.isSafeInteger(configuredAuctionDuration) && configuredAuctionDuration >= 60
+  ? configuredAuctionDuration
+  : 24 * 60 * 60
 const defaultAuctionStartAt = seedNow - 300
-const defaultAuctionEndAt = seedNow + 24 * 60 * 60
-const defaultAuctionMaxEndAt = seedNow + 25 * 60 * 60
+const defaultAuctionEndAt = seedNow + auctionDuration
+const defaultAuctionMaxEndAt = defaultAuctionEndAt + 60 * 60
 const maxDuration = 14 * 24 * 60 * 60
 const defaultDemoPublicUrl = process.env.NMDK_DEMO_PUBLIC_URL || 'https://ts.client.marketplace.test'
 const defaultPublicRelay = process.env.NMDK_PUBLIC_RELAY || 'wss://relay.marketplace.test'

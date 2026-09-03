@@ -528,6 +528,12 @@ function assertCanonicalAuctionTerms(auction) {
   if (auction.startingBid !== undefined && !/^\d+$/.test(auction.startingBid)) {
     throw new Error('Auction has an invalid starting_bid')
   }
+  if (!Number.isSafeInteger(auction.settlementGrace) || auction.settlementGrace <= 0) {
+    throw new Error('Auction promotion requires a positive signed settlement_grace')
+  }
+  if (!Number.isSafeInteger(auction.endAt + auction.settlementGrace)) {
+    throw new Error('Auction settlement unlock time exceeds the safe integer range')
+  }
 }
 
 /** Resolve the newest signed, structurally valid replacement for an auction. */
@@ -561,6 +567,7 @@ const settlementTermKeys = [
   'startAt',
   'endAt',
   'startingBid',
+  'targetUnlockAt',
 ]
 
 function expectedSettlementTerms(auction) {
@@ -574,6 +581,10 @@ function expectedSettlementTerms(auction) {
     ...(auction.startAt !== undefined ? { startAt: auction.startAt } : {}),
     endAt: auction.endAt,
     ...(auction.startingBid !== undefined ? { startingBid: auction.startingBid } : {}),
+    // The promoted order must remain locked after the auction has ended. Bind
+    // that timeout to seller-signed auction data instead of allowing the
+    // settling arbiter to choose an arbitrary value.
+    targetUnlockAt: auction.endAt + auction.settlementGrace,
   }
 }
 

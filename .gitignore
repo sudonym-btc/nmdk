@@ -7,6 +7,7 @@ _site/
 .nmdk.local.env
 data/
 artifacts/marketplace-demo/
+artifacts/intro-video/
 artifacts/release/
 
 # Stack runtime data

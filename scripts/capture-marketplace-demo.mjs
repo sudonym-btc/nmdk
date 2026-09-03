@@ -12,10 +12,14 @@ import { SimplePool } from 'nostr-tools/pool'
 const execFileAsync = promisify(execFile)
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const defaultBaseUrl = process.env.NMDK_DEMO_CAPTURE_BASE_URL ?? 'http://localhost:5178'
+const defaultDocsUrl = process.env.NMDK_DEMO_CAPTURE_DOCS_URL ?? 'http://127.0.0.1:15179'
 const defaultRelay = process.env.NMDK_DEMO_CAPTURE_RELAY ?? 'ws://127.0.0.1:18080'
 const defaultOutRoot = resolve(root, 'artifacts/marketplace-demo')
+const defaultIntroOutRoot = resolve(root, 'artifacts/intro-video')
 const paymentAckKind = 32124
 const ackTimeoutMs = Number.parseInt(process.env.NMDK_DEMO_CAPTURE_ACK_TIMEOUT_MS ?? '', 10) || 240_000
+const appleVoice = process.env.NMDK_DEMO_CAPTURE_VOICE ?? 'Samantha'
+const appleVoiceRate = Number.parseInt(process.env.NMDK_DEMO_CAPTURE_VOICE_RATE ?? '', 10) || 200
 
 const targets = {
   evmUsdOrder: { d: 'nmdk-sellerEvm-usd', title: '2014 Toyota Hilux - USD' },
@@ -35,6 +39,9 @@ Options:
   --relay <url>         Local relay URL used for ACK verification. Defaults to ${defaultRelay}.
   --out <dir>           Output directory. Defaults to artifacts/marketplace-demo/<run-id>.
   --headed              Show the Playwright browser while recording.
+  --intro               Record the developer introduction with an Apple voice-over.
+  --docs-url <url>      Documentation URL for --intro. Defaults to ${defaultDocsUrl}.
+  --voice-only <dir>    Regenerate Apple audio for an existing intro artifact directory.
   --skip-stack-check    Skip Docker arbiter container checks.
   --help                Print this help.
 
@@ -54,8 +61,11 @@ function parseArgs(argv) {
   const options = {
     baseUrl: defaultBaseUrl,
     relay: defaultRelay,
+    docsUrl: defaultDocsUrl,
     outDir: undefined,
     headed: false,
+    intro: false,
+    voiceOnly: undefined,
     skipStackCheck: false,
     help: false,
   }
@@ -83,6 +93,19 @@ function parseArgs(argv) {
         break
       case '--headed':
         options.headed = true
+        break
+      case '--intro':
+        options.intro = true
+        break
+      case '--docs-url':
+        if (!value) throw new Error('--docs-url requires a value')
+        options.docsUrl = value.replace(/\/+$/, '')
+        if (consume) i += 1
+        break
+      case '--voice-only':
+        if (!value) throw new Error('--voice-only requires an artifact directory')
+        options.voiceOnly = resolve(root, value)
+        if (consume) i += 1
         break
       case '--skip-stack-check':
         options.skipStackCheck = true
@@ -175,6 +198,47 @@ async function ensureDemoServer(baseUrl) {
   })
   const spawnFailed = new Promise((_, reject) => {
     child.once('error', error => reject(new Error(`Unable to start demo server: ${error.message}`, { cause: error })))
+  })
+  try {
+    await Promise.race([waitForApp(baseUrl), exitedBeforeReady, spawnFailed])
+  } catch (error) {
+    await stopDemoServer(child)
+    throw error
+  }
+  return child
+}
+
+async function ensureDocsServer(baseUrl) {
+  if (await canFetch(baseUrl)) {
+    if (process.env.NMDK_DEMO_CAPTURE_REQUIRE_OWN_SERVER === '1') {
+      throw new Error(`${baseUrl} is already serving content; the fresh intro capture must own its docs server`)
+    }
+    return undefined
+  }
+
+  const parsedBaseUrl = new URL(baseUrl)
+  const hostname = parsedBaseUrl.hostname === '[::1]' ? '::1' : parsedBaseUrl.hostname
+  if (!['localhost', '127.0.0.1', '::1'].includes(hostname)) {
+    throw new Error(`Cannot start local documentation for non-loopback URL ${baseUrl}`)
+  }
+  const port = parsedBaseUrl.port || '3000'
+  const child = spawn(
+    'npm',
+    ['--workspace', '@sudonym-btc/nmdk-docs', 'run', 'dev', '--', '--hostname', hostname, '--port', port],
+    {
+      cwd: root,
+      env: { ...process.env, BROWSER: 'none' },
+      stdio: 'inherit',
+      detached: process.platform !== 'win32',
+    },
+  )
+  const exitedBeforeReady = new Promise((_, reject) => {
+    child.once('exit', (code, signal) => {
+      reject(new Error(`Docs server exited before becoming ready (code ${code ?? 'none'}, signal ${signal ?? 'none'})`))
+    })
+  })
+  const spawnFailed = new Promise((_, reject) => {
+    child.once('error', error => reject(new Error(`Unable to start docs server: ${error.message}`, { cause: error })))
   })
   try {
     await Promise.race([waitForApp(baseUrl), exitedBeforeReady, spawnFailed])
@@ -393,7 +457,17 @@ async function openListing(page, listing, label, section = 'Listings') {
   while (Date.now() < deadline && (await listingLink.count() === 0 || !await listingLink.isVisible())) {
     const loadMore = page.getByRole('button', { name: `Load more ${section.toLowerCase()}`, exact: true })
     if (await loadMore.count() > 0 && await loadMore.isVisible() && await loadMore.isEnabled()) {
-      await loadMore.click()
+      // Relay updates can replace the paginated list between Playwright's
+      // actionability check and its synthetic click. Dispatch directly on the
+      // currently resolved button so a harmless React refresh cannot stall a
+      // deterministic capture for the full locator timeout.
+      try {
+        await loadMore.evaluate(element => element.click())
+      } catch {
+        // The button may disappear because the same refresh loaded the target.
+        // Re-check the listing on the next loop instead of treating that as a
+        // capture failure.
+      }
     }
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
     await page.waitForTimeout(250)
@@ -471,6 +545,293 @@ async function screenshot(page, outDir, manifest, name, note) {
   }
 }
 
+async function recordScene(manifest, id, title, narrationCue, action) {
+  const startedAtMs = Date.now() - manifest.captureStartedAtMs
+  try {
+    return await action()
+  } finally {
+    manifest.scenes.push({
+      id,
+      title,
+      narrationCue,
+      startMs: startedAtMs,
+      endMs: Date.now() - manifest.captureStartedAtMs,
+    })
+  }
+}
+
+function escapeHtml(value) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+}
+
+async function showTitleCard(page, title, subtitle, durationMs = 3_000) {
+  await page.setContent(`<!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <style>
+          * { box-sizing: border-box; }
+          html, body { width: 100%; height: 100%; margin: 0; }
+          body {
+            display: grid;
+            place-items: center;
+            background: #f7f7f5;
+            color: #181817;
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          }
+          main { width: min(1100px, 78vw); }
+          .eyebrow { color: #73736e; font-size: 22px; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
+          h1 { margin: 24px 0 18px; font-size: 84px; letter-spacing: -.055em; line-height: .98; }
+          p { margin: 0; color: #5c5c58; font-size: 30px; line-height: 1.4; }
+          .rule { width: 92px; height: 8px; margin-top: 42px; border-radius: 99px; background: #181817; }
+        </style>
+      </head>
+      <body>
+        <main>
+          <div class="eyebrow">Nostr Markets Development Kit</div>
+          <h1>${escapeHtml(title)}</h1>
+          <p>${escapeHtml(subtitle)}</p>
+          <div class="rule"></div>
+        </main>
+      </body>
+    </html>`)
+  await page.waitForTimeout(durationMs)
+}
+
+async function captureDocsIntroduction(page, docsUrl) {
+  await page.goto(`${docsUrl}/docs`)
+  await page.getByText('Nostr Markets Development Kit', { exact: true }).first().waitFor({
+    state: 'visible',
+    timeout: 90_000,
+  })
+  await page.waitForTimeout(3_500)
+  await page.getByRole('link', { name: 'Getting started', exact: true }).first().click()
+  await page.getByText('Getting started', { exact: true }).first().waitFor({ state: 'visible', timeout: 60_000 })
+  await page.waitForTimeout(3_500)
+  await page.evaluate(() => window.scrollTo({ top: Math.min(620, document.body.scrollHeight), behavior: 'smooth' }))
+  await page.waitForTimeout(3_500)
+  await page.getByRole('link', { name: 'Architecture', exact: true }).first().click()
+  await page.getByText('Architecture', { exact: true }).first().waitFor({ state: 'visible', timeout: 60_000 })
+  await page.waitForTimeout(4_000)
+}
+
+function auctionFixtureByD(manifest, d) {
+  const auction = manifest.eventSummary?.auctions?.find(item => item.d === d)
+  if (!auction?.anchor || !auction?.endAt) throw new Error(`Seed manifest does not contain auction ${d}`)
+  return auction
+}
+
+async function settleAuctionFixture(auction, runStateDirectory) {
+  const endAt = Number.parseInt(String(auction.endAt), 10)
+  if (!Number.isSafeInteger(endAt) || endAt <= 0) throw new Error(`Invalid auction end time for ${auction.d}`)
+  const { stdout, stderr } = await execFileAsync(
+    'bun',
+    [
+      'scripts/settle-auction-once.mjs',
+      '--method', 'evm',
+      '--account', 'arbiterEvm',
+      '--auction-anchor', auction.anchor,
+      '--now', String(endAt),
+      '--wait-until-ended',
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        MARKETPLACE_SETTLEMENT_JOURNAL_DIR: resolve(runStateDirectory, 'settlement-journal'),
+        MARKETPLACE_EVM_OPERATION_STORE_DIR: resolve(runStateDirectory, 'evm-operations'),
+      },
+      timeout: 480_000,
+      maxBuffer: 8 * 1024 * 1024,
+    },
+  )
+  if (!stdout.includes('"ok": true')) {
+    throw new Error(`Auction settlement did not report success.${stderr ? `\n${stderr}` : ''}`)
+  }
+  return { endAt, stdout }
+}
+
+function timestamp(ms) {
+  const seconds = Math.max(0, Math.round(ms / 100) / 10)
+  const minutes = Math.floor(seconds / 60)
+  return `${minutes}:${(seconds - minutes * 60).toFixed(1).padStart(4, '0')}`
+}
+
+function writeNarrationGuide(outDir, manifest) {
+  const lines = [
+    '# NMDK intro voice-over script',
+    '',
+    `The bundled placeholder was generated locally with the macOS Apple voice \`${appleVoice}\` at ${appleVoiceRate} words per minute. Read the scene copy below verbatim or adapt it to your own delivery.`,
+    '',
+    'The silent master is `nmdk-intro-silent.mp4`. To replace the placeholder without re-encoding the picture, put your recording in this directory and run:',
+    '',
+    '```sh',
+    'ffmpeg -y -i nmdk-intro-silent.mp4 -i my-voiceover.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -af apad -shortest -movflags +faststart nmdk-intro-my-voice.mp4',
+    '```',
+    '',
+    ...manifest.scenes.flatMap(scene => [
+      `## ${timestamp(scene.startMs)}–${timestamp(scene.endMs)} — ${scene.title}`,
+      '',
+      scene.narrationCue,
+      '',
+    ]),
+  ]
+  const path = resolve(outDir, 'narration-guide.md')
+  writeFileSync(path, `${lines.join('\n')}\n`)
+  return path
+}
+
+async function probeMedia(path) {
+  const { stdout } = await execFileAsync(
+    'ffprobe',
+    ['-v', 'error', '-show_streams', '-show_format', '-of', 'json', path],
+    { cwd: root, timeout: 30_000 },
+  )
+  return JSON.parse(stdout)
+}
+
+async function renderIntroVideo(rawVideoPath, outDir) {
+  const outputPath = resolve(outDir, 'nmdk-intro-silent.mp4')
+  await execFileAsync(
+    'ffmpeg',
+    [
+      '-y',
+      '-i', rawVideoPath,
+      '-an',
+      '-vf', 'fps=30,scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=#f7f7f5',
+      '-c:v', 'libx264',
+      '-preset', 'medium',
+      '-crf', '18',
+      '-pix_fmt', 'yuv420p',
+      '-movflags', '+faststart',
+      outputPath,
+    ],
+    { cwd: root, timeout: 600_000, maxBuffer: 8 * 1024 * 1024 },
+  )
+  const probe = await probeMedia(outputPath)
+  const video = probe.streams?.find(stream => stream.codec_type === 'video')
+  const audioStreams = probe.streams?.filter(stream => stream.codec_type === 'audio') ?? []
+  if (video?.width !== 1920 || video?.height !== 1080) {
+    throw new Error(`Rendered intro has unexpected dimensions ${video?.width ?? '?'}x${video?.height ?? '?'}`)
+  }
+  if (audioStreams.length > 0) throw new Error('Rendered intro must not contain an audio stream')
+  return {
+    path: outputPath,
+    width: video.width,
+    height: video.height,
+    durationSeconds: Number.parseFloat(probe.format?.duration ?? '0'),
+    audioStreams: audioStreams.length,
+  }
+}
+
+async function synthesizeSceneVoice(path, text, rate) {
+  await execFileAsync(
+    '/usr/bin/say',
+    ['-v', appleVoice, '-r', String(rate), '-o', path, text],
+    { cwd: root, timeout: 120_000, maxBuffer: 1024 * 1024 },
+  )
+  const probe = await probeMedia(path)
+  return Number.parseFloat(probe.format?.duration ?? '0')
+}
+
+async function renderIntroVoiceover(silentVideoPath, outDir, manifest) {
+  if (process.platform !== 'darwin' || !existsSync('/usr/bin/say')) {
+    throw new Error('The intro voice-over requires the built-in macOS /usr/bin/say generator')
+  }
+  if (!Number.isSafeInteger(appleVoiceRate) || appleVoiceRate < 80 || appleVoiceRate > 400) {
+    throw new Error(`Invalid NMDK_DEMO_CAPTURE_VOICE_RATE: ${appleVoiceRate}`)
+  }
+
+  const silentProbe = await probeMedia(silentVideoPath)
+  const durationSeconds = Number.parseFloat(silentProbe.format?.duration ?? '0')
+  if (!(durationSeconds > 0)) throw new Error('Unable to determine the silent intro duration')
+
+  const sceneAudioDir = resolve(outDir, 'voiceover-scenes')
+  mkdirSync(sceneAudioDir, { recursive: true })
+  const renderedScenes = []
+  for (const [index, scene] of manifest.scenes.entries()) {
+    const path = resolve(sceneAudioDir, `${String(index + 1).padStart(2, '0')}-${scene.id}.aiff`)
+    const sceneDurationSeconds = Math.max(0.5, (scene.endMs - scene.startMs) / 1000)
+    let rate = appleVoiceRate
+    let audioDurationSeconds = await synthesizeSceneVoice(path, scene.narrationCue, rate)
+    if (audioDurationSeconds > sceneDurationSeconds) {
+      rate = Math.min(300, Math.ceil(rate * (audioDurationSeconds / sceneDurationSeconds) * 1.04))
+      audioDurationSeconds = await synthesizeSceneVoice(path, scene.narrationCue, rate)
+    }
+    if (audioDurationSeconds > sceneDurationSeconds + 0.25) {
+      throw new Error(`${scene.title} narration is ${audioDurationSeconds.toFixed(1)}s but its scene is ${sceneDurationSeconds.toFixed(1)}s`)
+    }
+    renderedScenes.push({
+      id: scene.id,
+      path,
+      startMs: scene.startMs,
+      durationSeconds: audioDurationSeconds,
+      rate,
+      text: scene.narrationCue,
+    })
+  }
+
+  const trackPath = resolve(outDir, 'nmdk-intro-apple-voice.m4a')
+  const trackArgs = [
+    '-y',
+    '-f', 'lavfi',
+    '-t', String(durationSeconds),
+    '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000',
+  ]
+  for (const scene of renderedScenes) trackArgs.push('-i', scene.path)
+  const filters = renderedScenes.map((scene, index) => (
+    `[${index + 1}:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,adelay=${Math.max(0, Math.round(scene.startMs))}|${Math.max(0, Math.round(scene.startMs))}[scene${index}]`
+  ))
+  const mixInputs = ['[0:a]', ...renderedScenes.map((_, index) => `[scene${index}]`)].join('')
+  filters.push(`${mixInputs}amix=inputs=${renderedScenes.length + 1}:duration=first:dropout_transition=0:normalize=0,alimiter=limit=0.95[audio]`)
+  trackArgs.push(
+    '-filter_complex', filters.join(';'),
+    '-map', '[audio]',
+    '-t', String(durationSeconds),
+    '-c:a', 'aac',
+    '-b:a', '192k',
+    trackPath,
+  )
+  await execFileAsync('ffmpeg', trackArgs, { cwd: root, timeout: 600_000, maxBuffer: 8 * 1024 * 1024 })
+
+  const videoPath = resolve(outDir, 'nmdk-intro-apple-voice.mp4')
+  await execFileAsync(
+    'ffmpeg',
+    [
+      '-y',
+      '-i', silentVideoPath,
+      '-i', trackPath,
+      '-map', '0:v:0',
+      '-map', '1:a:0',
+      '-c:v', 'copy',
+      '-c:a', 'copy',
+      '-shortest',
+      '-movflags', '+faststart',
+      videoPath,
+    ],
+    { cwd: root, timeout: 600_000, maxBuffer: 8 * 1024 * 1024 },
+  )
+  const outputProbe = await probeMedia(videoPath)
+  const video = outputProbe.streams?.find(stream => stream.codec_type === 'video')
+  const audioStreams = outputProbe.streams?.filter(stream => stream.codec_type === 'audio') ?? []
+  if (video?.width !== 1920 || video?.height !== 1080 || audioStreams.length !== 1) {
+    throw new Error(`Voiced intro validation failed: ${video?.width ?? '?'}x${video?.height ?? '?'}, ${audioStreams.length} audio streams`)
+  }
+  return {
+    voice: appleVoice,
+    defaultRate: appleVoiceRate,
+    trackPath,
+    videoPath,
+    durationSeconds: Number.parseFloat(outputProbe.format?.duration ?? '0'),
+    audioStreams: audioStreams.length,
+    scenes: renderedScenes,
+  }
+}
+
 async function loginAsDemoAccount(page, baseUrl, accountId, accountLabel, outDir, manifest, screenshotName, note) {
   await page.goto(`${baseUrl}/login`)
   await clickDemoControl(page.getByTestId(`demo-login-${accountId}`), `${accountLabel} demo login`)
@@ -509,26 +870,31 @@ async function captureOrder({
   ackState,
   outDir,
   manifest,
+  paceMs = 0,
 }) {
   await openListingDetail(page, listing, label)
   await waitForMarketplaceReady(page, `${label} page`)
   await page.getByRole('heading', { name: listing.title }).waitFor({ state: 'visible', timeout: 60_000 })
   await selectOptionalRentalDates(page, label)
   await screenshot(page, outDir, manifest, `${label}-listing`, `Opened ${listing.title} before checkout.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
 
   await clickDemoControl(page.getByTestId('checkout-button'), `${label} checkout`)
   const continueButton = page.getByTestId('checkout-continue-button')
   await waitUntilEnabledWithRefresh(page, continueButton, `${label} checkout continue`)
   await screenshot(page, outDir, manifest, `${label}-arbiter`, `Selected the seeded arbitration route for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
   await clickDemoControl(continueButton, `${label} checkout continue`)
 
   const invoiceInput = await waitForInvoiceInput(page, label)
   const invoice = await invoiceInput.inputValue()
   await screenshot(page, outDir, manifest, `${label}-invoice`, `Checkout produced a Bolt11 invoice for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
   await payInvoice(invoice)
 
   await page.getByTestId('checkout-done-button').waitFor({ state: 'visible', timeout: 180_000 })
   await screenshot(page, outDir, manifest, `${label}-published`, `Order and payment proof published for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
   await clickDemoControl(page.getByTestId('checkout-done-button'), `${label} checkout done`)
 
   ackState.expected += 1
@@ -537,6 +903,7 @@ async function captureOrder({
   await page.getByTestId('order-card').first().waitFor({ state: 'visible', timeout: 60_000 })
   await page.getByTestId('payment-lifecycles').first().waitFor({ state: 'visible', timeout: 60_000 })
   await screenshot(page, outDir, manifest, `${label}-ack`, `My Orders shows payment lifecycle after arbiter ACK for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
 
   manifest.flows.push({
     label,
@@ -558,6 +925,7 @@ async function captureBid({
   ackState,
   outDir,
   manifest,
+  paceMs = 0,
 }) {
   await openListingDetail(page, listing, label, 'Auctions')
   await waitForMarketplaceReady(page, `${label} page`)
@@ -565,6 +933,7 @@ async function captureBid({
   await page.getByTestId('place-bid-button').waitFor({ state: 'visible', timeout: 60_000 })
   await selectOptionalRentalDates(page, label)
   await screenshot(page, outDir, manifest, `${label}-listing`, `Opened ${listing.title} before bidding.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
 
   await clickDemoControl(page.getByTestId('place-bid-button'), `${label} place bid`)
   const bidDialog = page
@@ -580,15 +949,18 @@ async function captureBid({
   const bidButton = bidDialog.getByTestId('bid-continue-button')
   await waitForBidContinueEnabled(page, bidDialog, bidButton, `${label} bid continue`, 120_000)
   await screenshot(page, outDir, manifest, `${label}-bid-dialog`, `Prepared a funded bid for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
   await clickDemoControl(bidButton, `${label} bid continue`)
 
   const invoiceInput = await waitForInvoiceInput(page, label)
   const invoice = await invoiceInput.inputValue()
   await screenshot(page, outDir, manifest, `${label}-invoice`, `Bid produced a Bolt11 invoice for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
   await payInvoice(invoice)
 
   await page.getByTestId('bid-done-button').waitFor({ state: 'visible', timeout: 180_000 })
   await screenshot(page, outDir, manifest, `${label}-published`, `Bid and payment proof published for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
   await clickDemoControl(page.getByTestId('bid-done-button'), `${label} bid done`)
 
   ackState.expected += 1
@@ -601,6 +973,7 @@ async function captureBid({
   await clickDemoControl(page.getByTestId('payment-lifecycle-toggle').first(), `${label} lifecycle toggle`)
   await page.getByText('Payment ACK').first().waitFor({ state: 'visible', timeout: 60_000 })
   await screenshot(page, outDir, manifest, `${label}-ack`, `Expanded bid chain lifecycle after arbiter ACK for ${listing.title}.`)
+  if (paceMs > 0) await page.waitForTimeout(paceMs)
 
   manifest.flows.push({
     label,
@@ -659,6 +1032,73 @@ async function captureEscrowDashboard({ page, baseUrl, outDir, manifest }) {
   })
 }
 
+async function captureOrderRelease({ page, outDir, manifest }) {
+  const orderCard = page.getByTestId('escrow-record-card').filter({
+    has: page.getByRole('button', { name: 'Release to seller', exact: true }),
+  }).first()
+  await orderCard.waitFor({ state: 'visible', timeout: 120_000 })
+  await screenshot(page, outDir, manifest, 'intro-order-release-ready', 'Validated order with driver-authorized release and refund actions.')
+  await page.waitForTimeout(2_500)
+  await clickDemoControl(orderCard.getByRole('button', { name: 'Release to seller', exact: true }), 'release order')
+  const confirm = page.getByTestId('escrow-confirm-action')
+  await confirm.waitFor({ state: 'visible', timeout: 30_000 })
+  await page.waitForTimeout(2_000)
+  await screenshot(page, outDir, manifest, 'intro-order-release-confirm', 'Escrow release confirmation before driver revalidation.')
+  await clickDemoControl(confirm, 'confirm order release')
+  const settledOrder = page.getByTestId('escrow-record-card')
+    .filter({ hasText: /Order ·/ })
+    .filter({ hasText: 'Settled' })
+    .first()
+  await settledOrder.waitFor({ state: 'visible', timeout: 180_000 })
+  await page.waitForTimeout(3_000)
+  manifest.flows.push({
+    label: 'order-release-evm',
+    type: 'escrow-order-settlement',
+    action: 'release',
+    finalStage: 'settled',
+  })
+  await showTitleCard(
+    page,
+    'Order released',
+    'The EVM driver revalidated the payment and published the terminal settlement.',
+    4_000,
+  )
+}
+
+async function captureAuctionSettlement({ page, auction, outDir, manifest }) {
+  const acceptedBid = page.getByTestId('escrow-record-card')
+    .filter({ hasText: /Auction bid ·/ })
+    .filter({ hasText: 'Accepted' })
+    .first()
+  await acceptedBid.waitFor({ state: 'visible', timeout: 120_000 })
+  await screenshot(page, outDir, manifest, 'intro-auction-accepted', 'Funded auction bid is accepted and awaiting the signed auction end time.')
+  await page.waitForTimeout(2_500)
+
+  const settlement = await settleAuctionFixture(auction, outDir)
+  // Settlement events deliberately carry the signed auction-end timestamp.
+  // Refresh the records without reloading the page (and losing the in-memory
+  // demo identity) so the relay query includes that canonical timestamp.
+  await clickDemoControl(
+    page.getByRole('button', { name: 'Refresh', exact: true }),
+    'escrow dashboard refresh after auction settlement',
+  )
+  const promotedBid = page.getByTestId('escrow-record-card')
+    .filter({ hasText: /Auction bid ·/ })
+    .filter({ hasText: 'Promoted' })
+    .first()
+  await promotedBid.waitFor({ state: 'visible', timeout: 180_000 })
+  await page.waitForTimeout(3_500)
+  await screenshot(page, outDir, manifest, 'intro-auction-settled', 'Canonical auction settlement promotes the winning payment into an order.')
+  manifest.flows.push({
+    label: 'auction-settlement-evm',
+    type: 'escrow-auction-settlement',
+    auctionAnchor: auction.anchor,
+    action: 'auction_promote',
+    finalStage: 'promoted',
+    endAt: settlement.endAt,
+  })
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2))
   if (options.help) {
@@ -666,8 +1106,21 @@ async function main() {
     return
   }
 
+  if (options.voiceOnly) {
+    const manifestPath = resolve(options.voiceOnly, 'manifest.json')
+    if (!existsSync(manifestPath)) throw new Error(`Missing intro manifest: ${manifestPath}`)
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
+    const silentVideoPath = manifest.renderedVideo?.path ?? resolve(options.voiceOnly, 'nmdk-intro-silent.mp4')
+    if (!existsSync(silentVideoPath)) throw new Error(`Missing silent intro: ${silentVideoPath}`)
+    manifest.voiceover = await renderIntroVoiceover(silentVideoPath, options.voiceOnly, manifest)
+    delete manifest.error
+    writeFileSync(manifestPath, JSON.stringify(manifest, null, 2))
+    console.log(`Apple-voice intro: ${manifest.voiceover.videoPath}`)
+    return
+  }
+
   const id = runId()
-  const outDir = options.outDir ?? resolve(defaultOutRoot, id)
+  const outDir = options.outDir ?? resolve(options.intro ? defaultIntroOutRoot : defaultOutRoot, id)
   mkdirSync(outDir, { recursive: true })
 
   const stack = options.skipStackCheck ? [] : requireArbitersRunning()
@@ -678,7 +1131,9 @@ async function main() {
   const runManifest = {
     runId: id,
     generatedAt: new Date().toISOString(),
+    mode: options.intro ? 'intro' : 'acceptance',
     baseUrl: options.baseUrl,
+    ...(options.intro ? { docsUrl: options.docsUrl } : {}),
     relay: options.relay,
     runSince,
     ackTimeoutMs,
@@ -689,6 +1144,8 @@ async function main() {
     },
     screenshots: [],
     flows: [],
+    scenes: [],
+    captureStartedAtMs: Date.now(),
     initialAckCount: initialAcks.length,
     finalAckCount: undefined,
     video: undefined,
@@ -705,30 +1162,41 @@ async function main() {
       ...listingByD(manifestSeed, target.d),
     }
   }
+  let appProcess
+  let docsProcess
+  try {
+    appProcess = await ensureDemoServer(options.baseUrl)
+    if (options.intro) docsProcess = await ensureDocsServer(options.docsUrl)
+  } catch (error) {
+    await stopDemoServer(docsProcess)
+    await stopDemoServer(appProcess)
+    throw error
+  }
   const browser = await chromium.launch({ headless: !options.headed })
+  const viewport = options.intro ? { width: 1920, height: 1080 } : { width: 1440, height: 1000 }
   const context = await browser.newContext({
     ignoreHTTPSErrors: true,
     recordVideo: {
       dir: outDir,
-      size: { width: 1440, height: 1000 },
+      size: viewport,
     },
-    viewport: { width: 1440, height: 1000 },
+    viewport,
   })
-  await context.addInitScript(() => {
+  await context.addInitScript(({ intro }) => {
     try {
       window.localStorage.setItem('show_code', 'true')
     } catch {
       // Storage can be unavailable in unusual browser contexts.
     }
     const applyCaptureMode = () => {
-      document.documentElement?.setAttribute('data-code-hint-capture', 'cycle')
+      if (!intro) document.documentElement?.setAttribute('data-code-hint-capture', 'cycle')
     }
     if (document.documentElement) {
       applyCaptureMode()
     } else {
       window.addEventListener('DOMContentLoaded', applyCaptureMode, { once: true })
     }
-  })
+  }, { intro: options.intro })
   const page = await context.newPage()
   page.on('console', message => {
     runManifest.console.push({
@@ -742,73 +1210,160 @@ async function main() {
   page.setDefaultTimeout(60_000)
   page.setDefaultNavigationTimeout(90_000)
 
-  let appProcess
   let runError
   try {
-    appProcess = await ensureDemoServer(options.baseUrl)
-    await loginAsBuyer(page, options.baseUrl, outDir, runManifest)
+    runManifest.captureStartedAtMs = Date.now()
+    if (options.intro) {
+      const introAuction = auctionFixtureByD(manifestSeed, 'nmdk-auction-evm-usd')
+      await recordScene(
+        runManifest,
+        'opening',
+        'Opening',
+        'This is NMDK: a local kit for building and settling Nostr marketplaces.',
+        () => showTitleCard(page, 'Build and settle a marketplace locally', 'Docs, EVM escrow, auction settlement, and deterministic capture.', 4_000),
+      )
+      await recordScene(
+        runManifest,
+        'documentation',
+        'Documentation',
+        'The docs lead with a two-step start. Clone the repository, run the quick-start command, and you get one pinned package snapshot, protocol references, and a security-first local environment.',
+        () => captureDocsIntroduction(page, options.docsUrl),
+      )
+      await recordScene(
+        runManifest,
+        'order',
+        'Create a funded order',
+        'Here I am signed in as the deterministic buyer. I open a dollar-priced listing, choose the E V M escrow route, and pay the invoice using the local Lightning stack. The order and payment proof are published to the local relay, and the arbiter acknowledges the funded trade.',
+        async () => {
+          await loginAsBuyer(page, options.baseUrl, outDir, runManifest)
+          await captureOrder({
+            page,
+            baseUrl: options.baseUrl,
+            listing: listing('evmUsdOrder'),
+            label: 'intro-order-usd-evm',
+            relay: options.relay,
+            runSince,
+            ackState,
+            outDir,
+            manifest: runManifest,
+            paceMs: 2_000,
+          })
+        },
+      )
+      await recordScene(
+        runManifest,
+        'auction-bid',
+        'Fund an auction bid',
+        'Next I place an eighty-dollar bid, above the signed reserve. It follows the same payment-proof flow: the local invoice is paid, the bid is published, and the escrow driver validates and accepts it while the auction is still open.',
+        () => captureBid({
+          page,
+          baseUrl: options.baseUrl,
+          listing: { ...listing('evmUsdBid'), bidAmount: '80' },
+          label: 'intro-bid-usd-evm',
+          relay: options.relay,
+          runSince,
+          ackState,
+          outDir,
+          manifest: runManifest,
+          paceMs: 2_000,
+        }),
+      )
+      await recordScene(
+        runManifest,
+        'escrow-dashboard',
+        'Escrow operations dashboard',
+        'Now I switch to the E V M escrow account. This dashboard only shows trades that name this escrow, and every action comes from the driver\'s latest validation of the live record.',
+        async () => {
+          await captureEscrowDashboard({ page, baseUrl: options.baseUrl, outDir, manifest: runManifest })
+          await page.waitForTimeout(3_000)
+        },
+      )
+      await recordScene(
+        runManifest,
+        'auction-settlement',
+        'Settle the auction',
+        'The auction uses one canonical settlement pass. At the signed end time, the driver validates all accepted bids together, selects the highest valid bid above reserve, promotes it into an order, and refreshes the escrow dashboard.',
+        () => captureAuctionSettlement({ page, auction: introAuction, outDir, manifest: runManifest }),
+      )
+      await recordScene(
+        runManifest,
+        'order-release',
+        'Release the order',
+        'The order is funded, so release is available. Confirming it calls the real local E V M driver, which refetches the trade before it publishes the settled state.',
+        () => captureOrderRelease({ page, outDir, manifest: runManifest }),
+      )
+      await recordScene(
+        runManifest,
+        'closing',
+        'Closing',
+        'Everything here used disposable local funds and can be reproduced from a cold clone.',
+        () => showTitleCard(page, 'One reproducible marketplace snapshot', 'Local funds. Real drivers. Fail-closed actions. No public-chain value.', 5_000),
+      )
+    } else {
+      await loginAsBuyer(page, options.baseUrl, outDir, runManifest)
 
-    await captureOrder({
-      page,
-      baseUrl: options.baseUrl,
-      listing: listing('evmUsdOrder'),
-      label: 'order-usd-evm',
-      relay: options.relay,
-      runSince,
-      ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    await captureOrder({
-      page,
-      baseUrl: options.baseUrl,
-      listing: listing('btcOrder'),
-      label: 'order-btc-cashu',
-      relay: options.relay,
-      runSince,
-      ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    await captureBid({
-      page,
-      baseUrl: options.baseUrl,
-      listing: listing('evmUsdBid'),
-      label: 'bid-usd-evm',
-      relay: options.relay,
-      runSince,
-      ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    await captureBid({
-      page,
-      baseUrl: options.baseUrl,
-      listing: listing('evmBtcBid'),
-      label: 'bid-btc-evm',
-      relay: options.relay,
-      runSince,
-      ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    await captureBid({
-      page,
-      baseUrl: options.baseUrl,
-      listing: listing('cashuBtcBid'),
-      label: 'bid-btc-cashu',
-      relay: options.relay,
-      runSince,
-      ackState,
-      outDir,
-      manifest: runManifest,
-    })
-    await captureEscrowDashboard({
-      page,
-      baseUrl: options.baseUrl,
-      outDir,
-      manifest: runManifest,
-    })
+      await captureOrder({
+        page,
+        baseUrl: options.baseUrl,
+        listing: listing('evmUsdOrder'),
+        label: 'order-usd-evm',
+        relay: options.relay,
+        runSince,
+        ackState,
+        outDir,
+        manifest: runManifest,
+      })
+      await captureOrder({
+        page,
+        baseUrl: options.baseUrl,
+        listing: listing('btcOrder'),
+        label: 'order-btc-cashu',
+        relay: options.relay,
+        runSince,
+        ackState,
+        outDir,
+        manifest: runManifest,
+      })
+      await captureBid({
+        page,
+        baseUrl: options.baseUrl,
+        listing: listing('evmUsdBid'),
+        label: 'bid-usd-evm',
+        relay: options.relay,
+        runSince,
+        ackState,
+        outDir,
+        manifest: runManifest,
+      })
+      await captureBid({
+        page,
+        baseUrl: options.baseUrl,
+        listing: listing('evmBtcBid'),
+        label: 'bid-btc-evm',
+        relay: options.relay,
+        runSince,
+        ackState,
+        outDir,
+        manifest: runManifest,
+      })
+      await captureBid({
+        page,
+        baseUrl: options.baseUrl,
+        listing: listing('cashuBtcBid'),
+        label: 'bid-btc-cashu',
+        relay: options.relay,
+        runSince,
+        ackState,
+        outDir,
+        manifest: runManifest,
+      })
+      await captureEscrowDashboard({
+        page,
+        baseUrl: options.baseUrl,
+        outDir,
+        manifest: runManifest,
+      })
+    }
   } catch (error) {
     runError = serializeError(error)
     runManifest.error = runError
@@ -824,11 +1379,12 @@ async function main() {
     await context.close()
     if (video) {
       const rawVideoPath = await video.path()
-      const finalVideoPath = resolve(outDir, 'marketplace-demo.webm')
+      const finalVideoPath = resolve(outDir, options.intro ? 'nmdk-intro-raw.webm' : 'marketplace-demo.webm')
       copyFileSync(rawVideoPath, finalVideoPath)
       runManifest.video = finalVideoPath
     }
     await browser.close()
+    await stopDemoServer(docsProcess)
     await stopDemoServer(appProcess)
   }
 
@@ -840,6 +1396,17 @@ async function main() {
     ]
     if (browserFailures.length > 0) {
       runError = serializeError(new Error(`Browser diagnostics were not clean:\n${browserFailures.join('\n')}`))
+      runManifest.error = runError
+    }
+  }
+
+  if (options.intro && !runError && runManifest.video) {
+    try {
+      runManifest.renderedVideo = await renderIntroVideo(runManifest.video, outDir)
+      runManifest.narrationGuide = writeNarrationGuide(outDir, runManifest)
+      runManifest.voiceover = await renderIntroVoiceover(runManifest.renderedVideo.path, outDir, runManifest)
+    } catch (error) {
+      runError = serializeError(error)
       runManifest.error = runError
     }
   }
@@ -856,12 +1423,19 @@ async function main() {
   console.log(`Screenshots: ${runManifest.screenshots.length}`)
   console.log(`Payment ACKs since run start: ${runManifest.finalAckCount}`)
   if (runManifest.video) console.log(`Video: ${runManifest.video}`)
+  if (runManifest.renderedVideo) console.log(`Silent intro: ${runManifest.renderedVideo.path}`)
+  if (runManifest.voiceover) console.log(`Apple-voice intro: ${runManifest.voiceover.videoPath}`)
+  if (runManifest.narrationGuide) console.log(`Narration guide: ${runManifest.narrationGuide}`)
   if (runError) {
     throw new Error(runError.message)
   }
 }
 
-main().catch(error => {
-  console.error(error instanceof Error ? error.stack ?? error.message : String(error))
-  process.exit(1)
-})
+export { renderIntroVoiceover }
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch(error => {
+    console.error(error instanceof Error ? error.stack ?? error.message : String(error))
+    process.exit(1)
+  })
+}

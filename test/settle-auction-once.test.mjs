@@ -37,6 +37,7 @@ function auctionEvent(createdAt, revision, overrides = {}) {
     decimals: 6,
     startAt: 1_700_000_000,
     endAt: 1_700_000_100,
+    settlementGrace: 86_400,
     startingBid: '1250000',
     content: { revision },
     createdAt,
@@ -104,6 +105,7 @@ describe('settlement auction resolution', () => {
       startAt: 1_700_000_000,
       endAt: 1_700_000_100,
       startingBid: '1250000',
+      targetUnlockAt: 1_700_086_500,
       now: 1_700_000_101,
     })
     assert.throws(
@@ -113,6 +115,24 @@ describe('settlement auction resolution', () => {
     assert.throws(
       () => assertSettlementRequestMatchesAuction({ ...request, listingAnchor: `${listingAnchor}-wrong` }, auction),
       /listingAnchor does not match canonical auction/,
+    )
+    assert.throws(
+      () => assertSettlementRequestMatchesAuction({ ...request, targetUnlockAt: request.targetUnlockAt + 1 }, auction),
+      /targetUnlockAt does not match canonical auction/,
+    )
+  })
+
+  test('requires a signed positive settlement grace for promoted-order timeout', () => {
+    const missingGrace = auctions.parse(auctionEvent(10, 'missing-grace', { settlementGrace: undefined }))
+    const zeroGrace = auctions.parse(auctionEvent(10, 'zero-grace', { settlementGrace: 0 }))
+
+    assert.throws(
+      () => settlementRequestForAuction(missingGrace, arbiterPubkey, missingGrace.endAt, missingGrace.endAt),
+      /positive signed settlement_grace/,
+    )
+    assert.throws(
+      () => settlementRequestForAuction(zeroGrace, arbiterPubkey, zeroGrace.endAt, zeroGrace.endAt),
+      /positive signed settlement_grace/,
     )
   })
 })

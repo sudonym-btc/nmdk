@@ -55,6 +55,29 @@ The automation covers funded USD/BTC orders, EVM/Cashu auction bids, and the
 escrow dashboard. Use the manual walkthrough above for negotiation and broader
 navigation checks.
 
+## Record the developer introduction
+
+Generate the narration-ready introduction video with:
+
+```sh
+npm run demo:intro:fresh
+```
+
+This uses the same real local drivers as the acceptance capture, but records a
+shorter story at 1080p: the documentation site, one funded order, one funded
+auction bid, an escrow release, and canonical whole-auction settlement. macOS's
+built-in `Samantha` voice reads the bundled explanatory script, so producing the
+placeholder voice-over is free and does not send text to an external service.
+The output directory contains the voiced MP4, a silent 1080p master, the
+standalone voice track, per-scene AIFF files, raw WebM recording, screenshots,
+scene timestamps, and the complete script under `artifacts/intro-video/<run-id>/`.
+
+To record your own version later, read `narration-guide.md`, save the recording
+beside the silent master as `my-voiceover.wav`, and run the one-line `ffmpeg`
+replacement command at the top of the guide. It copies the already-rendered
+picture without re-encoding it. Set `NMDK_DEMO_CAPTURE_VOICE` or
+`NMDK_DEMO_CAPTURE_VOICE_RATE` to audition another installed Apple voice or pace.
+
 ## Required gate for major changes
 
 Run `npm run demo:verify:fresh` for changes to protocol behavior, drivers,
