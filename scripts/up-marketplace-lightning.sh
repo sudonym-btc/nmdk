@@ -13,6 +13,8 @@ absolute_path() {
 
 STACK_DATA_DIR="$(absolute_path "${MARKETPLACE_STACK_DATA_DIR:-data/marketplace}")"
 STACK_PROJECT="${MARKETPLACE_STACK_PROJECT:-nmdk-marketplace}"
+export MARKETPLACE_USER_ID="${MARKETPLACE_USER_ID:-$(id -u)}"
+export MARKETPLACE_GROUP_ID="${MARKETPLACE_GROUP_ID:-$(id -g)}"
 
 mkdir -p \
   "$STACK_DATA_DIR/bitcoind" \
@@ -33,6 +35,9 @@ export MARKETPLACE_SHARED_BITCOIN_DATA_DIR="${MARKETPLACE_SHARED_BITCOIN_DATA_DI
 export COMPOSE_PROJECT_NAME="$STACK_PROJECT"
 
 cd "$ROOT"
-docker compose -f compose.marketplace-lightning.yaml up -d --wait --wait-timeout 300 bitcoind marketplace-lnd lnbits albyhub
+if ! docker compose -f compose.marketplace-lightning.yaml up -d --wait --wait-timeout 300 bitcoind marketplace-lnd lnbits albyhub; then
+  docker compose -f compose.marketplace-lightning.yaml logs --no-color --tail 100 bitcoind bitcoin-init marketplace-lnd >&2 || true
+  exit 1
+fi
 docker compose -f compose.marketplace-lightning.yaml --profile tools run --rm --no-deps lnbits-init
 docker compose -f compose.marketplace-lightning.yaml --profile tools run --rm --no-deps alby-init

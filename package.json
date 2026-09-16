@@ -14,7 +14,7 @@
     "pretest": "node scripts/verify-environment.mjs",
     "test": "./scripts/test.sh",
     "check": "./scripts/test.sh",
-    "test:unit": "node --test test/arbiter-compose.test.mjs test/collect-payment-states.test.mjs test/development-proxy.test.mjs test/evm-boltz-trust.test.mjs test/evm-contract-source.test.mjs && bun test test/settle-auction-once.test.mjs",
+    "test:unit": "node --test test/arbiter-compose.test.mjs test/collect-payment-states.test.mjs test/development-proxy.test.mjs test/evm-boltz-trust.test.mjs test/evm-contract-source.test.mjs test/marketplace-lightning-startup.test.mjs && bun test test/settle-auction-once.test.mjs",
     "build:nostr-tools": "npm --workspace nostr-tools run build",
     "test:nostr-tools": "cd dependencies/nostr-tools && bun test marketplace.test.ts relay.test.ts marketplace/*.test.ts",
     "test:cashu": "cd dependencies/marketplace-cashu-ts && npm test",

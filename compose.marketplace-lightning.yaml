@@ -39,7 +39,7 @@ x-marketplace-lnd-command: &marketplace-lnd-command
 
 x-marketplace-lnd-entrypoint: &marketplace-lnd-entrypoint
   - bash
-  - -lc
+  - -c
   - |
     bitcoin_rpc_ready() {
       auth=$(printf 'regtest:regtest' | base64 -w0 2>/dev/null || printf 'regtest:regtest' | base64 | tr -d '\n')
@@ -67,11 +67,11 @@ services:
     image: ${MARKETPLACE_BITCOIN_IMAGE:-bitcoin/bitcoin:31.1@sha256:da25cedc66b1daefff9f412ee196c901a899c3fa68a33b20849c3e08b5c40d63}
     restart: unless-stopped
     hostname: bitcoind
-    user: '${UID:-1000}:${GID:-1000}'
+    user: '${MARKETPLACE_USER_ID:-1000}:${MARKETPLACE_GROUP_ID:-1000}'
     stop_grace_period: 2m
     entrypoint:
       - bash
-      - -lc
+      - -c
       - |
         set -eu
         bitcoind "$$@" &
@@ -147,7 +147,7 @@ services:
     image: ${LND_IMAGE:-lightninglabs/lnd:v0.21.3-beta@sha256:d29074335f3bffb2ac0e789b0d023c24fbb85ce67ecbfb7d677399842fe0535c}
     restart: unless-stopped
     hostname: marketplace-lnd
-    user: '${UID:-1000}:${GID:-1000}'
+    user: '${MARKETPLACE_USER_ID:-1000}:${MARKETPLACE_GROUP_ID:-1000}'
     depends_on:
       bitcoin-init:
         condition: service_completed_successfully
