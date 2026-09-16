@@ -23,7 +23,7 @@ const packageDirs = [
 
 function parseTrailingJson(output, label) {
   for (let index = 0; index < output.length; index += 1) {
-    if (output[index] !== '[' && output[index] !== '{') continue
+    if (output[index] !== '{') continue
     if (index > 0 && output[index - 1] !== '\n') continue
     try {
       return JSON.parse(output.slice(index).trim())
@@ -38,6 +38,7 @@ try {
   const dependencies = {}
   for (const directory of packageDirs) {
     const cwd = path.join(root, directory)
+    const packageName = JSON.parse(readFileSync(path.join(cwd, 'package.json'), 'utf8')).name
     const packOutput = execFileSync('npm', [
       'pack',
       '--json',
@@ -46,7 +47,7 @@ try {
       tarballDir,
     ], { cwd, encoding: 'utf8' })
     const packed = parseTrailingJson(packOutput, `npm pack for ${directory}`)
-    const filename = packed[0]?.filename
+    const filename = packed[packageName]?.filename
     if (!filename) throw new Error(`npm pack produced no tarball for ${directory}`)
     const tarball = path.join(tarballDir, filename)
     const packedManifest = JSON.parse(execFileSync('tar', ['-xOf', tarball, 'package/package.json'], { encoding: 'utf8' }))

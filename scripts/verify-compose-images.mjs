@@ -16,8 +16,9 @@ const errors = []
 const env = { ...process.env, MARKETPLACE_EVM_CONTRACTS_DIR: path.join(root, 'dependencies/marketplace-evm-contracts') }
 for (const [name, cwd, args] of configurations) {
   const composeArgs = ['compose', ...args, '--profile', '*']
-  execFileSync('docker', [...composeArgs, 'config', '--quiet'], { cwd, env, stdio: 'inherit' })
-  const images = execFileSync('docker', [...composeArgs, 'config', '--images'], {
+  // Runtime service env files contain local secrets, not image interpolation values.
+  execFileSync('docker', [...composeArgs, 'config', '--no-env-resolution', '--quiet'], { cwd, env, stdio: 'inherit' })
+  const images = execFileSync('docker', [...composeArgs, 'config', '--no-env-resolution', '--images'], {
     cwd,
     env,
     encoding: 'utf8',
