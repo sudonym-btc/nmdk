@@ -12,6 +12,7 @@ npm run test:unit
 (cd dependencies/marketplace-cashu-ts && npm test)
 (cd dependencies/marketplace-evm-contracts && npm run build:artifacts && git diff --exit-code -- artifacts src && npm run check && npm run build && npm test)
 (cd dependencies/marketplace-evm-ts && npm run build && npm test)
+npm run test:driver-contracts
 npm run build:nostr-tools
 (cd dependencies/marketplace-app-ts && npm test && npm run build)
 npm run docs:check

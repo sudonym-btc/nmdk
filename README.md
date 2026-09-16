@@ -8,9 +8,9 @@ Nostr Markets Development Kit.
 
 This repository pins the marketplace protocol, client runtime, payment drivers,
 demo clients, and local development stacks used by Nostr marketplace work. It is
-intentionally an aggregate repository: the implementation repos remain nested
-submodules so each package can keep its own release cadence while NMDK provides a
-single reproducible development snapshot.
+an aggregate repository: existing TypeScript implementations remain nested
+submodules, and the Dart driver and shared models live under `packages/`. NMDK
+provides one reproducible development snapshot and shared contract inputs.
 
 ## Demo quick start
 
@@ -42,6 +42,8 @@ and chain state are local deterministic fixtures.
 - `dependencies/marketplace-cashu-ts` - Cashu escrow payment policy.
 - `dependencies/marketplace-cashu-stack` - Cashu mints, relay, and LND nodes on the shared regtest Lightning stack.
 - `dependencies/marketplace-evm-ts` - EVM escrow and auction payment policies.
+- `packages/marketplace_evm` - standalone Dart EVM escrow, Lightning swaps, recovery, and balance monitoring.
+- `packages/marketplace_models` - shared Dart marketplace events, proofs, amounts, and tokens.
 - `dependencies/marketplace-evm-contracts` - generated marketplace EVM contract artifacts.
 - `dependencies/marketplace-evm-stack` - EVM/Boltz regtest stack plus shared Bitcoin and marketplace edge LND.
 - `dependencies/marketplace-location-interface-ts` - pluggable marketplace location contract.
@@ -51,9 +53,13 @@ and chain state are local deterministic fixtures.
 
 ## Prerequisites and development setup
 
-Supported local versions are Node.js 24 or 25, npm 11.x, Bun 1.3.14, Git,
+Supported local versions are Node.js 26, npm 12.x, Bun 1.4.2, Git,
 Docker Engine, and Docker Compose v2 or newer. The Docker daemon must be
-running. CI pins npm 11.6.2 as the reproducible reference.
+running. CI pins npm 12.0.2 as the reproducible reference.
+The aggregate `package-lock.json` is the only dependency lockfile for the npm
+workspaces; install dependencies from this directory. Each library builds with
+TypeScript 7, while isolated generation/documentation tools use the newest
+compiler APIs their upstream packages support (see [driver contracts](DRIVER_CONTRACTS.md)).
 The full local stack is intended for macOS/Linux and
 requires approximately 16 GB RAM and 30 GB free disk. Submodules use anonymous
 HTTPS URLs.
@@ -107,6 +113,23 @@ Verify publishable tarballs and production dependencies separately:
 npm run test:packages
 npm run audit:production
 ```
+
+## Dart drivers and shared contract sources
+
+The Dart EVM driver runs independently of Hostr through typed key, payment and
+storage ports. Its [package guide](packages/marketplace_evm/README.md) includes
+standalone construction. Hostr imports the NMDK driver and model packages directly.
+
+```sh
+npm run test:dart
+npm run check:drivers
+npm run test:driver-contracts
+```
+
+Use `npm run generate:drivers` after changing canonical contract or Boltz schema
+inputs. The [sharing contract](DRIVER_CONTRACTS.md) describes cross-language
+fixtures, generated amount/contract schemas and drift checks. Dart checks require
+Dart 3.13.3; they do not require Docker.
 
 ## Stacks
 

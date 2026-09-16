@@ -1,5 +1,4 @@
 import { execFileSync } from 'node:child_process'
-import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -62,19 +61,19 @@ for (const file of moduleFiles) {
   if (/url\s*=\s*git@/.test(modules)) errors.push(`${file}: contains SSH-only URLs`)
 }
 
-const contractSnapshots = [
-  'dependencies/marketplace-evm-contracts',
-  'dependencies/marketplace-evm-stack/dependencies/marketplace-evm-contracts',
-  'dependencies/marketplace-evm-ts/test/stack/dependencies/marketplace-evm-contracts',
-]
-const contractDigests = contractSnapshots.map(directory => {
-  const digest = createHash('sha256')
-  digest.update(readFileSync(path.join(root, directory, 'contracts/MultiEscrow.sol')))
-  digest.update(readFileSync(path.join(root, directory, 'artifacts/MultiEscrow.json')))
-  return digest.digest('hex')
-})
-if (new Set(contractDigests).size !== 1) {
-  errors.push(`MultiEscrow source/artifact snapshots drifted: ${contractSnapshots.map((directory, index) => `${directory}=${contractDigests[index]}`).join(', ')}`)
+for (const stack of ['dependencies/marketplace-evm-stack', 'dependencies/marketplace-evm-ts/test/stack']) {
+  const compose = readFileSync(path.join(root, stack, 'compose.yaml'), 'utf8')
+  if (!compose.includes('${MARKETPLACE_EVM_CONTRACTS_DIR:?') || compose.includes('./dependencies/marketplace-evm-contracts:/contracts')) {
+    errors.push(`${stack}: deployment must mount the canonical contract package`)
+  }
+  if (existsSync(path.join(root, stack, 'dependencies/marketplace-evm-contracts'))) {
+    errors.push(`${stack}: duplicated contract checkout must not be restored`)
+  }
+}
+for (const directory of packageDirs.concat('dependencies/marketplace-app-ts')) {
+  if (existsSync(path.join(root, directory, 'package-lock.json'))) {
+    errors.push(`${directory}: use the aggregate package-lock.json instead of a second dependency graph`)
+  }
 }
 
 const workflowFiles = readdirSync(path.join(root, '.github/workflows'))

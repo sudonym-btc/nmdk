@@ -13,7 +13,7 @@ snapshot provenance.
 | EVM driver | 0.1.x | Interface/contracts 0.1.x, viem 2.55.x |
 | H3 location provider | 0.1.x | Location interface 0.1.x, H3 4.4.x |
 | Marketplace runtime fork | nostr-tools 2.23.5 line | Interfaces 0.1.x |
-| Aggregate development | NMDK 0.1.x | Node 24 or 25, npm 11.x (CI: 11.6.2), Bun 1.3.14, Compose v2+ |
+| Aggregate development | NMDK 0.1.x | Node 26, npm 12.x (CI: 12.0.2), Bun 1.4.2, Compose v2+ |
 
 Before a release, `artifacts/release/nmdk-snapshot.json` records the exact root
 and recursive submodule commits. Breaking protocol or persisted-state changes

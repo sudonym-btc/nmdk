@@ -1,0 +1,22 @@
+{
+  "name": "@sudonym-btc/nmdk-typescript-tooling",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Locked documentation and lint compiler API, independent of the TypeScript 7 build compiler.",
+  "bin": {
+    "nmdk-typedoc": "typedoc.mjs"
+  },
+  "exports": {
+    "./eslint-config": "./eslint.config.mjs"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "8.70.0",
+    "@typescript-eslint/parser": "8.70.0",
+    "eslint": "10.10.0",
+    "eslint-config-prettier": "10.1.8",
+    "typedoc": "0.28.20",
+    "typedoc-plugin-markdown": "4.13.0",
+    "typescript": "6.0.3"
+  }
+}

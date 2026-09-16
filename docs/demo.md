@@ -2,7 +2,7 @@
 
 ## Start in two steps
 
-After installing Node 24/25, npm 11, Bun 1.3.14, Git, Docker Engine, and Docker
+After installing Node 26, npm 12, Bun 1.4.2, Git, Docker Engine, and Docker
 Compose v2, run:
 
 ```sh

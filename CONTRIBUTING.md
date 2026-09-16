@@ -2,7 +2,7 @@
 
 ## Start from the pinned snapshot
 
-1. Install Node 24, npm 11.6.2, Bun 1.3.14, Git, Docker, and Docker Compose.
+1. Install Node 26, npm 12.0.2, Bun 1.4.2, Git, Docker, and Docker Compose.
 2. Run `./scripts/bootstrap.sh`.
 3. Run `npm test` before editing.
 

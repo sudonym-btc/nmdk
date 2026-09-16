@@ -4,18 +4,18 @@
   "private": true,
   "description": "Nostr Markets Development Kit aggregate repository.",
   "license": "MIT",
-  "packageManager": "npm@11.6.2",
+  "packageManager": "npm@12.0.2",
   "engines": {
-    "node": ">=24 <26",
-    "npm": ">=11 <12"
+    "node": ">=26 <27",
+    "npm": ">=12 <13"
   },
   "scripts": {
     "bootstrap": "./scripts/bootstrap.sh",
     "pretest": "node scripts/verify-environment.mjs",
     "test": "./scripts/test.sh",
     "check": "./scripts/test.sh",
-    "test:unit": "node --test test/arbiter-compose.test.mjs test/collect-payment-states.test.mjs test/development-proxy.test.mjs test/evm-boltz-trust.test.mjs && bun test test/settle-auction-once.test.mjs",
-    "build:nostr-tools": "cd dependencies/nostr-tools && rm -rf lib && bun run build.js && ./node_modules/.bin/tsc",
+    "test:unit": "node --test test/arbiter-compose.test.mjs test/collect-payment-states.test.mjs test/development-proxy.test.mjs test/evm-boltz-trust.test.mjs test/evm-contract-source.test.mjs && bun test test/settle-auction-once.test.mjs",
+    "build:nostr-tools": "npm --workspace nostr-tools run build",
     "test:nostr-tools": "cd dependencies/nostr-tools && bun test marketplace.test.ts relay.test.ts marketplace/*.test.ts",
     "test:cashu": "cd dependencies/marketplace-cashu-ts && npm test",
     "test:cashu:integration": "node scripts/test-cashu-refund-integration.mjs",
@@ -58,7 +58,11 @@
     "down:arbiters": "./scripts/down-arbiters.sh",
     "up:cashu": "./scripts/up-cashu.sh",
     "up:evm": "./scripts/up-evm.sh",
-    "up:lightning": "./scripts/up-marketplace-lightning.sh"
+    "up:lightning": "./scripts/up-marketplace-lightning.sh",
+    "test:dart": "./scripts/test-dart.sh",
+    "generate:drivers": "node scripts/generate-driver-bindings.mjs --dart",
+    "check:drivers": "node scripts/generate-driver-bindings.mjs --check",
+    "test:driver-contracts": "node --test test/driver-contracts.test.mjs"
   },
   "workspaces": [
     "apps/docs",
@@ -69,13 +73,19 @@
     "dependencies/marketplace-app-ts",
     "dependencies/marketplace-cashu-ts",
     "dependencies/marketplace-evm-ts",
-    "dependencies/marketplace-evm-contracts"
+    "dependencies/marketplace-evm-contracts",
+    "tools/typescript",
+    "tools/openapi"
   ],
   "devDependencies": {
-    "playwright": "^1.61.1"
+    "playwright": "^1.63.0",
+    "typescript": "6.0.3"
   },
   "overrides": {
-    "hono": "4.12.28",
-    "ws": "8.21.0"
+    "hono": "4.13.8",
+    "ws": "8.21.3",
+    "solc": {
+      "tmp": "0.2.7"
+    }
   }
 }
