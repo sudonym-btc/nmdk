@@ -3,7 +3,7 @@
 ## Start in two steps
 
 After installing Node 26, npm 12, Bun 1.4.2, Git, Docker Engine, and Docker
-Compose v2, run:
+Compose 5.5.1 or newer, run:
 
 ```sh
 git clone --recurse-submodules https://github.com/sudonym-btc/nmdk.git && cd nmdk

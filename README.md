@@ -54,8 +54,10 @@ and chain state are local deterministic fixtures.
 ## Prerequisites and development setup
 
 Supported local versions are Node.js 26, npm 12.x, Bun 1.4.2, Git,
-Docker Engine, and Docker Compose v2 or newer. The Docker daemon must be
-running. CI pins npm 12.0.2 as the reproducible reference.
+Docker Engine, and Docker Compose 5.5.1 or newer. The Docker daemon must be
+running. CI pins npm 12.0.2 and the Compose version in `.docker-compose-version`
+as reproducible references. Run `./scripts/install-compose.sh` to install that
+Compose release; the installer verifies its published SHA-256 checksum.
 The aggregate `package-lock.json` is the only dependency lockfile for the npm
 workspaces; install dependencies from this directory. Each library builds with
 TypeScript 7, while isolated generation/documentation tools use the newest
