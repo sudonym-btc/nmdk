@@ -1,0 +1,81 @@
+// Generated from MultiEscrow.sol by generate-signing.mjs. Do not edit.
+const multiEscrowDomainName = 'Nostr MultiEscrow';
+const multiEscrowDomainVersion = '7';
+const multiEscrowFactorScale = 1000;
+const multiEscrowTypes = <String, List<Map<String, String>>>{
+  'Release': [
+    {'name': 'tradeId', 'type': 'bytes32'},
+    {'name': 'actor', 'type': 'address'},
+  ],
+  'Claim': [
+    {'name': 'tradeId', 'type': 'bytes32'},
+  ],
+  'Arbitrate': [
+    {'name': 'tradeId', 'type': 'bytes32'},
+    {'name': 'paymentFactor', 'type': 'uint256'},
+    {'name': 'bondFactor', 'type': 'uint256'},
+  ],
+  'Withdraw': [
+    {'name': 'token', 'type': 'address'},
+    {'name': 'destination', 'type': 'address'},
+    {'name': 'nonce', 'type': 'uint256'},
+  ],
+  'TradeTerms': [
+    {'name': 'tradeId', 'type': 'bytes32'},
+    {'name': 'buyer', 'type': 'address'},
+    {'name': 'seller', 'type': 'address'},
+    {'name': 'arbiter', 'type': 'address'},
+    {'name': 'token', 'type': 'address'},
+    {'name': 'paymentAmount', 'type': 'uint256'},
+    {'name': 'bondAmount', 'type': 'uint256'},
+    {'name': 'unlockAt', 'type': 'uint256'},
+    {'name': 'timeoutClaimant', 'type': 'address'},
+    {'name': 'escrowFee', 'type': 'uint256'},
+    {'name': 'contextHash', 'type': 'bytes32'},
+    {'name': 'recycleCovenantHash', 'type': 'bytes32'},
+  ],
+  'Recycle': [
+    {'name': 'sourceTradeId', 'type': 'bytes32'},
+    {'name': 'targetTermsHash', 'type': 'bytes32'},
+    {'name': 'deadline', 'type': 'uint256'},
+  ],
+  'RecycleCovenant': [
+    {'name': 'buyer', 'type': 'address'},
+    {'name': 'seller', 'type': 'address'},
+    {'name': 'arbiter', 'type': 'address'},
+    {'name': 'token', 'type': 'address'},
+    {'name': 'paymentAmount', 'type': 'uint256'},
+    {'name': 'bondAmount', 'type': 'uint256'},
+    {'name': 'timeoutClaimant', 'type': 'address'},
+    {'name': 'escrowFee', 'type': 'uint256'},
+    {'name': 'contextHash', 'type': 'bytes32'},
+  ],
+};
+const multiEscrowErrorSignatures = <String, String>{
+  'ClaimPeriodNotStarted()': 'ClaimPeriodNotStarted',
+  'ERC20TransferFailed()': 'ERC20TransferFailed',
+  'EscrowFeeTooHigh()': 'EscrowFeeTooHigh',
+  'InsufficientExcess()': 'InsufficientExcess',
+  'InvalidAddress()': 'InvalidAddress',
+  'InvalidFactor()': 'InvalidFactor',
+  'InvalidRecycleAmount()': 'InvalidRecycleAmount',
+  'InvalidShortString()': 'InvalidShortString',
+  'InvalidSignature()': 'InvalidSignature',
+  'MustSendFunds()': 'MustSendFunds',
+  'NativeNotExpected()': 'NativeNotExpected',
+  'NativeTransferFailed()': 'NativeTransferFailed',
+  'NoFundsToClaim()': 'NoFundsToClaim',
+  'NoFundsToRelease()': 'NoFundsToRelease',
+  'NotAContract()': 'NotAContract',
+  'NothingToWithdraw()': 'NothingToWithdraw',
+  'OnlyBuyerOrSeller()': 'OnlyBuyerOrSeller',
+  'OnlyOwner()': 'OnlyOwner',
+  'RecycleCovenantMismatch()': 'RecycleCovenantMismatch',
+  'RecycleExpired()': 'RecycleExpired',
+  'RecycleTokenMismatch()': 'RecycleTokenMismatch',
+  'ReentrancyGuardReentrantCall()': 'ReentrancyGuardReentrantCall',
+  'StringTooLong(string)': 'StringTooLong',
+  'TradeAlreadyActive()': 'TradeAlreadyActive',
+  'TradeIdAlreadyExists()': 'TradeIdAlreadyExists',
+  'TradeNotActive()': 'TradeNotActive',
+};

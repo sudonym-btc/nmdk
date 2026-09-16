@@ -1,0 +1,16 @@
+targets:
+  $default:
+    builders:
+      swagger_dart_code_generator:
+        options:
+          include_if_null: false
+          input_folder: lib/src/datasources/swagger
+          output_folder: lib/src/datasources/swagger_generated
+      web3dart_builders:abi_generator:
+        generate_for:
+          - lib/src/datasources/contracts/escrow/MultiEscrow.abi.json
+          - lib/src/datasources/contracts/boltz/ERC20Swap.abi.json
+          - lib/src/datasources/contracts/boltz/EtherSwap.abi.json
+          - lib/src/datasources/contracts/boltz/TestERC20.abi.json
+          - lib/src/datasources/contracts/boltz/IERC20.abi.json
+          - lib/src/datasources/contracts/boltz/IERC20Metadata.abi.json

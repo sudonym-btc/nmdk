@@ -1,0 +1,28 @@
+name: Dart drivers
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  dart:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d # v1.8.1
+        with:
+          sdk: '3.13.3'
+      - name: Analyze and test standalone Dart packages
+        run: ./scripts/test-dart.sh
+      - name: Regenerate Dart wire and contract bindings
+        working-directory: packages/marketplace_evm
+        run: dart run build_runner build
+      - name: Reject generated Dart drift
+        run: git diff --exit-code -- packages/marketplace_evm/lib/src/datasources
