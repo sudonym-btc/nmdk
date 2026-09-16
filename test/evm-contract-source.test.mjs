@@ -10,11 +10,14 @@ const canonical = resolve(root, 'dependencies/marketplace-evm-contracts')
 
 for (const stack of ['dependencies/marketplace-evm-stack', 'dependencies/marketplace-evm-ts/test/stack']) {
   test(`${stack} mounts the one canonical compiled escrow artifact`, () => {
-    const env = { ...process.env }
+    const env = { ...process.env, MARKETPLACE_EVM_USER_ID: '1001', MARKETPLACE_EVM_GROUP_ID: '1001' }
     delete env.MARKETPLACE_EVM_CONTRACTS_DIR
     const config = JSON.parse(execFileSync('./scripts/compose.sh', ['config', '--format', 'json'], {
       cwd: resolve(root, stack), env, encoding: 'utf8',
     }))
+    for (const name of ['bitcoind', 'cln-1', 'cln-2', 'lnd-1', 'lnd-2', 'lnd-3', 'boltz-backend']) {
+      assert.equal(config.services[name].user, '1001:1001', `${name} must use the data directory owner`)
+    }
     const contracts = config.services['multi-escrow-deploy'].volumes.find(volume => volume.target === '/contracts')
     assert.equal(contracts.source, canonical)
     assert.equal(contracts.type, 'bind')
