@@ -1,7 +1,7 @@
 [submodule "dependencies/nostr-tools"]
 	path = dependencies/nostr-tools
 	url = https://github.com/sudonym-btc/nostr-tools.git
-	branch = marketplace
+	branch = main
 [submodule "dependencies/ndk"]
 	path = dependencies/ndk
 	url = https://github.com/sudonym-btc/ndk.git
