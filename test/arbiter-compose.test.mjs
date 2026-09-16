@@ -12,7 +12,7 @@ const serviceNames = ['arbiter-evm', 'arbiter-cashu', 'arbiter-both']
 function composeConfig() {
   const output = execFileSync(
     'docker',
-    ['compose', '-p', 'nmdk-arbiters-test', '-f', 'compose.arbiters.yaml', 'config', '--format', 'json'],
+    ['compose', '-p', 'nmdk-arbiters-test', '-f', 'compose.arbiters.yaml', 'config', '--no-env-resolution', '--format', 'json'],
     { cwd: root, encoding: 'utf8' },
   )
   return JSON.parse(output)
