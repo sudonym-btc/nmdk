@@ -13,11 +13,13 @@ const configurations = [
 ]
 
 const errors = []
+const env = { ...process.env, MARKETPLACE_EVM_CONTRACTS_DIR: path.join(root, 'dependencies/marketplace-evm-contracts') }
 for (const [name, cwd, args] of configurations) {
   const composeArgs = ['compose', ...args, '--profile', '*']
-  execFileSync('docker', [...composeArgs, 'config', '--quiet'], { cwd, stdio: 'inherit' })
+  execFileSync('docker', [...composeArgs, 'config', '--quiet'], { cwd, env, stdio: 'inherit' })
   const images = execFileSync('docker', [...composeArgs, 'config', '--images'], {
     cwd,
+    env,
     encoding: 'utf8',
   }).trim().split('\n').filter(Boolean)
   for (const image of images) {

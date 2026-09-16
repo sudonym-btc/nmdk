@@ -4,12 +4,14 @@ services:
     build:
       context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
       dockerfile_inline: |
-        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS build
+        FROM node:26.8.2-bookworm-slim@sha256:cd9f682fa2885cd1056e830424764158570061c59736a1da836bc3d73df095ae AS build
 
         WORKDIR /app
 
-        ARG PNPM_VERSION=10.14.0
-        RUN corepack enable && corepack prepare pnpm@$${PNPM_VERSION} --activate
+        ARG PNPM_VERSION=12.4.2
+        ENV npm_config_manage_package_manager_versions=false
+        ENV npm_config_package_manager_strict=false
+        RUN npm install --global npm@12.0.2 pnpm@$${PNPM_VERSION}
 
         COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
         COPY apps/signet/package.json ./apps/signet/
@@ -25,11 +27,13 @@ services:
         RUN pnpm prisma generate
         RUN pnpm build
 
-        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS runtime
+        FROM node:26.8.2-bookworm-slim@sha256:cd9f682fa2885cd1056e830424764158570061c59736a1da836bc3d73df095ae AS runtime
 
         WORKDIR /app
 
-        ARG PNPM_VERSION=10.14.0
+        ARG PNPM_VERSION=12.4.2
+        ENV npm_config_manage_package_manager_versions=false
+        ENV npm_config_package_manager_strict=false
         RUN apt-get update && apt-get install -y --no-install-recommends openssl wget ca-certificates && rm -rf /var/lib/apt/lists/*
 
         COPY --from=build /app/node_modules ./node_modules
@@ -45,7 +49,7 @@ services:
         COPY --from=build /app/apps/signet/entrypoint.sh ./apps/signet/entrypoint.sh
 
         RUN chmod +x ./apps/signet/entrypoint.sh
-        RUN corepack enable && corepack prepare pnpm@$${PNPM_VERSION} --activate
+        RUN npm install --global npm@12.0.2 pnpm@$${PNPM_VERSION}
 
         WORKDIR /app/apps/signet
 
@@ -96,10 +100,12 @@ services:
     build:
       context: https://github.com/Letdown2491/signet.git#7c79aa0f334f661c709705435179b1ac9c2116d5
       dockerfile_inline: |
-        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS build
+        FROM node:26.8.2-bookworm-slim@sha256:cd9f682fa2885cd1056e830424764158570061c59736a1da836bc3d73df095ae AS build
         WORKDIR /app
-        ARG PNPM_VERSION=10.14.0
-        RUN corepack enable && corepack prepare pnpm@$${PNPM_VERSION} --activate
+        ARG PNPM_VERSION=12.4.2
+        ENV npm_config_manage_package_manager_versions=false
+        ENV npm_config_package_manager_strict=false
+        RUN npm install --global npm@12.0.2 pnpm@$${PNPM_VERSION}
         COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
         COPY apps/signet-ui/package.json ./apps/signet-ui/
         COPY packages/signet-types ./packages/signet-types
@@ -108,7 +114,7 @@ services:
         WORKDIR /app/apps/signet-ui
         RUN pnpm build
 
-        FROM node:20-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS runtime
+        FROM node:26.8.2-bookworm-slim@sha256:cd9f682fa2885cd1056e830424764158570061c59736a1da836bc3d73df095ae AS runtime
         WORKDIR /app
         ENV NODE_ENV=production
         COPY --from=build /app/node_modules ./node_modules
@@ -149,7 +155,7 @@ services:
     restart: unless-stopped
 
   blossom:
-    image: ghcr.io/hzrd149/blossom-server:6.1.5@sha256:061bf8ecf42e92f01cb5dfe669cb7ef025c68022c48fbc14806dfdd1df2596ba
+    image: ghcr.io/hzrd149/blossom-server:6.3.1@sha256:c91fb7820ebf4c9874b2cc1f3998baad68233c909c12c6603a98cc74d13d39d0
     platform: linux/amd64
     restart: unless-stopped
     environment:
