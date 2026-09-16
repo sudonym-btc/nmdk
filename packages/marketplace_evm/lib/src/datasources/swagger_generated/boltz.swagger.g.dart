@@ -1465,11 +1465,16 @@ SwapStatus$Transaction _$SwapStatus$TransactionFromJson(
 ) => SwapStatus$Transaction(
   id: json['id'] as String?,
   hex: json['hex'] as String?,
+  confirmed: json['confirmed'] as bool?,
 );
 
 Map<String, dynamic> _$SwapStatus$TransactionToJson(
   SwapStatus$Transaction instance,
-) => <String, dynamic>{'id': ?instance.id, 'hex': ?instance.hex};
+) => <String, dynamic>{
+  'id': ?instance.id,
+  'hex': ?instance.hex,
+  'confirmed': ?instance.confirmed,
+};
 
 Contracts$Network _$Contracts$NetworkFromJson(Map<String, dynamic> json) =>
     Contracts$Network(

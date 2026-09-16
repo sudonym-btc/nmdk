@@ -9498,7 +9498,7 @@ extension $ChainSwapSigningRequest$ToSignExtension
 
 @JsonSerializable(explicitToJson: true)
 class SwapStatus$Transaction {
-  const SwapStatus$Transaction({this.id, this.hex});
+  const SwapStatus$Transaction({this.id, this.hex, this.confirmed});
 
   factory SwapStatus$Transaction.fromJson(Map<String, dynamic> json) =>
       _$SwapStatus$TransactionFromJson(json);
@@ -9510,6 +9510,8 @@ class SwapStatus$Transaction {
   final String? id;
   @JsonKey(name: 'hex', includeIfNull: false)
   final String? hex;
+  @JsonKey(name: 'confirmed', includeIfNull: false)
+  final bool? confirmed;
   static const fromJsonFactory = _$SwapStatus$TransactionFromJson;
 
   @override
@@ -9519,7 +9521,12 @@ class SwapStatus$Transaction {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.hex, hex) ||
-                const DeepCollectionEquality().equals(other.hex, hex)));
+                const DeepCollectionEquality().equals(other.hex, hex)) &&
+            (identical(other.confirmed, confirmed) ||
+                const DeepCollectionEquality().equals(
+                  other.confirmed,
+                  confirmed,
+                )));
   }
 
   @override
@@ -9529,21 +9536,28 @@ class SwapStatus$Transaction {
   int get hashCode =>
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(hex) ^
+      const DeepCollectionEquality().hash(confirmed) ^
       runtimeType.hashCode;
 }
 
 extension $SwapStatus$TransactionExtension on SwapStatus$Transaction {
-  SwapStatus$Transaction copyWith({String? id, String? hex}) {
-    return SwapStatus$Transaction(id: id ?? this.id, hex: hex ?? this.hex);
+  SwapStatus$Transaction copyWith({String? id, String? hex, bool? confirmed}) {
+    return SwapStatus$Transaction(
+      id: id ?? this.id,
+      hex: hex ?? this.hex,
+      confirmed: confirmed ?? this.confirmed,
+    );
   }
 
   SwapStatus$Transaction copyWithWrapped({
     Wrapped<String?>? id,
     Wrapped<String?>? hex,
+    Wrapped<bool?>? confirmed,
   }) {
     return SwapStatus$Transaction(
       id: (id != null ? id.value : this.id),
       hex: (hex != null ? hex.value : this.hex),
+      confirmed: (confirmed != null ? confirmed.value : this.confirmed),
     );
   }
 }
