@@ -1,0 +1,20 @@
+import 'package:faker/faker.dart';
+import 'package:marketplace_models/stubs/escrow_service.dart';
+import 'package:ndk/ndk.dart';
+
+export 'escrow_service.dart';
+export 'keypairs.dart';
+
+final faker = Faker(seed: 1);
+
+Future<List<Nip01Event>> MOCK_EVENTS(
+    {required String contractAddress,
+    required String evmAddress,
+    String? byteCodeHash}) async {
+  return [
+    ...MOCK_ESCROWS(
+        contractAddress: contractAddress,
+        evmAddress: evmAddress,
+        byteCodeHash: byteCodeHash),
+  ];
+}

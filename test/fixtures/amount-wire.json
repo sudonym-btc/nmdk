@@ -1,0 +1,121 @@
+{
+  "valid": [
+    {
+      "value": "9007199254740993",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "0",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "-17",
+      "denomination": "USD",
+      "decimals": 6,
+      "currency": "USD"
+    },
+    {
+      "value": "123456789012345678901234567890",
+      "denomination": "ETH",
+      "decimals": 18
+    },
+    {
+      "value": "5",
+      "denomination": "CUSTOM",
+      "decimals": 255
+    }
+  ],
+  "invalid": [
+    null,
+    [],
+    {},
+    {
+      "value": 1,
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": 1.2,
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "0.00000001",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "01",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "-0",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "+1",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "1e8",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "0x10",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "1\n",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": " 1",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "1 ",
+      "denomination": "BTC",
+      "decimals": 8
+    },
+    {
+      "value": "9007199254740993",
+      "denomination": "BTC",
+      "decimals": -1
+    },
+    {
+      "value": "9007199254740993",
+      "denomination": "BTC",
+      "decimals": 256
+    },
+    {
+      "value": "9007199254740993",
+      "denomination": "BTC",
+      "decimals": 1.2
+    },
+    {
+      "value": "9007199254740993",
+      "denomination": "BTC",
+      "decimals": "8"
+    },
+    {
+      "value": "9007199254740993",
+      "denomination": "",
+      "decimals": 8
+    },
+    {
+      "value": "9007199254740993",
+      "denomination": "BTC",
+      "decimals": 8,
+      "currency": null
+    }
+  ]
+}

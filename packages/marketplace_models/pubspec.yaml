@@ -1,0 +1,25 @@
+name: marketplace_models
+description: Shared Nostr marketplace event, payment, and amount types.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+dependencies:
+  bip340: ^0.3.1
+  convert: ^3.1.2
+  ndk: ^0.9.3
+  faker: ^2.2.0
+  crypto: ^3.0.7
+  logger: ^2.8.0
+  h3_dart: ^0.7.0
+  coinlib: ^5.0.0
+
+dev_dependencies:
+  test: ^1.32.0
+
+# Coinlib 5 uses only RIPEMD160Digest.process, unchanged in PointyCastle 4.
+# Web3dart 3 and wallet 0.0.18 require PointyCastle 4.
+dependency_overrides:
+  pointycastle: ^4.0.0

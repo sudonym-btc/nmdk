@@ -13,3 +13,7 @@ artifacts/release/
 # Stack runtime data
 dependencies/marketplace-cashu-stack/data/
 dependencies/marketplace-evm-stack/data/
+
+# Dart package tooling
+.dart_tool/
+packages/*/build/
